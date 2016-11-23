@@ -5,13 +5,13 @@ require 'virgil/sdk/version'
 
 Gem::Specification.new do |spec|
   spec.name          = "virgil-sdk"
-  spec.version       = Virgil::Sdk::VERSION
+  spec.version       = Virgil::SDK::VERSION
   spec.authors       = ["Dmitriy Dudkin"]
   spec.email         = ["dudkin.dmitriy@gmail.com"]
 
-  spec.summary       = %q{TODO: Write a short summary, because Rubygems requires one.}
-  spec.description   = %q{TODO: Write a longer description or delete this line.}
-  spec.homepage      = "TODO: Put your gem's website or public repo URL here."
+  spec.summary       = %q{Virgil keys service SDK}
+  spec.description   = %q{Virgil keys service SDK}
+  spec.homepage      = "https://github.com/VirgilSecurity/virgil-sdk-ruby"
 
   # Prevent pushing this gem to RubyGems.org. To allow pushes either set the 'allowed_push_host'
   # to allow pushing to a single host or delete this section to allow pushing to any host.
@@ -28,4 +28,5 @@ Gem::Specification.new do |spec|
 
   spec.add_development_dependency "bundler", "~> 1.12"
   spec.add_development_dependency "rake", "~> 10.0"
+  spec.add_development_dependency "minitest-reporters", "~> 1.1"
 end
