@@ -31,22 +31,49 @@
 # STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING
 # IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
 # POSSIBILITY OF SUCH DAMAGE.
-require 'test_helper'
 
-class FingerprintTest < Minitest::Test
-  def setup
-    @crypto = Virgil::SDK::Cryptography::VirgilCrypto.new
-  end
+module Virgil
+  module SDK
+    module Client
+      # Class holds criteria for searching Cards.
+      SearchCriteria = Struct.new(:identities, :identity_type, :scope) do
+        def initialize(identities, identity_type=nil, scope=nil)
+          super
+        end
 
-  def test_from_to_hex
-    data = Virgil::SDK::Bytes.new([1, 2, 3])
-    fingerprint = @crypto.calculate_fingerprint(data)
-    hex_string = fingerprint.to_hex
-    rebuilt_fingerprint =
-      Virgil::SDK::Cryptography::Hashes::Fingerprint.from_hex(hex_string)
-    assert_equal(
-      fingerprint.value,
-      rebuilt_fingerprint.value
-    )
+        # Create new search criteria for searching cards by identity.
+        #
+        # Args:
+        #     identity: Identity value.
+        #
+        # Returns:
+        #     Search criteria with provided identity.
+        def self.by_identity(identity)
+          return self.by_identities([identity])
+        end
+
+        # Create new search criteria for searching cards by identities.
+        #
+        # Args:
+        #     identities: Identities value.
+        #
+        # Returns:
+        #     Search criteria with provided identities.
+        def self.by_identities(identities)
+          return new(identities, nil, Card::APPLICATION)
+        end
+
+        # Create new search criteria for searching cards by application bundle.
+        #
+        # Args:
+        #     bundle: Application bundle.
+        #
+        # Returns:
+        #     Search criteria for searching by bundle.
+        def self.by_app_bundle(bundle)
+          return new([bundle], 'application', Card::GLOBAL)
+        end
+      end
+    end
   end
 end

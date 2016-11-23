@@ -31,22 +31,60 @@
 # STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING
 # IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
 # POSSIBILITY OF SUCH DAMAGE.
-require 'test_helper'
 
-class FingerprintTest < Minitest::Test
-  def setup
-    @crypto = Virgil::SDK::Cryptography::VirgilCrypto.new
-  end
+module Virgil
+  module SDK
+    module Client
+      # Class used for signing api requests.
+      class RequestSigner
+        attr_reader :crypto
 
-  def test_from_to_hex
-    data = Virgil::SDK::Bytes.new([1, 2, 3])
-    fingerprint = @crypto.calculate_fingerprint(data)
-    hex_string = fingerprint.to_hex
-    rebuilt_fingerprint =
-      Virgil::SDK::Cryptography::Hashes::Fingerprint.from_hex(hex_string)
-    assert_equal(
-      fingerprint.value,
-      rebuilt_fingerprint.value
-    )
+        # Constructs new RequestSigner object
+        def initialize(crypto)
+          @crypto = crypto
+        end
+
+        # Sign passed request with private key.
+        #
+        # Args:
+        #     signable_request: request for signing.
+        #     private_key: private key to sign with.
+        def self_sign(signable_request, private_key)
+          fingerprint = self.crypto.calculate_fingerprint(
+            signable_request.snapshot
+          )
+          signature = self.crypto.sign(
+            fingerprint.value,
+            private_key
+          )
+
+          signable_request.sign_with(
+            fingerprint.to_hex,
+            signature
+          )
+        end
+
+        # Sign passed request with authority private key.
+        #
+        # Args:
+        #     signable_request: request for signing.
+        #     signer_id: authority id.
+        #     private_key: authority private key to sign with.
+        def authority_sign(signable_request, signer_id, private_key)
+          fingerprint = self.crypto.calculate_fingerprint(
+            signable_request.snapshot
+          )
+          signature = self.crypto.sign(
+            fingerprint.value,
+            private_key
+          )
+
+          signable_request.sign_with(
+            signer_id,
+            signature
+          )
+        end
+      end
+    end
   end
 end
