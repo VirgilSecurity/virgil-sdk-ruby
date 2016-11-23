@@ -39,7 +39,7 @@ class FingerprintTest < Minitest::Test
   end
 
   def test_from_to_hex
-    data = Virgil::SDK::Bytes.new([1, 2, 3])
+    data = Virgil::Crypto::Bytes.new([1, 2, 3])
     fingerprint = @crypto.calculate_fingerprint(data)
     hex_string = fingerprint.to_hex
     rebuilt_fingerprint =

@@ -105,7 +105,7 @@ class CompatibilityTest < Minitest::Test
     when Array
       data.map {|v| decode_data(v) }
     when String
-      Virgil::SDK::Bytes.from_base64(data)
+      Virgil::Crypto::Bytes.from_base64(data)
     else
       data
     end

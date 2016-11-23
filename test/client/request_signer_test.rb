@@ -37,7 +37,7 @@ class RequestSignerTest < Minitest::Test
   def setup
     @crypto = Virgil::SDK::Cryptography::VirgilCrypto.new
     @app_private_key = @crypto.import_private_key(
-      Virgil::SDK::Bytes.from_string(ClientTestConfig.raw_app_private_key),
+      Virgil::Crypto::Bytes.from_string(ClientTestConfig.raw_app_private_key),
       ClientTestConfig.app_key_password
     )
     @request_signer = Virgil::SDK::Client::RequestSigner.new(@crypto)

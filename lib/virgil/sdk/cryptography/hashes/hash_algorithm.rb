@@ -60,12 +60,12 @@ module Virgil
           SHA512 = :SHA512
 
           ALGORITHMS_TO_NATIVE = {
-            MD5: Virgil::Crypto::VirgilHash::Algorithm_MD5,
-            SHA1: Virgil::Crypto::VirgilHash::Algorithm_SHA1,
-            SHA224: Virgil::Crypto::VirgilHash::Algorithm_SHA224,
-            SHA256: Virgil::Crypto::VirgilHash::Algorithm_SHA256,
-            SHA384: Virgil::Crypto::VirgilHash::Algorithm_SHA384,
-            SHA512: Virgil::Crypto::VirgilHash::Algorithm_SHA512,
+            MD5: Crypto::Native::VirgilHash::Algorithm_MD5,
+            SHA1: Crypto::Native::VirgilHash::Algorithm_SHA1,
+            SHA224: Crypto::Native::VirgilHash::Algorithm_SHA224,
+            SHA256: Crypto::Native::VirgilHash::Algorithm_SHA256,
+            SHA384: Crypto::Native::VirgilHash::Algorithm_SHA384,
+            SHA512: Crypto::Native::VirgilHash::Algorithm_SHA512,
           }
 
           # Converts algorithm enum value to native value

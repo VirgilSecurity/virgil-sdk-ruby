@@ -117,7 +117,7 @@ class VirgilCryptoTest < Minitest::Test
   end
 
   #def test_encrypt_and_decrypt_stream
-  #  data = Virgil::SDK::Bytes.new([1, 2, 3])
+  #  data = Virgil::Crypto::Bytes.new([1, 2, 3])
   #  key_pair = @crypto.generate_keys()
   #  encrypt_input_stream = io.BytesIO(data)
   #  encrypt_output_stream = io.BytesIO()
@@ -157,7 +157,7 @@ class VirgilCryptoTest < Minitest::Test
   end
 
   #def test_sign_and_verify_stream
-  #  data = Virgil::SDK::Bytes.new([1, 2, 3])
+  #  data = Virgil::Crypto::Bytes.new([1, 2, 3])
   #  key_pair = @crypto.generate_keys()
   #  sign_input_stream = io.BytesIO(data)
   #  signature = @crypto.sign_stream(
@@ -174,7 +174,7 @@ class VirgilCryptoTest < Minitest::Test
   #end
 
   def test_calculate_fingerprint
-    data = Virgil::SDK::Bytes.new([1, 2, 3])
+    data = Virgil::Crypto::Bytes.new([1, 2, 3])
     fingerprint = @crypto.calculate_fingerprint(data)
     assert(fingerprint.value)
     assert(fingerprint.is_a?(Virgil::SDK::Cryptography::Hashes::Fingerprint))

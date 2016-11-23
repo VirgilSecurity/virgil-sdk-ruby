@@ -94,7 +94,7 @@ module Virgil
           #   Request snapshot bytes.
           def take_snapshot
             json_string = self.snapshot_model.to_json
-            Virgil::SDK::Bytes.from_string(json_string)
+            Crypto::Bytes.from_string(json_string)
           end
 
 

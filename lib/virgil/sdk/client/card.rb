@@ -71,7 +71,7 @@ module Virgil
             snapshot: snapshot,
             identity: snapshot_model["identity"],
             identity_type: snapshot_model["identity_type"],
-            public_key: Virgil::SDK::Bytes.from_base64(
+            public_key: Virgil::Crypto::Bytes.from_base64(
               snapshot_model["public_key"]
             ),
             device: info["device"],

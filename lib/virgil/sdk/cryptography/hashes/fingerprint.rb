@@ -52,7 +52,7 @@ module Virgil
           # Returns:
           #   Imported Fingerprint.
           def self.from_hex(fingerprint_hex)
-            data = Virgil::Crypto::VirgilByteArrayUtils.hexToBytes(fingerprint_hex)
+            data = Crypto::Native::VirgilByteArrayUtils.hex_to_bytes(fingerprint_hex)
             return self.new(data)
           end
 
@@ -69,7 +69,7 @@ module Virgil
           # Returns:
           #   Hexademical fingerprint representation.
           def to_hex
-            hex_data = Virgil::Crypto::VirgilByteArrayUtils.bytesToHex(self.value)
+            hex_data = Crypto::Native::VirgilByteArrayUtils.bytes_to_hex(value)
             return hex_data
           end
         end

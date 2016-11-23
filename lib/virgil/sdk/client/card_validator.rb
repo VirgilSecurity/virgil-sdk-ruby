@@ -50,7 +50,7 @@ module Virgil
 
         def initialize(crypto)
           @crypto = crypto
-          @public_key_bytes = Virgil::SDK::Bytes.from_base64(SERVICE_PUBLIC_KEY)
+          @public_key_bytes = Crypto::Bytes.from_base64(SERVICE_PUBLIC_KEY)
           @public_key = crypto.import_public_key(@public_key_bytes)
           @verifiers = {
             SERVICE_CARD_ID => @public_key
@@ -76,7 +76,7 @@ module Virgil
           return true if card.version == '3.0'
 
           fingerprint = self.crypto.calculate_fingerprint(
-            Virgil::SDK::Bytes.from_string(card.snapshot)
+            Crypto::Bytes.from_string(card.snapshot)
           )
           fingerprint_hex = fingerprint.to_hex
           return false if fingerprint_hex != card.id
@@ -90,7 +90,7 @@ module Virgil
             end
             is_valid = self.crypto.verify(
               fingerprint.value,
-              Virgil::SDK::Bytes.from_base64(card.signatures[id]),
+              Crypto::Bytes.from_base64(card.signatures[id]),
               key
             )
             return false unless is_valid

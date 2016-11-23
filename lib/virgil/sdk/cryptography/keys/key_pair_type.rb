@@ -68,21 +68,21 @@ module Virgil
           FAST_EC_ED25519 = :FAST_EC_ED25519
 
           TYPES_TO_NATIVE = {
-            Default: Virgil::Crypto::VirgilKeyPair::Type_FAST_EC_ED25519,
-            RSA_2048: Virgil::Crypto::VirgilKeyPair::Type_RSA_2048,
-            RSA_3072: Virgil::Crypto::VirgilKeyPair::Type_RSA_3072,
-            RSA_4096: Virgil::Crypto::VirgilKeyPair::Type_RSA_4096,
-            RSA_8192: Virgil::Crypto::VirgilKeyPair::Type_RSA_8192,
-            EC_SECP256R1: Virgil::Crypto::VirgilKeyPair::Type_EC_SECP256R1,
-            EC_SECP384R1: Virgil::Crypto::VirgilKeyPair::Type_EC_SECP384R1,
-            EC_SECP521R1: Virgil::Crypto::VirgilKeyPair::Type_EC_SECP521R1,
-            EC_BP256R1: Virgil::Crypto::VirgilKeyPair::Type_EC_BP256R1,
-            EC_BP384R1: Virgil::Crypto::VirgilKeyPair::Type_EC_BP384R1,
-            EC_BP512R1: Virgil::Crypto::VirgilKeyPair::Type_EC_BP512R1,
-            EC_SECP256K1: Virgil::Crypto::VirgilKeyPair::Type_EC_SECP256K1,
-            EC_CURVE25519: Virgil::Crypto::VirgilKeyPair::Type_EC_CURVE25519,
-            FAST_EC_X25519: Virgil::Crypto::VirgilKeyPair::Type_FAST_EC_X25519,
-            FAST_EC_ED25519: Virgil::Crypto::VirgilKeyPair::Type_FAST_EC_ED25519,
+            Default: Crypto::Native::VirgilKeyPair::Type_FAST_EC_ED25519,
+            RSA_2048: Crypto::Native::VirgilKeyPair::Type_RSA_2048,
+            RSA_3072: Crypto::Native::VirgilKeyPair::Type_RSA_3072,
+            RSA_4096: Crypto::Native::VirgilKeyPair::Type_RSA_4096,
+            RSA_8192: Crypto::Native::VirgilKeyPair::Type_RSA_8192,
+            EC_SECP256R1: Crypto::Native::VirgilKeyPair::Type_EC_SECP256R1,
+            EC_SECP384R1: Crypto::Native::VirgilKeyPair::Type_EC_SECP384R1,
+            EC_SECP521R1: Crypto::Native::VirgilKeyPair::Type_EC_SECP521R1,
+            EC_BP256R1: Crypto::Native::VirgilKeyPair::Type_EC_BP256R1,
+            EC_BP384R1: Crypto::Native::VirgilKeyPair::Type_EC_BP384R1,
+            EC_BP512R1: Crypto::Native::VirgilKeyPair::Type_EC_BP512R1,
+            EC_SECP256K1: Crypto::Native::VirgilKeyPair::Type_EC_SECP256K1,
+            EC_CURVE25519: Crypto::Native::VirgilKeyPair::Type_EC_CURVE25519,
+            FAST_EC_X25519: Crypto::Native::VirgilKeyPair::Type_FAST_EC_X25519,
+            FAST_EC_ED25519: Crypto::Native::VirgilKeyPair::Type_FAST_EC_ED25519,
           }
 
           # Converts type enum value to native value
