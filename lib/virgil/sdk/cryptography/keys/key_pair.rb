@@ -37,7 +37,11 @@ module Virgil
     module Cryptography
       module Keys
         # Class containing key pair information
-        KeyPair = Struct.new(:private_key, :public_key)
+        KeyPair = Struct.new(:private_key, :public_key) do
+         def save(name, password)
+           #TODO
+         end
+        end
       end
     end
   end
