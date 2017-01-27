@@ -38,7 +38,7 @@ module Virgil
       module Requests
         # Create card signable API request.
         class CreateCardRequest < SignableRequest
-          attr_accessor :identity, :identity_type, :public_key, :data, :info
+          attr_accessor :identity, :identity_type, :public_key, :data, :info, :scope
 
           # Constructs new CreateCardRequest object
           def initialize(attributes)
@@ -46,6 +46,7 @@ module Virgil
             self.identity = attributes[:identity]
             self.identity_type = attributes[:identity_type]
             self.public_key = attributes[:raw_public_key]
+            self.scope = attributes[:scope] || Card::APPLICATION
             self.data = attributes[:data]
             self.info = attributes[:info]
           end
@@ -58,6 +59,7 @@ module Virgil
             self.identity = snapshot_model['identity']
             self.identity_type = snapshot_model['identity_type']
             self.public_key = snapshot_model['public_key']
+            self.scope = snapshot_model['scope']
             self.data = snapshot_model.get('data', {})
             self.info = snapshot_model['info']
           end
@@ -71,7 +73,7 @@ module Virgil
               'identity': self.identity,
               'identity_type': self.identity_type,
               'public_key': self.public_key,
-              'scope': Card::APPLICATION,
+              'scope': self.scope,
               'data': self.data,
               'info': self.info
             }

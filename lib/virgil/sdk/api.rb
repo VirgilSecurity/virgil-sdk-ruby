@@ -4,14 +4,14 @@ class VirgilApi
   def initialize(access_token)
     self.context = Context.new(access_token)
     self.keys = KeyManager.new
-    self.cards = CardManager.new(self.context.client)
+    self.cards = CardManager.new(self.context)
   end
 
 
   def initialize(context)
     self.context = context
     self.keys = KeyManager.new
-    self.cards = CardManager.new(context.client)
+    self.cards = CardManager.new(context)
   end
 
 

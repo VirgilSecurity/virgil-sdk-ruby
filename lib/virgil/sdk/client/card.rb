@@ -82,6 +82,12 @@ module Virgil
             signatures: response["meta"]["signs"]
           )
         end
+
+        def export
+          request = Requests::SignableRequest.new
+          request.restore(self.snapshot, self.signatures)
+          request.export
+        end
       end
 
       Card::APPLICATION = "application"

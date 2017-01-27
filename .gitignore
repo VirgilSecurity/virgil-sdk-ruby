@@ -9,3 +9,4 @@
 /tmp/
 lib/virgil/sdk/virgil_crypto_ruby.so
 *.gem
+.idea
