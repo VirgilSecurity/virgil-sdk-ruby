@@ -2,7 +2,7 @@
 
 require "bundler/setup"
 require "virgil/sdk"
-
+require "virgil/sdk/api"
 # You can add fixtures and/or initialization code here to make experimenting
 # with your gem easier. You can also use a different console, if you like.
 
@@ -12,3 +12,37 @@ require "virgil/sdk"
 
 require "irb"
 IRB.start
+
+
+app_id = "10f3ed1da0824983ed468e1f7bd1613a9cfa527e91701cf2a539561a5a1b4e90"
+    app_key_data = Virgil::Crypto::Bytes.from_string(File.read("/home/vasilina/projects/app3.virgilkey"))
+app_key_password = "123456"
+app_key =  crypto.import_private_key(app_key_data, app_key_password)
+
+app_key = crypto.import_private_key(app_key_data, app_key_password)
+
+
+keydata =  Virgil::Crypto::Bytes.from_string(File.read("/home/vasilina/projects/app3.virgilkey"))
+credentials = Virgil::SDK::AppCredentials.new(app_id: "10f3ed1da0824983ed468e1f7bd1613a9cfa527e91701cf2a539561a5a1b4e90",
+                                              app_key_data: keydata,
+                                              app_key_password: "123456"
+)
+context = Virgil::SDK::Context.new(
+    access_token: "AT.6e3d1b0d04296235ff3812b7126442f468e6b04327667fcf4b4f5cd66a8351a2",
+    credentials: credentials
+)
+virgil = Virgil::SDK::Api.new(context: context)
+
+aliceKey = virgil.keys.generate
+
+
+aliceCard1 = virgil.cards.create("alice", aliceKey)
+
+
+
+
+aliceGlobalCard = virgil.cards.create_global(identity: "alice@virgilsecurity.com", identity_type: "email",
+                                             owner_key: aliceKey
+)
+identity = "alice"
+key_pair = aliceKey

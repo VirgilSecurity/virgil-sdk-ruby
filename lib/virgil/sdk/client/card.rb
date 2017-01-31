@@ -83,6 +83,26 @@ module Virgil
           )
         end
 
+        def self.from_request_model(request_model)
+          snapshot = Virgil::Crypto::Bytes.new(request_model[:content_snapshot]).to_s
+          snapshot_model = JSON.parse(snapshot)
+          meta = request_model[:meta]
+          info = snapshot_model.fetch("info", {}) || {}
+          return new(
+           snapshot: snapshot,
+           identity: snapshot_model["identity"],
+           identity_type: snapshot_model["identity_type"],
+           public_key: Virgil::Crypto::Bytes.from_base64(
+               snapshot_model["public_key"]
+           ),
+           device: info["device"],
+           device_name: info["device_name"],
+           data: snapshot_model.fetch("data", {}),
+           scope: snapshot_model["scope"],
+           signatures: meta[:signs]
+          )
+        end
+
         def export
           request = Requests::SignableRequest.new
           request.restore(self.snapshot, self.signatures)
@@ -92,6 +112,9 @@ module Virgil
 
       Card::APPLICATION = "application"
       Card::GLOBAL = "global"
+
+      Card::EMAIL_IDENTITY = "email"
+      Card::USERNAME_IDENTITY = "username"
     end
   end
 end
