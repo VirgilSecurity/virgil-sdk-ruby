@@ -60,7 +60,7 @@ module Virgil
             self.identity_type = snapshot_model['identity_type']
             self.public_key = snapshot_model['public_key']
             self.scope = snapshot_model['scope']
-            self.data = snapshot_model.get('data', {})
+            self.data = snapshot_model.fetch('data', {})
             self.info = snapshot_model['info']
           end
 

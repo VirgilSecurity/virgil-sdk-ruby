@@ -103,8 +103,12 @@ module Virgil
           )
         end
 
+        # Exports card's snapshot.
+        #
+        # Returns:
+        #   base64-encoded json representation of card's content_snapshot and meta.
         def export
-          request = Requests::SignableRequest.new
+          request = Virgil::SDK::Client::Requests::CreateCardRequest.new({})
           request.restore(self.snapshot, self.signatures)
           request.export
         end
