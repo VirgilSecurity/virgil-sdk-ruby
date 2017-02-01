@@ -58,8 +58,8 @@ module Virgil
         # Constructs new VirgilClient object
         def initialize(
           access_token,
-          cards_service_url="https://cards.virgilsecurity.com",
-          cards_read_only_service_url="https://cards-ro.virgilsecurity.com"
+          cards_service_url=Card::SERVICE_URL,
+          cards_read_only_service_url=Card::READ_ONLY_SERVICE_URL
         )
           self.access_token = access_token
           self.cards_service_url = cards_service_url
@@ -103,8 +103,8 @@ module Virgil
         #   VirgilClient.InvalidCardException if client has validator
         #   and returned card signatures are not valid.
         def create_card_from_signed_request(create_request)
-          http_request = HTTP::Request.new(
-            method: HTTP::Request::POST,
+          http_request = Virgil::SDK::Client::HTTP::Request.new(
+            method: Virgil::SDK::Client::HTTP::Request::POST,
             endpoint: "/v4/card",
             body: create_request.request_model
           )

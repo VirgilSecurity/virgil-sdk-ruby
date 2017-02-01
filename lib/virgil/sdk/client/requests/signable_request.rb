@@ -83,7 +83,7 @@ module Virgil
             @snapshot = snapshot
             @signatures = signatures
 
-            model = JSON.parse(snapshot.to_s)
+            model = JSON.parse(Crypto::Bytes.new(snapshot).to_s)
             self.restore_from_snapshot_model(model)
           end
 

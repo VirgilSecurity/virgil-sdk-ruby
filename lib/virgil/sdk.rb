@@ -5,6 +5,6 @@ module Virgil
   module SDK
     autoload :Cryptography, 'virgil/sdk/cryptography'
     autoload :Client, 'virgil/sdk/client'
-    autoload :Api, 'virgil/sdk/api'
+    autoload :API, 'virgil/sdk/api'
   end
 end

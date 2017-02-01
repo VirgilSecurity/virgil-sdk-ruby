@@ -34,6 +34,7 @@
 module Virgil
   module SDK
     module Client
+      autoload :SignaturesBase64, 'virgil/sdk/api/signatures_base64'
       autoload :Card, 'virgil/sdk/client/card'
       autoload :CardValidator, 'virgil/sdk/client/card_validator'
       autoload :SearchCriteria, 'virgil/sdk/client/search_criteria'

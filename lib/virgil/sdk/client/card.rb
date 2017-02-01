@@ -33,7 +33,6 @@
 # POSSIBILITY OF SUCH DAMAGE.
 require 'base64'
 require 'json'
-
 module Virgil
   module SDK
     module Client
@@ -42,6 +41,9 @@ module Virgil
                         :identity_type, :public_key, :scope,
                         :data, :device, :device_name, :version,
                         :signatures) do
+
+        extend Virgil::SDK::API::SignaturesBase64
+
         def initialize(options)
           self.id = options[:id]
           self.snapshot = options[:snapshot]
@@ -67,39 +69,43 @@ module Virgil
           info = snapshot_model.fetch("info", {}) || {}
 
           return new(
-            id: response["id"],
-            snapshot: snapshot,
-            identity: snapshot_model["identity"],
-            identity_type: snapshot_model["identity_type"],
-            public_key: Virgil::Crypto::Bytes.from_base64(
-              snapshot_model["public_key"]
-            ),
-            device: info["device"],
-            device_name: info["device_name"],
-            data: snapshot_model.fetch("data", {}),
-            scope: snapshot_model["scope"],
-            version: response["meta"]["card_version"],
-            signatures: response["meta"]["signs"]
+              id: response["id"],
+              snapshot: snapshot,
+              identity: snapshot_model["identity"],
+              identity_type: snapshot_model["identity_type"],
+              public_key: Virgil::Crypto::Bytes.from_base64(
+                  snapshot_model["public_key"]
+              ),
+              device: info["device"],
+              device_name: info["device_name"],
+              data: snapshot_model.fetch("data", {}),
+              scope: snapshot_model["scope"],
+              version: response["meta"]["card_version"],
+              signatures: response["meta"]["signs"]
           )
         end
 
         def self.from_request_model(request_model)
-          snapshot = Virgil::Crypto::Bytes.new(request_model[:content_snapshot]).to_s
+          snapshot = request_model[:content_snapshot]
+          if request_model[:content_snapshot].is_a?(Array)
+            snapshot = Virgil::Crypto::Bytes.new(request_model[:content_snapshot]).to_s
+          end
+
           snapshot_model = JSON.parse(snapshot)
           meta = request_model[:meta]
           info = snapshot_model.fetch("info", {}) || {}
           return new(
-           snapshot: snapshot,
-           identity: snapshot_model["identity"],
-           identity_type: snapshot_model["identity_type"],
-           public_key: Virgil::Crypto::Bytes.from_base64(
-               snapshot_model["public_key"]
-           ),
-           device: info["device"],
-           device_name: info["device_name"],
-           data: snapshot_model.fetch("data", {}),
-           scope: snapshot_model["scope"],
-           signatures: meta[:signs]
+              snapshot: snapshot,
+              identity: snapshot_model["identity"],
+              identity_type: snapshot_model["identity_type"],
+              public_key: Virgil::Crypto::Bytes.from_base64(
+                  snapshot_model["public_key"]
+              ),
+              device: info["device"],
+              device_name: info["device_name"],
+              data: snapshot_model.fetch("data", {}),
+              scope: snapshot_model["scope"],
+              signatures: Card.signatures_to_base64(meta[:signs])
           )
         end
 
@@ -109,9 +115,11 @@ module Virgil
         #   base64-encoded json representation of card's content_snapshot and meta.
         def export
           request = Virgil::SDK::Client::Requests::CreateCardRequest.new({})
-          request.restore(self.snapshot, self.signatures)
+          request.restore( Crypto::Bytes.from_string(self.snapshot), Card.signatures_from_base64(self.signatures))
           request.export
         end
+
+
       end
 
       Card::APPLICATION = "application"
@@ -119,6 +127,10 @@ module Virgil
 
       Card::EMAIL_IDENTITY = "email"
       Card::USERNAME_IDENTITY = "username"
+
+      Card::SERVICE_URL = "https://registration-authority.virgilsecurity.com"
+      Card::READ_ONLY_SERVICE_URL = "https://cards-ro.virgilsecurity.com"
+
     end
   end
 end
