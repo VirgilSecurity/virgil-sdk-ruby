@@ -1,6 +1,6 @@
 module Virgil
   module SDK
-    module API
+    module Client
       module SignaturesBase64
 
         def signatures_to_base64(signatures_bytes)

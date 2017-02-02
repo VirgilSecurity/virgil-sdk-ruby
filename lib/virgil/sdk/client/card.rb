@@ -42,7 +42,7 @@ module Virgil
                         :data, :device, :device_name, :version,
                         :signatures) do
 
-        extend Virgil::SDK::API::SignaturesBase64
+        extend SignaturesBase64
 
         def initialize(options)
           self.id = options[:id]
@@ -109,16 +109,11 @@ module Virgil
           )
         end
 
-        # Exports card's snapshot.
-        #
-        # Returns:
-        #   base64-encoded json representation of card's content_snapshot and meta.
-        def export
+        def to_request
           request = Virgil::SDK::Client::Requests::CreateCardRequest.new({})
-          request.restore( Crypto::Bytes.from_string(self.snapshot), Card.signatures_from_base64(self.signatures))
-          request.export
+          request.restore(Crypto::Bytes.from_string(self.snapshot), Card.signatures_from_base64(self.signatures))
+          request
         end
-
 
       end
 

@@ -41,7 +41,7 @@ module Virgil
       module Requests
         # Base class for all API requests.
         class SignableRequest
-
+          extend SignaturesBase64
           attr_reader :signatures
           attr_writer :snapshot
 
@@ -106,6 +106,7 @@ module Virgil
             json_string = self.request_model.to_json
             return Base64.strict_encode64(json_string)
           end
+
 
           # Request data snapshot
           def snapshot

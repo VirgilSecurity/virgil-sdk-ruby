@@ -64,6 +64,16 @@ module Virgil
             self.info = snapshot_model['info']
           end
 
+
+          def self.import(data_base64)
+            request = new({})
+            request_model = JSON.parse(Base64.decode64(data_base64))
+
+            request.restore(Virgil::Crypto::Bytes.from_base64(request_model["content_snapshot"]),
+                            signatures_from_base64(request_model["meta"]["signs"]))
+            request
+          end
+
           # Constructs snapshot model for exporting and signing.
           #
           # Returns:
