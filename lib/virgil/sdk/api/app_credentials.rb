@@ -9,6 +9,10 @@ module Virgil
           self.app_key_data = app_key_data
           self.app_key_password = app_key_password
         end
+
+        def app_key(crypto)
+          crypto.import_private_key(app_key_data, app_key_password)
+        end
       end
     end
   end

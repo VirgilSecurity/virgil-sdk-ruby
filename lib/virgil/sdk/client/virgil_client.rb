@@ -53,13 +53,13 @@ module Virgil
         end
 
         attr_accessor :access_token, :cards_service_url,
-          :cards_read_only_service_url, :card_validator
+                      :cards_read_only_service_url, :card_validator
 
         # Constructs new VirgilClient object
         def initialize(
-          access_token,
-          cards_service_url=Card::SERVICE_URL,
-          cards_read_only_service_url=Card::READ_ONLY_SERVICE_URL
+            access_token,
+            cards_service_url=Card::SERVICE_URL,
+            cards_read_only_service_url=Card::READ_ONLY_SERVICE_URL
         )
           self.access_token = access_token
           self.cards_service_url = cards_service_url
@@ -80,9 +80,9 @@ module Virgil
         #   Created card from server response.
         def create_card(identity, identity_type, key_pair, app_id, app_key)
           request = Virgil::SDK::Client::Requests::CreateCardRequest.new(
-            identity: identity,
-            identity_type: identity_type,
-            raw_public_key: self.crypto.export_public_key(key_pair.public_key),
+              identity: identity,
+              identity_type: identity_type,
+              raw_public_key: self.crypto.export_public_key(key_pair.public_key),
           )
           self.request_signer.self_sign(request, key_pair.private_key)
           self.request_signer.authority_sign(request, app_id, app_key)
@@ -104,15 +104,28 @@ module Virgil
         #   and returned card signatures are not valid.
         def create_card_from_signed_request(create_request)
           http_request = Virgil::SDK::Client::HTTP::Request.new(
-            method: Virgil::SDK::Client::HTTP::Request::POST,
-            endpoint: "/v4/card",
-            body: create_request.request_model
+              method: Virgil::SDK::Client::HTTP::Request::POST,
+              endpoint: "/v4/card",
+              body: create_request.request_model
           )
           raw_response = self.cards_connection.send_request(http_request)
           card = Card.from_response(raw_response)
           self.validate_cards([card]) if self.card_validator
           card
         end
+
+        def create_card_from_signed_request_async(create_request)
+          puts "before thread"
+          thread = Thread.new do
+            puts "I started thread"
+            current = Thread.current
+            current[:card] = create_card_from_signed_request(create_request)
+            puts "I have got card"
+          end
+          thread.join
+          thread[:card]
+        end
+
 
         # Revoke card by id.
         #
@@ -123,14 +136,14 @@ module Virgil
         #   app_id: Application identity for authority sign.
         #   app_key: Application key for authority sign.
         def revoke_card(
-          card_id,
-          app_id,
-          app_key,
-          reason=Requests::RevokeCardRequest::Reasons::Unspecified
+            card_id,
+            app_id,
+            app_key,
+            reason=Requests::RevokeCardRequest::Reasons::Unspecified
         )
           request = Requests::RevokeCardRequest.new(
-            card_id: card_id,
-            reason: reason
+              card_id: card_id,
+              reason: reason
           )
           self.request_signer.authority_sign(request, app_id, app_key)
 
@@ -143,9 +156,9 @@ module Virgil
         #   revocation_request: signed card revocation request.
         def revoke_card_from_signed_request(revocation_request)
           http_request = HTTP::Request.new(
-            method: HTTP::Request::DELETE,
-            endpoint: "/v4/card/#{revocation_request.card_id}",
-            body: revocation_request.request_model
+              method: HTTP::Request::DELETE,
+              endpoint: "/v4/card/#{revocation_request.card_id}",
+              body: revocation_request.request_model
           )
           self.cards_connection.send_request(http_request)
         end
@@ -165,8 +178,8 @@ module Virgil
         def get_card(card_id)
           # type: (str) -> Card
           http_request = HTTP::Request.new(
-            method: HTTP::Request::GET,
-            endpoint: "/v4/card/#{card_id}",
+              method: HTTP::Request::GET,
+              endpoint: "/v4/card/#{card_id}",
           )
           raw_response = self.read_cards_connection.send_request(http_request)
           card = Card.from_response(raw_response)
@@ -183,7 +196,7 @@ module Virgil
         #   Found cards from server response.
         def search_cards_by_identities(*identities)
           return self.search_cards_by_criteria(
-            SearchCriteria.by_identities(identities)
+              SearchCriteria.by_identities(identities)
           )
         end
 
@@ -196,7 +209,7 @@ module Virgil
         #   Found cards from server response.
         def search_cards_by_app_bundle(bundle)
           return self.search_cards_by_criteria(
-            SearchCriteria.by_app_bundle(bundle)
+              SearchCriteria.by_app_bundle(bundle)
           )
         end
 
@@ -212,7 +225,7 @@ module Virgil
         #   VirgilClient.InvalidCardException if client has validator
         #   and cards are not valid.
         def search_cards_by_criteria(search_criteria)
-          body = { identities: search_criteria.identities}
+          body = {identities: search_criteria.identities}
           if search_criteria.identity_type
             body[:identity_type] = search_criteria.identity_type
           end
@@ -220,12 +233,12 @@ module Virgil
             body[:scope] = Card::GLOBAL
           end
           http_request = HTTP::Request.new(
-            method: HTTP::Request::POST,
-            endpoint: "/v4/card/actions/search",
-            body: body,
+              method: HTTP::Request::POST,
+              endpoint: "/v4/card/actions/search",
+              body: body,
           )
           response = self.read_cards_connection.send_request(http_request)
-          cards = response.map {|card| Card.from_response(card) }
+          cards = response.map { |card| Card.from_response(card) }
           self.validate_cards(cards) if self.card_validator
           return cards
         end
@@ -237,7 +250,7 @@ module Virgil
         # Raises:
         #   VirgilClient::InvalidCardException if some cards are not valid.
         def validate_cards(cards)
-          invalid_cards = cards.select {|card| !card_validator.is_valid?(card) }
+          invalid_cards = cards.select { |card| !card_validator.is_valid?(card) }
           if invalid_cards.any?
             raise InvalidCardException.new(invalid_cards)
           end
@@ -246,16 +259,16 @@ module Virgil
         # Cards service connection used for creating and revoking cards.
         def cards_connection
           @_cards_connection ||= HTTP::CardsServiceConnection.new(
-            self.access_token,
-            self.cards_service_url
+              self.access_token,
+              self.cards_service_url
           )
         end
 
         # Cards service connection used for getting and searching cards.
         def read_cards_connection
           @_read_cards_connection = HTTP::CardsServiceConnection.new(
-            self.access_token,
-            self.cards_read_only_service_url
+              self.access_token,
+              self.cards_read_only_service_url
           )
         end
 

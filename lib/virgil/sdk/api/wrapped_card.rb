@@ -1,7 +1,10 @@
 module Virgil
   module SDK
     module API
-      WrappedCard = Struct.new(:context, :card) do
+      class WrappedCard
+        attr_accessor :context, :card
+        # private :context, :card, :context=, :card=
+
         def initialize(context:, card:)
           self.context = context
           self.card = card
@@ -31,6 +34,7 @@ module Virgil
           #TODO device, device_name
           # self.data.info
         end
+
         # private :card, :context, :card=, :context=
 
         # Exports card's snapshot.
@@ -38,14 +42,33 @@ module Virgil
         # Returns:
         #   base64-encoded json representation of card's content_snapshot and meta.
         def export
-          self.card.to_request.export
+          card.export
         end
-
 
 
         def publish_async
+          request = card.to_request
+          context.client.request_signer.authority_sign(
+              request,
+              context.credentials.app_id,
+              context.credentials.app_key(context.crypto)
+          )
 
+          context.client.create_card_from_signed_request_async(request)
         end
+
+
+        def publish
+          request = card.to_request
+          context.client.request_signer.authority_sign(
+              request,
+              context.credentials.app_id,
+              context.credentials.app_key(context.crypto)
+          )
+
+          context.client.create_card_from_signed_request(request)
+        end
+
 
       end
     end

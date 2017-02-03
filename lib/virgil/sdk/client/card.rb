@@ -85,6 +85,20 @@ module Virgil
           )
         end
 
+
+
+
+        def to_request
+          request = Virgil::SDK::Client::Requests::CreateCardRequest.new({})
+          request.restore(Crypto::Bytes.from_string(self.snapshot), Card.signatures_from_base64(self.signatures))
+          request
+        end
+
+        def export
+          self.to_request.export
+        end
+
+
         def self.from_request_model(request_model)
           snapshot = request_model[:content_snapshot]
           if request_model[:content_snapshot].is_a?(Array)
@@ -109,11 +123,6 @@ module Virgil
           )
         end
 
-        def to_request
-          request = Virgil::SDK::Client::Requests::CreateCardRequest.new({})
-          request.restore(Crypto::Bytes.from_string(self.snapshot), Card.signatures_from_base64(self.signatures))
-          request
-        end
 
       end
 
@@ -123,8 +132,8 @@ module Virgil
       Card::EMAIL_IDENTITY = "email"
       Card::USERNAME_IDENTITY = "username"
 
-      Card::SERVICE_URL = "https://registration-authority.virgilsecurity.com"
-      Card::READ_ONLY_SERVICE_URL = "https://cards-ro.virgilsecurity.com"
+      Card::SERVICE_URL = "https://ra-stg.virgilsecurity.com"
+      Card::READ_ONLY_SERVICE_URL = "https://cards-ro-stg.virgilsecurity.com"
 
     end
   end
