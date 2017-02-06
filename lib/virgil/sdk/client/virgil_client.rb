@@ -105,7 +105,7 @@ module Virgil
         def create_card_from_signed_request(create_request)
           http_request = Virgil::SDK::Client::HTTP::Request.new(
               method: Virgil::SDK::Client::HTTP::Request::POST,
-              endpoint: "/v4/card",
+              endpoint: "/#{Card::VRA_VERSION}/card",
               body: create_request.request_model
           )
           raw_response = self.cards_connection.send_request(http_request)
@@ -157,7 +157,7 @@ module Virgil
         def revoke_card_from_signed_request(revocation_request)
           http_request = HTTP::Request.new(
               method: HTTP::Request::DELETE,
-              endpoint: "/v4/card/#{revocation_request.card_id}",
+              endpoint: "/#{Card::VRA_VERSION}/card/#{revocation_request.card_id}",
               body: revocation_request.request_model
           )
           self.cards_connection.send_request(http_request)
@@ -179,7 +179,7 @@ module Virgil
           # type: (str) -> Card
           http_request = HTTP::Request.new(
               method: HTTP::Request::GET,
-              endpoint: "/v4/card/#{card_id}",
+              endpoint: "/#{Card::VC_VERSION}/card/#{card_id}",
           )
           raw_response = self.read_cards_connection.send_request(http_request)
           card = Card.from_response(raw_response)
@@ -234,7 +234,7 @@ module Virgil
           end
           http_request = HTTP::Request.new(
               method: HTTP::Request::POST,
-              endpoint: "/v4/card/actions/search",
+              endpoint: "/#{Card::VC_VERSION}/card/actions/search",
               body: body,
           )
           response = self.read_cards_connection.send_request(http_request)

@@ -135,6 +135,8 @@ module Virgil
       Card::SERVICE_URL = "https://ra-stg.virgilsecurity.com"
       Card::READ_ONLY_SERVICE_URL = "https://cards-ro-stg.virgilsecurity.com"
 
+      Card::VRA_VERSION = "v1" # version of service, which creates and deletes local and global cards
+      Card::VC_VERSION = "v4" # version of service, which gets, searchs card
     end
   end
 end

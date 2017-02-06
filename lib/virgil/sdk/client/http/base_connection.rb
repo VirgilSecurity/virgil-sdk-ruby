@@ -65,6 +65,7 @@ module Virgil
           # Raises:
           #   HTTPError with error message decoded from errors dictionary.
           def send_request(request)
+            puts "!!!!!!!!!!!request = #{request}"
             response = faraday_connection.run_request(
                 request.method,
                 request.endpoint,
@@ -76,9 +77,12 @@ module Virgil
             error_code = error_body['code'] ||
                 (error_body['error'] && error_body['error']['code'])
 
+            puts  "status=#{response.status}"
+            puts  "body=#{response.body}"
             error_message = self.class::ERRORS[error_code]
             error_message = error_code unless error_message
 
+            puts  "error_message=#{error_message}"
             raise ApiError.new(error_message)
           end
 
