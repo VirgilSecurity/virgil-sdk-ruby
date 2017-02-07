@@ -115,12 +115,9 @@ module Virgil
         end
 
         def create_card_from_signed_request_async(create_request)
-          puts "before thread"
           thread = Thread.new do
-            puts "I started thread"
             current = Thread.current
             current[:card] = create_card_from_signed_request(create_request)
-            puts "I have got card"
           end
           thread.join
           thread[:card]

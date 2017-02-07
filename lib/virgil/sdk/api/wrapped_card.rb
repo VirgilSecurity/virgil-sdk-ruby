@@ -54,7 +54,7 @@ module Virgil
               context.credentials.app_key(context.crypto)
           )
 
-          context.client.create_card_from_signed_request_async(request)
+          self.context.client.create_card_from_signed_request_async(request)
         end
 
 
@@ -66,7 +66,7 @@ module Virgil
               context.credentials.app_key(context.crypto)
           )
 
-          context.client.create_card_from_signed_request(request)
+          self.card = context.client.create_card_from_signed_request(request)
         end
 
 
