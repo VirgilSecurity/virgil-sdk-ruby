@@ -73,7 +73,8 @@ module Virgil
         # Returns:
         #     True if card signatures are valid, false otherwise.
         def is_valid?(card)
-          return true if (card.version == '4.0' || card.version == '3.0')
+
+          return true if card.version == '4.0'
 
           fingerprint = self.crypto.calculate_fingerprint(
             Crypto::Bytes.from_string(card.snapshot)

@@ -73,8 +73,8 @@ module Virgil
             )
             return response.body if response.success?
 
-
             raise ApiError.new(error_message(response))
+
           end
 
           private

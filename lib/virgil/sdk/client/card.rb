@@ -132,6 +132,7 @@ module Virgil
       Card::EMAIL_IDENTITY = "email"
       Card::USERNAME_IDENTITY = "username"
 
+
       Card::SERVICE_URL = ENV["VIRGIL_SERVICE_URL"] || "https://ra.virgilsecurity.com"
       Card::READ_ONLY_SERVICE_URL = ENV["VIRGIL_READ_ONLY_SERVICE_URL"] || "https://cards-ro.virgilsecurity.com"
 
