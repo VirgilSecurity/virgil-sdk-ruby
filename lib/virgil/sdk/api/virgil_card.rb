@@ -35,38 +35,49 @@ module Virgil
   module SDK
     module API
       class VirgilCard
-        attr_accessor :context, :card
+        attr_reader :context, :card
         # private :context, :card, :context=, :card=
 
         def initialize(context:, card:)
-          self.context = context
-          self.card = card
+          @context = context
+          @card = card
         end
+
 
         def id
           self.card.id
         end
 
+
         def identity
           self.card.identity
         end
+
 
         def identity_type
           self.card.identity_type
         end
 
+
         def data
           self.card.data
         end
+
 
         def scope
           self.card.scope
         end
 
+        def public_key
+          self.context.crypto.import_public_key(self.card.public_key)
+        end
+
+
         def info
           #TODO device, device_name
           # self.data.info
         end
+
 
         # private :card, :context, :card=, :context=
 
@@ -77,6 +88,7 @@ module Virgil
         def export
           card.export
         end
+
 
         # Publish asynchronously the card into application Virgil Services scope
         # Raises:
@@ -96,6 +108,18 @@ module Virgil
           request = authority_signed_request
           self.card = context.client.create_card_from_signed_request(request)
         end
+
+
+
+        def check_identity(identity_options = nil)
+          action_id = context.client.verify_identity(identity, identity_type)
+          Identity::VerificationAttempt.new(context: context, action_id: action_id,
+                                            identity: identity, identity_type: identity_type,
+                                            additional_options: identity_options)
+        end
+
+        private
+
 
         def authority_signed_request
           request = card.to_request

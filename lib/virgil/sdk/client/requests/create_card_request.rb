@@ -69,8 +69,8 @@ module Virgil
             request = new({})
             request_model = JSON.parse(Base64.decode64(data_base64))
 
-            request.restore(Virgil::Crypto::Bytes.from_base64(request_model["content_snapshot"]),
-                            signatures_from_base64(request_model["meta"]["signs"]))
+            request.restore(Virgil::Crypto::Bytes.from_base64(request_model[:content_snapshot]),
+                            signatures_from_base64(request_model[:meta][:signs]))
             request
           end
 

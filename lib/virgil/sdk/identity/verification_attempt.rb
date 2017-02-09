@@ -26,25 +26,41 @@
 # DISCLAIMED. IN NO EVENT SHALL THE AUTHOR BE LIABLE FOR ANY DIRECT,
 # INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES
 # (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR
-# SERVICES; LOSS OF USE, bytes, OR PROFITS; OR BUSINESS INTERRUPTION)
+# SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION)
 # HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT,
 # STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING
 # IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
 # POSSIBILITY OF SUCH DAMAGE.
 module Virgil
   module SDK
-    module Client
-      module Requests
-        autoload :SignableRequest, 'virgil/sdk/client/requests/signable_request'
-        autoload :RevokeCardRequest,
-                 'virgil/sdk/client/requests/revoke_card_request'
-        autoload :CreateCardRequest,
-                 'virgil/sdk/client/requests/create_card_request'
-        autoload :VerifyIdentityRequest,
-                 'virgil/sdk/client/requests/verify_identity_request'
-        autoload :ConfirmIdentityRequest,
-                  'virgil/sdk/client/requests/confirm_identity_request'
+    module Identity
+      class VerificationAttempt
+        attr_reader :action_id, :context, :additional_options, :identity, :identity_type
+        def initialize(context:, action_id:, identity:, identity_type:, additional_options: nil)
+          @context = context
+          @action_id = action_id
+          @identity = identity
+          @identity_type = identity_type
+          @additional_options = additional_options || VerificationOptions.new
+        end
+
+
+        def confirm(confirmation)
+          raise ConfirmationIsNotValid unless confirmation
+          token = confirmation.confirm_and_grab_validation_token(self, self.context.client)
+          ValidationToken.new(token)
+
+        end
       end
+
+
+      class ConfirmationIsNotValid < StandardError
+        def to_s
+          "Confirmation is not valid"
+        end
+      end
+
     end
+
   end
 end

@@ -26,25 +26,42 @@
 # DISCLAIMED. IN NO EVENT SHALL THE AUTHOR BE LIABLE FOR ANY DIRECT,
 # INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES
 # (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR
-# SERVICES; LOSS OF USE, bytes, OR PROFITS; OR BUSINESS INTERRUPTION)
+# SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION)
 # HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT,
 # STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING
 # IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
 # POSSIBILITY OF SUCH DAMAGE.
+
+
 module Virgil
   module SDK
     module Client
       module Requests
-        autoload :SignableRequest, 'virgil/sdk/client/requests/signable_request'
-        autoload :RevokeCardRequest,
-                 'virgil/sdk/client/requests/revoke_card_request'
-        autoload :CreateCardRequest,
-                 'virgil/sdk/client/requests/create_card_request'
-        autoload :VerifyIdentityRequest,
-                 'virgil/sdk/client/requests/verify_identity_request'
-        autoload :ConfirmIdentityRequest,
-                  'virgil/sdk/client/requests/confirm_identity_request'
+        class ConfirmIdentityRequest
+          attr_reader :confirmation_code, :action_id, :time_to_live, :count_to_live
+          #
+          def initialize(confirmation_code, action_id, time_to_live, count_to_live)
+            @confirmation_code = confirmation_code
+            @action_id = action_id
+            @time_to_live = time_to_live
+            @count_to_live = count_to_live
+          end
+
+
+          # # Request model used for json representation.
+          def request_model
+            return {
+                'confirmation_code': confirmation_code,
+                'action_id': action_id,
+                'token': {
+                    'time_to_live': time_to_live,
+                    'count_to_live': count_to_live
+                }
+            }
+          end
+        end
       end
     end
   end
 end
+

@@ -42,8 +42,9 @@ module Virgil
         # Base class for all API requests.
         class SignableRequest
           extend SignaturesBase64
-          attr_reader :signatures
-          attr_writer :snapshot
+          attr_reader :signatures, :snapshot, :validation_token
+          # protected :signatures=, :snapshot=
+          # attr_writer :snapshot
 
           # Constructs new SignableRequest object
           def initialize

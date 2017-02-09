@@ -35,11 +35,11 @@ module Virgil
   module SDK
     module API
       class CardManager
-        attr_accessor :context
-        protected :context, :context=
+        attr_reader :context
+        protected :context
 
         def initialize(context)
-          self.context = context
+          @context = context
         end
 
 
@@ -50,24 +50,33 @@ module Virgil
         #   owner_key: The owner's Virgil key.
         #
         # Returns:
-        #   Created Virgil Card that is representing user's Public key
+        #   Created unpublished Virgil Card that is representing user's Public key
         def create(identity, owner_key)
-          card = create_card(
-              identity: identity,
-              identity_type: Client::Card::USERNAME_IDENTITY,
-              scope: Client::Card::APPLICATION,
-              key_pair: owner_key)
+          card = context.client.new_card(
+              identity,
+              Client::Card::USERNAME_IDENTITY,
+              owner_key,
+              context.credentials.app_id,
+              context.credentials.app_key(context.crypto)
+          )
 
           VirgilCard.new(context: context, card: card)
         end
 
+        # Creates a new Global Virgil Card that is representing user's Public key and information
+        #
+        # Args:
+        #   identity: The user's identity.
+        #   owner_key: The owner's Virgil key.
+        #
+        # Returns:
+        #   Created unpublished Global Virgil Card that is representing user's Public key
         def create_global(identity:, identity_type:, owner_key:)
-          card = create_card(
-              identity: identity,
-              identity_type: identity_type,
-              scope: Client::Card::GLOBAL,
-              key_pair: owner_key)
-
+          card = context.client.new_global_card(
+              identity,
+              identity_type,
+              owner_key
+          )
           VirgilCard.new(context: context, card: card)
         end
 
@@ -81,7 +90,6 @@ module Virgil
         def publish_async(card)
           card.publish_async
         end
-
 
 
         # Get a card from Virgil Security services by specified Card ID.
@@ -98,7 +106,6 @@ module Virgil
         def get(card_id)
           VirgilCard.new(context: context, card: context.client.get_card(card_id))
         end
-
 
 
         # Revoke a card from Virgil Services
@@ -135,16 +142,6 @@ module Virgil
         end
 
         private
-        def create_card(identity:, identity_type:, scope:, key_pair:)
-          request = Client::Requests::CreateCardRequest.new(
-              identity: identity,
-              identity_type: identity_type,
-              scope: scope,
-              raw_public_key: key_pair.public_key.value
-          )
-          context.client.request_signer.self_sign(request, key_pair.private_key)
-          Client::Card.from_request_model(request.request_model)
-        end
 
 
       end

@@ -66,7 +66,7 @@ module Virgil
           self.cards_read_only_service_url = cards_read_only_service_url
         end
 
-        # Create new card from given attributes.
+        # Create published new card from given attributes.
         #
         # Args:
         #   identity: Created card identity.
@@ -82,13 +82,65 @@ module Virgil
           request = Virgil::SDK::Client::Requests::CreateCardRequest.new(
               identity: identity,
               identity_type: identity_type,
-              raw_public_key: self.crypto.export_public_key(key_pair.public_key),
+              scope: Client::Card::APPLICATION,
+              raw_public_key: self.crypto.export_public_key(key_pair.public_key)
           )
           self.request_signer.self_sign(request, key_pair.private_key)
           self.request_signer.authority_sign(request, app_id, app_key)
 
           return self.create_card_from_signed_request(request)
         end
+
+
+        # Create unpublished local card from given attributes.
+        #
+        # Args:
+        #   identity: Created card identity.
+        #   identity_type: Created card identity type.
+        #   key_pair: Key pair of the created card.
+        #     Public key is stored in the card, private key is used for request signing.
+        #   app_id: Application identity for authority sign.
+        #   app_key: Application key for authority sign.
+        #
+        # Returns:
+        #   Created local card that is not published to Virgil Security services
+        def new_card(identity, identity_type, key_pair, app_id, app_key)
+          request = Virgil::SDK::Client::Requests::CreateCardRequest.new(
+              identity: identity,
+              identity_type: identity_type,
+              scope: Client::Card::APPLICATION,
+              raw_public_key: self.crypto.export_public_key(key_pair.public_key)
+          )
+          self.request_signer.self_sign(request, key_pair.private_key)
+          self.request_signer.authority_sign(request, app_id, app_key)
+
+          return Client::Card.from_request_model(request.request_model)
+        end
+
+
+        # Create unpublished global card from given attributes.
+        #
+        # Args:
+        #   identity: Created card identity.
+        #   identity_type: Created card identity type.
+        #   key_pair: Key pair of the created card.
+        #     Public key is stored in the card, private key is used for request signing.
+        #
+        # Returns:
+        #   Created global card that is not published to Virgil Security services
+        def new_global_card(identity, identity_type, key_pair)
+          request = Virgil::SDK::Client::Requests::CreateCardRequest.new(
+              identity: identity,
+              identity_type: identity_type,
+              scope: Client::Card::GLOBAL,
+              raw_public_key: self.crypto.export_public_key(key_pair.public_key)
+          )
+          self.request_signer.self_sign(request, key_pair.private_key)
+
+          return Client::Card.from_request_model(request.request_model)
+        end
+
+
 
 
         # Create new card from signed creation request.
@@ -152,12 +204,43 @@ module Virgil
         # Args:
         #   revocation_request: signed card revocation request.
         def revoke_card_from_signed_request(revocation_request)
-          http_request = HTTP::Request.new(
+          http_request = Virgil::SDK::Client::HTTP::Request.new(
               method: HTTP::Request::DELETE,
               endpoint: "/#{Card::VRA_VERSION}/card/#{revocation_request.card_id}",
               body: revocation_request.request_model
           )
           self.cards_connection.send_request(http_request)
+        end
+
+        def verify_identity(identity, identity_type)
+          verify_identity_request = Requests::VerifyIdentityRequest.new(identity, identity_type)
+          verify_identity_from_request(verify_identity_request)
+        end
+
+        def verify_identity_from_request(identity_request)
+          http_request = Virgil::SDK::Client::HTTP::Request.new(
+              method: HTTP::Request::POST,
+              endpoint: "/#{Card::VRA_VERSION}/verify",
+              body: identity_request.request_model
+          )
+          raw_response = self.identity_service_connection.send_request(http_request)
+          raw_response['action_id']
+
+        end
+
+        def confirm_identity(action_id, confirmation_code, time_to_live, count_to_live)
+          request = Requests::ConfirmIdentityRequest.new(confirmation_code, action_id, time_to_live, count_to_live)
+          confirm_identity_from_request(request)
+        end
+
+        def confirm_identity_from_request(confirm_request)
+          http_request = Virgil::SDK::Client::HTTP::Request.new(
+              method: HTTP::Request::POST,
+              endpoint: "/#{Card::VRA_VERSION}/confirm",
+              body: confirm_request.request_model
+          )
+          raw_response = self.identity_service_connection.send_request(http_request)
+          raw_response['validation_token']
         end
 
 
@@ -174,7 +257,7 @@ module Virgil
         #   and retrieved card signatures are not valid.
         def get_card(card_id)
           # type: (str) -> Card
-          http_request = HTTP::Request.new(
+          http_request = Virgil::SDK::Client::HTTP::Request.new(
               method: HTTP::Request::GET,
               endpoint: "/#{Card::VC_VERSION}/card/#{card_id}",
           )
@@ -229,7 +312,7 @@ module Virgil
           if search_criteria.scope == Card::GLOBAL
             body[:scope] = Card::GLOBAL
           end
-          http_request = HTTP::Request.new(
+          http_request = Virgil::SDK::Client::HTTP::Request.new(
               method: HTTP::Request::POST,
               endpoint: "/#{Card::VC_VERSION}/card/actions/search",
               body: body,
@@ -267,6 +350,15 @@ module Virgil
               self.access_token,
               self.cards_read_only_service_url
           )
+        end
+
+        def identity_service_connection
+          @identity_service_connection = HTTP::CardsServiceConnection.new(
+              "",
+              Virgil::SDK::Identity::IDENTITY_SERVICE_URL
+          )
+          # identity.virgilsecurity.com
+
         end
 
         # Request signer for signing constructed requests.

@@ -26,24 +26,30 @@
 # DISCLAIMED. IN NO EVENT SHALL THE AUTHOR BE LIABLE FOR ANY DIRECT,
 # INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES
 # (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR
-# SERVICES; LOSS OF USE, bytes, OR PROFITS; OR BUSINESS INTERRUPTION)
+# SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION)
 # HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT,
 # STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING
 # IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
 # POSSIBILITY OF SUCH DAMAGE.
 module Virgil
   module SDK
-    module Client
-      module Requests
-        autoload :SignableRequest, 'virgil/sdk/client/requests/signable_request'
-        autoload :RevokeCardRequest,
-                 'virgil/sdk/client/requests/revoke_card_request'
-        autoload :CreateCardRequest,
-                 'virgil/sdk/client/requests/create_card_request'
-        autoload :VerifyIdentityRequest,
-                 'virgil/sdk/client/requests/verify_identity_request'
-        autoload :ConfirmIdentityRequest,
-                  'virgil/sdk/client/requests/confirm_identity_request'
+    module Identity
+      class VerificationOptions
+
+        # time_to_live is used to limit the lifetime of the token in
+        # seconds (maximum value is 60 * 60 * 24 * 365 = 1 year). Default value is 3600.
+        #
+        # count_to_live parameter is used to restrict the number of validation token
+        # usages (maximum value is 100).
+        attr_reader :time_to_live, :count_to_live
+
+
+        def initialize(options = {})
+          @time_to_live = options[:time_to_live] || 3600
+          @count_to_live = options[:count_to_live] || 12
+        end
+
+
       end
     end
   end

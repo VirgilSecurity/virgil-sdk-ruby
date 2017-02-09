@@ -8,6 +8,7 @@ module Virgil
     autoload :KeyManager, 'virgil/sdk/api/key_manager'
     autoload :CardManager, 'virgil/sdk/api/card_manager'
     autoload :AppCredentials, 'virgil/sdk/api/app_credentials'
+    autoload :IdentityAttempt, 'virgil/sdk/api/identity_attempt'
     end
   end
 end
