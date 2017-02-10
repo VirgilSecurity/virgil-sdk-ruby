@@ -91,6 +91,21 @@ module Virgil
           card.publish_async
         end
 
+        # Publish synchronously a card into application Virgil Services scope
+        # Args:
+        #     card: the card to be published
+        # Raises:
+        # Virgil::SDK::Client::HTTP::BaseConnection::ApiError if application credentials is invalid or
+        # Virgil Card with the same fingerprint already exists in Virgil Security services
+        def publish(card)
+          card.publish
+        end
+
+
+        def publish_global(card, validation_token)
+          card.publish_as_global(validation_token)
+        end
+
 
         # Get a card from Virgil Security services by specified Card ID.
         #
@@ -122,6 +137,9 @@ module Virgil
               context.credentials.app_id,
               context.credentials.app_key(context.crypto))
         end
+
+
+
 
 
         # Create new Card from base64-encoded json representation of card's content_snapshot and meta

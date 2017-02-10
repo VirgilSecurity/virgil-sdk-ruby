@@ -141,6 +141,21 @@ module Virgil
         end
 
 
+        def sign_and_publish_card(card, app_id, app_key)
+          request = card.to_request
+          request_signer.authority_sign(
+              request,
+              app_id,
+              app_key
+          )
+          create_card_from_signed_request(request)
+
+        end
+
+        def publish_as_global_card(card)
+          request = card.to_request
+          create_card_from_signed_request(request)
+        end
 
 
         # Create new card from signed creation request.
@@ -198,6 +213,11 @@ module Virgil
 
           self.revoke_card_from_signed_request(request)
         end
+
+
+
+
+
 
         # Revoke card using signed revocation request.
         #

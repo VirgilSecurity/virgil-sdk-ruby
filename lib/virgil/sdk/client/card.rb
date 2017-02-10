@@ -40,7 +40,7 @@ module Virgil
       Card = Struct.new(:id, :snapshot, :identity,
                         :identity_type, :public_key, :scope,
                         :data, :device, :device_name, :version,
-                        :signatures) do
+                        :signatures, :validation_token) do
 
         extend SignaturesBase64
 
@@ -90,7 +90,7 @@ module Virgil
 
         def to_request
           request = Virgil::SDK::Client::Requests::CreateCardRequest.new({})
-          request.restore(Crypto::Bytes.from_string(self.snapshot), Card.signatures_from_base64(self.signatures))
+          request.restore(Crypto::Bytes.from_string(self.snapshot), Card.signatures_from_base64(self.signatures), validation_token)
           request
         end
 

@@ -43,6 +43,7 @@ module Virgil
         class SignableRequest
           extend SignaturesBase64
           attr_reader :signatures, :snapshot, :validation_token
+
           # protected :signatures=, :snapshot=
           # attr_writer :snapshot
 
@@ -80,12 +81,12 @@ module Virgil
           #  Args:
           #    snapshot: Json-encoded snapshot request will be restored from.
           #    signatures: Request signatures.
-          def restore(snapshot, signatures)
+          def restore(snapshot, signatures, validation_token = nil)
             @snapshot = snapshot
             @signatures = signatures
-
+            @validation_token = validation_token
             model = JSON.parse(Crypto::Bytes.new(snapshot).to_s)
-            self.restore_from_snapshot_model(model)
+            restore_from_snapshot_model(model)
           end
 
 
@@ -105,7 +106,7 @@ module Virgil
           #   base64-encoded json representation of the request model.
           def export
             json_string = self.request_model.to_json
-            return Base64.strict_encode64(json_string)
+            Base64.strict_encode64(json_string)
           end
 
 
@@ -116,17 +117,23 @@ module Virgil
 
           # Adds signature to request."""
           def sign_with(fingerprint_id, signature)
-            self.signatures[fingerprint_id] = signature
+            @signatures[fingerprint_id] = signature
           end
 
           # Request model used for json representation.
           def request_model
-            return {
-              'content_snapshot': self.snapshot,
+            model = {
+              'content_snapshot': snapshot,
               'meta': {
-                'signs': self.signatures
+                'signs': signatures
               }
             }
+
+            if validation_token
+              model[:meta][:validation] = {'token': validation_token.value}
+            end
+
+            return model
           end
         end
       end

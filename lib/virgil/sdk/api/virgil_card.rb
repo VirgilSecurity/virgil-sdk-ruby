@@ -73,6 +73,8 @@ module Virgil
         end
 
 
+
+
         def info
           #TODO device, device_name
           # self.data.info
@@ -94,10 +96,10 @@ module Virgil
         # Raises:
         # Virgil::SDK::Client::HTTP::BaseConnection::ApiError if access_token is invalid or
         # Virgil Card with the same fingerprint already exists in Virgil Security services
-        def publish_async
-          request = authority_signed_request
-          self.card = self.context.client.create_card_from_signed_request_async(request)
-        end
+        # def publish_async #TODO check do we need async or not?
+          # request = authority_signed_request
+          # @card = self.context.client.create_card_from_signed_request_async(request)
+        # end
 
 
         # Publish synchronously the card into application Virgil Services scope
@@ -105,8 +107,15 @@ module Virgil
         # Virgil::SDK::Client::HTTP::BaseConnection::ApiError if access_token is invalid or
         # Virgil Card with the same fingerprint already exists in Virgil Security services
         def publish
-          request = authority_signed_request
-          self.card = context.client.create_card_from_signed_request(request)
+          # request = authority_signed_request
+          # @card = context.client.create_card_from_signed_request(request)
+          @card = context.client.publish_card(card, context.credentials.app_id, context.credentials.app_key)
+        end
+
+        def publish_as_global(validation_token)
+          card.validation_token = validation_token
+          @card = context.client.publish_as_global_card(card)
+          card.validation_token = validation_token
         end
 
 
@@ -116,19 +125,6 @@ module Virgil
           Identity::VerificationAttempt.new(context: context, action_id: action_id,
                                             identity: identity, identity_type: identity_type,
                                             additional_options: identity_options)
-        end
-
-        private
-
-
-        def authority_signed_request
-          request = card.to_request
-          context.client.request_signer.authority_sign(
-              request,
-              context.credentials.app_id,
-              context.credentials.app_key(context.crypto)
-          )
-          request
         end
 
 

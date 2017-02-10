@@ -64,6 +64,10 @@ module Virgil
             self.reason = snapshot_model['revocation_reason']
           end
 
+          def restore(validation_token)
+            @validation_token = validation_token
+          end
+
           # Constructs snapshot model for exporting and signing.
           #
           # Returns:

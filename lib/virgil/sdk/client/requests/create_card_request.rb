@@ -68,9 +68,14 @@ module Virgil
           def self.import(data_base64)
             request = new({})
             request_model = JSON.parse(Base64.decode64(data_base64))
-
+            validation_token = nil
+            if request_model[:meta][:validation] && request_model[:meta][:validation][:token]
+              validation_token = Virgil::Crypto::Bytes.from_base64(request_model[:meta][:validation][:token])
+            end
             request.restore(Virgil::Crypto::Bytes.from_base64(request_model[:content_snapshot]),
-                            signatures_from_base64(request_model[:meta][:signs]))
+                            signatures_from_base64(request_model[:meta][:signs]),
+                            validation_token
+                            )
             request
           end
 
@@ -80,12 +85,12 @@ module Virgil
           #   Dict containing snapshot data model used for card creation request.
           def snapshot_model
             {
-              'identity': self.identity,
-              'identity_type': self.identity_type,
-              'public_key': self.public_key,
-              'scope': self.scope,
-              'data': self.data,
-              'info': self.info
+                'identity': identity,
+                'identity_type': identity_type,
+                'public_key': public_key,
+                'scope': scope,
+                'data': data,
+                'info': info
             }
           end
         end

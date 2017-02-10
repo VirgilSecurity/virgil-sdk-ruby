@@ -83,7 +83,6 @@ module Virgil
             @faraday_connection ||= Faraday.new(url: base_url) do |connection|
               connection.authorization :VIRGIL, access_token
               connection.request :json
-
               connection.response :json, :content_type => /\bjson$/
               connection.response :follow_redirects
               connection.adapter Faraday.default_adapter
@@ -94,12 +93,13 @@ module Virgil
             error_message = nil
             error_body = response.body
             if error_body
+              error_body = JSON.parse(error_body) unless error_body.is_a? Hash
               error_code = error_body['code'] ||
                   (error_body['error'] && error_body['error']['code'])
               error_message = self.class::ERRORS[error_code] || error_code
             end
-
-            error_message = response.status unless error_message
+            # token = attempt.confirm(emailConfirmation)
+            error_message = "Error code is #{response.status}" unless error_message
             error_message
           end
         end
