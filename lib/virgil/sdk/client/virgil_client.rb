@@ -215,7 +215,21 @@ module Virgil
         end
 
 
-
+        def revoke_global_card(
+            card_id,
+            key_pair,
+            validation_token,
+            reason=Requests::RevokeCardRequest::Reasons::Unspecified
+        )
+          request = Requests::RevokeCardRequest.new(
+              card_id: card_id,
+              reason: reason
+          )
+          request.restore(validation_token)
+           self.request_signer.authority_sign(request, card_id, key_pair.private_key)
+          # self.request_signer.self_sign(request, key_pair.private_key)
+          self.revoke_card_from_signed_request(request)
+        end
 
 
 

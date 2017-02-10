@@ -139,7 +139,11 @@ module Virgil
         end
 
 
+        def revoke_global(global_card, key_pair, validation_token)
+          global_card.card.validation_token = validation_token
+          context.client.revoke_global_card(global_card.id, key_pair, validation_token)
 
+        end
 
 
         # Create new Card from base64-encoded json representation of card's content_snapshot and meta
