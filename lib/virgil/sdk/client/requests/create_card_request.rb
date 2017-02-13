@@ -69,11 +69,11 @@ module Virgil
             request = new({})
             request_model = JSON.parse(Base64.decode64(data_base64))
             validation_token = nil
-            if request_model[:meta][:validation] && request_model[:meta][:validation][:token]
-              validation_token = Virgil::Crypto::Bytes.from_base64(request_model[:meta][:validation][:token])
+            if request_model['meta']['validation'] && request_model['meta']['validation']['token']
+              validation_token = Virgil::Crypto::Bytes.from_base64(request_model['meta']['validation']['token'])
             end
-            request.restore(Virgil::Crypto::Bytes.from_base64(request_model[:content_snapshot]),
-                            signatures_from_base64(request_model[:meta][:signs]),
+            request.restore(Virgil::Crypto::Bytes.from_base64(request_model['content_snapshot']),
+                            signatures_from_base64(request_model['meta']['signs']),
                             validation_token
                             )
             request

@@ -35,13 +35,16 @@ module Virgil
   module SDK
     module API
       class Context
-        attr_accessor :access_token, :client, :crypto, :credentials, :cards_service_url, :cards_read_only_service_url
+        attr_accessor :access_token, :client, :crypto, :credentials,
+                      :cards_service_url, :cards_read_only_service_url, :identity_service_url
 
         def initialize(access_token:, credentials:,
                        cards_service_url: Client::Card::SERVICE_URL,
-                       cards_read_only_service_url: Client::Card::READ_ONLY_SERVICE_URL)
+                       cards_read_only_service_url: Client::Card::READ_ONLY_SERVICE_URL,
+                       identity_service_url: Virgil::SDK::Identity::IDENTITY_SERVICE_URL
+          )
           self.access_token = access_token
-          self.client = Client::VirgilClient.new(access_token, cards_service_url, cards_read_only_service_url)
+          self.client = Client::VirgilClient.new(access_token, cards_service_url, cards_read_only_service_url, identity_service_url)
           self.crypto = Cryptography::VirgilCrypto.new
           self.credentials = credentials
         end

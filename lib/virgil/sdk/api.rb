@@ -9,6 +9,8 @@ module Virgil
     autoload :CardManager, 'virgil/sdk/api/card_manager'
     autoload :AppCredentials, 'virgil/sdk/api/app_credentials'
     autoload :IdentityAttempt, 'virgil/sdk/api/identity_attempt'
+    autoload :VirgilBuffer, 'virgil/sdk/api/virgil_buffer'
+    autoload :StringEncoding, 'virgil/sdk/api/virgil_buffer'
     end
   end
 end

@@ -91,17 +91,24 @@ module Virgil
           card.publish_async
         end
 
+
         # Publish synchronously a card into application Virgil Services scope
         # Args:
         #     card: the card to be published
         # Raises:
-        # Virgil::SDK::Client::HTTP::BaseConnection::ApiError if application credentials is invalid or
+        # Client::HTTP::BaseConnection::ApiError if application credentials is invalid or
         # Virgil Card with the same fingerprint already exists in Virgil Security services
         def publish(card)
           card.publish
         end
 
 
+        # Publish a global card into application Virgil Services scope
+        # Args:
+        #     card: the global card to be published
+        # Raises:
+        # Client::HTTP::BaseConnection::ApiError if Identity Validation Token is invalid or has expired
+        # Virgil Card with the same fingerprint already exists in Virgil Security services
         def publish_global(card, validation_token)
           card.publish_as_global(validation_token)
         end
@@ -123,13 +130,46 @@ module Virgil
         end
 
 
+        # Find Virgil cards by specified identities in application scope.
+        #
+        # Args:
+        #   identities: the list of identities
+        #
+        # Returns:
+        #   A list of found Virgil cards
+        #
+        # Raises:
+        #   VirgilClient::InvalidCardException if client has validator
+        #   and retrieved card signatures are not valid.
+        def find(*identities)
+
+          validate_identities_param(identities)
+
+          cards = context.client.search_cards_by_identities(*identities).map {}
+          virgil_cards = cards.map { |v| VirgilCard.new(context: context, card: v) }
+          virgil_cards
+        end
+
+
+        def find_global(identity_type, *identities)
+
+          validate_identities_param(identities)
+
+          cards = context.client.search_cards_by_criteria(
+              Client::SearchCriteria.new(identities, identity_type, Client::Card::GLOBAL)
+          )
+          virgil_global_cards = cards.map { |v| VirgilCard.new(context: context, card: v) }
+          virgil_global_cards
+        end
+
+
         # Revoke a card from Virgil Services
         #
         # Args:
         #   card: the card to be revoked
         #
         # Raises:
-        #   Virgil::SDK::Client::HTTP::BaseConnection::ApiError if the card was not published
+        #   Client::HTTP::BaseConnection::ApiError if the card was not published
         #   or application credentials is not valid.
         def revoke(card)
           context.client.revoke_card(
@@ -139,6 +179,14 @@ module Virgil
         end
 
 
+        # Revoke a global card from Virgil Services
+        #
+        # Args:
+        #   card: the global card to be revoked
+        #
+        # Raises:
+        #   Client::HTTP::BaseConnection::ApiError if the global card was not published
+        #   Client::HTTP::BaseConnection::ApiError if Identity Validation Token is invalid or has expired
         def revoke_global(global_card, key_pair, validation_token)
           global_card.card.validation_token = validation_token
           context.client.revoke_global_card(global_card.id, key_pair, validation_token)
@@ -165,7 +213,10 @@ module Virgil
 
         private
 
-
+        def validate_identities_param(param)
+          puts param.object_id.to_s
+          raise ArgumentError.new("identities is not valid") if (!param.is_a?(Array) || param.empty?)
+        end
       end
     end
   end

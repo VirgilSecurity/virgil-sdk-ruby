@@ -52,18 +52,20 @@ module Virgil
           end
         end
 
-        attr_accessor :access_token, :cards_service_url,
+        attr_accessor :access_token, :cards_service_url, :identity_service_url,
                       :cards_read_only_service_url, :card_validator
 
         # Constructs new VirgilClient object
         def initialize(
             access_token,
             cards_service_url=Card::SERVICE_URL,
-            cards_read_only_service_url=Card::READ_ONLY_SERVICE_URL
+            cards_read_only_service_url=Card::READ_ONLY_SERVICE_URL,
+            identity_service_url=Virgil::SDK::Identity::IDENTITY_SERVICE_URL
         )
           self.access_token = access_token
           self.cards_service_url = cards_service_url
           self.cards_read_only_service_url = cards_read_only_service_url
+          self.identity_service_url = identity_service_url
         end
 
         # Create published new card from given attributes.
@@ -389,7 +391,7 @@ module Virgil
         def identity_service_connection
           @identity_service_connection = HTTP::CardsServiceConnection.new(
               "",
-              Virgil::SDK::Identity::IDENTITY_SERVICE_URL
+              self.identity_service_url
           )
           # identity.virgilsecurity.com
 

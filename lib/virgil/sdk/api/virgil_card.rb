@@ -92,26 +92,18 @@ module Virgil
         end
 
 
-        # Publish asynchronously the card into application Virgil Services scope
-        # Raises:
-        # Virgil::SDK::Client::HTTP::BaseConnection::ApiError if access_token is invalid or
-        # Virgil Card with the same fingerprint already exists in Virgil Security services
-        # def publish_async #TODO check do we need async or not?
-          # request = authority_signed_request
-          # @card = self.context.client.create_card_from_signed_request_async(request)
-        # end
-
-
         # Publish synchronously the card into application Virgil Services scope
         # Raises:
         # Virgil::SDK::Client::HTTP::BaseConnection::ApiError if access_token is invalid or
         # Virgil Card with the same fingerprint already exists in Virgil Security services
         def publish
-          # request = authority_signed_request
-          # @card = context.client.create_card_from_signed_request(request)
-          @card = context.client.publish_card(card, context.credentials.app_id, context.credentials.app_key)
+          @card = context.client.sign_and_publish_card(card, context.credentials.app_id, context.credentials.app_key(context.crypto))
         end
 
+
+        # Publish synchronously the global card into application Virgil Services scope
+        # Raises:
+        # Virgil Card with the same fingerprint already exists in Virgil Security services
         def publish_as_global(validation_token)
           card.validation_token = validation_token
           @card = context.client.publish_as_global_card(card)
