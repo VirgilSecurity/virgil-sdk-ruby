@@ -40,12 +40,14 @@ module Virgil
 
       # This class provides a list of methods that simplify the work with an array of bytes.
       VirgilBuffer = Struct.new(:bytes) do
+
         def initialize(bytes)
 
           self.class.validate_bytes_param(bytes)
 
           super
         end
+
 
         def self.from_bytes(bytes)
 
@@ -54,6 +56,7 @@ module Virgil
           new(bytes)
 
         end
+
 
         def self.from_string(str, encoding=StringEncoding::UTF8)
 
@@ -68,6 +71,20 @@ module Virgil
               ArgumentError.new("encoding is undefined")
           end
 
+        end
+
+
+        def to_string(encoding=StringEncoding::UTF8)
+          case encoding
+            when StringEncoding::BASE64
+              return self.to_base64
+            when StringEncoding::HEX
+              return self.to_hex
+            when StringEncoding::UTF8
+              return to_s
+            else
+              ArgumentError.new("encoding is undefined")
+          end
         end
 
 
@@ -93,11 +110,13 @@ module Virgil
           new(str.scan(/../).map { |x| x.hex })
         end
 
+
         # Converts all the bytes in current buffer to its equivalent string representation that
         # is encoded with base-64 digits.
         def to_base64
           Base64.strict_encode64(to_s)
         end
+
 
         # Decodes all the bytes in current buffer into a string.
         def to_utf8
@@ -124,7 +143,6 @@ module Virgil
         HEX = 2
         UTF8 = 3
       end
-
 
     end
   end

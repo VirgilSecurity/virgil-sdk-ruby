@@ -4,6 +4,7 @@ module Virgil
     autoload :Api, 'virgil/sdk/api/virgil_api'
     autoload :Card, 'virgil/sdk/client/card'
     autoload :VirgilCard, 'virgil/sdk/api/virgil_card'
+    autoload :VirgilKey, 'virgil/sdk/api/virgil_key'
     autoload :Context, 'virgil/sdk/api/context'
     autoload :KeyManager, 'virgil/sdk/api/key_manager'
     autoload :CardManager, 'virgil/sdk/api/card_manager'

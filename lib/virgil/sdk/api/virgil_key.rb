@@ -34,29 +34,32 @@
 module Virgil
   module SDK
     module API
-      class Context
-        attr_reader :access_token, :client, :crypto, :credentials,
-                      :cards_service_url, :cards_read_only_service_url, :identity_service_url
+      class VirgilKey
+        attr_reader :context, :private_key
 
-        def initialize(access_token:, credentials:,
-                       cards_service_url: Client::Card::SERVICE_URL,
-                       cards_read_only_service_url: Client::Card::READ_ONLY_SERVICE_URL,
-                       identity_service_url: Virgil::SDK::Identity::IDENTITY_SERVICE_URL
-          )
-          @access_token = access_token
-          @client = Client::VirgilClient.new(access_token, cards_service_url, cards_read_only_service_url, identity_service_url)
-          @crypto = Cryptography::VirgilCrypto.new
-          @credentials = credentials
+        def initialize(context, private_key)
+          @context = context
+          @private_key = private_key
         end
 
+        # Decrypts the specified cipher data using Virgil key.
+        #
+        # Args:
+        #   cipher_buffer: The encrypted data wrapped by VirgilBuffer.
+        #
+        # Returns:
+        #   A byte array containing the result from performing the operation wrapped by VirgilBuffer.
+        #
+        # Raises:
+        #   ArgumentError: buffer is not valid if buffer doesn't have type VirgilBuffer or String
+        #   Recipient with given identifier is not found  if user tries to decrypt cipher data by private key,
+        #     though its public key was not used for encryption
+        def decrypt(cipher_buffer)
+          raise ArgumentError.new("buffer is not valid") unless (cipher_buffer.is_a?(VirgilBuffer) || cipher_buffer.is_a?(String))
 
-        # def initialize(access_token)
-        #   self.access_token = access_token
-        #   self.client = Client::VirgilClient.new(access_token)
-        #   self.crypto = Cryptography::VirgilCrypto.new
-        # end
-        #TODO  cardverifiers
-
+          bytes = context.crypto.decrypt(cipher_buffer.bytes, private_key)
+          VirgilBuffer.new(bytes)
+        end
       end
     end
   end

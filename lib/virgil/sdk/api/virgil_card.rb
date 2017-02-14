@@ -36,7 +36,6 @@ module Virgil
     module API
       class VirgilCard
         attr_reader :context, :card
-        # private :context, :card, :context=, :card=
 
         def initialize(context:, card:)
           @context = context
@@ -127,7 +126,7 @@ module Virgil
        #   ArgumentError: buffer is not valid if buffer doesn't have type VirgilBuffer or String
         def encrypt(buffer)
 
-          raise ArgumentError.new("buffer is not valid") if !(buffer.is_a?(VirgilBuffer) || buffer.is_a?(String))
+          raise ArgumentError.new("buffer is not valid") unless (buffer.is_a?(VirgilBuffer) || buffer.is_a?(String))
 
           VirgilBuffer.new(context.crypto.encrypt(buffer.bytes, public_key))
         end
