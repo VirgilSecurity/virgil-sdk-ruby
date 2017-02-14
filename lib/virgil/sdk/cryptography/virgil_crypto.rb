@@ -234,7 +234,7 @@ module Virgil
           signature = signer.sign(bytes, private_key.value)
           cipher = Crypto::Native::VirgilCipher.new
           custom_bytes = cipher.custom_params
-          custom_bytes.setData(
+          custom_bytes.set_data(
             CUSTOM_PARAM_KEY_SIGNATURE,
             signature
           )

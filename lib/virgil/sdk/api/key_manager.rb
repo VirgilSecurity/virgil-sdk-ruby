@@ -41,8 +41,29 @@ module Virgil
           self.crypto = Cryptography::VirgilCrypto.new
         end
 
+
+        # Generates a new <see cref="VirgilKey"/> with default parameters.
         def generate
           crypto.generate_keys()
+        end
+
+        # /// <summary>
+        #     /// Loads the <see cref="VirgilKey"/> from current storage by specified key name.
+        #     /// </summary>
+        #     /// <param name="keyName">The name of the Key.</param>
+        #                                                   /// <param name="keyPassword">The Key password.</param>
+        #                                                                                             /// <returns>An instance of <see cref="VirgilKey"/> class.</returns>
+        #     /// <exception cref="ArgumentException"></exception>
+        # /// <exception cref="VirgilKeyIsNotFoundException"></exception>
+        def load(key_name, key_password)
+
+        end
+
+        # /// <summary>
+        #     /// Removes the <see cref="VirgilKey"/> from the storage.
+        #     /// </summary>
+        def destroy(key_name)
+
         end
 
       end
