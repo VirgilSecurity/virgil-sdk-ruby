@@ -34,6 +34,9 @@
 module Virgil
   module SDK
     module API
+      # This class represents a user's high-level Private key which provides
+      # a list of methods that allows to store the key and perform cryptographic operations like
+      # Decrypt, Sign etc.
       class VirgilKey
         attr_reader :context, :private_key
 
@@ -41,6 +44,7 @@ module Virgil
           @context = context
           @private_key = private_key
         end
+
 
         # Decrypts the specified cipher data using Virgil key.
         #
@@ -55,11 +59,30 @@ module Virgil
         #   Recipient with given identifier is not found  if user tries to decrypt cipher data by private key,
         #     though its public key was not used for encryption
         def decrypt(cipher_buffer)
-          raise ArgumentError.new("buffer is not valid") unless (cipher_buffer.is_a?(VirgilBuffer) || cipher_buffer.is_a?(String))
-
+          VirgilBuffer.validate_buffer_param(cipher_buffer)
           bytes = context.crypto.decrypt(cipher_buffer.bytes, private_key)
           VirgilBuffer.new(bytes)
         end
+
+
+        # Generates a digital signature for specified data using current Virgil key.
+        #
+        # Args:
+        #   buffer: The data wrapped by VirgilBuffer for which the digital signature will be generated.
+        #
+        # Returns:
+        #   A new buffer that containing the result from performing the operation.
+        #
+        # Raises:
+        #   ArgumentError: buffer is not valid if buffer doesn't have type VirgilBuffer or String
+        def sign(buffer)
+          VirgilBuffer.validate_buffer_param(buffer)
+          bytes = context.crypto.sign(buffer.bytes, private_key)
+          VirgilBuffer.new(bytes)
+        end
+
+
+
       end
     end
   end

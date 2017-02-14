@@ -131,7 +131,13 @@ module Virgil
         end
 
 
+
+        def self.validate_buffer_param(param, param_name="buffer")
+          raise ArgumentError.new("#{param_name} is not valid") unless (param.is_a?(VirgilBuffer) || param.is_a?(String))
+        end
+
         private
+
         def self.validate_bytes_param(param)
           raise ArgumentError.new("bytes is not valid") if (!param.is_a?(Array) || param.empty?)
         end
