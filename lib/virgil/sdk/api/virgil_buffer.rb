@@ -59,16 +59,14 @@ module Virgil
 
           case encoding
             when StringEncoding::BASE64
-              return self.from_base64_string(str)
+              return self.from_base64(str)
             when StringEncoding::HEX
-              return self.from_hex_string(str)
+              return self.from_hex(str)
             when StringEncoding::UTF8
-              return self.from_utf8_string(str)
+              return self.from_utf8(str)
             else
               ArgumentError.new("encoding is undefined")
           end
-
-          self.from_utf8_string(str)
 
         end
 
@@ -79,37 +77,37 @@ module Virgil
 
 
         # Initializes a new buffer from specified string, which encodes binary data as base-64 digits.
-        def self.from_base64_string(str)
+        def self.from_base64(str)
           new(Base64.decode64(str).bytes)
         end
 
 
         #Initializes a new buffer from specified string, which encodes binary data as utf-8.
-        def self.from_utf8_string(str)
+        def self.from_utf8(str)
           new(str.bytes)
         end
 
 
         # Initializes a new buffer from specified string, which encodes binary data as hexadecimal digits.
-        def self.from_hex_string(str)
+        def self.from_hex(str)
           new(str.scan(/../).map { |x| x.hex })
         end
 
         # Converts all the bytes in current buffer to its equivalent string representation that
         # is encoded with base-64 digits.
-        def to_base64_string
+        def to_base64
           Base64.strict_encode64(to_s)
         end
 
         # Decodes all the bytes in current buffer into a string.
-        def to_utf8_string
+        def to_utf8
           to_s
         end
 
 
         # Converts the numeric value of each element of a current buffer bytes to its
         # equivalent hexadecimal string representation.
-        def to_hex_string
+        def to_hex
           to_s.each_byte.map { |b| b.to_s(16) }.join
         end
 
@@ -126,6 +124,7 @@ module Virgil
         HEX = 2
         UTF8 = 3
       end
+
 
     end
   end

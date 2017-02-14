@@ -43,6 +43,35 @@ module Virgil
         end
 
 
+        class CardArray < Array
+
+          attr_accessor :crypto
+
+          def initialize(array)
+            @crypto = Cryptography::VirgilCrypto.new
+            super
+          end
+          # Encrypts the specified data using recipients Public keys.
+          #
+          # Args:
+          #   buffer: The data to be encrypted.
+          #
+          # Returns:
+          #   Encrypted data for current recipients Public keys
+          #
+          # Raises:
+          #   ArgumentError: buffer is not valid if buffer doesn't have type VirgilBuffer or String
+          def encrypt(buffer)
+
+            raise ArgumentError.new("buffer is not valid") if !(buffer.is_a?(VirgilBuffer) || buffer.is_a?(String))
+
+            all_public_keys = self.map(&:public_key)
+            VirgilBuffer.new(crypto.encrypt(buffer.bytes, *all_public_keys))
+          end
+
+        end
+
+
         # Creates a new Virgil Card that is representing user's Public key and information
         #
         # Args:
@@ -145,9 +174,9 @@ module Virgil
 
           validate_identities_param(identities)
 
-          cards = context.client.search_cards_by_identities(*identities).map {}
+          cards = context.client.search_cards_by_identities(*identities)
           virgil_cards = cards.map { |v| VirgilCard.new(context: context, card: v) }
-          virgil_cards
+          CardArray.new(virgil_cards)
         end
 
 
@@ -159,7 +188,7 @@ module Virgil
               Client::SearchCriteria.new(identities, identity_type, Client::Card::GLOBAL)
           )
           virgil_global_cards = cards.map { |v| VirgilCard.new(context: context, card: v) }
-          virgil_global_cards
+          CardArray.new(virgil_global_cards)
         end
 
 
@@ -214,7 +243,6 @@ module Virgil
         private
 
         def validate_identities_param(param)
-          puts param.object_id.to_s
           raise ArgumentError.new("identities is not valid") if (!param.is_a?(Array) || param.empty?)
         end
       end

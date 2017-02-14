@@ -97,7 +97,10 @@ module Virgil
         # Virgil::SDK::Client::HTTP::BaseConnection::ApiError if access_token is invalid or
         # Virgil Card with the same fingerprint already exists in Virgil Security services
         def publish
-          @card = context.client.sign_and_publish_card(card, context.credentials.app_id, context.credentials.app_key(context.crypto))
+          @card = context.client.sign_and_publish_card(
+              card,
+              context.credentials.app_id,
+              context.credentials.app_key(context.crypto))
         end
 
 
@@ -105,10 +108,30 @@ module Virgil
         # Raises:
         # Virgil Card with the same fingerprint already exists in Virgil Security services
         def publish_as_global(validation_token)
-          card.validation_token = validation_token
+          @card.validation_token = validation_token
           @card = context.client.publish_as_global_card(card)
-          card.validation_token = validation_token
+          @card.validation_token = validation_token
         end
+
+
+
+       # Encrypts the specified data for current Virgil card recipient
+       #
+       # Args:
+       #   buffer: The data to be encrypted.
+       #
+       # Returns:
+       #   Encrypted data for current Virgil card recipient
+       #
+       # Raises:
+       #   ArgumentError: buffer is not valid if buffer doesn't have type VirgilBuffer or String
+        def encrypt(buffer)
+
+          raise ArgumentError.new("buffer is not valid") if !(buffer.is_a?(VirgilBuffer) || buffer.is_a?(String))
+
+          VirgilBuffer.new(context.crypto.encrypt(buffer.bytes, public_key))
+        end
+
 
 
 
@@ -121,6 +144,8 @@ module Virgil
 
 
       end
+
+
     end
   end
 end
