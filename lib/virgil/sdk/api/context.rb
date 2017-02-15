@@ -36,9 +36,9 @@ module Virgil
     module API
       class Context
         attr_reader :access_token, :client, :crypto, :credentials,
-                      :cards_service_url, :cards_read_only_service_url, :identity_service_url
+                      :cards_service_url, :cards_read_only_service_url, :identity_service_url, :key_storage
 
-        def initialize(access_token:, credentials:,
+        def initialize(access_token:, credentials:, key_storage_path: Cryptography::Keys::KeyStorage.default_folder,
                        cards_service_url: Client::Card::SERVICE_URL,
                        cards_read_only_service_url: Client::Card::READ_ONLY_SERVICE_URL,
                        identity_service_url: Virgil::SDK::Identity::IDENTITY_SERVICE_URL
@@ -47,14 +47,10 @@ module Virgil
           @client = Client::VirgilClient.new(access_token, cards_service_url, cards_read_only_service_url, identity_service_url)
           @crypto = Cryptography::VirgilCrypto.new
           @credentials = credentials
+          @key_storage = Cryptography::Keys::KeyStorage.new(key_storage_path)
         end
 
 
-        # def initialize(access_token)
-        #   self.access_token = access_token
-        #   self.client = Client::VirgilClient.new(access_token)
-        #   self.crypto = Cryptography::VirgilCrypto.new
-        # end
         #TODO  cardverifiers
 
       end

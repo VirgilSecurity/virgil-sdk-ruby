@@ -43,7 +43,7 @@ module Virgil
           elsif context
             self.context = context
           end
-          self.keys = KeyManager.new
+          self.keys = KeyManager.new(self.context)
           self.cards = CardManager.new(self.context)
         end
       end

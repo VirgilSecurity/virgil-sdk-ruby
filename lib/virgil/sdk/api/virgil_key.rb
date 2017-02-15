@@ -91,6 +91,7 @@ module Virgil
         # Returns:
         #   A new buffer that containing the encrypted and signed data
         #
+
         # Raises:
         #   ArgumentError: buffer is not valid if buffer doesn't have type VirgilBuffer or String
         #   ArgumentError: recipients is not valid if recipients doesn't have type Array or empty
@@ -126,6 +127,40 @@ module Virgil
           VirgilBuffer.new(bytes)
         end
 
+
+        #  Saves a current VirgilKey in secure storage.
+        #
+        # Args:
+        #   key_name: The name of the key.
+        #   key_password: The key password.
+        #
+        # Returns:
+        #   An instance of VirgilKey class
+        #
+        # Raises:
+        #    KeyEntryAlreadyExistsException: if key storage already has item with such name
+        #   ArgumentError: key_name is not valid if key_name is nil
+        #   KeyStorageException: Destination folder doesn't exist or you don't have permission to write there
+        def save(key_name, key_password=nil)
+
+          raise ArgumentError.new("key_name is not valid") if key_name.nil?
+
+          exported_private_key = context.crypto.export_private_key(private_key, key_password)
+          storage_item = Cryptography::Keys::StorageItem.new(key_name, exported_private_key)
+          context.key_storage.store(storage_item)
+          self
+
+        end
+
+
+        #  Exports the Public key value from current VirgilKey.
+        #
+        # Returns:
+        #   A new VirgilBuffer that contains Public Key value.
+        def export_public_key
+          public_key = context.crypto.extract_public_key(private_key)
+          VirgilBuffer.from_bytes(context.crypto.export_public_key(public_key))
+        end
 
       end
     end

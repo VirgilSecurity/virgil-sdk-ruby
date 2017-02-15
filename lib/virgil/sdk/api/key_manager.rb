@@ -34,36 +34,61 @@
 module Virgil
   module SDK
     module API
+      # this class provides a list of methods to generate the VirgilKey
+      # and further them storage in secure place.
       class KeyManager
-        attr_accessor :crypto
+        attr_reader :context
 
-        def initialize()
-          self.crypto = Cryptography::VirgilCrypto.new
+        def initialize(context)
+          @context = context
         end
 
 
-        # Generates a new <see cref="VirgilKey"/> with default parameters.
+        # Generates a new VirgilKey with default parameters.
         def generate
-          crypto.generate_keys()
+          key_pair = context.crypto.generate_keys()
+          VirgilKey.new(context, key_pair.private_key)
         end
 
-        # /// <summary>
-        #     /// Loads the <see cref="VirgilKey"/> from current storage by specified key name.
-        #     /// </summary>
-        #     /// <param name="keyName">The name of the Key.</param>
-        #                                                   /// <param name="keyPassword">The Key password.</param>
-        #                                                                                             /// <returns>An instance of <see cref="VirgilKey"/> class.</returns>
-        #     /// <exception cref="ArgumentException"></exception>
-        # /// <exception cref="VirgilKeyIsNotFoundException"></exception>
-        def load(key_name, key_password)
+
+        # Loads the VirgilKey from current storage by specified key name.
+        #
+        # Args:
+        #   key_name: The name of the key.
+        #   key_password: The key password.
+        #
+        # Returns:
+        #   An instance of VirgilKey class
+        #
+        # Raises:
+        #   KeyEntryNotFoundException: if key storage doesn't have item with such name
+        #   ArgumentError: key_name is not valid if key_name is nil
+        #   KeyStorageException: Destination folder doesn't exist or you don't have permission to write there
+        def load(key_name, key_password=nil)
+
+          raise ArgumentError.new("key_name is not valid") if key_name.nil?
+
+          storage_item = context.key_storage.load(key_name)
+          private_key = context.crypto.import_private_key(storage_item.data, key_password)
+          VirgilKey.new(context, private_key)
 
         end
 
-        # /// <summary>
-        #     /// Removes the <see cref="VirgilKey"/> from the storage.
-        #     /// </summary>
-        def destroy(key_name)
 
+        # Remove the VirgilKey from current storage by specified key name.
+        #
+        # Args:
+        #   key_name: The name of the key.
+        #
+        # Raises:
+        #   KeyEntryNotFoundException: if key storage doesn't have item with such name
+        #   ArgumentError: key_name is not valid if key_name is nil
+        #   KeyStorageException: Destination folder doesn't exist or you don't have permission to write there
+        def delete(key_name)
+
+          raise ArgumentError.new("key_name is not valid") if key_name.nil?
+
+          context.key_storage.delete(key_name)
         end
 
       end

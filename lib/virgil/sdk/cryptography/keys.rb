@@ -40,6 +40,8 @@ module Virgil
         autoload :PrivateKey, 'virgil/sdk/cryptography/keys/private_key'
         autoload :KeyPair, 'virgil/sdk/cryptography/keys/key_pair'
         autoload :KeyPairType, 'virgil/sdk/cryptography/keys/key_pair_type'
+        autoload :KeyStorage, 'virgil/sdk/cryptography/keys/key_storage'
+        autoload :StorageItem, 'virgil/sdk/cryptography/keys/storage_item'
       end
     end
   end

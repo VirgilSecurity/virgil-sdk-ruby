@@ -32,13 +32,30 @@
 # IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
 # POSSIBILITY OF SUCH DAMAGE.
 
+require 'json'
+
 module Virgil
   module SDK
     module Cryptography
       module Keys
-        # Class containing key pair information
-        KeyPair = Struct.new(:private_key, :public_key) do
+        # StorageItem class represents a key pair storage entry.
+        # name: Gets or sets the name.
+        # data: key pair in bytes
+        # meta: the meta data associated with key pair.
+        StorageItem = Struct.new(:name, :data, :meta) do
 
+          def to_json
+            model = {
+                'data': API::VirgilBuffer.new(data).to_base64,
+                'meta': meta
+            }
+            model.to_json
+          end
+
+          def self.restore_from_json(name, str_json)
+            model = JSON.parse(str_json)
+            new(name, API::VirgilBuffer.from_base64(model['data']).bytes, model['meta'])
+          end
         end
       end
     end
