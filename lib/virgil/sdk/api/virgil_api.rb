@@ -39,7 +39,7 @@ module Virgil
 
         def initialize(access_token: nil, context: nil)
           if access_token
-            self.context = Context.new(access_token)
+            self.context = Virgil::SDK::API::Context.new(access_token: access_token)
           elsif context
             self.context = context
           end

@@ -39,6 +39,7 @@ module Virgil
       # types, such as an email, a phone number, etc.
       class VirgilCard
         attr_reader :context, :card
+        protected :context, :card
 
         def initialize(context:, card:)
           @context = context

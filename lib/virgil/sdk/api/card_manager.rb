@@ -84,9 +84,7 @@ module Virgil
           card = context.client.new_card(
               identity,
               Client::Card::USERNAME_IDENTITY,
-              owner_key.private_key,
-              context.credentials.app_id,
-              context.credentials.app_key(context.crypto)
+              owner_key.private_key
           )
 
           VirgilCard.new(context: context, card: card)
@@ -104,7 +102,7 @@ module Virgil
           card = context.client.new_global_card(
               identity,
               identity_type,
-              owner_key.private_keys
+              owner_key.private_key
           )
           VirgilCard.new(context: context, card: card)
         end
@@ -217,7 +215,6 @@ module Virgil
         #   Client::HTTP::BaseConnection::ApiError if the global card was not published
         #   Client::HTTP::BaseConnection::ApiError if Identity Validation Token is invalid or has expired
         def revoke_global(global_card, key_pair, validation_token)
-          global_card.card.validation_token = validation_token
           context.client.revoke_global_card(global_card.id, key_pair, validation_token)
 
         end

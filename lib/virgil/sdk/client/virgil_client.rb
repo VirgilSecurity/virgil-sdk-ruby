@@ -106,15 +106,14 @@ module Virgil
         #
         # Returns:
         #   Created local card that is not published to Virgil Security services
-        def new_card(identity, identity_type, private_key, app_id, app_key)
+        def new_card(identity, identity_type, private_key)
           request = Virgil::SDK::Client::Requests::CreateCardRequest.new(
               identity: identity,
               identity_type: identity_type,
               scope: Client::Card::APPLICATION,
-              raw_public_key: self.crypto.extract_public_key(private_key)
+              raw_public_key: self.crypto.extract_public_key(private_key).value
           )
           self.request_signer.self_sign(request, private_key)
-          self.request_signer.authority_sign(request, app_id, app_key)
 
           return Client::Card.from_request_model(request.request_model)
         end
@@ -135,7 +134,7 @@ module Virgil
               identity: identity,
               identity_type: identity_type,
               scope: Client::Card::GLOBAL,
-              raw_public_key: self.crypto.extract_public_key(private_key)
+              raw_public_key: self.crypto.extract_public_key(private_key).value
           )
           self.request_signer.self_sign(request, private_key)
 

@@ -72,7 +72,7 @@ module Virgil
 
           def self.default_folder
             path = "./key_storage"
-            FileUtils.mkdir(path) unless Dir.exists?(path)
+            FileUtils.mkdir_p(path) unless Dir.exists?(path)
             path
           end
 

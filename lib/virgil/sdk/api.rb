@@ -12,6 +12,7 @@ module Virgil
     autoload :IdentityAttempt, 'virgil/sdk/api/identity_attempt'
     autoload :VirgilBuffer, 'virgil/sdk/api/virgil_buffer'
     autoload :StringEncoding, 'virgil/sdk/api/virgil_buffer'
+    autoload :CardVerifierInfo, 'virgil/sdk/api/card_verifier_info'
     end
   end
 end
