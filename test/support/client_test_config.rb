@@ -10,6 +10,18 @@ module ClientTestConfig
       @_app_id ||= ENV["VIRGIL_APP_ID"]
     end
 
+    def card_service_url
+      @_card_service_url ||= ENV["VIRGIL_SERVICE_URL"]
+    end
+
+    def cards_read_only_service_url
+      @_cards_read_only_service_url ||= ENV["VIRGIL_READ_ONLY_SERVICE_URL"]
+    end
+
+    def identity_service_url
+      @_identity_service_url ||= ENV["VIRGIL_IDENTITY_SERVICE_URL"]
+    end
+
     def app_bundle
       @_app_bundle ||= ENV["VIRGIL_APP_BUNDLE"]
     end

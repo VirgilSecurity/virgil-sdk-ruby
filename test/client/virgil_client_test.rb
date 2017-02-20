@@ -41,7 +41,10 @@ class VirgilClientTest < Minitest::Test
       ClientTestConfig.app_key_password
     )
     @client = Virgil::SDK::Client::VirgilClient.new(
-      ClientTestConfig.access_token
+      ClientTestConfig.access_token,
+      ClientTestConfig.card_service_url,
+      ClientTestConfig.cards_read_only_service_url,
+      ClientTestConfig.identity_service_url
     )
     @client.card_validator = Virgil::SDK::Client::CardValidator.new(@crypto)
   end
