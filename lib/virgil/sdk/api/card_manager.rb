@@ -84,7 +84,7 @@ module Virgil
           card = context.client.new_card(
               identity,
               Client::Card::USERNAME_IDENTITY,
-              owner_key,
+              owner_key.private_key,
               context.credentials.app_id,
               context.credentials.app_key(context.crypto)
           )
@@ -104,7 +104,7 @@ module Virgil
           card = context.client.new_global_card(
               identity,
               identity_type,
-              owner_key
+              owner_key.private_keys
           )
           VirgilCard.new(context: context, card: card)
         end
