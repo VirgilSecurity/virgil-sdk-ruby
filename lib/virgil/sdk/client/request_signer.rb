@@ -35,7 +35,7 @@
 module Virgil
   module SDK
     module Client
-      # Class used for signing api requests.
+      # Class used for signing high_level requests.
       class RequestSigner
         attr_reader :crypto
 

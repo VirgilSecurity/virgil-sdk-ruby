@@ -5,7 +5,6 @@ module Virgil
   module SDK
     autoload :Cryptography, 'virgil/sdk/cryptography'
     autoload :Client, 'virgil/sdk/client'
-    autoload :API, 'virgil/sdk/api'
-    autoload :Identity, 'virgil/sdk/identity'
+    autoload :HighLevel, 'virgil/sdk/high_level'
   end
 end

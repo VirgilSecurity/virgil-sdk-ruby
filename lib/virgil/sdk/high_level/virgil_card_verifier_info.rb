@@ -31,39 +31,19 @@
 # STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING
 # IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
 # POSSIBILITY OF SUCH DAMAGE.
+require 'base64'
+require 'json'
+
 module Virgil
   module SDK
-    module API
-      class Context
-        attr_reader :access_token, :client, :crypto, :credentials,
-                    :cards_service_url, :cards_read_only_service_url,
-                    :identity_service_url, :key_storage
-
-        def initialize(access_token:, credentials: nil, key_storage_path: Cryptography::Keys::KeyStorage.default_folder,
-                       cards_service_url: Client::Card::SERVICE_URL,
-                       cards_read_only_service_url: Client::Card::READ_ONLY_SERVICE_URL,
-                       identity_service_url: Virgil::SDK::Identity::IDENTITY_SERVICE_URL,
-                       card_verifiers: []
-        )
-          @access_token = access_token
-          @client = Client::VirgilClient.new(access_token, cards_service_url, cards_read_only_service_url, identity_service_url)
-          @crypto = Cryptography::VirgilCrypto.new
-          @credentials = credentials
-          @key_storage = Cryptography::Keys::KeyStorage.new(key_storage_path)
-
-          if card_verifiers.any?
-
-            @client.card_validator = Client::CardValidator.new(@crypto)
-
-            card_verifiers.each do |card_verifier|
-              raise ArgumentError.new("card_verifiers is not valid") unless card_verifier.is_a? CardVerifierInfo
-              @client.card_validator.add_verifier(card_verifier.card_id, @crypto.import_public_key(card_verifier.public_key_value.bytes))
-            end
-          end
-
-        end
+    module HighLevel
+      # This class represents an information about Virgil Card
+      # verifier such as Public key and Card Id.
+      # card_id: Card identifier
+      # public_key_value: Public key value wrapped by VirgilBuffer used for signature verification.
+      #
+      VirgilCardVerifierInfo = Struct.new(:card_id, :public_key_value) do
       end
-
     end
   end
 end

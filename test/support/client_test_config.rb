@@ -19,7 +19,7 @@ module ClientTestConfig
     end
 
     def identity_service_url
-      @_identity_service_url ||= ENV["VIRGIL_IDENTITY_SERVICE_URL"]
+      @_identity_service_url ||= ENV["identity_SERVICE_URL"]
     end
 
     def app_bundle
@@ -37,5 +37,7 @@ module ClientTestConfig
     def raw_app_private_key
       @_raw_app_private_key ||= File.read(app_key_path)
     end
+
+
   end
 end

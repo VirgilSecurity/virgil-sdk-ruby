@@ -33,8 +33,8 @@
 # POSSIBILITY OF SUCH DAMAGE.
 module Virgil
   module SDK
-    module API
-      class CardManager
+    module HighLevel
+      class VirgilCardManager
         attr_reader :context
         protected :context
 
@@ -77,14 +77,19 @@ module Virgil
         # Args:
         #   identity: The user's identity.
         #   owner_key: The owner's Virgil key.
+        #   custom_data(optional): is an associative array that contains application specific
+        #                          parameters(under key :data) and information about the device
+        #                          on which the keypair was created(under key :device and :device_name).
+        #                          example: {data: {my_key1: "my_val1", my_key2: "my_val2"}, device: "iPhone6s", device_name: "Space grey one"}
         #
         # Returns:
         #   Created unpublished Virgil Card that is representing user's Public key
-        def create(identity, owner_key)
+        def create(identity, owner_key, custom_data={})
           card = context.client.new_card(
               identity,
               Client::Card::USERNAME_IDENTITY,
-              owner_key.private_key
+              owner_key.private_key,
+              custom_data
           )
 
           VirgilCard.new(context: context, card: card)
@@ -95,14 +100,19 @@ module Virgil
         # Args:
         #   identity: The user's identity.
         #   owner_key: The owner's Virgil key.
+        #   custom_data(optional): is an associative array that contains application specific
+        #                          parameters(under key :data) and information about the device
+        #                          on which the keypair was created(under key :device and :device_name).
+        #                          example: {data: {my_key1: "my_val1", my_key2: "my_val2"}, device: "iPhone6s", device_name: "Space grey one"}
         #
         # Returns:
         #   Created unpublished Global Virgil Card that is representing user's Public key
-        def create_global(identity:, identity_type:, owner_key:)
+        def create_global(identity:, identity_type:, owner_key:, custom_data:{})
           card = context.client.new_global_card(
               identity,
               identity_type,
-              owner_key.private_key
+              owner_key.private_key,
+              custom_data
           )
           VirgilCard.new(context: context, card: card)
         end
@@ -134,7 +144,7 @@ module Virgil
         # Args:
         #     card: the global card to be published
         # Raises:
-        # Client::HTTP::BaseConnection::ApiError if Identity Validation Token is invalid or has expired
+        # Client::HTTP::BaseConnection::ApiError if VirgilIdentity Validation Token is invalid or has expired
         # Virgil Card with the same fingerprint already exists in Virgil Security services
         def publish_global(card, validation_token)
           card.publish_as_global(validation_token)
@@ -213,7 +223,7 @@ module Virgil
         #
         # Raises:
         #   Client::HTTP::BaseConnection::ApiError if the global card was not published
-        #   Client::HTTP::BaseConnection::ApiError if Identity Validation Token is invalid or has expired
+        #   Client::HTTP::BaseConnection::ApiError if VirgilIdentity Validation Token is invalid or has expired
         def revoke_global(global_card, key_pair, validation_token)
           context.client.revoke_global_card(global_card.id, key_pair, validation_token)
 

@@ -33,13 +33,13 @@
 # POSSIBILITY OF SUCH DAMAGE.
 module Virgil
   module SDK
-    module API
+    module HighLevel
       # A Virgil Card is the main entity of the Virgil Security services, it includes an information
       # about the user and his public key. The Virgil Card identifies the user by one of his available
       # types, such as an email, a phone number, etc.
       class VirgilCard
         attr_reader :context, :card
-        protected :context, :card
+        # protected :context, :card
 
         def initialize(context:, card:)
           @context = context
@@ -48,43 +48,43 @@ module Virgil
 
 
         def id
-          self.card.id
+          card.id
         end
 
 
         def identity
-          self.card.identity
+          card.identity
         end
 
 
         def identity_type
-          self.card.identity_type
+          card.identity_type
         end
 
 
         def data
-          self.card.data
+          card.data
         end
 
 
         def scope
-          self.card.scope
+          card.scope
         end
 
         def public_key
-          self.context.crypto.import_public_key(self.card.public_key)
+          context.crypto.import_public_key(card.public_key)
         end
 
 
-
-
-        def info
-          #TODO device, device_name
-          # self.data.info
+        def device
+          card.device
         end
 
 
-        # private :card, :context, :card=, :context=
+        def device_name
+          card.device_name
+        end
+
 
         # Exports card's snapshot.
         #
@@ -117,17 +117,16 @@ module Virgil
         end
 
 
-
-       # Encrypts the specified data for current Virgil card recipient
-       #
-       # Args:
-       #   buffer: The data to be encrypted.
-       #
-       # Returns:
-       #   Encrypted data for current Virgil card recipient
-       #
-       # Raises:
-       #   ArgumentError: buffer is not valid if buffer doesn't have type VirgilBuffer or String
+        # Encrypts the specified data for current Virgil card recipient
+        #
+        # Args:
+        #   buffer: The data to be encrypted.
+        #
+        # Returns:
+        #   Encrypted data for current Virgil card recipient
+        #
+        # Raises:
+        #   ArgumentError: buffer is not valid if buffer doesn't have type VirgilBuffer or String
         def encrypt(buffer)
 
           VirgilBuffer.validate_buffer_param(buffer)
@@ -136,35 +135,35 @@ module Virgil
         end
 
 
-       # Initiates an identity verification process for current Card indentity type. It is only working for
-       #  Global identity types like Email.
-       #
-       # Args:
-       #   identity_options: The data to be encrypted.
-       #
-       # Returns:
-       #   An instance of Identity::VerificationAttempt that contains
-       #   information about operation etc
+        # Initiates an identity verification process for current Card indentity type. It is only working for
+        #  Global identity types like Email.
+        #
+        # Args:
+        #   identity_options: The data to be encrypted.
+        #
+        # Returns:
+        #   An instance of VirgilIdentity::VerificationAttempt that contains
+        #   information about operation etc
         def check_identity(identity_options = nil)
           action_id = context.client.verify_identity(identity, identity_type)
-          Identity::VerificationAttempt.new(context: context, action_id: action_id,
-                                            identity: identity, identity_type: identity_type,
-                                            additional_options: identity_options)
+          VirgilIdentity::VerificationAttempt.new(context: context, action_id: action_id,
+                                                  identity: identity, identity_type: identity_type,
+                                                  additional_options: identity_options)
         end
 
 
-       #  Verifies the specified buffer and signature with current VirgilCard recipient
-       #
-       # Args:
-       #   buffer: The data to be verified.
-       #   signature: The signature used to verify the data integrity.
-       #
-       # Returns:
-       #    true if signature is valid, false otherwise.
-       #
-       # Raises:
-       #   ArgumentError: buffer is not valid if buffer doesn't have type VirgilBuffer or String
-       #   ArgumentError: buffer is not valid if signature doesn't have type VirgilBuffer or String
+        #  Verifies the specified buffer and signature with current VirgilCard recipient
+        #
+        # Args:
+        #   buffer: The data to be verified.
+        #   signature: The signature used to verify the data integrity.
+        #
+        # Returns:
+        #    true if signature is valid, false otherwise.
+        #
+        # Raises:
+        #   ArgumentError: buffer is not valid if buffer doesn't have type VirgilBuffer or String
+        #   ArgumentError: buffer is not valid if signature doesn't have type VirgilBuffer or String
         def verify(buffer, signature)
           VirgilBuffer.validate_buffer_param(buffer)
           VirgilBuffer.validate_buffer_param(signature, "signature")

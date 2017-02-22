@@ -33,20 +33,22 @@
 # POSSIBILITY OF SUCH DAMAGE.
 module Virgil
   module SDK
-    module API
-      class Api
-        attr_accessor :context, :keys, :cards
+    module HighLevel
+      class VirgilAppCredentials
+        attr_reader :app_id, :app_key_data, :app_key_password
 
-        def initialize(access_token: nil, context: nil)
-          if access_token
-            self.context = Virgil::SDK::API::Context.new(access_token: access_token)
-          elsif context
-            self.context = context
-          end
-          self.keys = KeyManager.new(self.context)
-          self.cards = CardManager.new(self.context)
+        def initialize(app_id:, app_key_data:, app_key_password:)
+          @app_id = app_id
+          @app_key_data = app_key_data
+          @app_key_password = app_key_password
+        end
+
+        def app_key(crypto)
+          crypto.import_private_key(app_key_data, app_key_password)
         end
       end
     end
   end
 end
+
+

@@ -60,7 +60,7 @@ module Virgil
             access_token,
             cards_service_url=Card::SERVICE_URL,
             cards_read_only_service_url=Card::READ_ONLY_SERVICE_URL,
-            identity_service_url=Virgil::SDK::Identity::IDENTITY_SERVICE_URL
+            identity_service_url=Virgil::SDK::VirgilIdentity::IDENTITY_SERVICE_URL
         )
           self.access_token = access_token
           self.cards_service_url = cards_service_url
@@ -103,15 +103,23 @@ module Virgil
         #     Public key is stored in the card, private key is used for request signing.
         #   app_id: Application identity for authority sign.
         #   app_key: Application key for authority sign.
+        #   custom_data(optional): is an associative array that contains application specific
+        #                          parameters(under key :data) and information about the device
+        #                          on which the keypair was created(under key :device and :device_name).
+        #                          example: {data: {my_key1: "my_val1", my_key2: "my_val2"}, device: "iPhone6s", device_name: "Space grey one"}
         #
         # Returns:
         #   Created local card that is not published to Virgil Security services
-        def new_card(identity, identity_type, private_key)
+        def new_card(identity, identity_type, private_key, custom_data={})
+          data = custom_data[:data]
+          custom_data.delete(:data)
           request = Virgil::SDK::Client::Requests::CreateCardRequest.new(
               identity: identity,
               identity_type: identity_type,
               scope: Client::Card::APPLICATION,
-              raw_public_key: self.crypto.extract_public_key(private_key).value
+              raw_public_key: self.crypto.extract_public_key(private_key).value,
+              info: custom_data,
+              data: data
           )
           self.request_signer.self_sign(request, private_key)
 
@@ -126,15 +134,23 @@ module Virgil
         #   identity_type: Created card identity type.
         #   private_key: Key pair of the created card.
         #     Public key is stored in the card, private key is used for request signing.
+        #   custom_data(optional): is an associative array that contains application specific
+        #                          parameters(under key :data) and information about the device
+        #                          on which the keypair was created(under key :device and :device_name).
+        #                          example: {data: {my_key1: "my_val1", my_key2: "my_val2"}, device: "iPhone6s", device_name: "Space grey one"}
         #
         # Returns:
         #   Created global card that is not published to Virgil Security services
-        def new_global_card(identity, identity_type, private_key)
+        def new_global_card(identity, identity_type, private_key, custom_data={})
+          data = custom_data[:data]
+          custom_data.delete(:data)
           request = Virgil::SDK::Client::Requests::CreateCardRequest.new(
               identity: identity,
               identity_type: identity_type,
               scope: Client::Card::GLOBAL,
-              raw_public_key: self.crypto.extract_public_key(private_key).value
+              raw_public_key: self.crypto.extract_public_key(private_key).value,
+              info: custom_data,
+              data: data
           )
           self.request_signer.self_sign(request, private_key)
 
@@ -177,6 +193,7 @@ module Virgil
               body: create_request.request_model
           )
           raw_response = self.cards_connection.send_request(http_request)
+          puts "raw_response= #{raw_response}"
           card = Card.from_response(raw_response)
           self.validate_cards([card]) if self.card_validator
           card

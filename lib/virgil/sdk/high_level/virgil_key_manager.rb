@@ -33,10 +33,10 @@
 # POSSIBILITY OF SUCH DAMAGE.
 module Virgil
   module SDK
-    module API
+    module HighLevel
       # this class provides a list of methods to generate the VirgilKey
       # and further them storage in secure place.
-      class KeyManager
+      class VirgilKeyManager
         attr_reader :context
 
         def initialize(context)

@@ -44,7 +44,7 @@ module Virgil
         # Create new search criteria for searching cards by identity.
         #
         # Args:
-        #     identity: Identity value.
+        #     identity: VirgilIdentity value.
         #
         # Returns:
         #     Search criteria with provided identity.

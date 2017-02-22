@@ -33,24 +33,37 @@
 # POSSIBILITY OF SUCH DAMAGE.
 module Virgil
   module SDK
-    module Identity
-      class VerificationOptions
+    module HighLevel
+      class VirgilContext
+        attr_reader :access_token, :client, :crypto, :credentials,
+                    :cards_service_url, :cards_read_only_service_url,
+                    :identity_service_url, :key_storage
 
-        # time_to_live is used to limit the lifetime of the token in
-        # seconds (maximum value is 60 * 60 * 24 * 365 = 1 year). Default value is 3600.
-        #
-        # count_to_live parameter is used to restrict the number of validation token
-        # usages (maximum value is 100).
-        attr_reader :time_to_live, :count_to_live
+        def initialize(access_token:, credentials: nil, key_storage_path: Cryptography::Keys::KeyStorage.default_folder,
+                       cards_service_url: Client::Card::SERVICE_URL,
+                       cards_read_only_service_url: Client::Card::READ_ONLY_SERVICE_URL,
+                       identity_service_url: VirgilIdentity::IDENTITY_SERVICE_URL,
+                       card_verifiers: []
+        )
+          @access_token = access_token
+          @client = Client::VirgilClient.new(access_token, cards_service_url, cards_read_only_service_url, identity_service_url)
+          @crypto = Cryptography::VirgilCrypto.new
+          @credentials = credentials
+          @key_storage = Cryptography::Keys::KeyStorage.new(key_storage_path)
 
+          if card_verifiers.any?
 
-        def initialize(options = {})
-          @time_to_live = options[:time_to_live] || 3600
-          @count_to_live = options[:count_to_live] || 12
+            @client.card_validator = Client::CardValidator.new(@crypto)
+
+            card_verifiers.each do |card_verifier|
+              raise ArgumentError.new("card_verifiers is not valid") unless card_verifier.is_a? VirgilCardVerifierInfo
+              @client.card_validator.add_verifier(card_verifier.card_id, @crypto.import_public_key(card_verifier.public_key_value.bytes))
+            end
+          end
+
         end
-
-
       end
+
     end
   end
 end

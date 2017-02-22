@@ -36,7 +36,7 @@ require 'json'
 
 module Virgil
   module SDK
-    module API
+    module HighLevel
 
       # This class provides a list of methods that simplify the work with an array of bytes.
       VirgilBuffer = Struct.new(:bytes) do
@@ -58,14 +58,14 @@ module Virgil
         end
 
 
-        def self.from_string(str, encoding=StringEncoding::UTF8)
+        def self.from_string(str, encoding=VirgilStringEncoding::UTF8)
 
           case encoding
-            when StringEncoding::BASE64
+            when VirgilStringEncoding::BASE64
               return self.from_base64(str)
-            when StringEncoding::HEX
+            when VirgilStringEncoding::HEX
               return self.from_hex(str)
-            when StringEncoding::UTF8
+            when VirgilStringEncoding::UTF8
               return self.from_utf8(str)
             else
               ArgumentError.new("encoding is undefined")
@@ -74,13 +74,13 @@ module Virgil
         end
 
 
-        def to_string(encoding=StringEncoding::UTF8)
+        def to_string(encoding=VirgilStringEncoding::UTF8)
           case encoding
-            when StringEncoding::BASE64
+            when VirgilStringEncoding::BASE64
               return self.to_base64
-            when StringEncoding::HEX
+            when VirgilStringEncoding::HEX
               return self.to_hex
-            when StringEncoding::UTF8
+            when VirgilStringEncoding::UTF8
               return to_s
             else
               ArgumentError.new("encoding is undefined")
@@ -144,7 +144,7 @@ module Virgil
 
       end
 
-      module StringEncoding
+      module VirgilStringEncoding
         BASE64 = 1
         HEX = 2
         UTF8 = 3

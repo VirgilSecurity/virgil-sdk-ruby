@@ -46,7 +46,7 @@ module Virgil
 
           def to_json
             model = {
-                'data': API::VirgilBuffer.new(data).to_base64,
+                'data': HighLevel::VirgilBuffer.new(data).to_base64,
                 'meta': meta
             }
             model.to_json
@@ -54,7 +54,7 @@ module Virgil
 
           def self.restore_from_json(name, str_json)
             model = JSON.parse(str_json)
-            new(name, API::VirgilBuffer.from_base64(model['data']).bytes, model['meta'])
+            new(name, HighLevel::VirgilBuffer.from_base64(model['data']).bytes, model['meta'])
           end
         end
       end

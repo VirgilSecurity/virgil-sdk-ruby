@@ -31,18 +31,40 @@
 # STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING
 # IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
 # POSSIBILITY OF SUCH DAMAGE.
-require 'base64'
-require 'json'
-
 module Virgil
   module SDK
-    module API
-      # This class represents an information about Virgil Card
-      # verifier such as Public key and Card Id.
-      # card_id: Card identifier
-      # public_key_value: Public key value wrapped by VirgilBuffer used for signature verification.
-      #
-      CardVerifierInfo = Struct.new(:card_id, :public_key_value) do
+    module HighLevel
+      class VirgilApi
+        attr_accessor :context, :keys, :cards
+
+        class VirgilApiException < StandardError
+
+        end
+
+        class VirgilApiAccessTokenException < VirgilApiException
+
+          def to_s
+            "Access tokens are not equal"
+          end
+
+        end
+
+        def initialize(access_token: nil, context: nil)
+
+          if (access_token && context)
+            raise VirgilApiAccessTokenException.new unless access_token == context.access_token
+          end
+
+
+          if context
+            self.context = context
+          elsif access_token
+            self.context = Virgil::SDK::HighLevel::VirgilContext.new(access_token: access_token)
+          end
+
+          self.keys = VirgilKeyManager.new(self.context)
+          self.cards = VirgilCardManager.new(self.context)
+        end
       end
     end
   end

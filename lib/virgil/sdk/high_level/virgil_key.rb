@@ -33,7 +33,7 @@
 # POSSIBILITY OF SUCH DAMAGE.
 module Virgil
   module SDK
-    module API
+    module HighLevel
       # This class represents a user's high-level Private key which provides
       # a list of methods that allows to store the key and perform cryptographic operations like
       # Decrypt, Sign etc.

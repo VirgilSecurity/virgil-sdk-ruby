@@ -11,5 +11,13 @@ module TestData
          JSON.parse(raw_data)
       end
     end
+
+    def card_verifier_data
+      @_card_verifier_data ||= begin
+        path = File.join(DATA_DIR, 'card_verifier_data.json')
+        raw_data = File.read(path)
+        JSON.parse(raw_data)
+      end
+    end
   end
 end

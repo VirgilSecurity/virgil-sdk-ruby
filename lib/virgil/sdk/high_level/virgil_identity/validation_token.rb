@@ -33,7 +33,7 @@
 # POSSIBILITY OF SUCH DAMAGE.
 module Virgil
   module SDK
-    module Identity
+    module VirgilIdentity
       class ValidationToken
         attr_reader :value
 
