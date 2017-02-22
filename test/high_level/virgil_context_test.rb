@@ -32,9 +32,9 @@
 # IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
 # POSSIBILITY OF SUCH DAMAGE.
 require 'test_helper'
-require "virgil/sdk"
+require "virgil/sdk/high_level"
 
-class HighLevelTest < Minitest::Test
+class VirgilContextTest < Minitest::Test
   include Virgil::SDK::HighLevel
 
   def setup
@@ -52,11 +52,6 @@ class HighLevelTest < Minitest::Test
         identity_service_url: ClientTestConfig.identity_service_url,
         card_verifiers: [@card_verifier_info]
     )
-
-    @api_with_context = VirgilApi.new(context: @context)
-    @api_without_context = VirgilApi.new(access_token: ClientTestConfig.access_token)
-
-
   end
 
 

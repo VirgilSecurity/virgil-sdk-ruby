@@ -47,6 +47,15 @@ module Virgil
         end
 
 
+        class AppCredentialsException < StandardError
+
+          def to_s
+            "For this operation we need app_id and app_key"
+          end
+
+        end
+
+
         def id
           card.id
         end
@@ -100,6 +109,7 @@ module Virgil
         # Virgil::SDK::Client::HTTP::BaseConnection::ApiError if access_token is invalid or
         # Virgil Card with the same fingerprint already exists in Virgil Security services
         def publish
+
           @card = context.client.sign_and_publish_card(
               card,
               context.credentials.app_id,
@@ -172,6 +182,15 @@ module Virgil
       end
 
 
+      private
+
+      def validate_app_credentials
+
+        if !(context.credentials && context.credentials.app_id && context.credentials.app_key(context.crypto))
+          raise AppCredentialsException
+        end
+
+      end
     end
   end
 end

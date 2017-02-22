@@ -43,6 +43,14 @@ module Virgil
         end
 
 
+        class AppCredentialsException < StandardError
+
+          def to_s
+            "For this operation we need app_id and app_key"
+          end
+
+        end
+
         class CardArray < Array
 
           attr_accessor :crypto
@@ -94,6 +102,7 @@ module Virgil
 
           VirgilCard.new(context: context, card: card)
         end
+
 
         # Creates a new Global Virgil Card that is representing user's Public key and information
         #
@@ -209,6 +218,8 @@ module Virgil
         #   Client::HTTP::BaseConnection::ApiError if the card was not published
         #   or application credentials is not valid.
         def revoke(card)
+          validate_app_credentials
+
           context.client.revoke_card(
               card.id,
               context.credentials.app_id,
@@ -247,10 +258,19 @@ module Virgil
           )
         end
 
+
         private
 
         def validate_identities_param(param)
           raise ArgumentError.new("identities is not valid") if (!param.is_a?(Array) || param.empty?)
+        end
+
+        def validate_app_credentials
+
+          if !(context.credentials && context.credentials.app_id && context.credentials.app_key(context.crypto))
+            raise AppCredentialsException
+          end
+
         end
       end
     end

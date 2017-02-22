@@ -58,7 +58,7 @@ module Virgil
 
           if context
             self.context = context
-          elsif access_token
+          else
             self.context = Virgil::SDK::HighLevel::VirgilContext.new(access_token: access_token)
           end
 
