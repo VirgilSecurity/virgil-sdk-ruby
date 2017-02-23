@@ -39,7 +39,7 @@ module Virgil
       # types, such as an email, a phone number, etc.
       class VirgilCard
         attr_reader :context, :card
-        # protected :context, :card
+        protected :context, :card
 
         def initialize(context:, card:)
           @context = context
@@ -107,9 +107,11 @@ module Virgil
         # Publish synchronously the card into application Virgil Services scope
         # Raises:
         # Virgil::SDK::Client::HTTP::BaseConnection::ApiError if access_token is invalid or
-        # Virgil Card with the same fingerprint already exists in Virgil Security services
+        #  Virgil Card with the same fingerprint already exists in Virgil Security services
+        # AppCredentialsException:  For this operation we need app_id and app_key
+        #  if application credentials is missing
         def publish
-
+          validate_app_credentials
           @card = context.client.sign_and_publish_card(
               card,
               context.credentials.app_id,
@@ -179,18 +181,18 @@ module Virgil
           VirgilBuffer.validate_buffer_param(signature, "signature")
           context.crypto.verify(buffer.bytes, signature.bytes, public_key)
         end
-      end
 
+        private
 
-      private
+        def validate_app_credentials
 
-      def validate_app_credentials
+          if !(context.credentials && context.credentials.app_id && context.credentials.app_key(context.crypto))
+            raise AppCredentialsException
+          end
 
-        if !(context.credentials && context.credentials.app_id && context.credentials.app_key(context.crypto))
-          raise AppCredentialsException
         end
-
       end
+
     end
   end
 end

@@ -61,11 +61,11 @@ class VirgilCardManagerTest< Minitest::Test
 
 
     @virgil_card = @api_with_token.cards.create(@identity, @alice_key,
-                                               {
-                                                   device: @device,
-                                                   device_name: @device_name,
-                                                   data: @data
-                                               })
+                                                {
+                                                    device: @device,
+                                                    device_name: @device_name,
+                                                    data: @data
+                                                })
   end
 
 
@@ -80,50 +80,93 @@ class VirgilCardManagerTest< Minitest::Test
   end
 
 
-  def test_export_import_publish_revoke
-    assert_raises(Exception) {@virgil_card.publish}
+  def test_export_import_card
+    assert_raises(Exception) { @virgil_card.publish }
 
     exported = @virgil_card.export
     assert exported
 
-    assert_raises(Exception) {@api_with_token.cards.import("sdsfs")}
+    assert_raises(Exception) { @api_with_token.cards.import("sdsfs") }
 
     imported_card_without_credentials = @api_with_token.cards.import(exported)
-    assert_raises(Exception) {imported_card_without_credentials.publish}
+
+    assert_equal @virgil_card.public_key, imported_card_without_credentials.public_key
+    assert_equal(@virgil_card.device, imported_card_without_credentials.device)
+    assert_equal(@virgil_card.device_name, imported_card_without_credentials.device_name)
+    assert_equal(@virgil_card.identity, imported_card_without_credentials.identity)
+    assert_equal(@virgil_card.identity_type,
+                 imported_card_without_credentials.identity_type)
+    assert_equal(@virgil_card.scope, imported_card_without_credentials.scope)
+    assert_nil imported_card_without_credentials.id
+    assert_equal(@virgil_card.data, imported_card_without_credentials.data)
+
+  end
+
+  def test_publish_revoke_card
+    # card can't be published under Virgil Api which does'nt have application credentials
+    assert_raises(Exception) { @virgil_card.publish }
+
+    exported = @virgil_card.export
+    imported_card_without_credentials = @api_with_token.cards.import(exported)
+
+    assert_raises(Exception) { imported_card_without_credentials.publish }
 
     imported_card_with_credentials = @api_with_context.cards.import(exported)
+
     imported_card_with_credentials.publish
 
     assert_equal(imported_card_with_credentials.device, @device)
     assert_equal(imported_card_with_credentials.device_name, @device_name)
-    assert imported_card_with_credentials.data
+
+    assert_equal(@virgil_card.data["a"], imported_card_with_credentials.data["a"])
     assert_equal(imported_card_with_credentials.identity, @identity)
     assert_equal(imported_card_with_credentials.public_key.value,
                  @alice_key.export_public_key.bytes)
     assert imported_card_with_credentials.id
 
     # card can't be revoke under Virgil Api which does'nt have application credentials
-    assert_raises(Exception) {@api_with_token.cards.revoke(imported_card_with_credentials)}
+    assert_raises(Exception) { @api_with_token.cards.revoke(imported_card_with_credentials) }
     @api_with_context.cards.revoke(imported_card_with_credentials)
 
 
+  end
+
+
+  def test_get_card
+    exported = @virgil_card.export
+    imported_card_with_credentials = @api_with_context.cards.import(exported)
+    imported_card_with_credentials.publish
+    card_id = imported_card_with_credentials.id
+
+    # can't get card under Virgil Api which does'nt have application credentials
+    assert_raises(Exception) { @api_with_empty_token.cards.get(card_id) }
+    assert_raises(Exception) { @api_with_token.cards.get(card_id) }
+    card = @api_with_context.cards.get(card_id)
+    assert_equal @virgil_card.public_key, card.public_key
+    assert_equal(@virgil_card.device, card.device)
+    assert_equal(@virgil_card.device_name, card.device_name)
+    assert_equal(@virgil_card.identity, card.identity)
+    assert_equal(@virgil_card.identity_type,
+                 card.identity_type)
+    assert_equal(@virgil_card.scope, card.scope)
+    assert_equal(@virgil_card.data, card.data)
   end
 
 
   def test_find_card
-
     exported = @virgil_card.export
     imported_card_with_credentials = @api_with_context.cards.import(exported)
     imported_card_with_credentials.publish
 
-    assert_raises(Exception) { @api_with_empty_token.cards.get(imported_card_with_credentials.id)}
-
-    assert_raises(Exception) { @api_with_empty_token.cards.find(@identity)}
+    @api_with_token.cards.find(@identity)
+    assert_raises(Exception) { @api_with_empty_token.cards.find(@identity) }
 
     found_cards = @api_with_token.cards.find(@identity, "test_alice_local_card2")
-    assert_equal(found_cards.size, 1)
-    @api_with_context.cards.revoke(imported_card_with_credentials)
-
+    assert(found_cards.size > 0)
+    found_cards.each do |card|
+      @api_with_context.cards.revoke(card)
+    end
   end
+
 
 end

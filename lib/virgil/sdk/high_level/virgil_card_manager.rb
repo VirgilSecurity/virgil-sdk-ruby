@@ -51,6 +51,14 @@ module Virgil
 
         end
 
+        class AccessTokenException < StandardError
+
+          def to_s
+            "For this operation access token can't be empty"
+          end
+
+        end
+
         class CardArray < Array
 
           attr_accessor :crypto
@@ -170,8 +178,11 @@ module Virgil
         #
         # Raises:
         #   VirgilClient::InvalidCardException if client has validator
-        #   and retrieved card signatures are not valid.
+        #    and retrieved card signatures are not valid.
+        #   AppCredentialsException:  For this operation we need app_id and app_key
+        #    if application credentials are missing
         def get(card_id)
+          validate_app_credentials
           VirgilCard.new(context: context, card: context.client.get_card(card_id))
         end
 
@@ -187,7 +198,11 @@ module Virgil
         # Raises:
         #   VirgilClient::InvalidCardException if client has validator
         #   and retrieved card signatures are not valid.
+        #   AccessTokenException:: "For this operation access token can't be empty"
+        #
         def find(*identities)
+
+          raise AccessTokenException unless (context && context.access_token)
 
           validate_identities_param(identities)
 
@@ -217,6 +232,9 @@ module Virgil
         # Raises:
         #   Client::HTTP::BaseConnection::ApiError if the card was not published
         #   or application credentials is not valid.
+        #   AppCredentialsException:  For this operation we need app_id and app_key
+        #    if application credentials are missing
+
         def revoke(card)
           validate_app_credentials
 
