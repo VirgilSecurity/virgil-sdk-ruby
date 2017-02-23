@@ -37,7 +37,7 @@ class VirgilCardManagerTest< Minitest::Test
   include Virgil::SDK::HighLevel
 
   def setup
-    @keydata = VirgilBuffer.from_string(ClientTestConfig.raw_app_private_key).bytes
+    @keydata = VirgilBuffer.from_string(ClientTestConfig.raw_app_private_key)
     @credentials = VirgilAppCredentials.new(app_id: ClientTestConfig.app_id,
                                             app_key_data: @keydata,
                                             app_key_password: ClientTestConfig.app_key_password)
@@ -46,8 +46,7 @@ class VirgilCardManagerTest< Minitest::Test
         credentials: @credentials,
         cards_service_url: ClientTestConfig.card_service_url,
         cards_read_only_service_url: ClientTestConfig.cards_read_only_service_url,
-        identity_service_url: ClientTestConfig.identity_service_url,
-        card_verifiers: [@card_verifier_info]
+        identity_service_url: ClientTestConfig.identity_service_url
     )
     @api_with_token = VirgilApi.new(access_token: ClientTestConfig.access_token)
     @api_with_context = VirgilApi.new(context: @context)

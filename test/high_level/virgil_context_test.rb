@@ -38,7 +38,7 @@ class VirgilContextTest < Minitest::Test
   include Virgil::SDK::HighLevel
 
   def setup
-    @keydata = VirgilBuffer.from_string(ClientTestConfig.raw_app_private_key).bytes
+    @keydata = VirgilBuffer.from_string(ClientTestConfig.raw_app_private_key)
     @credentials = VirgilAppCredentials.new(app_id: ClientTestConfig.app_id,
                                             app_key_data: @keydata,
                                             app_key_password: ClientTestConfig.app_key_password)
@@ -66,7 +66,7 @@ class VirgilContextTest < Minitest::Test
 
 
   def test_default_keystorage_folder_is_created
-    assert Dir.exists?(@context.key_storage.folder_path)
+    assert Dir.exist?(@context.key_storage.folder_path)
   end
 
 
@@ -123,7 +123,7 @@ class VirgilContextTest < Minitest::Test
 
   def tmp_path
     path = "tmp"
-    FileUtils.mkdir(path) unless Dir.exists?(path)
+    FileUtils.mkdir(path) unless Dir.exist?(path)
     @tmp_path = path
   end
 end

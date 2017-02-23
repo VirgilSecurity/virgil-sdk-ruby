@@ -88,14 +88,15 @@ module Virgil
           # Returns:
           #   Dict containing snapshot data model used for card creation request.
           def snapshot_model
-            {
+            model = {
                 'identity': identity,
                 'identity_type': identity_type,
                 'public_key': public_key,
                 'scope': scope,
-                'data': data,
-                'info': info
+                'data': data
             }
+            model['info'] = info if (info && info.any?)
+            model
           end
         end
       end

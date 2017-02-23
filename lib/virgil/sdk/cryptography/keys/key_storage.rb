@@ -72,7 +72,7 @@ module Virgil
 
           def self.default_folder
             path = "./key_storage"
-            FileUtils.mkdir(path) unless Dir.exists?(path)
+            FileUtils.mkdir(path) unless Dir.exist?(path)
             path
           end
 
@@ -159,7 +159,7 @@ module Virgil
 
           def validate_storage_folder
 
-            unless (Dir.exists?(folder_path) && File.writable?(folder_path) && File.readable?(folder_path))
+            unless (Dir.exist?(folder_path) && File.writable?(folder_path) && File.readable?(folder_path))
               raise KeyStorageException.new("Destination folder doesn't exist or you don't have permission to write there")
             end
 

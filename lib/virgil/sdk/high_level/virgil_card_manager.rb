@@ -103,7 +103,7 @@ module Virgil
         def create(identity, owner_key, custom_data={})
           card = context.client.new_card(
               identity,
-              Client::Card::USERNAME_IDENTITY,
+              VirgilIdentity::USERNAME,
               owner_key.private_key,
               custom_data
           )
@@ -179,10 +179,7 @@ module Virgil
         # Raises:
         #   VirgilClient::InvalidCardException if client has validator
         #    and retrieved card signatures are not valid.
-        #   AppCredentialsException:  For this operation we need app_id and app_key
-        #    if application credentials are missing
         def get(card_id)
-           # validate_app_credentials
           VirgilCard.new(context: context, card: context.client.get_card(card_id))
         end
 

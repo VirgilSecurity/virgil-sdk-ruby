@@ -129,8 +129,7 @@ module Virgil
       Card::APPLICATION = "application"
       Card::GLOBAL = "global"
 
-      Card::EMAIL_IDENTITY = "email"
-      Card::USERNAME_IDENTITY = "username"
+
 
 
       Card::SERVICE_URL = ENV["VIRGIL_SERVICE_URL"] || "https://ra.virgilsecurity.com"

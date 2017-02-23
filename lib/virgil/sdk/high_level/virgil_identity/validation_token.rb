@@ -33,14 +33,16 @@
 # POSSIBILITY OF SUCH DAMAGE.
 module Virgil
   module SDK
-    module VirgilIdentity
-      class ValidationToken
-        attr_reader :value
+    module HighLevel
+      module VirgilIdentity
+        class ValidationToken
+          attr_reader :value
 
-        def initialize(value)
-          @value = value
+          def initialize(value)
+            @value = value
+          end
+
         end
-
       end
     end
   end

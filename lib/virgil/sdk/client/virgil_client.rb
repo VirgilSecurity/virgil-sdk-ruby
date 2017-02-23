@@ -408,7 +408,6 @@ module Virgil
               "",
               self.identity_service_url
           )
-          # identity.virgilsecurity.com
 
         end
 

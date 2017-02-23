@@ -33,34 +33,37 @@
 # POSSIBILITY OF SUCH DAMAGE.
 module Virgil
   module SDK
-    module VirgilIdentity
-      class VerificationAttempt
-        attr_reader :action_id, :context, :additional_options, :identity, :identity_type
-        def initialize(context:, action_id:, identity:, identity_type:, additional_options: nil)
-          @context = context
-          @action_id = action_id
-          @identity = identity
-          @identity_type = identity_type
-          @additional_options = additional_options || VerificationOptions.new
+    module HighLevel
+      module VirgilIdentity
+        class VerificationAttempt
+          attr_reader :action_id, :context, :additional_options, :identity, :identity_type
+
+          def initialize(context:, action_id:, identity:, identity_type:, additional_options: nil)
+            @context = context
+            @action_id = action_id
+            @identity = identity
+            @identity_type = identity_type
+            @additional_options = additional_options || VerificationOptions.new
+          end
+
+
+          def confirm(confirmation)
+            raise ConfirmationIsNotValid unless confirmation
+            token = confirmation.confirm_and_grab_validation_token(self, self.context.client)
+            ValidationToken.new(token)
+
+          end
         end
 
 
-        def confirm(confirmation)
-          raise ConfirmationIsNotValid unless confirmation
-          token = confirmation.confirm_and_grab_validation_token(self, self.context.client)
-          ValidationToken.new(token)
-
+        class ConfirmationIsNotValid < StandardError
+          def to_s
+            "Confirmation is not valid"
+          end
         end
-      end
 
-
-      class ConfirmationIsNotValid < StandardError
-        def to_s
-          "Confirmation is not valid"
-        end
       end
 
     end
-
   end
 end

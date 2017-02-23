@@ -33,26 +33,27 @@
 # POSSIBILITY OF SUCH DAMAGE.
 module Virgil
   module SDK
-    module VirgilIdentity
-      class EmailConfirmation
-        attr_reader :confirmation_code
+    module HighLevel
+      module VirgilIdentity
+        class EmailConfirmation
+          attr_reader :confirmation_code
 
 
-        def initialize(confirmation_code)
-          @confirmation_code = confirmation_code
+          def initialize(confirmation_code)
+            @confirmation_code = confirmation_code
+          end
+
+          def confirm_and_grab_validation_token(verification_attempt, client)
+            token = client.confirm_identity(verification_attempt.action_id,
+                                            confirmation_code,
+                                            verification_attempt.additional_options.time_to_live,
+                                            verification_attempt.additional_options.count_to_live
+            )
+
+            token
+          end
+
         end
-
-        def confirm_and_grab_validation_token(verification_attempt, client)
-          token = client.confirm_identity(verification_attempt.action_id,
-                                          confirmation_code,
-                                          verification_attempt.additional_options.time_to_live,
-                                          verification_attempt.additional_options.count_to_live
-          )
-
-          token
-        end
-
-
       end
     end
   end

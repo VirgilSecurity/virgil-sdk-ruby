@@ -44,7 +44,7 @@ module Virgil
         end
 
         def app_key(crypto)
-          crypto.import_private_key(app_key_data, app_key_password)
+          crypto.import_private_key(app_key_data.bytes, app_key_password)
         end
       end
     end

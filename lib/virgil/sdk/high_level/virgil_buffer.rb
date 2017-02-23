@@ -92,6 +92,13 @@ module Virgil
           bytes.pack('c*')
         end
 
+        # Initializes a new buffer from file.
+        def self.from_file(key_file_path)
+          ArgumentError.new("file_path is not valide") unless (File.exist?(key_file_path) && File.readable?(key_file_path))
+          str = File.read(key_file_path)
+          from_string(str)
+        end
+
 
         # Initializes a new buffer from specified string, which encodes binary data as base-64 digits.
         def self.from_base64(str)
@@ -129,7 +136,6 @@ module Virgil
         def to_hex
           to_s.each_byte.map { |b| b.to_s(16) }.join
         end
-
 
 
         def self.validate_buffer_param(param, param_name="buffer")
