@@ -193,7 +193,6 @@ module Virgil
               body: create_request.request_model
           )
           raw_response = self.cards_connection.send_request(http_request)
-          puts "raw_response= #{raw_response}"
           card = Card.from_response(raw_response)
           self.validate_cards([card]) if self.card_validator
           card

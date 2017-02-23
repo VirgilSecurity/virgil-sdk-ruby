@@ -56,7 +56,7 @@ class VirgilCardManagerTest< Minitest::Test
     @device = "samsung"
     @device_name = "samsung 7"
     @data = {a: "some_val_a", b: "some_val_b"}
-    @identity = "test_alice_card"
+    @identity = "test_alice_local_card"
     @alice_key = @api_with_empty_token.keys.generate
 
 
@@ -68,10 +68,6 @@ class VirgilCardManagerTest< Minitest::Test
                                                })
   end
 
-  def test_create_global_card
-
-
-  end
 
   def test_create_and_export_card
     assert_equal(@virgil_card.device, @device)
@@ -83,60 +79,51 @@ class VirgilCardManagerTest< Minitest::Test
     assert_nil @virgil_card.id
   end
 
+
   def test_export_import_publish_revoke
+    assert_raises(Exception) {@virgil_card.publish}
+
     exported = @virgil_card.export
     assert exported
 
     assert_raises(Exception) {@api_with_token.cards.import("sdsfs")}
 
-    imported_without_credentials_card = @api_with_token.cards.import(exported)
-    assert_raises(Exception) {imported_without_credentials_card.publish}
+    imported_card_without_credentials = @api_with_token.cards.import(exported)
+    assert_raises(Exception) {imported_card_without_credentials.publish}
 
-    imported_with_credentials_card = @api_with_context.cards.import(exported)
-    imported_with_credentials_card.publish
+    imported_card_with_credentials = @api_with_context.cards.import(exported)
+    imported_card_with_credentials.publish
 
-    assert_equal(imported_with_credentials_card.device, @device)
-    assert_equal(imported_with_credentials_card.device_name, @device_name)
-    assert imported_with_credentials_card.data
-    assert_equal(imported_with_credentials_card.identity, @identity)
-    assert_equal(imported_with_credentials_card.public_key.value,
+    assert_equal(imported_card_with_credentials.device, @device)
+    assert_equal(imported_card_with_credentials.device_name, @device_name)
+    assert imported_card_with_credentials.data
+    assert_equal(imported_card_with_credentials.identity, @identity)
+    assert_equal(imported_card_with_credentials.public_key.value,
                  @alice_key.export_public_key.bytes)
-    assert imported_with_credentials_card.id
+    assert imported_card_with_credentials.id
 
-    assert_raises(Exception) {@api_with_token.cards.revoke(imported_with_credentials_card)}
-    # @api_with_context.api_with_context
+    # card can't be revoke under Virgil Api which does'nt have application credentials
+    assert_raises(Exception) {@api_with_token.cards.revoke(imported_card_with_credentials)}
+    @api_with_context.cards.revoke(imported_card_with_credentials)
 
-  end
-
-  def test_publish_card
 
   end
 
-  def test_publish_global_card
-
-  end
 
   def test_find_card
 
-  end
+    exported = @virgil_card.export
+    imported_card_with_credentials = @api_with_context.cards.import(exported)
+    imported_card_with_credentials.publish
 
-  def test_find_global_card
+    assert_raises(Exception) { @api_with_empty_token.cards.get(imported_card_with_credentials.id)}
 
-  end
+    assert_raises(Exception) { @api_with_empty_token.cards.find(@identity)}
 
-  def revoke_card
-
-  end
-
-  def revoke_global_card
-
-  end
-
-  def get_card
+    found_cards = @api_with_token.cards.find(@identity, "test_alice_local_card2")
+    assert_equal(found_cards.size, 1)
+    @api_with_context.cards.revoke(imported_card_with_credentials)
 
   end
 
-  def teardown
-
-  end
 end
