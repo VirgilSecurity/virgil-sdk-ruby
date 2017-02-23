@@ -182,7 +182,7 @@ module Virgil
         #   AppCredentialsException:  For this operation we need app_id and app_key
         #    if application credentials are missing
         def get(card_id)
-          validate_app_credentials
+           # validate_app_credentials
           VirgilCard.new(context: context, card: context.client.get_card(card_id))
         end
 

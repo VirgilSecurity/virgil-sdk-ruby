@@ -138,9 +138,9 @@ class VirgilCardManagerTest< Minitest::Test
     imported_card_with_credentials.publish
     card_id = imported_card_with_credentials.id
 
-    # can't get card under Virgil Api which does'nt have application credentials
+    assert @api_with_token.cards.get(card_id)
+    # can't get card under Virgil Api which does'nt have application access token
     assert_raises(Exception) { @api_with_empty_token.cards.get(card_id) }
-    assert_raises(Exception) { @api_with_token.cards.get(card_id) }
     card = @api_with_context.cards.get(card_id)
     assert_equal @virgil_card.public_key, card.public_key
     assert_equal(@virgil_card.device, card.device)
