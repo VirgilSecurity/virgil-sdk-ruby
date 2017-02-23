@@ -42,7 +42,7 @@ virgil = VirgilApi.new(access_token: "[YOUR_ACCESS_TOKEN_HERE]")
 # find Alice's card(s)
 alice_cards = virgil.cards.find("alice")
 
-// encrypt the message using Alice's cards
+# encrypt the message using Alice's cards
 message = "Hello Alice!"
 encrypted_message = alice_cards.encrypt(message)
 
