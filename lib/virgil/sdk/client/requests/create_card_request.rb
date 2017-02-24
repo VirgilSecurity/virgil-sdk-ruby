@@ -91,7 +91,7 @@ module Virgil
             model = {
                 'identity': identity,
                 'identity_type': identity_type,
-                'public_key': public_key,
+                'public_key': Virgil::Crypto::Bytes.new(public_key).to_base64,
                 'scope': scope,
                 'data': data
             }
