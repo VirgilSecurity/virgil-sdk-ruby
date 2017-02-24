@@ -123,7 +123,7 @@ module Virgil
           # Request model used for json representation.
           def request_model
             model = {
-              'content_snapshot': snapshot,
+              'content_snapshot': Base64.strict_encode64(snapshot.to_s),
               'meta': {
                 'signs': signatures
               }

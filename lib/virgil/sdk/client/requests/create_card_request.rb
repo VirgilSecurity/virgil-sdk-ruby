@@ -77,7 +77,7 @@ module Virgil
               validation_token = Virgil::Crypto::Bytes.from_base64(request_model['meta']['validation']['token'])
             end
             request.restore(Virgil::Crypto::Bytes.from_base64(request_model['content_snapshot']),
-                            signatures_from_base64(request_model['meta']['signs']),
+                            request_model['meta']['signs'],
                             validation_token
             )
             request
@@ -91,7 +91,7 @@ module Virgil
             model = {
                 'identity': identity,
                 'identity_type': identity_type,
-                'public_key': public_key,
+                'public_key': Virgil::Crypto::Bytes.new(public_key).to_base64,
                 'scope': scope,
                 'data': data
             }

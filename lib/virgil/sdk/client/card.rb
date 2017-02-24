@@ -90,7 +90,7 @@ module Virgil
 
         def to_request
           request = Virgil::SDK::Client::Requests::CreateCardRequest.new({})
-          request.restore(Crypto::Bytes.from_string(self.snapshot), Card.signatures_from_base64(self.signatures), validation_token)
+          request.restore(Crypto::Bytes.from_string(self.snapshot), self.signatures, validation_token)
           request
         end
 
@@ -100,10 +100,10 @@ module Virgil
 
 
         def self.from_request_model(request_model)
-          snapshot = request_model[:content_snapshot]
-          if request_model[:content_snapshot].is_a?(Array)
-            snapshot = Virgil::Crypto::Bytes.new(request_model[:content_snapshot]).to_s
-          end
+          snapshot = Base64.decode64(request_model[:content_snapshot])
+          # if request_model[:content_snapshot].is_a?(Array)
+          #   snapshot = Virgil::Crypto::Bytes.new(request_model[:content_snapshot]).to_s
+          # end
 
           snapshot_model = JSON.parse(snapshot)
           meta = request_model[:meta]
@@ -119,7 +119,7 @@ module Virgil
               device_name: info["device_name"],
               data: snapshot_model.fetch("data", {}),
               scope: snapshot_model["scope"],
-              signatures: Card.signatures_to_base64(meta[:signs])
+              signatures: meta[:signs]
           )
         end
 
