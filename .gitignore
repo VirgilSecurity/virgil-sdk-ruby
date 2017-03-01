@@ -11,5 +11,5 @@ lib/virgil/sdk/virgil_crypto_ruby.so
 *.gem
 .idea
 sample.rb
-/samples/
 key_storage
+*.virgilkey

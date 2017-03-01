@@ -1,0 +1,36 @@
+FROM ruby:2.1.10
+MAINTAINER marfachaiko@gmail.com
+
+# Install apt based dependencies required to run Rails as
+# well as RubyGems. As the Ruby image itself is based on a
+# Debian image, we use apt-get to install those.
+
+RUN apt-get update && apt-get install -y \
+  build-essential \
+  swig
+
+RUN mkdir /temp
+WORKDIR temp
+RUN    wget https://cmake.org/files/v3.7/cmake-3.7.2.tar.gz
+RUN    tar xzvf cmake-3.7.2.tar.gz
+RUN    cd cmake-3.7.2/;  ./configure; make; make install
+RUN export PATH=/usr/local/bin:$PATH
+RUN export LD_LIBRARY_PATH=/usr/local/lib:$LD_LIBRARY_PATH
+
+
+# Configure the main working directory. This is the base
+# directory used in any further RUN, COPY, and ENTRYPOINT
+# commands.
+RUN mkdir  /virgil-sdk-2.1.10
+WORKDIR /virgil-sdk-2.1.10
+
+# Copy the Gemfile as well as the Gemfile.lock and install
+# the RubyGems. This is a separate step so the dependencies
+# will be cached unless changes to one of those two files
+# are made.
+ADD lib /virgil-sdk-2.1.10/lib
+ADD virgil-sdk.gemspec /virgil-sdk-2.1.10
+ADD Gemfile /virgil-sdk-2.1.10
+RUN gem install bundler && bundle install
+
+ADD . /virgil-sdk-2.1.10

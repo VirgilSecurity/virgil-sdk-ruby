@@ -1,0 +1,107 @@
+version: '2'
+services:
+# Unsupported versions should return ERRORS:
+#   2.0.0- virgil-crypto can't be installed.
+#   2.1.10 - virgil-sdk can't be installed
+#
+#  sdk-2.0.0:
+#    build:
+#      context: .
+#      dockerfile: dockefiles/Dockerfile-200
+#    command: bundle exec rake
+#    volumes:
+#      - .:/virgil-sdk-ruby-2.0.0
+#    environment:
+#        VIRGIL_ACCESS_TOKEN: ${VIRGIL_ACCESS_TOKEN}
+#        VIRGIL_APP_ID: ${VIRGIL_APP_ID}
+#        VIRGIL_SERVICE_URL: ${VIRGIL_SERVICE_URL}
+#        VIRGIL_READ_ONLY_SERVICE_URL: ${VIRGIL_READ_ONLY_SERVICE_URL}
+#        VIRGIL_IDENTITY_SERVICE_URL: ${VIRGIL_IDENTITY_SERVICE_URL}
+#        VIRGIL_APP_BUNDLE: ${VIRGIL_APP_BUNDLE}
+#        VIRGIL_APP_KEY_PATH: ${VIRGIL_APP_KEY_NAME}
+#        VIRGIL_APP_KEY_PASSWORD: ${VIRGIL_APP_KEY_PASSWORD}
+
+#  sdk-2.1.10:
+#    build:
+#      context: .
+#      dockerfile: dockefiles/Dockerfile-2110
+#    command: bundle exec rake
+#    volumes:
+#      - .:/virgil-sdk-ruby-2.1.10
+#    environment:
+#        VIRGIL_ACCESS_TOKEN: ${VIRGIL_ACCESS_TOKEN}
+#        VIRGIL_APP_ID: ${VIRGIL_APP_ID}
+#        VIRGIL_SERVICE_URL: ${VIRGIL_SERVICE_URL}
+#        VIRGIL_READ_ONLY_SERVICE_URL: ${VIRGIL_READ_ONLY_SERVICE_URL}
+#        VIRGIL_IDENTITY_SERVICE_URL: ${VIRGIL_IDENTITY_SERVICE_URL}
+#        VIRGIL_APP_BUNDLE: ${VIRGIL_APP_BUNDLE}
+#        VIRGIL_APP_KEY_PATH: ${VIRGIL_APP_KEY_NAME}
+#        VIRGIL_APP_KEY_PASSWORD: ${VIRGIL_APP_KEY_PASSWORD}
+
+  sdk-2.2.0:
+    build:
+      context: .
+      dockerfile: dockefiles/Dockerfile-220
+    command: bundle exec rake
+    volumes:
+      - .:/virgil-sdk-ruby-2.2.0
+    environment:
+        VIRGIL_ACCESS_TOKEN: ${VIRGIL_ACCESS_TOKEN}
+        VIRGIL_APP_ID: ${VIRGIL_APP_ID}
+        VIRGIL_SERVICE_URL: ${VIRGIL_SERVICE_URL}
+        VIRGIL_READ_ONLY_SERVICE_URL: ${VIRGIL_READ_ONLY_SERVICE_URL}
+        VIRGIL_IDENTITY_SERVICE_URL: ${VIRGIL_IDENTITY_SERVICE_URL}
+        VIRGIL_APP_BUNDLE: ${VIRGIL_APP_BUNDLE}
+        VIRGIL_APP_KEY_PATH: ${VIRGIL_APP_KEY_NAME}
+        VIRGIL_APP_KEY_PASSWORD: ${VIRGIL_APP_KEY_PASSWORD}
+
+  sdk-2.2.6:
+      build:
+        context: .
+        dockerfile: dockefiles/Dockerfile-226
+      command: bundle exec rake
+      volumes:
+        - .:/virgil-sdk-ruby-2.2.6
+      environment:
+          VIRGIL_ACCESS_TOKEN: ${VIRGIL_ACCESS_TOKEN}
+          VIRGIL_APP_ID: ${VIRGIL_APP_ID}
+          VIRGIL_SERVICE_URL: ${VIRGIL_SERVICE_URL}
+          VIRGIL_READ_ONLY_SERVICE_URL: ${VIRGIL_READ_ONLY_SERVICE_URL}
+          VIRGIL_IDENTITY_SERVICE_URL: ${VIRGIL_IDENTITY_SERVICE_URL}
+          VIRGIL_APP_BUNDLE: ${VIRGIL_APP_BUNDLE}
+          VIRGIL_APP_KEY_PATH: ${VIRGIL_APP_KEY_NAME}
+          VIRGIL_APP_KEY_PASSWORD: ${VIRGIL_APP_KEY_PASSWORD}
+
+  sdk-2.3.3:
+      build:
+        context: .
+        dockerfile: dockefiles/Dockerfile-233
+      command: bundle exec rake
+      volumes:
+        - .:/virgil-sdk-ruby-2.3.3
+      environment:
+          VIRGIL_ACCESS_TOKEN: ${VIRGIL_ACCESS_TOKEN}
+          VIRGIL_APP_ID: ${VIRGIL_APP_ID}
+          VIRGIL_SERVICE_URL: ${VIRGIL_SERVICE_URL}
+          VIRGIL_READ_ONLY_SERVICE_URL: ${VIRGIL_READ_ONLY_SERVICE_URL}
+          VIRGIL_IDENTITY_SERVICE_URL: ${VIRGIL_IDENTITY_SERVICE_URL}
+          VIRGIL_APP_BUNDLE: ${VIRGIL_APP_BUNDLE}
+          VIRGIL_APP_KEY_PATH: ${VIRGIL_APP_KEY_NAME}
+          VIRGIL_APP_KEY_PASSWORD: ${VIRGIL_APP_KEY_PASSWORD}
+
+  sdk-2.4.0:
+      build:
+        context: .
+        dockerfile: dockefiles/Dockerfile-240
+      command: bundle exec rake
+      volumes:
+        - .:/virgil-sdk-ruby-2.4.0
+      environment:
+          VIRGIL_ACCESS_TOKEN: ${VIRGIL_ACCESS_TOKEN}
+          VIRGIL_APP_ID: ${VIRGIL_APP_ID}
+          VIRGIL_SERVICE_URL: ${VIRGIL_SERVICE_URL}
+          VIRGIL_READ_ONLY_SERVICE_URL: ${VIRGIL_READ_ONLY_SERVICE_URL}
+          VIRGIL_IDENTITY_SERVICE_URL: ${VIRGIL_IDENTITY_SERVICE_URL}
+          VIRGIL_APP_BUNDLE: ${VIRGIL_APP_BUNDLE}
+          VIRGIL_APP_KEY_PATH: ${VIRGIL_APP_KEY_NAME}
+          VIRGIL_APP_KEY_PASSWORD: ${VIRGIL_APP_KEY_PASSWORD}

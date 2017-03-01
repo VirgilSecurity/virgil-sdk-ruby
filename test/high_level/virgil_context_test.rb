@@ -100,6 +100,8 @@ class VirgilContextTest < Minitest::Test
           key_storage_path: key_storage_folder_path
       )
     }
+    File.chmod(0777, key_storage_folder_path)
+    FileUtils.rm_rf(key_storage_folder_path)
   end
 
 
@@ -113,6 +115,8 @@ class VirgilContextTest < Minitest::Test
           key_storage_path: key_storage_folder_path
       )
     }
+    File.chmod(0777, key_storage_folder_path)
+    FileUtils.rm_rf(key_storage_folder_path)
   end
 
 
