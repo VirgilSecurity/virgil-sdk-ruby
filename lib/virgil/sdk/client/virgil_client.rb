@@ -243,11 +243,9 @@ module Virgil
               reason: reason
           )
           request.restore(validation_token)
-           self.request_signer.authority_sign(request, card_id, key_pair.private_key)
-          # self.request_signer.self_sign(request, key_pair.private_key)
+          self.request_signer.authority_sign(request, card_id, key_pair.private_key)
           self.revoke_card_from_signed_request(request)
         end
-
 
 
         # Revoke card using signed revocation request.
@@ -403,9 +401,10 @@ module Virgil
           )
         end
 
+
         def identity_service_connection
           @identity_service_connection = HTTP::CardsServiceConnection.new(
-              "",
+              nil,
               self.identity_service_url
           )
 

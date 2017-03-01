@@ -67,6 +67,7 @@ module Virgil
             @crypto = Cryptography::VirgilCrypto.new
             super
           end
+
           # Encrypts the specified data using recipients Public keys.
           #
           # Args:
@@ -124,7 +125,7 @@ module Virgil
         #
         # Returns:
         #   Created unpublished Global Virgil Card that is representing user's Public key
-        def create_global(identity:, identity_type:, owner_key:, custom_data:{})
+        def create_global(identity:, identity_type:, owner_key:, custom_data: {})
           card = context.client.new_global_card(
               identity,
               identity_type,

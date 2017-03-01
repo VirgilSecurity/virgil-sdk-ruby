@@ -81,13 +81,16 @@ module Virgil
 
           def faraday_connection
             @faraday_connection ||= Faraday.new(url: base_url) do |connection|
-              connection.authorization :VIRGIL, access_token
+              if access_token
+                connection.authorization :VIRGIL, access_token
+              end
               connection.request :json
               connection.response :json, :content_type => /\bjson$/
               connection.response :follow_redirects
               connection.adapter Faraday.default_adapter
             end
           end
+
 
           def error_message(response)
             error_message = nil

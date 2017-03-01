@@ -111,7 +111,10 @@ module Virgil
         # AppCredentialsException:  For this operation we need app_id and app_key
         #  if application credentials is missing
         def publish
+
+          raise NotImplementedError.new("Current card isn't local!") unless @card.scope == Client::Card::APPLICATION
           validate_app_credentials
+
           @card = context.client.sign_and_publish_card(
               card,
               context.credentials.app_id,
@@ -123,6 +126,9 @@ module Virgil
         # Raises:
         # Virgil Card with the same fingerprint already exists in Virgil Security services
         def publish_as_global(validation_token)
+
+          raise NotImplementedError.new("Current card isn't global!") unless @card.scope == Client::Card::GLOBAL
+
           @card.validation_token = validation_token
           @card = context.client.publish_as_global_card(card)
           @card.validation_token = validation_token
