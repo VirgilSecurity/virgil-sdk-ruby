@@ -23,7 +23,7 @@ gem install virgil-sdk
 or add the following line to your Gemfile:
 
 ```
-gem 'virgil-sdk', '~> 4.2.3'
+gem 'virgil-sdk', '~> 4.2.4'
 ```
 
 __Next:__ [Get Started with the Ruby SDK][_getstarted].
