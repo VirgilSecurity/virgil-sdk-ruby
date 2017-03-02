@@ -11,6 +11,7 @@ module Virgil
 
         EMAIL = "email"
         USERNAME = "username"
+        APPLICATION = "application"
       end
     end
   end

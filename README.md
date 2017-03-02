@@ -61,7 +61,7 @@ alice_key = virgil.keys.load("alice_key_1", "mypassword")
 original_message = alice_key.decrypt(transfer_data).to_s
 ```
 
-__Next:__ To [get you properly started][_encryption_get_started_guide] you'll need to know how to create and store Virgil Cards. Our [Get Started guide][_encryption_get_started_guide] will get you there all the way.
+__Next:__ To [get you properly started][_guide_encryption] you'll need to know how to create and store Virgil Cards. Our [Get Started guide][_guide_encryption] will get you there all the way.
 
 __Also:__ [Encrypted communication][_getstarted_encryption] is just one of the few things our SDK can do. Have a look at our guides on  [Encrypted Storage][_getstarted_storage], [Data Integrity][_getstarted_data_integrity] and [Passwordless Login][_getstarted_passwordless_login] for more information.
 
@@ -87,10 +87,8 @@ context = VirgilContext.new(
     # Credentials are required only in case of publish and revoke local Virgil Cards.
     credentials: VirgilAppCredentials.new(app_id: "[YOUR_APP_ID_HERE]",
                                         app_key_data: VirgilBuffer.from_file("[YOUR_APP_KEY_PATH_HERE]"),
-                                        app_key_password: "[YOUR_APP_KEY_PASSWORD_HERE]"),
-    card_verifiers: [ VirgilCardVerifierInfo.new("[YOUR_CARD_ID_HERE]", 
-                                                VirgilBuffer.from_base64("[YOUR_PUBLIC_KEY_HERE]"))]
-)
+                                        app_key_password: "[YOUR_APP_KEY_PASSWORD_HERE]")
+                                        )
 
 virgil = VirgilApi.new(context: context)
 
@@ -128,7 +126,8 @@ Our developer support team is here to help you. You can find us on [Twitter](htt
 [_getstarted_data_integrity]: https://virgilsecurity.com/docs/use-cases/data-verification
 [_getstarted_passwordless_login]: https://virgilsecurity.com/docs/use-cases/passwordless-authentication
 [_guides]: https://virgilsecurity.com/docs/sdk/ruby/features
-[_guide_initialization]: https://virgilsecurity.com/docs/sdk/ruby/get-started
+[_guide_initialization]: https://virgilsecurity.com/docs/sdk/ruby/getting-started#initializing
 [_guide_virgil_cards]: https://virgilsecurity.com/docs/sdk/ruby/features#virgil-cards
 [_guide_virgil_keys]: https://virgilsecurity.com/docs/sdk/ruby/features#virgil-keys
+[_guide_encryption]: https://virgilsecurity.com/docs/sdk/ruby/features#encryption
 [_initialize_root]: https://virgilsecurity.com/docs/sdk/ruby/programming-guide#initializing
