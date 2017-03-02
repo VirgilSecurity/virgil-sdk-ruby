@@ -23,14 +23,14 @@ gem install virgil-sdk
 or add the following line to your Gemfile:
 
 ```
-gem 'virgil-sdk', '~> 4.2.0'
+gem 'virgil-sdk', '~> 4.2.3'
 ```
 
 __Next:__ [Get Started with the Ruby SDK][_getstarted].
 
 ## Encryption Example
 
-Virgil Security makes it super easy to add encryption to any application. With our SDK you create a public [__Virgil Card__](#link_to_virgil_cards_guide) for every one of your users and devices. With these in place you can easily encrypt any data in the client.
+Virgil Security makes it super easy to add encryption to any application. With our SDK you create a public [__Virgil Card__][_guide_virgil_cards] for every one of your users and devices. With these in place you can easily encrypt any data in the client.
 
 ```ruby
 require "virgil/sdk"
@@ -76,7 +76,7 @@ To initialize the SDK on the client side you will only need the __access token__
 virgil = VirgilApi.new(access_token: "[YOUR_ACCESS_TOKEN_HERE]")
 ```
 
-> __Note:__ this client will have [limited capabilities](#guide_on_client_access_permissions). For example, it will be able to generate new __Cards__ but it will need a server-side client to transmit these to Virgil.
+> __Note:__ this client will have limited capabilities. For example, it will be able to generate new __Cards__ but it will need a server-side client to transmit these to Virgil.
 
 To initialize the SDK on the server side we will need the __access token__, __app id__ and the __App Key__ you created on the [Developer Dashboard](https://developer.virgilsecurity.com/).
 
@@ -94,7 +94,7 @@ virgil = VirgilApi.new(context: context)
 
 ```
 
-Next: [Learn more about our the different ways of initializing the Ruby SDK](#_guide_initialization) in our documentation.
+Next: [Learn more about our the different ways of initializing the Ruby SDK][_guide_initialization] in our documentation.
 
 ## Documentation
 
