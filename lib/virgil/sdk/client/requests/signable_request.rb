@@ -39,13 +39,10 @@ module Virgil
   module SDK
     module Client
       module Requests
-        # Base class for all API requests.
+        # Base class for all cards API requests.
         class SignableRequest
-          extend SignaturesBase64
-          attr_reader :signatures, :snapshot, :validation_token
+          attr_reader :signatures, :snapshot, :validation_token, :relations
 
-          # protected :signatures=, :snapshot=
-          # attr_writer :snapshot
 
           # Constructs new SignableRequest object
           def initialize
@@ -81,10 +78,13 @@ module Virgil
           #  Args:
           #    snapshot: Json-encoded snapshot request will be restored from.
           #    signatures: Request signatures.
-          def restore(snapshot, signatures, validation_token = nil)
+          #    validation_token: validation token gotten from Virgil Identity Service
+          #    relations: relations
+          def restore(snapshot, signatures, validation_token = nil, relations = nil)
             @snapshot = snapshot
             @signatures = signatures
             @validation_token = validation_token
+            @relations = relations
             model = JSON.parse(Crypto::Bytes.new(snapshot).to_s)
             restore_from_snapshot_model(model)
           end
@@ -131,6 +131,9 @@ module Virgil
 
             if validation_token
               model[:meta][:validation] = {'token': validation_token.value}
+            end
+            if relations
+              model[:meta][:relations] = relations
             end
 
             return model

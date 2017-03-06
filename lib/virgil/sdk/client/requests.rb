@@ -44,6 +44,10 @@ module Virgil
                  'virgil/sdk/client/requests/verify_identity_request'
         autoload :ConfirmIdentityRequest,
                   'virgil/sdk/client/requests/confirm_identity_request'
+        autoload :AddRelationRequest,
+                 'virgil/sdk/client/requests/add_relation_request'
+        autoload :DeleteRelationRequest,
+                 'virgil/sdk/client/requests/delete_relation_request'
       end
     end
   end

@@ -40,9 +40,8 @@ module Virgil
       Card = Struct.new(:id, :snapshot, :identity,
                         :identity_type, :public_key, :scope,
                         :data, :device, :device_name, :version,
-                        :signatures, :validation_token) do
+                        :signatures, :validation_token, :relations) do
 
-        extend SignaturesBase64
 
         def initialize(options)
           self.id = options[:id]
@@ -56,6 +55,7 @@ module Virgil
           self.device_name = options[:device_name]
           self.version = options[:version]
           self.signatures = options[:signatures] || {}
+          self.relations = options[:relations] || {}
         end
 
         # Create new Card from response containing json-encoded snapshot.
@@ -81,7 +81,8 @@ module Virgil
               data: snapshot_model.fetch("data", {}),
               scope: snapshot_model["scope"],
               version: response["meta"]["card_version"],
-              signatures: response["meta"]["signs"]
+              signatures: response["meta"]["signs"],
+              relations: response["meta"]["relations"]
           )
         end
 
@@ -90,7 +91,7 @@ module Virgil
 
         def to_request
           request = Virgil::SDK::Client::Requests::CreateCardRequest.new({})
-          request.restore(Crypto::Bytes.from_string(self.snapshot), self.signatures, validation_token)
+          request.restore(Crypto::Bytes.from_string(snapshot), signatures, validation_token, relations)
           request
         end
 
@@ -119,7 +120,8 @@ module Virgil
               device_name: info["device_name"],
               data: snapshot_model.fetch("data", {}),
               scope: snapshot_model["scope"],
-              signatures: meta[:signs]
+              signatures: meta[:signs],
+              relations: meta[:relations]
           )
         end
 
@@ -132,9 +134,9 @@ module Virgil
 
 
 
-      Card::SERVICE_URL = ENV["VIRGIL_SERVICE_URL"] || "https://ra.virgilsecurity.com"
+      Card::SERVICE_URL = ENV["VIRGIL_SERVICE_URL"] || "https://cards.virgilsecurity.com"
       Card::READ_ONLY_SERVICE_URL = ENV["VIRGIL_READ_ONLY_SERVICE_URL"] || "https://cards-ro.virgilsecurity.com"
-
+      Card::RA_SERVICE_URL = ENV["VIRGIL_RA_SERVICE_URL"] || "https://ra.virgilsecurity.com"
       Card::VRA_VERSION = "v1" # version of service, which creates and deletes local and global cards
       Card::VC_VERSION = "v4" # version of service, which gets, searchs card
     end

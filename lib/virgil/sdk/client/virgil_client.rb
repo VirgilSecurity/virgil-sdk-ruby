@@ -53,19 +53,21 @@ module Virgil
         end
 
         attr_accessor :access_token, :cards_service_url, :identity_service_url,
-                      :cards_read_only_service_url, :card_validator
+                      :cards_read_only_service_url, :ra_service_url, :card_validator
 
         # Constructs new VirgilClient object
         def initialize(
             access_token=nil,
             cards_service_url=Card::SERVICE_URL,
             cards_read_only_service_url=Card::READ_ONLY_SERVICE_URL,
-            identity_service_url=Virgil::SDK::VirgilIdentity::IDENTITY_SERVICE_URL
+            identity_service_url=Virgil::SDK::VirgilIdentity::IDENTITY_SERVICE_URL,
+            ra_service_url=Card::RA_SERVICE_URL
         )
           self.access_token = access_token
           self.cards_service_url = cards_service_url
           self.cards_read_only_service_url = cards_read_only_service_url
           self.identity_service_url = identity_service_url
+          self.ra_service_url = ra_service_url
         end
 
         # Create published new card from given attributes.
@@ -192,7 +194,7 @@ module Virgil
               endpoint: "/#{Card::VRA_VERSION}/card",
               body: create_request.request_model
           )
-          raw_response = self.cards_connection.send_request(http_request)
+          raw_response = self.ra_connection.send_request(http_request)
           card = Card.from_response(raw_response)
           self.validate_cards([card]) if self.card_validator
           card
@@ -205,6 +207,38 @@ module Virgil
           end
           thread.join
           thread[:card]
+        end
+
+
+        def add_relation(request)
+          unless (request.is_a?(Requests::AddRelationRequest) && !request.snapshot.nil? && request.signatures.count == 1)
+            raise ArgumentError.new("Request is not valid. Request must have snapshot and exactly 1 relation signature.")
+          end
+          http_request = Virgil::SDK::Client::HTTP::Request.new(
+              method: Virgil::SDK::Client::HTTP::Request::POST,
+              endpoint: "/#{Card::VC_VERSION}/card/#{request.signatures.keys.first}/collections/relations",
+              body: request.request_model
+          )
+          raw_response = self.cards_connection.send_request(http_request)
+          card = Card.from_response(raw_response)
+          self.validate_cards([card]) if self.card_validator
+          card
+        end
+
+
+        def delete_relation(request)
+          unless (request.is_a?(Requests::DeleteRelationRequest) && !request.snapshot.nil? && request.signatures.count == 1)
+            raise ArgumentError.new("Request is not valid. Request must have snapshot and exactly 1 relation signature.")
+          end
+          http_request = Virgil::SDK::Client::HTTP::Request.new(
+              method: Virgil::SDK::Client::HTTP::Request::DELETE,
+              endpoint: "/#{Card::VC_VERSION}/card/#{request.signatures.keys.first}/collections/relations",
+              body: request.request_model
+          )
+          raw_response = self.cards_connection.send_request(http_request)
+          card = Card.from_response(raw_response)
+          self.validate_cards([card]) if self.card_validator
+          card
         end
 
 
@@ -258,7 +292,7 @@ module Virgil
               endpoint: "/#{Card::VRA_VERSION}/card/#{revocation_request.card_id}",
               body: revocation_request.request_model
           )
-          self.cards_connection.send_request(http_request)
+          self.ra_connection.send_request(http_request)
         end
 
         def verify_identity(identity, identity_type)
@@ -372,6 +406,7 @@ module Virgil
           return cards
         end
 
+
         # Validate cards signatures.
         # Args:
         #   cards: list of cards to validate.
@@ -393,6 +428,12 @@ module Virgil
           )
         end
 
+        def ra_connection
+          @_ra_connection ||= HTTP::CardsServiceConnection.new(
+              self.access_token,
+              self.ra_service_url
+          )
+        end
         # Cards service connection used for getting and searching cards.
         def read_cards_connection
           @_read_cards_connection = HTTP::CardsServiceConnection.new(

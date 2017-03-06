@@ -10,6 +10,6 @@
 lib/virgil/sdk/virgil_crypto_ruby.so
 *.gem
 .idea
-sample.rb
+*sample.rb
 key_storage
 *.virgilkey

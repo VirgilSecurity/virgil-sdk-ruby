@@ -36,17 +36,19 @@ module Virgil
     module HighLevel
       class VirgilContext
         attr_reader :access_token, :client, :crypto, :credentials,
-                    :cards_service_url, :cards_read_only_service_url,
+                    :cards_service_url, :cards_read_only_service_url, :ra_service_url,
                     :identity_service_url, :key_storage
 
         def initialize(access_token:, credentials: nil, key_storage_path: Cryptography::Keys::KeyStorage.default_folder,
                        cards_service_url: Client::Card::SERVICE_URL,
                        cards_read_only_service_url: Client::Card::READ_ONLY_SERVICE_URL,
+                       ra_service_url: Client::Card::RA_SERVICE_URL,
                        identity_service_url: VirgilIdentity::IDENTITY_SERVICE_URL,
+
                        card_verifiers: []
         )
           @access_token = access_token
-          @client = Client::VirgilClient.new(access_token, cards_service_url, cards_read_only_service_url, identity_service_url)
+          @client = Client::VirgilClient.new(access_token, cards_service_url, cards_read_only_service_url, identity_service_url, ra_service_url)
           @crypto = Cryptography::VirgilCrypto.new
           @credentials = credentials
           @key_storage = Cryptography::Keys::KeyStorage.new(key_storage_path)

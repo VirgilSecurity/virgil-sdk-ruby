@@ -78,7 +78,8 @@ module Virgil
             end
             request.restore(Virgil::Crypto::Bytes.from_base64(request_model['content_snapshot']),
                             request_model['meta']['signs'],
-                            validation_token
+                            validation_token,
+                            request_model['meta']['relations']
             )
             request
           end
