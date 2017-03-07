@@ -184,5 +184,7 @@ class VirgilClientTest < Minitest::Test
       @client.revoke_card(card.id, ClientTestConfig.app_id, @app_private_key)
     end
   end
+
+
 end
 

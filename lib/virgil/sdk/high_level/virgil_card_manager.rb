@@ -71,19 +71,27 @@ module Virgil
           # Encrypts the specified data using recipients Public keys.
           #
           # Args:
-          #   buffer: The data to be encrypted.
+          #   buffer: The data to be encrypted. It can be VirgilBuffer, utf8 String or Array of bytes
           #
           # Returns:
           #   Encrypted data for current recipients Public keys
           #
           # Raises:
-          #   ArgumentError: buffer is not valid if buffer doesn't have type VirgilBuffer or String
+          #   ArgumentError: Buffer has unsupported type if buffer doesn't have type VirgilBuffer, String or Array of bytes
           def encrypt(buffer)
-
-            raise ArgumentError.new("buffer is not valid") if !(buffer.is_a?(VirgilBuffer) || buffer.is_a?(String))
-
             all_public_keys = self.map(&:public_key)
-            VirgilBuffer.new(crypto.encrypt(buffer.bytes, *all_public_keys))
+            buffer_to_encrypt = case buffer.class.name.split("::").last
+                                  when 'VirgilBuffer'
+                                    buffer
+                                  when 'String'
+                                    VirgilBuffer.from_string(buffer)
+                                  when 'Array'
+                                    VirgilBuffer.from_bytes(buffer)
+                                  else
+                                    raise ArgumentError.new("Buffer has unsupported type")
+                                end
+
+            VirgilBuffer.new(crypto.encrypt(buffer_to_encrypt.bytes, *all_public_keys))
           end
 
         end

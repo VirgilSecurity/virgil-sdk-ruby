@@ -49,18 +49,31 @@ module Virgil
         # Decrypts the specified cipher data using Virgil key.
         #
         # Args:
-        #   cipher_buffer: The encrypted data wrapped by VirgilBuffer.
+        #   cipher_buffer: The encrypted data wrapped by VirgilBuffer or
+        #                  encrypted data in base64-encoded String
+        #                  or Array of bytes of encrypted data
         #
         # Returns:
         #   A byte array containing the result from performing the operation wrapped by VirgilBuffer.
         #
         # Raises:
-        #   ArgumentError: buffer is not valid if buffer doesn't have type VirgilBuffer or String
+        #   ArgumentError: buffer is not valid if buffer doesn't have type VirgilBuffer, base64-encoded String or Array of bytes
         #   Recipient with given identifier is not found  if user tries to decrypt cipher data by private key,
         #     though its public key was not used for encryption
         def decrypt(cipher_buffer)
-          VirgilBuffer.validate_buffer_param(cipher_buffer, "cipher buffer")
-          bytes = context.crypto.decrypt(cipher_buffer.bytes, private_key)
+
+          buffer_to_decrypt = case cipher_buffer.class.name.split("::").last
+                                when 'VirgilBuffer'
+                                  cipher_buffer
+                                when 'String'
+                                  VirgilBuffer.from_base64(cipher_buffer)
+                                when 'Array'
+                                  VirgilBuffer.from_bytes(cipher_buffer)
+                                else
+                                  raise ArgumentError.new("Buffer has unsupported type")
+                              end
+
+          bytes = context.crypto.decrypt(buffer_to_decrypt.bytes, private_key)
           VirgilBuffer.new(bytes)
         end
 
@@ -68,17 +81,27 @@ module Virgil
         # Generates a digital signature for specified data using current Virgil key.
         #
         # Args:
-        #   buffer: The data wrapped by VirgilBuffer for which the digital signature will be generated.
+        #   buffer: The data for which the digital signature will be generated.
+        #           buffer can be VirgilBuffer, utf8-encoded String or Array of bytes
         #
         # Returns:
         #   A new buffer that containing the result from performing the operation.
         #
         # Raises:
-        #   ArgumentError: buffer is not valid if buffer doesn't have type VirgilBuffer or String
+        #   ArgumentError: Buffer has unsupported type if buffer doesn't have type VirgilBuffer, String or Array of bytes
         def sign(buffer)
-          VirgilBuffer.validate_buffer_param(buffer)
-          bytes = context.crypto.sign(buffer.bytes, private_key)
-          VirgilBuffer.new(bytes)
+          buffer_to_sign = case buffer.class.name.split("::").last
+                             when 'VirgilBuffer'
+                               buffer
+                             when 'String'
+                               VirgilBuffer.from_string(buffer)
+                             when 'Array'
+                               VirgilBuffer.from_bytes(buffer)
+                             else
+                               raise ArgumentError.new("Buffer has unsupported type")
+                           end
+
+          VirgilBuffer.new(context.crypto.sign(buffer_to_sign.bytes, private_key).to_s.bytes)
         end
 
 
@@ -86,21 +109,31 @@ module Virgil
         #
         # Args:
         #   buffer: The data wrapped by VirgilBuffer to be encrypted and signed
-        #   recipients: The list of VirgilCard recipients.
+        #     recipients: The list of VirgilCard recipients.
+        #     buffer can be VirgilBuffer, utf8-encoded String or Array of bytes
         #
         # Returns:
         #   A new buffer that containing the encrypted and signed data
         #
 
         # Raises:
-        #   ArgumentError: buffer is not valid if buffer doesn't have type VirgilBuffer or String
+        #   ArgumentError: Buffer has unsupported type if buffer doesn't have type VirgilBuffer, String or Array of bytes
         #   ArgumentError: recipients is not valid if recipients doesn't have type Array or empty
         def sign_then_encrypt(buffer, recipients)
 
-          VirgilBuffer.validate_buffer_param(buffer)
           raise ArgumentError.new("recipients is not valid") if (!recipients.is_a?(Array) || recipients.empty?)
+          buffer_to_sign = case buffer.class.name.split("::").last
+                             when 'VirgilBuffer'
+                               buffer
+                             when 'String'
+                               VirgilBuffer.from_string(buffer)
+                             when 'Array'
+                               VirgilBuffer.from_bytes(buffer)
+                             else
+                               raise ArgumentError.new("Buffer has unsupported type")
+                           end
           public_keys = recipients.map(&:public_key)
-          bytes = context.crypto.sign_then_encrypt(buffer.bytes, private_key, *public_keys)
+          bytes = context.crypto.sign_then_encrypt(buffer_to_sign.bytes, private_key, *public_keys).to_s.bytes
           VirgilBuffer.new(bytes)
 
         end
@@ -109,21 +142,34 @@ module Virgil
         # Decrypts and verifies the data.
         #
         # Args:
-        #   cipher_buffer: The data to be decrypted and verified
+        #   cipher_buffer: The data to be decrypted and verified:
+        #                  The encrypted data wrapped by VirgilBuffer or
+        #                  encrypted data in base64-encoded String
+        #                  or Array of bytes of encrypted data
         #   card: The signer's VirgilCard
         #
         # Returns:
         #   The decrypted data, which is the original plain text before encryption The decrypted data, wrapped by VirgilBuffer
         #
         # Raises:
-        #   ArgumentError: buffer is not valid if buffer doesn't have type VirgilBuffer or String
+        #   ArgumentError: buffer is not valid if buffer doesn't have type VirgilBuffer, String or Array of bytes
         #   ArgumentError: recipients is not valid if recipients doesn't have type Array or empty
         def decrypt_then_verify(cipher_buffer, card)
 
-          VirgilBuffer.validate_buffer_param(cipher_buffer, "cipher buffer")
           raise ArgumentError.new("card is not valid") unless card.is_a?(VirgilCard)
 
-          bytes = context.crypto.decrypt_then_verify(cipher_buffer.bytes, private_key, card.public_key)
+          buffer_to_decrypt = case cipher_buffer.class.name.split("::").last
+                                when 'VirgilBuffer'
+                                  cipher_buffer
+                                when 'String'
+                                  VirgilBuffer.from_base64(cipher_buffer)
+                                when 'Array'
+                                  VirgilBuffer.from_bytes(cipher_buffer)
+                                else
+                                  raise ArgumentError.new("Buffer has unsupported type")
+                              end
+
+          bytes = context.crypto.decrypt_then_verify(buffer_to_decrypt.bytes, private_key, card.public_key)
           VirgilBuffer.new(bytes)
         end
 

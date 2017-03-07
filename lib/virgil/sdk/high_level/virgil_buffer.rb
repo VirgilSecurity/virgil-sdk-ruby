@@ -47,8 +47,9 @@ module Virgil
 
           super
         end
+        
 
-
+        # Initializes a new buffer from array of bytes
         def self.from_bytes(bytes)
 
           self.validate_bytes_param(bytes)
@@ -68,7 +69,7 @@ module Virgil
             when VirgilStringEncoding::UTF8
               return self.from_utf8(str)
             else
-              ArgumentError.new("encoding is undefined")
+              raise ArgumentError.new("encoding is undefined")
           end
 
         end
@@ -83,7 +84,7 @@ module Virgil
             when VirgilStringEncoding::UTF8
               return to_s
             else
-              ArgumentError.new("encoding is undefined")
+              raise ArgumentError.new("encoding is undefined")
           end
         end
 
@@ -94,7 +95,7 @@ module Virgil
 
         # Initializes a new buffer from file.
         def self.from_file(key_file_path)
-          ArgumentError.new("file_path is not valide") unless (File.exist?(key_file_path) && File.readable?(key_file_path))
+          raise ArgumentError.new("file_path is not valide") unless (File.exist?(key_file_path) && File.readable?(key_file_path))
           str = File.read(key_file_path)
           from_string(str)
         end
@@ -137,15 +138,12 @@ module Virgil
           to_s.each_byte.map { |b| b.to_s(16) }.join
         end
 
-
-        def self.validate_buffer_param(param, param_name="buffer")
-          raise ArgumentError.new("#{param_name} is not valid") unless (param.is_a?(VirgilBuffer) || param.is_a?(String))
-        end
-
         private
 
         def self.validate_bytes_param(param)
-          raise ArgumentError.new("bytes is not valid") if (!param.is_a?(Array) || param.empty?)
+          unless (!param.nil? && param.is_a?(Array) && !param.empty? && param.all? { |el| el.is_a? Integer })
+            raise ArgumentError.new("Bytes is not valid")
+          end
         end
 
       end

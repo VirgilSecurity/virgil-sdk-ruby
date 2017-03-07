@@ -138,18 +138,28 @@ module Virgil
         # Encrypts the specified data for current Virgil card recipient
         #
         # Args:
-        #   buffer: The data to be encrypted.
+        #   buffer: The data to be encrypted. It can be VirgilBuffer, utf8-String or Array of bytes
         #
         # Returns:
         #   Encrypted data for current Virgil card recipient
         #
         # Raises:
-        #   ArgumentError: buffer is not valid if buffer doesn't have type VirgilBuffer or String
+        #   ArgumentError: Buffer has unsupported type if buffer doesn't have type VirgilBuffer, String or Array of bytes
         def encrypt(buffer)
 
-          VirgilBuffer.validate_buffer_param(buffer)
+          buffer_to_encrypt = case buffer.class.name.split("::").last
+                                when 'VirgilBuffer'
+                                  buffer
+                                when 'String'
+                                  VirgilBuffer.from_string(buffer)
+                                when 'Array'
+                                  VirgilBuffer.from_bytes(buffer)
+                                else
+                                  raise ArgumentError.new("Buffer has unsupported type")
+                              end
 
-          VirgilBuffer.new(context.crypto.encrypt(buffer.bytes, public_key))
+
+          VirgilBuffer.new(context.crypto.encrypt(buffer_to_encrypt.bytes, public_key))
         end
 
 
@@ -173,19 +183,39 @@ module Virgil
         #  Verifies the specified buffer and signature with current VirgilCard recipient
         #
         # Args:
-        #   buffer: The data to be verified.
-        #   signature: The signature used to verify the data integrity.
+        #   buffer: The data to be verified. It can be VirgilBuffer, utf8-encoded String or Array of bytes
+        #   signature: The signature used to verify the data integrity. It can be VirgilBuffer, base64-encoded String or Array of bytes
         #
         # Returns:
         #    true if signature is valid, false otherwise.
         #
         # Raises:
-        #   ArgumentError: buffer is not valid if buffer doesn't have type VirgilBuffer or String
-        #   ArgumentError: buffer is not valid if signature doesn't have type VirgilBuffer or String
+        #   ArgumentError: Buffer has unsupported type if buffer doesn't have type VirgilBuffer, Array of bytes or utf8-encoded String
+        #   ArgumentError: Signature has unsupported type if signature doesn't have type VirgilBuffer, base64-encoded String or Array of bytes
         def verify(buffer, signature)
-          VirgilBuffer.validate_buffer_param(buffer)
-          VirgilBuffer.validate_buffer_param(signature, "signature")
-          context.crypto.verify(buffer.bytes, signature.bytes, public_key)
+
+          buffer_to_verify = case buffer.class.name.split("::").last
+                               when 'VirgilBuffer'
+                                 buffer
+                               when 'String'
+                                 VirgilBuffer.from_string(buffer)
+                               when 'Array'
+                                 VirgilBuffer.from_bytes(buffer)
+                               else
+                                 raise ArgumentError.new("Buffer has unsupported type")
+                             end
+
+          signature_to_verify = case signature.class.name.split("::").last
+                                  when 'VirgilBuffer'
+                                    signature
+                                  when 'String'
+                                    VirgilBuffer.from_base64(signature)
+                                  when 'Array'
+                                    VirgilBuffer.from_bytes(signature)
+                                  else
+                                    raise ArgumentError.new("Signature has unsupported type")
+                                end
+          context.crypto.verify(buffer_to_verify.bytes, signature_to_verify.bytes, public_key)
         end
 
         private
