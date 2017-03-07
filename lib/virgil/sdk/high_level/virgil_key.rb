@@ -199,6 +199,12 @@ module Virgil
         end
 
 
+        # Exports the VirgilKey to default format, specified in Crypto API.
+        def export(password=nil)
+          VirgilBuffer.from_bytes(context.crypto.export_private_key(private_key, password))
+        end
+
+
         #  Exports the Public key value from current VirgilKey.
         #
         # Returns:

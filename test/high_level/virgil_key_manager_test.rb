@@ -74,6 +74,15 @@ class VirgilKeyManagerTest < Minitest::Test
     assert_raises(Exception) { @virgil.keys.delete(@alice_key_name) }
   end
 
+  def test_export_and_import
+
+    alice_key = @virgil.keys.generate
+    exported_key = alice_key.export("12345678").to_base64
+    key_buffer = VirgilBuffer.from_base64(exported_key)
+    alice_key_imported = @virgil.keys.import(key_buffer, "12345678")
+    assert_equal alice_key.private_key.value.to_base64, alice_key_imported.private_key.value.to_base64
+
+  end
 
   def cleanup_keys(*key_names)
     key_names.each do |key_name|

@@ -74,6 +74,16 @@ module Virgil
 
         end
 
+        # Imports the VirgilKey from buffer.
+        #
+        # Args:
+        #   buffer: The buffer with Key
+        #   password: The Key password
+        def import(buffer, password=nil)
+          private_key = context.crypto.import_private_key(buffer.bytes, password)
+          VirgilKey.new(context, private_key)
+        end
+
 
         # Remove the VirgilKey from current storage by specified key name.
         #

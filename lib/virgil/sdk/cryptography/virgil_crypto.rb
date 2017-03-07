@@ -42,6 +42,12 @@ module Virgil
       class VirgilCrypto
         include Virgil::Crypto
 
+        attr_accessor :key_pair_type
+
+        def initialize(key_pair_type=Keys::KeyPairType::Default)
+          @key_pair_type = key_pair_type
+        end
+
         # Exception raised when Signature is not valid
         class SignatureIsNotValid < StandardError
           def to_s
@@ -59,8 +65,8 @@ module Virgil
         #     The possible values can be found in KeyPairType enum.
         # Returns:
         #   Generated key pair.
-        def generate_keys(key_pair_type=Keys::KeyPairType::Default)
-          native_type = Keys::KeyPairType.convert_to_native(key_pair_type)
+        def generate_keys(keys_type=@key_pair_type)
+          native_type = Keys::KeyPairType.convert_to_native(keys_type)
           native_key_pair = Crypto::Native::VirgilKeyPair.generate(native_type)
           key_pair_id = self.compute_public_key_hash(native_key_pair.public_key)
           private_key = Keys::PrivateKey.new(
