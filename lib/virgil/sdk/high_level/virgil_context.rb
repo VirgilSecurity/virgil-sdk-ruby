@@ -53,9 +53,9 @@ module Virgil
           @credentials = credentials
           @key_storage = Cryptography::Keys::KeyStorage.new(key_storage_path)
 
-          if card_verifiers.any?
+           @client.card_validator = Client::CardValidator.new(@crypto)
 
-            @client.card_validator = Client::CardValidator.new(@crypto)
+          if card_verifiers.any?
 
             card_verifiers.each do |card_verifier|
               raise ArgumentError.new("card_verifiers is not valid") unless card_verifier.is_a? VirgilCardVerifierInfo

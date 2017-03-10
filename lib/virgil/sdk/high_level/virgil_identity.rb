@@ -7,7 +7,7 @@ module Virgil
         autoload :ValidationToken, 'virgil/sdk/high_level/virgil_identity/validation_token'
         autoload :EmailConfirmation, 'virgil/sdk/high_level/virgil_identity/email_confirmation'
 
-        IDENTITY_SERVICE_URL = ENV["VIRGIL_IDENTITY_SERVICE_URL"] || "https://identity.virgilsecurity.com"
+        IDENTITY_SERVICE_URL = "https://identity.virgilsecurity.com"
 
         EMAIL = "email"
         USERNAME = "username"

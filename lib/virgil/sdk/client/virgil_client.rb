@@ -60,7 +60,7 @@ module Virgil
             access_token=nil,
             cards_service_url=Card::SERVICE_URL,
             cards_read_only_service_url=Card::READ_ONLY_SERVICE_URL,
-            identity_service_url=Virgil::SDK::VirgilIdentity::IDENTITY_SERVICE_URL,
+            identity_service_url=Virgil::SDK::HighLevel::VirgilIdentity::IDENTITY_SERVICE_URL,
             ra_service_url=Card::RA_SERVICE_URL
         )
           self.access_token = access_token

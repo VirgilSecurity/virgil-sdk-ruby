@@ -33,18 +33,15 @@
 # POSSIBILITY OF SUCH DAMAGE.
 
 
-
 module Virgil
   module SDK
     module Client
       # Class used for cards signatures validation.
       class CardValidator
-        SERVICE_CARD_ID =
-          '3e29d43373348cfb373b7eae189214dc01d7237765e572db685839b64adca853'
-        SERVICE_PUBLIC_KEY =
-          'LS0tLS1CRUdJTiBQVUJMSUMgS0VZLS0tLS0KTUNvd0JRWURLMlZ3QXlFQVlSNTAx'\
-          'a1YxdFVuZTJ1T2RrdzRrRXJSUmJKcmMyU3lhejVWMWZ1RytyVnM9Ci0tLS0tRU5E'\
-          'IFBVQkxJQyBLRVktLS0tLQo='
+        SERVICE_CARD_ID = '3e29d43373348cfb373b7eae189214dc01d7237765e572db685839b64adca853'
+        SERVICE_PUBLIC_KEY = 'LS0tLS1CRUdJTiBQVUJMSUMgS0VZLS0tLS0KTUNvd0JRWURLMlZ3QXlFQVlSNTAx'\
+           'a1YxdFVuZTJ1T2RrdzRrRXJSUmJKcmMyU3lhejVWMWZ1RytyVnM9Ci0tLS0tRU5E'\
+           'IFBVQkxJQyBLRVktLS0tLQo='
 
         attr_reader :crypto, :verifiers
 
@@ -53,7 +50,7 @@ module Virgil
           @public_key_bytes = Crypto::Bytes.from_base64(SERVICE_PUBLIC_KEY)
           @public_key = crypto.import_public_key(@public_key_bytes)
           @verifiers = {
-            SERVICE_CARD_ID => @public_key
+              SERVICE_CARD_ID => @public_key
           }
         end
 
@@ -74,10 +71,15 @@ module Virgil
         #     True if card signatures are valid, false otherwise.
         def is_valid?(card)
 
-          return true if (card.version == '4.0' || card.version == '3.0')
+          return true if (card.version == '3.0')
 
+          if (card.nil? || !card.is_a?(Card) || card.snapshot.nil? || (card.signatures.nil? || card.signatures.empty?))
+            return false
+          end
+
+          # add self signature verifier
           fingerprint = self.crypto.calculate_fingerprint(
-            Crypto::Bytes.from_string(card.snapshot)
+              Crypto::Bytes.from_string(card.snapshot)
           )
           fingerprint_hex = fingerprint.to_hex
           return false if fingerprint_hex != card.id
@@ -85,14 +87,15 @@ module Virgil
           verifiers = self.verifiers.clone
           card_public_key = self.crypto.import_public_key(card.public_key)
           verifiers[fingerprint_hex] = card_public_key
+
           verifiers.each do |id, key|
             unless card.signatures.has_key?(id)
               return false
             end
             is_valid = self.crypto.verify(
-              fingerprint.value,
-              Crypto::Bytes.from_base64(card.signatures[id]),
-              key
+                fingerprint.value,
+                Crypto::Bytes.from_base64(card.signatures[id]),
+                key
             )
             return false unless is_valid
           end

@@ -14,12 +14,16 @@ module ClientTestConfig
       @_card_service_url ||= ENV["VIRGIL_SERVICE_URL"]
     end
 
+    def ra_service_url
+      @_ra_service_url ||= ENV["VIRGIL_RA_SERVICE_URL"]
+    end
+
     def cards_read_only_service_url
       @_cards_read_only_service_url ||= ENV["VIRGIL_READ_ONLY_SERVICE_URL"]
     end
 
     def identity_service_url
-      @_identity_service_url ||= ENV["identity_SERVICE_URL"]
+      @_identity_service_url ||= ENV["VIRGIL_IDENTITY_SERVICE_URL"]
     end
 
     def app_bundle

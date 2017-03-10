@@ -44,7 +44,8 @@ class VirgilClientTest < Minitest::Test
       ClientTestConfig.access_token,
       ClientTestConfig.card_service_url,
       ClientTestConfig.cards_read_only_service_url,
-      ClientTestConfig.identity_service_url
+      ClientTestConfig.identity_service_url,
+      ClientTestConfig.ra_service_url
     )
     @client.card_validator = Virgil::SDK::Client::CardValidator.new(@crypto)
   end
@@ -52,7 +53,7 @@ class VirgilClientTest < Minitest::Test
   def test_create_card_saves_public_key
     alice_keys = @crypto.generate_keys
     card = @client.create_card(
-      "alice",
+      "alice_card",
       "username",
       alice_keys,
       ClientTestConfig.app_id,
@@ -60,7 +61,7 @@ class VirgilClientTest < Minitest::Test
     )
     assert_equal(
       card.identity,
-      "alice"
+      "alice_card"
     )
     assert_equal(
       card.identity_type,
@@ -80,7 +81,7 @@ class VirgilClientTest < Minitest::Test
   def test_revoke_card_removes_created_card
     alice_keys = @crypto.generate_keys
     card = @client.create_card(
-      "alice",
+      "alice_card",
       "username",
       alice_keys,
       ClientTestConfig.app_id,
@@ -96,7 +97,7 @@ class VirgilClientTest < Minitest::Test
   def test_get_card
     alice_keys = @crypto.generate_keys
     created_card = @client.create_card(
-      "alice",
+      "alice_card",
       "username",
       alice_keys,
       ClientTestConfig.app_id,
@@ -125,7 +126,7 @@ class VirgilClientTest < Minitest::Test
   def test_search_card_by_identity
     alice_keys1 = @crypto.generate_keys
     alice_card1 = @client.create_card(
-      "alice",
+      "alice_card",
       "username",
       alice_keys1,
       ClientTestConfig.app_id,
@@ -134,13 +135,13 @@ class VirgilClientTest < Minitest::Test
 
     alice_keys2 = @crypto.generate_keys
     alice_card2 = @client.create_card(
-      "alice",
+      "alice_card",
       "username",
       alice_keys2,
       ClientTestConfig.app_id,
       @app_private_key
     )
-    cards = @client.search_cards_by_identities('alice')
+    cards = @client.search_cards_by_identities('alice_card')
     assert_includes(cards, alice_card1)
     assert_includes(cards, alice_card2)
     self.cleanup_cards(*cards)
@@ -149,7 +150,7 @@ class VirgilClientTest < Minitest::Test
   def test_search_card_by_multiple_identities
     alice_keys = @crypto.generate_keys
     alice_card = @client.create_card(
-      "alice",
+      "alice_card",
       "username",
       alice_keys,
       ClientTestConfig.app_id,
@@ -164,7 +165,7 @@ class VirgilClientTest < Minitest::Test
       ClientTestConfig.app_id,
       @app_private_key
     )
-    cards = @client.search_cards_by_identities('alice', 'bob')
+    cards = @client.search_cards_by_identities('alice_card', 'bob')
     assert_includes(cards, alice_card)
     assert_includes(cards, bob_card)
     self.cleanup_cards(*cards)

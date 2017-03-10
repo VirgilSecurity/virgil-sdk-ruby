@@ -49,6 +49,7 @@ class VirgilContextTest < Minitest::Test
         credentials: @credentials,
         cards_service_url: ClientTestConfig.card_service_url,
         cards_read_only_service_url: ClientTestConfig.cards_read_only_service_url,
+        ra_service_url: ClientTestConfig.ra_service_url,
         identity_service_url: ClientTestConfig.identity_service_url,
         card_verifiers: [@card_verifier_info]
     )

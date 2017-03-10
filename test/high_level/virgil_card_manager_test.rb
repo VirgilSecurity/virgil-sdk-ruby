@@ -41,14 +41,26 @@ class VirgilCardManagerTest< Minitest::Test
     @credentials = VirgilAppCredentials.new(app_id: ClientTestConfig.app_id,
                                             app_key_data: @keydata,
                                             app_key_password: ClientTestConfig.app_key_password)
+    card_verifier_info = VirgilCardVerifierInfo.new("e680bef87ba75d331b0a02bfa6a20f02eb5c5ba9bc96fc61ca595404b10026f4",
+                                                    VirgilBuffer.from_base64("MCowBQYDK2VwAyEA8jJqWY5hm4tvmnM6QXFdFCErRCnoYdhVNjFggffSCoc="))
     @context = VirgilContext.new(
         access_token: ClientTestConfig.access_token,
         credentials: @credentials,
         cards_service_url: ClientTestConfig.card_service_url,
         cards_read_only_service_url: ClientTestConfig.cards_read_only_service_url,
-        identity_service_url: ClientTestConfig.identity_service_url
+        identity_service_url: ClientTestConfig.identity_service_url,
+        ra_service_url: ClientTestConfig.ra_service_url,
+        card_verifiers: [card_verifier_info]
     )
-    @api_with_token = VirgilApi.new(access_token: ClientTestConfig.access_token)
+
+    @pure_context = VirgilContext.new(
+        access_token: ClientTestConfig.access_token,
+        cards_service_url: ClientTestConfig.card_service_url,
+        cards_read_only_service_url: ClientTestConfig.cards_read_only_service_url,
+        identity_service_url: ClientTestConfig.identity_service_url,
+        ra_service_url: ClientTestConfig.ra_service_url
+    )
+    @api_without_credentials = VirgilApi.new(context: @pure_context)
     @api_with_context = VirgilApi.new(context: @context)
     @api_with_empty_token = VirgilApi.new()
 
@@ -59,8 +71,8 @@ class VirgilCardManagerTest< Minitest::Test
     @alice_key = @api_with_empty_token.keys.generate
 
 
-    @virgil_card = @api_with_token.cards.create(@identity, @alice_key,
-                                                {
+    @virgil_card = @api_without_credentials.cards.create(@identity, @alice_key,
+                                                         {
                                                     device: @device,
                                                     device_name: @device_name,
                                                     data: @data
@@ -85,9 +97,9 @@ class VirgilCardManagerTest< Minitest::Test
     exported = @virgil_card.export
     assert exported
 
-    assert_raises(Exception) { @api_with_token.cards.import("sdsfs") }
+    assert_raises(Exception) { @api_without_credentials.cards.import("sdsfs") }
 
-    imported_card_without_credentials = @api_with_token.cards.import(exported)
+    imported_card_without_credentials = @api_without_credentials.cards.import(exported)
 
     assert_equal @virgil_card.public_key, imported_card_without_credentials.public_key
     assert_equal(@virgil_card.device, imported_card_without_credentials.device)
@@ -106,7 +118,7 @@ class VirgilCardManagerTest< Minitest::Test
     assert_raises(Exception) { @virgil_card.publish }
 
     exported = @virgil_card.export
-    imported_card_without_credentials = @api_with_token.cards.import(exported)
+    imported_card_without_credentials = @api_without_credentials.cards.import(exported)
 
     assert_raises(Exception) { imported_card_without_credentials.publish }
 
@@ -124,7 +136,7 @@ class VirgilCardManagerTest< Minitest::Test
     assert imported_card_with_credentials.id
 
     # card can't be revoke under Virgil Api which does'nt have application credentials
-    assert_raises(Exception) { @api_with_token.cards.revoke(imported_card_with_credentials) }
+    assert_raises(Exception) { @api_without_credentials.cards.revoke(imported_card_with_credentials) }
     @api_with_context.cards.revoke(imported_card_with_credentials)
 
 
@@ -137,7 +149,7 @@ class VirgilCardManagerTest< Minitest::Test
     imported_card_with_credentials.publish
     card_id = imported_card_with_credentials.id
 
-    assert @api_with_token.cards.get(card_id)
+    assert @api_without_credentials.cards.get(card_id)
     # can't get card under Virgil Api which does'nt have application access token
     assert_raises(Exception) { @api_with_empty_token.cards.get(card_id) }
     card = @api_with_context.cards.get(card_id)
@@ -157,10 +169,10 @@ class VirgilCardManagerTest< Minitest::Test
     imported_card_with_credentials = @api_with_context.cards.import(exported)
     imported_card_with_credentials.publish
 
-    @api_with_token.cards.find(@identity)
+    @api_without_credentials.cards.find(@identity)
     assert_raises(Exception) { @api_with_empty_token.cards.find(@identity) }
 
-    found_cards = @api_with_token.cards.find(@identity, "test_alice_local_card2")
+    found_cards = @api_without_credentials.cards.find(@identity, "test_alice_local_card2")
     assert(found_cards.size > 0)
     found_cards.each do |card|
       @api_with_context.cards.revoke(card)
