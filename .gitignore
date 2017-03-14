@@ -13,3 +13,4 @@ lib/virgil/sdk/virgil_crypto_ruby.so
 *sample.rb
 key_storage
 *.virgilkey
+test/support/env.yml

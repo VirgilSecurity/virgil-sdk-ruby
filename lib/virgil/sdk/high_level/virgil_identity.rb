@@ -10,7 +10,7 @@ module Virgil
         IDENTITY_SERVICE_URL = "https://identity.virgilsecurity.com"
 
         EMAIL = "email"
-        USERNAME = "username"
+        UNKNOWN = "unknown"
         APPLICATION = "application"
       end
     end

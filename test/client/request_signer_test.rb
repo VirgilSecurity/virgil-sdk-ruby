@@ -47,7 +47,7 @@ class RequestSignerTest < Minitest::Test
     alice_keys = @crypto.generate_keys
     request = Virgil::SDK::Client::Requests::CreateCardRequest.new(
         identity: "alice",
-        identity_type: "username",
+        identity_type: "unknown",
         raw_public_key: alice_keys.public_key.value
     )
     @request_signer.authority_sign(
@@ -98,7 +98,7 @@ class RequestSignerTest < Minitest::Test
     alice_keys = @crypto.generate_keys
     request = Virgil::SDK::Client::Requests::CreateCardRequest.new(
         identity: "alice",
-        identity_type: "username",
+        identity_type: "unknown",
         raw_public_key: alice_keys.public_key.value,
     )
     @request_signer.self_sign(
@@ -140,7 +140,7 @@ class RequestSignerTest < Minitest::Test
     alice_keys = @crypto.generate_keys
     request = Virgil::SDK::Client::Requests::CreateCardRequest.new(
         identity: "alice",
-        identity_type: "username",
+        identity_type: "unknown",
         raw_public_key: alice_keys.public_key.value,
     )
     @request_signer.self_sign(

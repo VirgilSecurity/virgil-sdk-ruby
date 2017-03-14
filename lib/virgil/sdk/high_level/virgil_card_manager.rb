@@ -112,7 +112,7 @@ module Virgil
         def create(identity, owner_key, custom_data={})
           card = context.client.new_card(
               identity,
-              VirgilIdentity::USERNAME,
+              VirgilIdentity::UNKNOWN,
               owner_key.private_key,
               custom_data
           )

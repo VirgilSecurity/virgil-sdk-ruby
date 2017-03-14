@@ -36,8 +36,7 @@ module Virgil
     module HighLevel
       class VirgilContext
         attr_reader :access_token, :client, :crypto, :credentials,
-                    :cards_service_url, :cards_read_only_service_url, :ra_service_url,
-                    :identity_service_url, :key_storage
+                    :key_storage, :use_built_in_verifiers
 
         def initialize(access_token: nil, credentials: nil, key_storage_path: Cryptography::Keys::KeyStorage.default_folder,
                        cards_service_url: Client::Card::SERVICE_URL,
@@ -45,18 +44,21 @@ module Virgil
                        ra_service_url: Client::Card::RA_SERVICE_URL,
                        identity_service_url: VirgilIdentity::IDENTITY_SERVICE_URL,
                        crypto: Cryptography::VirgilCrypto.new,
-                       card_verifiers: []
+                       card_verifiers: [],
+                       use_built_in_verifiers: true
         )
           @access_token = access_token
           @client = Client::VirgilClient.new(access_token, cards_service_url, cards_read_only_service_url, identity_service_url, ra_service_url)
           @crypto = crypto
           @credentials = credentials
           @key_storage = Cryptography::Keys::KeyStorage.new(key_storage_path)
+          @use_built_in_verifiers = use_built_in_verifiers
 
-           @client.card_validator = Client::CardValidator.new(@crypto)
+          validator = Client::CardValidator.new(@crypto)
+          validator.add_default_verifiers if @use_built_in_verifiers
+          @client.card_validator = validator
 
           if card_verifiers.any?
-
             card_verifiers.each do |card_verifier|
               raise ArgumentError.new("card_verifiers is not valid") unless card_verifier.is_a? VirgilCardVerifierInfo
               @client.card_validator.add_verifier(card_verifier.card_id, @crypto.import_public_key(card_verifier.public_key_value.bytes))
