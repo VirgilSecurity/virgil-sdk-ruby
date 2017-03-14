@@ -2,6 +2,9 @@ require 'virgil/sdk'
 
 require 'minitest/autorun'
 require 'minitest/reporters'
+require 'envyable'
+
+Envyable.load('./test/support/env.yml')
 
 Minitest::Reporters.use! Minitest::Reporters::DefaultReporter.new
 

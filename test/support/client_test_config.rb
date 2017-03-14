@@ -42,6 +42,5 @@ module ClientTestConfig
       @_raw_app_private_key ||= File.read(app_key_path)
     end
 
-
   end
 end

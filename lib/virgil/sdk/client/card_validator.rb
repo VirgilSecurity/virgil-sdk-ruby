@@ -38,8 +38,8 @@ module Virgil
     module Client
       # Class used for cards signatures validation.
       class CardValidator
-        SERVICE_CARD_ID = '3e29d43373348cfb373b7eae189214dc01d7237765e572db685839b64adca853'
-        SERVICE_PUBLIC_KEY = 'LS0tLS1CRUdJTiBQVUJMSUMgS0VZLS0tLS0KTUNvd0JRWURLMlZ3QXlFQVlSNTAx'\
+        SERVICE_CARD_ID = ENV['VIRGIL_SERVICE_CARD_ID'] || '3e29d43373348cfb373b7eae189214dc01d7237765e572db685839b64adca853'
+        SERVICE_PUBLIC_KEY = ENV['VIRGIL_SERVICE_PUBLIC_KEY'] || 'LS0tLS1CRUdJTiBQVUJMSUMgS0VZLS0tLS0KTUNvd0JRWURLMlZ3QXlFQVlSNTAx'\
            'a1YxdFVuZTJ1T2RrdzRrRXJSUmJKcmMyU3lhejVWMWZ1RytyVnM9Ci0tLS0tRU5E'\
            'IFBVQkxJQyBLRVktLS0tLQo='
 
@@ -47,11 +47,15 @@ module Virgil
 
         def initialize(crypto)
           @crypto = crypto
-          @public_key_bytes = Crypto::Bytes.from_base64(SERVICE_PUBLIC_KEY)
-          @public_key = crypto.import_public_key(@public_key_bytes)
-          @verifiers = {
-              SERVICE_CARD_ID => @public_key
-          }
+          @verifiers = {}
+        end
+
+
+        # Add default service verifier to validator
+        def add_default_verifiers
+          public_key_bytes = Crypto::Bytes.from_base64(SERVICE_PUBLIC_KEY)
+          public_key = crypto.import_public_key(public_key_bytes)
+          @verifiers[SERVICE_CARD_ID] = public_key
         end
 
         #  Add signature verifier.
@@ -71,7 +75,7 @@ module Virgil
         #     True if card signatures are valid, false otherwise.
         def is_valid?(card)
 
-          return true if (card.version == '3.0')
+          return true if (card.version == '3.0' && card.scope == Client::Card::GLOBAL)
 
           if (card.nil? || !card.is_a?(Card) || card.snapshot.nil? || (card.signatures.nil? || card.signatures.empty?))
             return false

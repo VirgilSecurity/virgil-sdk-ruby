@@ -54,7 +54,7 @@ class VirgilClientTest < Minitest::Test
     alice_keys = @crypto.generate_keys
     card = @client.create_card(
       "alice_card",
-      "username",
+      "unknown",
       alice_keys,
       ClientTestConfig.app_id,
       @app_private_key
@@ -65,7 +65,7 @@ class VirgilClientTest < Minitest::Test
     )
     assert_equal(
       card.identity_type,
-      "username"
+      "unknown"
     )
     assert_equal(
       card.version,
@@ -82,7 +82,7 @@ class VirgilClientTest < Minitest::Test
     alice_keys = @crypto.generate_keys
     card = @client.create_card(
       "alice_card",
-      "username",
+      "unknown",
       alice_keys,
       ClientTestConfig.app_id,
       @app_private_key
@@ -98,7 +98,7 @@ class VirgilClientTest < Minitest::Test
     alice_keys = @crypto.generate_keys
     created_card = @client.create_card(
       "alice_card",
-      "username",
+      "unknown",
       alice_keys,
       ClientTestConfig.app_id,
       @app_private_key
@@ -127,7 +127,7 @@ class VirgilClientTest < Minitest::Test
     alice_keys1 = @crypto.generate_keys
     alice_card1 = @client.create_card(
       "alice_card",
-      "username",
+      "unknown",
       alice_keys1,
       ClientTestConfig.app_id,
       @app_private_key
@@ -136,7 +136,7 @@ class VirgilClientTest < Minitest::Test
     alice_keys2 = @crypto.generate_keys
     alice_card2 = @client.create_card(
       "alice_card",
-      "username",
+      "unknown",
       alice_keys2,
       ClientTestConfig.app_id,
       @app_private_key
@@ -151,7 +151,7 @@ class VirgilClientTest < Minitest::Test
     alice_keys = @crypto.generate_keys
     alice_card = @client.create_card(
       "alice_card",
-      "username",
+      "unknown",
       alice_keys,
       ClientTestConfig.app_id,
       @app_private_key
@@ -160,7 +160,7 @@ class VirgilClientTest < Minitest::Test
     bob_keys = @crypto.generate_keys
     bob_card = @client.create_card(
       "bob",
-      "username",
+      "unknown",
       bob_keys,
       ClientTestConfig.app_id,
       @app_private_key

@@ -120,7 +120,7 @@ Prepare request
 exported_public_key = crypto.export_public_key(alice_keys.public_key)
 create_card_request = Virgil::SDK::Client::Requests::CreateCardRequest.new(
   identity: "alice",
-  identity_type: "username",
+  identity_type: "unknown",
   public_key: exported_public_key
 )
 ```
@@ -146,7 +146,7 @@ alice_keys = crypto.generate_keys
 
 alice_card = virgil_client.create_card(
   "alice",
-  "username",
+  "unknown",
   alice_keys,
   app_id,
   app_key
