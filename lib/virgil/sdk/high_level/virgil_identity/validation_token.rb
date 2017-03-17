@@ -35,6 +35,10 @@ module Virgil
   module SDK
     module HighLevel
       module VirgilIdentity
+
+        # This class represents an information about identity and
+        # token that allows to execute action that requires identity authentication, like global
+        # Card creation or global Card revocation.
         class ValidationToken
           attr_reader :value
 

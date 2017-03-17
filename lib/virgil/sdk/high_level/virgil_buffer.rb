@@ -58,7 +58,12 @@ module Virgil
 
         end
 
-
+        # Initializes a new buffer from specified string, which encodes binary data.
+        #
+        # Args:
+        #
+        #   str: String to decode.
+        #   encoding: The character encoding of string.
         def self.from_string(str, encoding=VirgilStringEncoding::UTF8)
 
           case encoding
@@ -75,6 +80,14 @@ module Virgil
         end
 
 
+        # Converts all the bytes in current buffer to its equivalent string representation that
+        # is encoded with selected encoding.
+        #
+        # Args:
+        #   encoding: The character encoding to encode to.
+        #
+        # Returns:
+        #    equivalent string representation if raw bytes in selected encoding.
         def to_string(encoding=VirgilStringEncoding::UTF8)
           case encoding
             when VirgilStringEncoding::BASE64
@@ -89,6 +102,7 @@ module Virgil
         end
 
 
+        # Converts all the bytes in current buffer to its equivalent string representation in utf8.
         def to_s
           bytes.pack('c*')
         end
@@ -107,7 +121,7 @@ module Virgil
         end
 
 
-        #Initializes a new buffer from specified string, which encodes binary data as utf-8.
+        #Initializes a new buffer from specified string, which encodes binary data as utf8.
         def self.from_utf8(str)
           new(str.bytes)
         end
@@ -126,7 +140,7 @@ module Virgil
         end
 
 
-        # Decodes all the bytes in current buffer into a string.
+        # Encodes all the bytes in current buffer into a utf8 string.
         def to_utf8
           to_s
         end

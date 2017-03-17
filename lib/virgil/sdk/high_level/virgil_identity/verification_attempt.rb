@@ -35,6 +35,8 @@ module Virgil
   module SDK
     module HighLevel
       module VirgilIdentity
+
+        # This class provides an information about identity verification process.
         class VerificationAttempt
           attr_reader :action_id, :context, :additional_options, :identity, :identity_type
 
@@ -47,6 +49,13 @@ module Virgil
           end
 
 
+           # Confirms an identity and generates a validation token that can be used to perform operations like
+           #  Publish and Revoke global Cards.
+           #
+           # Args:
+           # confirmation: an instance of EmailConfirmation class with defined own confirmation code that was received on email box.
+           #
+           # Returns: a new instance of ValidationToken class.
           def confirm(confirmation)
             raise ConfirmationIsNotValid unless confirmation
             token = confirmation.confirm_and_grab_validation_token(self, self.context.client)
