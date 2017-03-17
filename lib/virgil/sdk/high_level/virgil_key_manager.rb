@@ -45,6 +45,9 @@ module Virgil
 
 
         # Generates a new VirgilKey with default parameters.
+        #
+        # Returns:
+        #   An instance of VirgilKey class
         def generate
           key_pair = context.crypto.generate_keys()
           VirgilKey.new(context, key_pair.private_key)
@@ -79,6 +82,9 @@ module Virgil
         # Args:
         #   buffer: The buffer with Key
         #   password: The Key password
+        #
+        # Returns:
+        #   An instance of VirgilKey class
         def import(buffer, password=nil)
           private_key = context.crypto.import_private_key(buffer.bytes, password)
           VirgilKey.new(context, private_key)

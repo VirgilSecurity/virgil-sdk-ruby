@@ -34,7 +34,15 @@
 module Virgil
   module SDK
     module HighLevel
+
+      # This class provides credentials for application authentication using AppID and AppKey
+      # retrieved from development deshboard.
       class VirgilAppCredentials
+
+        # app_id: uniquely identifies your application in Virgil services, and it is also used to identify the
+        #         Virgil Card/Public key generated in a pair with application key.
+        # app_key_data: Application Private key value wrapped by VirgilBuffer.
+        # app_key_password: Application key password is used to protect the application key.
         attr_reader :app_id, :app_key_data, :app_key_password
 
         def initialize(app_id:, app_key_data:, app_key_password:)
@@ -43,6 +51,9 @@ module Virgil
           @app_key_password = app_key_password
         end
 
+        # Application key is representing a Private key that is used to perform creation and revocation of Virgil Cards
+        # (Public key) in Virgil services. Also the application key can be used for cryptographic operations to take part
+        # in application logic.
         def app_key(crypto)
           crypto.import_private_key(app_key_data.bytes, app_key_password)
         end

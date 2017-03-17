@@ -88,24 +88,31 @@ module Virgil
 
 
 
-
+        # Restores request from card's data.
         def to_request
           request = Virgil::SDK::Client::Requests::CreateCardRequest.new({})
           request.restore(Crypto::Bytes.from_string(snapshot), signatures, validation_token, relations)
           request
         end
 
+        # Exports card's snapshot.
+        #
+        # Returns:
+        #   base64-encoded json representation of card's content_snapshot and meta.
         def export
           self.to_request.export
         end
 
 
+        # To initialize a card from request model.
+        #
+        # Args:
+        #   request_model: request model from instance of CreateCardRequest class.
+        #
+        # Returns:
+        #   new instance of Card class.
         def self.from_request_model(request_model)
           snapshot = Base64.decode64(request_model[:content_snapshot])
-          # if request_model[:content_snapshot].is_a?(Array)
-          #   snapshot = Virgil::Crypto::Bytes.new(request_model[:content_snapshot]).to_s
-          # end
-
           snapshot_model = JSON.parse(snapshot)
           meta = request_model[:meta]
           info = snapshot_model.fetch("info", {}) || {}

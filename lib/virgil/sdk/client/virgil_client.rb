@@ -35,10 +35,11 @@
 module Virgil
   module SDK
     module Client
-      # Virgil API client
-      #
-      # Contains methods for searching and managing cards.
+
+      # This class represents a Virgil Security services client and contains
+      # all methods to interaction with server.
       class VirgilClient
+
         # Exception raised when card is not valid
         class InvalidCardException < StandardError
           attr_reader :invalid_cards
@@ -55,7 +56,8 @@ module Virgil
         attr_accessor :access_token, :cards_service_url, :identity_service_url,
                       :cards_read_only_service_url, :ra_service_url, :card_validator
 
-        # Constructs new VirgilClient object
+
+        # Initializes a new VirgilClient instance.
         def initialize(
             access_token=nil,
             cards_service_url=Card::SERVICE_URL,
@@ -69,6 +71,7 @@ module Virgil
           self.identity_service_url = identity_service_url
           self.ra_service_url = ra_service_url
         end
+
 
         # Create published new card from given attributes.
         #
@@ -134,8 +137,8 @@ module Virgil
         # Args:
         #   identity: Created card identity.
         #   identity_type: Created card identity type.
-        #   private_key: Key pair of the created card.
-        #     Public key is stored in the card, private key is used for request signing.
+        #   private_key: Private key of the created Global card. It's an instance of the class PrivateKey.
+        #                 Public key is stored in the card, private key is used for request signing.
         #   custom_data(optional): is an associative array that contains application specific
         #                          parameters(under key :data) and information about the device
         #                          on which the keypair was created(under key :device and :device_name).
@@ -160,6 +163,15 @@ module Virgil
         end
 
 
+        # Signs and publishes card in Virgil cards service.
+        #
+        # Args:
+        #   card: Created card. It is an instance of Card class.
+        #   app_id: Application identity for authority sign.
+        #   app_key: Application key for authority sign.
+        #
+        # Returns:
+        #   Card that is published to Virgil Security services
         def sign_and_publish_card(card, app_id, app_key)
           request = card.to_request
           request_signer.authority_sign(
@@ -171,6 +183,14 @@ module Virgil
 
         end
 
+
+        # Publishes Global card in Virgil cards service.
+        #
+        # Args:
+        #   card: Created Global card. It is an instance of Card class.
+        #
+        # Returns:
+        #   Global card that is published to Virgil Security services
         def publish_as_global_card(card)
           request = card.to_request
           create_card_from_signed_request(request)
@@ -200,16 +220,18 @@ module Virgil
           card
         end
 
-        def create_card_from_signed_request_async(create_request)
-          thread = Thread.new do
-            current = Thread.current
-            current[:card] = create_card_from_signed_request(create_request)
-          end
-          thread.join
-          thread[:card]
-        end
 
-
+        # Adds a relation for the Virgil Card to Virgil cards service.
+        #
+        # Args:
+        #   request: an instance of AddRelationRequest class, that contains a trusted card.
+        #
+        # Returns:
+        #   Updated card from server response. It's an instance of Card class.
+        #
+        # Raises:
+        #   ArgumentError: if request doesn't have trusted card's snapshot or doesn't have exactly 1 signature.
+        #   Client::HTTP::BaseConnection::ApiError if some error has occurred on the server.
         def add_relation(request)
           unless (request.is_a?(Requests::AddRelationRequest) && !request.snapshot.nil? && request.signatures.count == 1)
             raise ArgumentError.new("Request is not valid. Request must have snapshot and exactly 1 relation signature.")
@@ -226,6 +248,17 @@ module Virgil
         end
 
 
+        # Deletes a relation for the Virgil Card to Virgil cards service.
+        #
+        # Args:
+        #   request: an instance of DeleteRelationRequest class, that contains a trusted card to be deleted.
+        #
+        # Returns:
+        #   Updated card from server response. It's an instance of Card class.
+        #
+        # Raises:
+        #   ArgumentError: if request doesn't have trusted card's snapshot or doesn't have exactly 1 signature.
+        #   Client::HTTP::BaseConnection::ApiError if some error has occurred on the server.
         def delete_relation(request)
           unless (request.is_a?(Requests::DeleteRelationRequest) && !request.snapshot.nil? && request.signatures.count == 1)
             raise ArgumentError.new("Request is not valid. Request must have snapshot and exactly 1 relation signature.")
@@ -266,6 +299,14 @@ module Virgil
         end
 
 
+        # Revoke Global card by id.
+        #
+        # Args:
+        #   card_id: id of the revoked Global card.
+        #   reason: Global card revocation reason.
+        #           The possible values can be found in RevokeCardRequest::Reasons class.
+        #   key_pair: The Key associated with the revoking Global Card. It's an instance of VirgilKey class.
+        #   validation_token: is an identity token.
         def revoke_global_card(
             card_id,
             key_pair,
@@ -295,28 +336,41 @@ module Virgil
           self.ra_connection.send_request(http_request)
         end
 
+
+        # Sends the request for identity verification, that's will be processed depending of specified type.
+        #
+        # Args:
+        #   identity: An unique string that represents identity.
+        #   identity_type: The type of identity.
+        #
+        # Returns:
+        #   The action identifier that is required for confirmation the identity.
+        #
+        # Notice: use method confirm_identity to confirm and get the identity token.
         def verify_identity(identity, identity_type)
           verify_identity_request = Requests::VerifyIdentityRequest.new(identity, identity_type)
-          verify_identity_from_request(verify_identity_request)
-        end
-
-        def verify_identity_from_request(identity_request)
           http_request = Virgil::SDK::Client::HTTP::Request.new(
               method: HTTP::Request::POST,
               endpoint: "/#{Card::VRA_VERSION}/verify",
-              body: identity_request.request_model
+              body: verify_identity_request.request_model
           )
           raw_response = self.identity_service_connection.send_request(http_request)
           raw_response['action_id']
-
         end
 
+
+        # Confirms the identity using confirmation code, that has been generated to confirm an identity.
+        #
+        # Args:
+        #   action_id: The action identifier that was obtained on verification step.
+        #   confirmation_code: The confirmation code that was received on email box.
+        #   time_to_live: The time to live.
+        #   count_to_live: The count to live.
+        #
+        # Returns:
+        #   A string that represent an identity validation token.
         def confirm_identity(action_id, confirmation_code, time_to_live, count_to_live)
-          request = Requests::ConfirmIdentityRequest.new(confirmation_code, action_id, time_to_live, count_to_live)
-          confirm_identity_from_request(request)
-        end
-
-        def confirm_identity_from_request(confirm_request)
+          confirm_request = Requests::ConfirmIdentityRequest.new(confirmation_code, action_id, time_to_live, count_to_live)
           http_request = Virgil::SDK::Client::HTTP::Request.new(
               method: HTTP::Request::POST,
               endpoint: "/#{Card::VRA_VERSION}/confirm",
@@ -350,6 +404,7 @@ module Virgil
           card
         end
 
+
         # Search cards by specified identities.
         #
         # Args:
@@ -363,6 +418,7 @@ module Virgil
           )
         end
 
+
         # Search cards by specified app bundle.
         #
         # Args:
@@ -375,6 +431,7 @@ module Virgil
               SearchCriteria.by_app_bundle(bundle)
           )
         end
+
 
         # Search cards by specified search criteria.
         #
@@ -420,7 +477,8 @@ module Virgil
           end
         end
 
-        # Cards service connection used for creating and revoking cards.
+
+        # Cards service connection used for add and delete relations.
         def cards_connection
           @_cards_connection ||= HTTP::CardsServiceConnection.new(
               self.access_token,
@@ -428,12 +486,15 @@ module Virgil
           )
         end
 
+        # The Virgil Registration Authority service connection used for creating and revoking cards.
         def ra_connection
           @_ra_connection ||= HTTP::CardsServiceConnection.new(
               self.access_token,
               self.ra_service_url
           )
         end
+
+
         # Cards service connection used for getting and searching cards.
         def read_cards_connection
           @_read_cards_connection = HTTP::CardsServiceConnection.new(
@@ -443,6 +504,7 @@ module Virgil
         end
 
 
+        # Virgil Identity service connection used for validation of user's identities like email, application, etc.
         def identity_service_connection
           @identity_service_connection = HTTP::CardsServiceConnection.new(
               nil,
@@ -451,10 +513,12 @@ module Virgil
 
         end
 
+
         # Request signer for signing constructed requests.
         def request_signer
           @_request_signer ||= RequestSigner.new(self.crypto)
         end
+
 
         # Crypto library wrapper.
         def crypto
