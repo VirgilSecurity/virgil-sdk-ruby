@@ -50,22 +50,25 @@ module Virgil
         class AppCredentialsException < StandardError
 
           def to_s
-            "For this operation we need app_id and app_key"
+            "For this action we need app_id and app_key"
           end
 
         end
 
 
+        # returns unique identifier for the Virgil Card.
         def id
           card.id
         end
 
 
+        # returns the value of current Virgil Card identity.
         def identity
           card.identity
         end
 
 
+        # returns the identityType of current Virgil Card identity.
         def identity_type
           card.identity_type
         end
@@ -79,6 +82,7 @@ module Virgil
         def scope
           card.scope
         end
+
 
         def public_key
           context.crypto.import_public_key(card.public_key)
@@ -106,10 +110,10 @@ module Virgil
 
         # Publish synchronously the card into application Virgil Services scope
         # Raises:
-        # Virgil::SDK::Client::HTTP::BaseConnection::ApiError if access_token is invalid or
-        #  Virgil Card with the same fingerprint already exists in Virgil Security services
-        # AppCredentialsException:  For this operation we need app_id and app_key
-        #  if application credentials is missing
+        #   Virgil::SDK::Client::HTTP::BaseConnection::ApiError if access_token is invalid or
+        #    Virgil Card with the same fingerprint already exists in Virgil Security services
+        #   AppCredentialsException:  For this action we need app_id and app_key
+        #    if application credentials are missing
         def publish
 
           raise NotImplementedError.new("Current card isn't local!") unless @card.scope == Client::Card::APPLICATION
@@ -163,7 +167,7 @@ module Virgil
         end
 
 
-        # Initiates an identity verification process for current Card indentity type. It is only working for
+        # Initiates an identity verification process for current Card identity type. It is only working for
         #  Global identity types like Email.
         #
         # Args:
@@ -171,7 +175,7 @@ module Virgil
         #
         # Returns:
         #   An instance of VirgilIdentity::VerificationAttempt that contains
-        #   information about operation etc
+        #   information about action and etc
         def check_identity(identity_options = nil)
           action_id = context.client.verify_identity(identity, identity_type)
           VirgilIdentity::VerificationAttempt.new(context: context, action_id: action_id,

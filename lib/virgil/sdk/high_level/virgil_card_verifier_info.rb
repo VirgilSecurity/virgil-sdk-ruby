@@ -37,11 +37,11 @@ require 'json'
 module Virgil
   module SDK
     module HighLevel
+
       # This class represents an information about Virgil Card
       # verifier such as Public key and Card Id.
       # card_id: Card identifier
       # public_key_value: Public key value wrapped by VirgilBuffer used for signature verification.
-      #
       VirgilCardVerifierInfo = Struct.new(:card_id, :public_key_value) do
       end
     end

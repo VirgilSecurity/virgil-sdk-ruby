@@ -34,7 +34,17 @@
 module Virgil
   module SDK
     module HighLevel
+
+      # The VirgilApi class is a high-level API that provides easy access to
+      # Virgil Security services and allows to perform cryptographic operations by using two domain entities
+      # VirgilKey and VirgilCard. Where the VirgilKey is an entity
+      # that represents a user's Private key, and the VirgilCard is the entity that represents
+      # user's identity and a Public key.
       class VirgilApi
+
+        # context: an instance of the class VirgilContext that manages the VirgilApi dependencies during run time.
+        # keys: an instance of the class VirgilKeyManager that provides a work with VirgilKey entities.
+        # cards: an instance of the class VirgilCardManager that provides a work with VirgilCard entities.
         attr_accessor :context, :keys, :cards
 
         class VirgilApiException < StandardError
@@ -49,6 +59,20 @@ module Virgil
 
         end
 
+
+        # Initializes a new instance of the VirgilApi class.
+        #
+        # Args:
+        #   access_token:  Retrieved string value from development deshboard that provides an authenticated secure access to the
+        #                   Virgil Security services. The access token also allows the API to associate
+        #                   your app requests with your Virgil Security developer’s account.
+        #                   It's not required if context with own access token has been set.
+        #                   It's required(only if context with own access token hasn't been set)
+        #                     for the following actions: get card, find card.
+        #   context:      An instance of the class VirgilContext that manages the VirgilApi dependencies during run time.
+        #                 It's required with defined Application credentials and own access_token for publishing and revoking card.
+        #
+        # Notice:        The both of the arguments(access_token and context) are not required for actions with Global cards.
         def initialize(access_token: nil, context: nil)
 
           if (access_token && context)

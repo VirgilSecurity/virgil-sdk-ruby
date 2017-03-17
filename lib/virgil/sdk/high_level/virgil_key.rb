@@ -38,6 +38,9 @@ module Virgil
       # a list of methods that allows to store the key and perform cryptographic operations like
       # Decrypt, Sign etc.
       class VirgilKey
+
+        # context: An instance of the class VirgilContext that manages the VirgilApi dependencies during run time.
+        # private_key: An instance of the class PrivateKey
         attr_reader :context, :private_key
 
         def initialize(context, private_key)
@@ -54,7 +57,7 @@ module Virgil
         #                  or Array of bytes of encrypted data
         #
         # Returns:
-        #   A byte array containing the result from performing the operation wrapped by VirgilBuffer.
+        #   A byte array containing the result from performing the action wrapped by VirgilBuffer.
         #
         # Raises:
         #   ArgumentError: buffer is not valid if buffer doesn't have type VirgilBuffer, base64-encoded String or Array of bytes
@@ -85,7 +88,7 @@ module Virgil
         #           buffer can be VirgilBuffer, utf8-encoded String or Array of bytes
         #
         # Returns:
-        #   A new buffer that containing the result from performing the operation.
+        #   A new buffer that containing the result from performing the action.
         #
         # Raises:
         #   ArgumentError: Buffer has unsupported type if buffer doesn't have type VirgilBuffer, String or Array of bytes
@@ -200,6 +203,9 @@ module Virgil
 
 
         # Exports the VirgilKey to default format, specified in Crypto API.
+        #
+        # Returns:
+        #   Key material representation bytes wrapped by VirgilBuffer
         def export(password=nil)
           VirgilBuffer.from_bytes(context.crypto.export_private_key(private_key, password))
         end
