@@ -110,7 +110,7 @@ module Virgil
           #    not identify a key-related entry.
           #
           # Raises:
-          #   {KeyEntryNotFoundException}: if key storage doesn't have item with such name
+          #   KeyEntryNotFoundException: if key storage doesn't have item with such name
           def load(item_name)
 
             validate_storage_folder
