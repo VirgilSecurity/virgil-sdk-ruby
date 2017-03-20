@@ -48,8 +48,8 @@ module Virgil
           # Confirms the identity using confirmation code, that has been generated to confirm an identity.
           #
           # Args:
-          #   verification_attempt: an instance of the {VerificationAttempt} class.
-          #   client: an instance of the {Client::VirgilClient} class.
+          #   verification_attempt: an instance of the VerificationAttempt class.
+          #   client: an instance of the Client::VirgilClient class.
           #
           # Returns:
           #   A string that represent an identity validation token.

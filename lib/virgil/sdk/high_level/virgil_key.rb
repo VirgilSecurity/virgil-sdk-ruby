@@ -88,13 +88,13 @@ module Virgil
         #
         # Args:
         #   buffer: The data for which the digital signature will be generated.
-        #           buffer can be {VirgilBuffer}, utf8-encoded String or Array of bytes
+        #           buffer can be VirgilBuffer, utf8-encoded String or Array of bytes
         #
         # Returns:
         #   A new buffer that containing the result from performing the action.
         #
         # Raises:
-        #   ArgumentError: Buffer has unsupported type if buffer doesn't have type {VirgilBuffer}, String or Array of bytes
+        #   ArgumentError: Buffer has unsupported type if buffer doesn't have type VirgilBuffer, String or Array of bytes
         def sign(buffer)
           buffer_to_sign = case buffer.class.name.split("::").last
                              when 'VirgilBuffer'
@@ -114,9 +114,9 @@ module Virgil
         # Encrypts and signs the data.
         #
         # Args:
-        #   buffer: The data wrapped by {VirgilBuffer} to be encrypted and signed
+        #   buffer: The data wrapped by VirgilBuffer to be encrypted and signed
         #     recipients: The list of VirgilCard recipients.
-        #     buffer can be {VirgilBuffer}, utf8-encoded String or Array of bytes
+        #     buffer can be VirgilBuffer, utf8-encoded String or Array of bytes
         #
         # Returns:
         #   A new buffer that containing the encrypted and signed data

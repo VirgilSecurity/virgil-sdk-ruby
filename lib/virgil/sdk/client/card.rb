@@ -112,7 +112,7 @@ module Virgil
         #   request_model: request model from instance of CreateCardRequest class.
         #
         # Returns:
-        #   new instance of {Card} class.
+        #   new card.
         def self.from_request_model(request_model)
           snapshot = Base64.decode64(request_model[:content_snapshot])
           snapshot_model = JSON.parse(snapshot)
