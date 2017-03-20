@@ -40,9 +40,21 @@ module Virgil
 
       # This class represents an information about Virgil Card
       # verifier such as Public key and Card Id.
-      # card_id: Card identifier
-      # public_key_value: Public key value wrapped by VirgilBuffer used for signature verification.
-      VirgilCardVerifierInfo = Struct.new(:card_id, :public_key_value) do
+      class VirgilCardVerifierInfo
+
+        # Card identifier
+        attr_accessor :card_id
+
+        # Public key value wrapped by an instance of the {VirgilBuffer} class used for signature verification.
+        attr_accessor :public_key_value
+
+
+        # Initializes a new instance of the {VirgilCardVerifierInfo} class.
+        def initialize(card_id, public_key_value)
+           @card_id = card_id
+          @public_key_value = public_key_value
+        end
+
       end
     end
   end

@@ -37,13 +37,15 @@ module Virgil
       module VirgilIdentity
         class VerificationOptions
 
-          # time_to_live: is used to limit the lifetime of the token in
-          #               seconds (maximum value is 60 * 60 * 24 * 365 = 1 year). Default value is 3600.
-          #
-          # count_to_live: this parameter is used to restrict the number of validation token
-          #                usages (maximum value is 100).
-          attr_reader :time_to_live, :count_to_live
+          # is used to limit the lifetime of the token in
+          # seconds (maximum value is 60 * 60 * 24 * 365 = 1 year). Default value is 3600.
+          attr_reader :time_to_live
 
+          # this parameter is used to restrict the number of validation token
+          # usages (maximum value is 100).
+          attr_reader :count_to_live
+
+          # Initializes a new instance of the {VerificationOptions} class
           def initialize(options = {})
             @time_to_live = options[:time_to_live] || 3600
             @count_to_live = options[:count_to_live] || 12

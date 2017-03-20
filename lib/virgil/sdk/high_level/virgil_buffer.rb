@@ -39,15 +39,19 @@ module Virgil
     module HighLevel
 
       # This class provides a list of methods that simplify the work with an array of bytes.
-      VirgilBuffer = Struct.new(:bytes) do
+      class VirgilBuffer
 
+        # The array of raw bytes
+        attr_accessor :bytes
+
+
+        # Initializes a new instance of the {VirgilBuffer} class.
         def initialize(bytes)
 
           self.class.validate_bytes_param(bytes)
-
-          super
+          @bytes = bytes
         end
-        
+
 
         # Initializes a new buffer from array of bytes
         def self.from_bytes(bytes)
@@ -61,7 +65,6 @@ module Virgil
         # Initializes a new buffer from specified string, which encodes binary data.
         #
         # Args:
-        #
         #   str: String to decode.
         #   encoding: The character encoding of string.
         def self.from_string(str, encoding=VirgilStringEncoding::UTF8)

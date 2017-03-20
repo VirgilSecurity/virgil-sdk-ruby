@@ -45,6 +45,7 @@ module Virgil
 
         attr_reader :crypto, :verifiers
 
+        # Initializes a new instance of the {CardValidator} class.
         def initialize(crypto)
           @crypto = crypto
           @verifiers = {}
@@ -58,9 +59,9 @@ module Virgil
           @verifiers[SERVICE_CARD_ID] = public_key
         end
 
-        #  Add signature verifier.
+        # Add signature verifier.
         #
-        #  Args:
+        # Args:
         #      card_id: Card identifier
         #      public_key: Public key used for signature verification.
         def add_verifier(card_id, public_key)
@@ -70,7 +71,8 @@ module Virgil
         # Validates Card using verifiers.
         #
         # Args:
-        #     card: Card for validation.
+        #     card: an instance of the {Card} class for validation.
+        #
         # Returns:
         #     True if card signatures are valid, false otherwise.
         def is_valid?(card)

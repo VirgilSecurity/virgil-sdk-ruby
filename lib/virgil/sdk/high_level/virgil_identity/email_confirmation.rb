@@ -40,7 +40,7 @@ module Virgil
         class EmailConfirmation
           attr_reader :confirmation_code
 
-
+          # Initializes a new instance of the {EmailConfirmation} class
           def initialize(confirmation_code)
             @confirmation_code = confirmation_code
           end
@@ -48,10 +48,8 @@ module Virgil
           # Confirms the identity using confirmation code, that has been generated to confirm an identity.
           #
           # Args:
-          #   action_id: The action identifier that was obtained on verification step.
-          #   confirmation_code: The confirmation code that was received on email box.
-          #   time_to_live: The time to live.
-          #   count_to_live: The count to live.
+          #   verification_attempt: an instance of the {VerificationAttempt} class.
+          #   client: an instance of the {Client::VirgilClient} class.
           #
           # Returns:
           #   A string that represent an identity validation token.

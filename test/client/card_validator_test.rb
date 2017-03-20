@@ -49,6 +49,7 @@ class CardValidatorTest < Minitest::Test
     )
     validator = Virgil::SDK::Client::CardValidator.new(@crypto)
     validator.add_default_verifiers
+    validator.verifiers.inspect
     @client.card_validator = validator
   end
 

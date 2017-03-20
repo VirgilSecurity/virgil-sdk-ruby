@@ -39,12 +39,17 @@ module Virgil
       # retrieved from development deshboard.
       class VirgilAppCredentials
 
-        # app_id: uniquely identifies your application in Virgil services, and it is also used to identify the
-        #         Virgil Card/Public key generated in a pair with application key.
-        # app_key_data: Application Private key value wrapped by VirgilBuffer.
-        # app_key_password: Application key password is used to protect the application key.
-        attr_reader :app_id, :app_key_data, :app_key_password
+        # uniquely identifies your application in Virgil services, and it is also used to identify the
+        # Virgil Card/Public key generated in a pair with application key.
+        attr_reader :app_id
 
+        # Application Private key value wrapped by an instance of the {VirgilBuffer} class.
+        attr_reader :app_key_data
+
+        # Application key password is used to protect the application key.
+        attr_reader :app_key_password
+
+        # Initializes a new instance of the {VirgilAppCredentials} class
         def initialize(app_id:, app_key_data:, app_key_password:)
           @app_id = app_id
           @app_key_data = app_key_data
