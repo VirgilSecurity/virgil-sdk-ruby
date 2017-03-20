@@ -1,0 +1,716 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>
+  Class: Virgil::SDK::HighLevel::VirgilContext
+  
+    &mdash; Documentation by YARD 0.9.8
+  
+</title>
+
+  <link rel="stylesheet" href="../../../css/style.css" type="text/css" charset="utf-8" />
+
+  <link rel="stylesheet" href="../../../css/common.css" type="text/css" charset="utf-8" />
+
+<script type="text/javascript" charset="utf-8">
+  pathId = "Virgil::SDK::HighLevel::VirgilContext";
+  relpath = '../../../';
+</script>
+
+
+  <script type="text/javascript" charset="utf-8" src="../../../js/jquery.js"></script>
+
+  <script type="text/javascript" charset="utf-8" src="../../../js/app.js"></script>
+
+
+  </head>
+  <body>
+    <div class="nav_wrap">
+      <iframe id="nav" src="../../../class_list.html?1"></iframe>
+      <div id="resizer"></div>
+    </div>
+
+    <div id="main" tabindex="-1">
+      <div id="header">
+        <div id="menu">
+  
+    <a href="../../../_index.html">Index (V)</a> &raquo;
+    <span class='title'><span class='object_link'><a href="../../../Virgil.html" title="Virgil (module)">Virgil</a></span></span> &raquo; <span class='title'><span class='object_link'><a href="../../SDK.html" title="Virgil::SDK (module)">SDK</a></span></span> &raquo; <span class='title'><span class='object_link'><a href="../HighLevel.html" title="Virgil::SDK::HighLevel (module)">HighLevel</a></span></span>
+     &raquo; 
+    <span class="title">VirgilContext</span>
+  
+</div>
+
+        <div id="search">
+  
+    <a class="full_list_link" id="class_list_link"
+        href="../../../class_list.html">
+
+        <svg width="24" height="24">
+          <rect x="0" y="4" width="24" height="4" rx="1" ry="1"></rect>
+          <rect x="0" y="12" width="24" height="4" rx="1" ry="1"></rect>
+          <rect x="0" y="20" width="24" height="4" rx="1" ry="1"></rect>
+        </svg>
+    </a>
+  
+</div>
+        <div class="clear"></div>
+      </div>
+
+      <div id="content"><h1>Class: Virgil::SDK::HighLevel::VirgilContext
+  
+  
+  
+</h1>
+<div class="box_info">
+  
+  <dl>
+    <dt>Inherits:</dt>
+    <dd>
+      <span class="inheritName">Object</span>
+      
+        <ul class="fullTree">
+          <li>Object</li>
+          
+            <li class="next">Virgil::SDK::HighLevel::VirgilContext</li>
+          
+        </ul>
+        <a href="#" class="inheritanceTree">show all</a>
+      
+    </dd>
+  </dl>
+  
+
+  
+  
+  
+  
+  
+
+  
+
+  
+  <dl>
+    <dt>Defined in:</dt>
+    <dd>lib/virgil/sdk/high_level/virgil_context.rb</dd>
+  </dl>
+  
+</div>
+
+<h2>Overview</h2><div class="docstring">
+  <div class="discussion">
+    
+<p>The VirgilContext class manages the VirgilApi dependencies during run time.
+It also contains a list of properties that uses to configure the high-level
+components.</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+
+</div>
+
+
+
+  <h2>Instance Attribute Summary <small><a href="#" class="summary_toggle">collapse</a></small></h2>
+  <ul class="summary">
+    
+      <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#access_token-instance_method" title="#access_token (instance method)">#<strong>access_token</strong>  &#x21d2; Object </a>
+    
+
+    
+  </span>
+  
+  
+  
+    
+      <span class="note title readonly">readonly</span>
+    
+    
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'>
+<p>Provides an authenticated secure access to the Virgil Security services.</p>
+</div></span>
+  
+</li>
+
+    
+      <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#client-instance_method" title="#client (instance method)">#<strong>client</strong>  &#x21d2; Object </a>
+    
+
+    
+  </span>
+  
+  
+  
+    
+      <span class="note title readonly">readonly</span>
+    
+    
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'>
+<p>Virgil Security services client.</p>
+</div></span>
+  
+</li>
+
+    
+      <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#credentials-instance_method" title="#credentials (instance method)">#<strong>credentials</strong>  &#x21d2; Object </a>
+    
+
+    
+  </span>
+  
+  
+  
+    
+      <span class="note title readonly">readonly</span>
+    
+    
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'>
+<p>Application authentication credentials.</p>
+</div></span>
+  
+</li>
+
+    
+      <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#crypto-instance_method" title="#crypto (instance method)">#<strong>crypto</strong>  &#x21d2; Object </a>
+    
+
+    
+  </span>
+  
+  
+  
+    
+      <span class="note title readonly">readonly</span>
+    
+    
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'>
+<p>crypto API that represents a set of methods for dealing with low-level
+cryptographic primitives and algorithms.</p>
+</div></span>
+  
+</li>
+
+    
+      <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#key_storage-instance_method" title="#key_storage (instance method)">#<strong>key_storage</strong>  &#x21d2; Object </a>
+    
+
+    
+  </span>
+  
+  
+  
+    
+      <span class="note title readonly">readonly</span>
+    
+    
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'>
+<p>Cryptographic keys storage.</p>
+</div></span>
+  
+</li>
+
+    
+      <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#use_built_in_verifiers-instance_method" title="#use_built_in_verifiers (instance method)">#<strong>use_built_in_verifiers</strong>  &#x21d2; Object </a>
+    
+
+    
+  </span>
+  
+  
+  
+    
+      <span class="note title readonly">readonly</span>
+    
+    
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'>
+<p>indicates whether the Cards be verified with built in verifiers or not.</p>
+</div></span>
+  
+</li>
+
+    
+  </ul>
+
+
+
+
+  
+    <h2>
+      Instance Method Summary
+      <small><a href="#" class="summary_toggle">collapse</a></small>
+    </h2>
+
+    <ul class="summary">
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#initialize-instance_method" title="#initialize (instance method)">#<strong>initialize</strong>(access_token: nil, credentials: nil, key_storage_path: Cryptography::Keys::KeyStorage.default_folder, cards_service_url: Client::Card::SERVICE_URL, cards_read_only_service_url: Client::Card::READ_ONLY_SERVICE_URL, ra_service_url: Client::Card::RA_SERVICE_URL, identity_service_url: VirgilIdentity::IDENTITY_SERVICE_URL, crypto: Cryptography::VirgilCrypto.new, card_verifiers: [], use_built_in_verifiers: true)  &#x21d2; VirgilContext </a>
+    
+
+    
+  </span>
+  
+  
+    <span class="note title constructor">constructor</span>
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'>
+<p>Initializes a new instance of the <span class='object_link'><a href="" title="Virgil::SDK::HighLevel::VirgilContext (class)">VirgilContext</a></span> class.</p>
+</div></span>
+  
+</li>
+
+      
+    </ul>
+  
+
+<div id="constructor_details" class="method_details_list">
+  <h2>Constructor Details</h2>
+  
+    <div class="method_details first">
+  <h3 class="signature first" id="initialize-instance_method">
+  
+    #<strong>initialize</strong>(access_token: nil, credentials: nil, key_storage_path: Cryptography::Keys::KeyStorage.default_folder, cards_service_url: Client::Card::SERVICE_URL, cards_read_only_service_url: Client::Card::READ_ONLY_SERVICE_URL, ra_service_url: Client::Card::RA_SERVICE_URL, identity_service_url: VirgilIdentity::IDENTITY_SERVICE_URL, crypto: Cryptography::VirgilCrypto.new, card_verifiers: [], use_built_in_verifiers: true)  &#x21d2; <tt><span class='object_link'><a href="" title="Virgil::SDK::HighLevel::VirgilContext (class)">VirgilContext</a></span></tt> 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    
+<p>Initializes a new instance of the <span class='object_link'><a href="" title="Virgil::SDK::HighLevel::VirgilContext (class)">Virgil::SDK::HighLevel::VirgilContext</a></span> class.</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+65
+66
+67
+68
+69
+70
+71
+72
+73
+74
+75
+76
+77
+78
+79
+80
+81
+82
+83
+84
+85
+86
+87
+88
+89
+90
+91
+92</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/virgil/sdk/high_level/virgil_context.rb', line 65</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_initialize'>initialize</span><span class='lparen'>(</span><span class='label'>access_token:</span> <span class='kw'>nil</span><span class='comma'>,</span> <span class='label'>credentials:</span> <span class='kw'>nil</span><span class='comma'>,</span> <span class='label'>key_storage_path:</span> <span class='const'><span class='object_link'><a href="../Cryptography.html" title="Virgil::SDK::Cryptography (module)">Cryptography</a></span></span><span class='op'>::</span><span class='const'><span class='object_link'><a href="../Cryptography/Keys.html" title="Virgil::SDK::Cryptography::Keys (module)">Keys</a></span></span><span class='op'>::</span><span class='const'><span class='object_link'><a href="../Cryptography/Keys/KeyStorage.html" title="Virgil::SDK::Cryptography::Keys::KeyStorage (class)">KeyStorage</a></span></span><span class='period'>.</span><span class='id identifier rubyid_default_folder'><span class='object_link'><a href="../Cryptography/Keys/KeyStorage.html#default_folder-class_method" title="Virgil::SDK::Cryptography::Keys::KeyStorage.default_folder (method)">default_folder</a></span></span><span class='comma'>,</span>
+               <span class='label'>cards_service_url:</span> <span class='const'><span class='object_link'><a href="../Client.html" title="Virgil::SDK::Client (module)">Client</a></span></span><span class='op'>::</span><span class='const'><span class='object_link'><a href="../Client/Card.html" title="Virgil::SDK::Client::Card (class)">Card</a></span></span><span class='op'>::</span><span class='const'><span class='object_link'><a href="../Client/Card.html#SERVICE_URL-constant" title="Virgil::SDK::Client::Card::SERVICE_URL (constant)">SERVICE_URL</a></span></span><span class='comma'>,</span>
+               <span class='label'>cards_read_only_service_url:</span> <span class='const'><span class='object_link'><a href="../Client.html" title="Virgil::SDK::Client (module)">Client</a></span></span><span class='op'>::</span><span class='const'><span class='object_link'><a href="../Client/Card.html" title="Virgil::SDK::Client::Card (class)">Card</a></span></span><span class='op'>::</span><span class='const'><span class='object_link'><a href="../Client/Card.html#READ_ONLY_SERVICE_URL-constant" title="Virgil::SDK::Client::Card::READ_ONLY_SERVICE_URL (constant)">READ_ONLY_SERVICE_URL</a></span></span><span class='comma'>,</span>
+               <span class='label'>ra_service_url:</span> <span class='const'><span class='object_link'><a href="../Client.html" title="Virgil::SDK::Client (module)">Client</a></span></span><span class='op'>::</span><span class='const'><span class='object_link'><a href="../Client/Card.html" title="Virgil::SDK::Client::Card (class)">Card</a></span></span><span class='op'>::</span><span class='const'><span class='object_link'><a href="../Client/Card.html#RA_SERVICE_URL-constant" title="Virgil::SDK::Client::Card::RA_SERVICE_URL (constant)">RA_SERVICE_URL</a></span></span><span class='comma'>,</span>
+               <span class='label'>identity_service_url:</span> <span class='const'><span class='object_link'><a href="VirgilIdentity.html" title="Virgil::SDK::HighLevel::VirgilIdentity (module)">VirgilIdentity</a></span></span><span class='op'>::</span><span class='const'><span class='object_link'><a href="VirgilIdentity.html#IDENTITY_SERVICE_URL-constant" title="Virgil::SDK::HighLevel::VirgilIdentity::IDENTITY_SERVICE_URL (constant)">IDENTITY_SERVICE_URL</a></span></span><span class='comma'>,</span>
+               <span class='label'>crypto:</span> <span class='const'><span class='object_link'><a href="../Cryptography.html" title="Virgil::SDK::Cryptography (module)">Cryptography</a></span></span><span class='op'>::</span><span class='const'><span class='object_link'><a href="../Cryptography/VirgilCrypto.html" title="Virgil::SDK::Cryptography::VirgilCrypto (class)">VirgilCrypto</a></span></span><span class='period'>.</span><span class='id identifier rubyid_new'><span class='object_link'><a href="../Cryptography/VirgilCrypto.html#initialize-instance_method" title="Virgil::SDK::Cryptography::VirgilCrypto#initialize (method)">new</a></span></span><span class='comma'>,</span>
+               <span class='label'>card_verifiers:</span> <span class='lbracket'>[</span><span class='rbracket'>]</span><span class='comma'>,</span>
+               <span class='label'>use_built_in_verifiers:</span> <span class='kw'>true</span>
+<span class='rparen'>)</span>
+  <span class='ivar'>@access_token</span> <span class='op'>=</span> <span class='id identifier rubyid_access_token'>access_token</span>
+  <span class='ivar'>@client</span> <span class='op'>=</span> <span class='const'><span class='object_link'><a href="../Client.html" title="Virgil::SDK::Client (module)">Client</a></span></span><span class='op'>::</span><span class='const'><span class='object_link'><a href="../Client/VirgilClient.html" title="Virgil::SDK::Client::VirgilClient (class)">VirgilClient</a></span></span><span class='period'>.</span><span class='id identifier rubyid_new'><span class='object_link'><a href="../Client/VirgilClient.html#initialize-instance_method" title="Virgil::SDK::Client::VirgilClient#initialize (method)">new</a></span></span><span class='lparen'>(</span><span class='id identifier rubyid_access_token'>access_token</span><span class='comma'>,</span> <span class='id identifier rubyid_cards_service_url'>cards_service_url</span><span class='comma'>,</span> <span class='id identifier rubyid_cards_read_only_service_url'>cards_read_only_service_url</span><span class='comma'>,</span> <span class='id identifier rubyid_identity_service_url'>identity_service_url</span><span class='comma'>,</span> <span class='id identifier rubyid_ra_service_url'>ra_service_url</span><span class='rparen'>)</span>
+  <span class='ivar'>@crypto</span> <span class='op'>=</span> <span class='id identifier rubyid_crypto'>crypto</span>
+  <span class='ivar'>@credentials</span> <span class='op'>=</span> <span class='id identifier rubyid_credentials'>credentials</span>
+  <span class='ivar'>@key_storage</span> <span class='op'>=</span> <span class='const'><span class='object_link'><a href="../Cryptography.html" title="Virgil::SDK::Cryptography (module)">Cryptography</a></span></span><span class='op'>::</span><span class='const'><span class='object_link'><a href="../Cryptography/Keys.html" title="Virgil::SDK::Cryptography::Keys (module)">Keys</a></span></span><span class='op'>::</span><span class='const'><span class='object_link'><a href="../Cryptography/Keys/KeyStorage.html" title="Virgil::SDK::Cryptography::Keys::KeyStorage (class)">KeyStorage</a></span></span><span class='period'>.</span><span class='id identifier rubyid_new'><span class='object_link'><a href="../Cryptography/Keys/KeyStorage.html#initialize-instance_method" title="Virgil::SDK::Cryptography::Keys::KeyStorage#initialize (method)">new</a></span></span><span class='lparen'>(</span><span class='id identifier rubyid_key_storage_path'>key_storage_path</span><span class='rparen'>)</span>
+  <span class='ivar'>@use_built_in_verifiers</span> <span class='op'>=</span> <span class='id identifier rubyid_use_built_in_verifiers'>use_built_in_verifiers</span>
+
+  <span class='id identifier rubyid_validator'>validator</span> <span class='op'>=</span> <span class='const'><span class='object_link'><a href="../Client.html" title="Virgil::SDK::Client (module)">Client</a></span></span><span class='op'>::</span><span class='const'><span class='object_link'><a href="../Client/CardValidator.html" title="Virgil::SDK::Client::CardValidator (class)">CardValidator</a></span></span><span class='period'>.</span><span class='id identifier rubyid_new'><span class='object_link'><a href="../Client/CardValidator.html#initialize-instance_method" title="Virgil::SDK::Client::CardValidator#initialize (method)">new</a></span></span><span class='lparen'>(</span><span class='ivar'>@crypto</span><span class='rparen'>)</span>
+  <span class='id identifier rubyid_validator'>validator</span><span class='period'>.</span><span class='id identifier rubyid_add_default_verifiers'>add_default_verifiers</span> <span class='kw'>if</span> <span class='ivar'>@use_built_in_verifiers</span>
+  <span class='ivar'>@client</span><span class='period'>.</span><span class='id identifier rubyid_card_validator'>card_validator</span> <span class='op'>=</span> <span class='id identifier rubyid_validator'>validator</span>
+
+  <span class='kw'>if</span> <span class='id identifier rubyid_card_verifiers'>card_verifiers</span><span class='period'>.</span><span class='id identifier rubyid_any?'>any?</span>
+    <span class='id identifier rubyid_card_verifiers'>card_verifiers</span><span class='period'>.</span><span class='id identifier rubyid_each'>each</span> <span class='kw'>do</span> <span class='op'>|</span><span class='id identifier rubyid_card_verifier'>card_verifier</span><span class='op'>|</span>
+      <span class='id identifier rubyid_raise'>raise</span> <span class='const'>ArgumentError</span><span class='period'>.</span><span class='id identifier rubyid_new'>new</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>card_verifiers is not valid</span><span class='tstring_end'>&quot;</span></span><span class='rparen'>)</span> <span class='kw'>unless</span> <span class='id identifier rubyid_card_verifier'>card_verifier</span><span class='period'>.</span><span class='id identifier rubyid_is_a?'>is_a?</span> <span class='const'><span class='object_link'><a href="VirgilCardVerifierInfo.html" title="Virgil::SDK::HighLevel::VirgilCardVerifierInfo (class)">VirgilCardVerifierInfo</a></span></span>
+      <span class='ivar'>@client</span><span class='period'>.</span><span class='id identifier rubyid_card_validator'>card_validator</span><span class='period'>.</span><span class='id identifier rubyid_add_verifier'>add_verifier</span><span class='lparen'>(</span><span class='id identifier rubyid_card_verifier'>card_verifier</span><span class='period'>.</span><span class='id identifier rubyid_card_id'>card_id</span><span class='comma'>,</span> <span class='ivar'>@crypto</span><span class='period'>.</span><span class='id identifier rubyid_import_public_key'>import_public_key</span><span class='lparen'>(</span><span class='id identifier rubyid_card_verifier'>card_verifier</span><span class='period'>.</span><span class='id identifier rubyid_public_key_value'>public_key_value</span><span class='period'>.</span><span class='id identifier rubyid_bytes'>bytes</span><span class='rparen'>)</span><span class='rparen'>)</span>
+    <span class='kw'>end</span>
+  <span class='kw'>end</span>
+
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+  
+</div>
+
+  <div id="instance_attr_details" class="attr_details">
+    <h2>Instance Attribute Details</h2>
+    
+      
+      <span id=""></span>
+      <div class="method_details first">
+  <h3 class="signature first" id="access_token-instance_method">
+  
+    #<strong>access_token</strong>  &#x21d2; <tt>Object</tt>  <span class="extras">(readonly)</span>
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    
+<p>Provides an authenticated secure access to the Virgil Security services.
+The access token also allows the API to associate your app requests with
+your Virgil Security developer’s account.</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+45
+46
+47</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/virgil/sdk/high_level/virgil_context.rb', line 45</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_access_token'>access_token</span>
+  <span class='ivar'>@access_token</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      
+      <span id=""></span>
+      <div class="method_details ">
+  <h3 class="signature " id="client-instance_method">
+  
+    #<strong>client</strong>  &#x21d2; <tt>Object</tt>  <span class="extras">(readonly)</span>
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    
+<p>Virgil Security services client. It&#39;s an instance of the
+<span class='object_link'><a href="../Client/VirgilClient.html" title="Virgil::SDK::Client::VirgilClient (class)">Client::VirgilClient</a></span> class.</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+48
+49
+50</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/virgil/sdk/high_level/virgil_context.rb', line 48</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_client'>client</span>
+  <span class='ivar'>@client</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      
+      <span id=""></span>
+      <div class="method_details ">
+  <h3 class="signature " id="credentials-instance_method">
+  
+    #<strong>credentials</strong>  &#x21d2; <tt>Object</tt>  <span class="extras">(readonly)</span>
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    
+<p>Application authentication credentials. It&#39;s an instance of the
+<span class='object_link'><a href="VirgilAppCredentials.html" title="Virgil::SDK::HighLevel::VirgilAppCredentials (class)">Virgil::SDK::HighLevel::VirgilAppCredentials</a></span> class.</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+55
+56
+57</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/virgil/sdk/high_level/virgil_context.rb', line 55</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_credentials'>credentials</span>
+  <span class='ivar'>@credentials</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      
+      <span id=""></span>
+      <div class="method_details ">
+  <h3 class="signature " id="crypto-instance_method">
+  
+    #<strong>crypto</strong>  &#x21d2; <tt>Object</tt>  <span class="extras">(readonly)</span>
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    
+<p>crypto API that represents a set of methods for dealing with low-level
+cryptographic primitives and algorithms. It&#39;s an instance of the
+<span class='object_link'><a href="../HighLevel.html#VirgilCrypto-constant" title="Virgil::SDK::HighLevel::VirgilCrypto (constant)">Virgil::SDK::HighLevel::VirgilCrypto</a></span> class.</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+52
+53
+54</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/virgil/sdk/high_level/virgil_context.rb', line 52</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_crypto'>crypto</span>
+  <span class='ivar'>@crypto</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      
+      <span id=""></span>
+      <div class="method_details ">
+  <h3 class="signature " id="key_storage-instance_method">
+  
+    #<strong>key_storage</strong>  &#x21d2; <tt>Object</tt>  <span class="extras">(readonly)</span>
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    
+<p>Cryptographic keys storage. It&#39;s an instance of the
+<span class='object_link'><a href="../Cryptography/Keys/KeyStorage.html" title="Virgil::SDK::Cryptography::Keys::KeyStorage (class)">Cryptography::Keys::KeyStorage</a></span> class.</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+58
+59
+60</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/virgil/sdk/high_level/virgil_context.rb', line 58</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_key_storage'>key_storage</span>
+  <span class='ivar'>@key_storage</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      
+      <span id=""></span>
+      <div class="method_details ">
+  <h3 class="signature " id="use_built_in_verifiers-instance_method">
+  
+    #<strong>use_built_in_verifiers</strong>  &#x21d2; <tt>Object</tt>  <span class="extras">(readonly)</span>
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    
+<p>indicates whether the Cards be verified with built in verifiers or not.</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+61
+62
+63</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/virgil/sdk/high_level/virgil_context.rb', line 61</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_use_built_in_verifiers'>use_built_in_verifiers</span>
+  <span class='ivar'>@use_built_in_verifiers</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+  </div>
+
+
+</div>
+
+      <div id="footer">
+  Generated on Mon Mar 20 12:58:23 2017 by
+  <a href="http://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
+  0.9.8 (ruby-2.4.0).
+</div>
+
+    </div>
+  </body>
+</html>
