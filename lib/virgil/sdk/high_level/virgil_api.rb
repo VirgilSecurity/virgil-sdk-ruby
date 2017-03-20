@@ -73,7 +73,7 @@ module Virgil
         #                   It's not required if context with own access token has been set.
         #                   It's required(only if context with own access token hasn't been set)
         #                     for the following actions: get card, find card.
-        #   context:       An instance of the class {VirgilContext} that manages the VirgilApi dependencies during run time.
+        #   context:       An instance of the class VirgilContext that manages the VirgilApi dependencies during run time.
         #                 It's required with defined Application credentials and own access_token for publishing and revoking card.
         #
         # Notice:        The both of the arguments(access_token and context) are not required for actions with Global cards.

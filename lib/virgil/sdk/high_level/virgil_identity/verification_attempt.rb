@@ -54,10 +54,10 @@ module Virgil
            #  Publish and Revoke global Cards.
            #
            # Args:
-           #   confirmation: an instance of {EmailConfirmation} class with defined own confirmation code that was received on email box.
+           #   confirmation: an instance of EmailConfirmation class with defined own confirmation code that was received on email box.
            #
            # Returns:
-           #   a new instance of {ValidationToken} class.
+           #   a new instance of ValidationToken class.
           def confirm(confirmation)
             raise ConfirmationIsNotValid unless confirmation
             token = confirmation.confirm_and_grab_validation_token(self, self.context.client)

@@ -87,7 +87,7 @@ module Virgil
         #   password: The Key password
         #
         # Returns:
-        #   An instance of {VirgilKey} class
+        #   new VirgilKey
         def import(buffer, password=nil)
           private_key = context.crypto.import_private_key(buffer.bytes, password)
           VirgilKey.new(context, private_key)
