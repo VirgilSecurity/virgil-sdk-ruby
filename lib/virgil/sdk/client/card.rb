@@ -43,6 +43,7 @@ module Virgil
                         :signatures, :validation_token, :relations) do
 
 
+        # Initializes a new instance of the {Card} class.
         def initialize(options)
           self.id = options[:id]
           self.snapshot = options[:snapshot]
@@ -58,7 +59,7 @@ module Virgil
           self.relations = options[:relations] || {}
         end
 
-        # Create new Card from response containing json-encoded snapshot.
+        # Create new {Card} from response containing json-encoded snapshot.
         # Args:
         #     response: Cards service response containing base64 encoded content_snapshot.
         # Returns:
@@ -95,6 +96,7 @@ module Virgil
           request
         end
 
+
         # Exports card's snapshot.
         #
         # Returns:
@@ -110,7 +112,7 @@ module Virgil
         #   request_model: request model from instance of CreateCardRequest class.
         #
         # Returns:
-        #   new instance of Card class.
+        #   new instance of {Card} class.
         def self.from_request_model(request_model)
           snapshot = Base64.decode64(request_model[:content_snapshot])
           snapshot_model = JSON.parse(snapshot)

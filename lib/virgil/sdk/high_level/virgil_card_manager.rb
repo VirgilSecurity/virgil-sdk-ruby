@@ -37,9 +37,12 @@ module Virgil
 
       # This class provides a list of methods to manage the VirgilCard entities.
       class VirgilCardManager
+
+        # An instance of the {VirgilContext} class that manages the VirgilApi dependencies during run time.
         attr_reader :context
         protected :context
 
+        # Initializes a new instance of the {VirgilCardManager} class.
         def initialize(context)
           @context = context
         end
@@ -78,7 +81,7 @@ module Virgil
           # Encrypts the specified data using recipients Public keys.
           #
           # Args:
-          #   buffer: The data to be encrypted. It can be VirgilBuffer, utf8 String or Array of bytes.
+          #   buffer: The data to be encrypted. It can be {VirgilBuffer}, utf8 String or Array of bytes.
           #
           # Returns:
           #   Encrypted data for current recipients Public keys.
@@ -157,7 +160,7 @@ module Virgil
         #     card: the card to be published.
         #
         # Raises:
-        # Virgil::SDK::Client::HTTP::BaseConnection::ApiError if application credentials are invalid or
+        # {Virgil::SDK::Client::HTTP::BaseConnection::ApiError} if application credentials are invalid or
         # Virgil Card with the same fingerprint already exists in Virgil Security services.
         def publish_async(card)
           card.publish_async
@@ -217,7 +220,7 @@ module Virgil
         # Raises:
         #   VirgilClient::InvalidCardException if client has validator
         #   and retrieved card signatures are not valid.
-        #   AccessTokenException:: "For this action access token can't be empty".
+        #   AccessTokenException: "For this action access token can't be empty".
         def find(*identities)
 
           raise AccessTokenException unless (context && context.access_token)

@@ -42,10 +42,14 @@ module Virgil
       # user's identity and a Public key.
       class VirgilApi
 
-        # context: an instance of the class VirgilContext that manages the VirgilApi dependencies during run time.
-        # keys: an instance of the class VirgilKeyManager that provides a work with VirgilKey entities.
-        # cards: an instance of the class VirgilCardManager that provides a work with VirgilCard entities.
-        attr_accessor :context, :keys, :cards
+        # an instance of the {VirgilContext} class that manages the VirgilApi dependencies during run time.
+        attr_accessor :context
+
+        # an instance of the {VirgilKeyManager} class that provides a work with VirgilKey entities.
+        attr_accessor :keys
+
+        # an instance of the {VirgilCardManager} class that provides a work with VirgilCard entities.
+        attr_accessor :cards
 
         class VirgilApiException < StandardError
 
@@ -60,7 +64,7 @@ module Virgil
         end
 
 
-        # Initializes a new instance of the VirgilApi class.
+        # Initializes a new instance of the {VirgilApi} class.
         #
         # Args:
         #   access_token:  Retrieved string value from development deshboard that provides an authenticated secure access to the
@@ -69,7 +73,7 @@ module Virgil
         #                   It's not required if context with own access token has been set.
         #                   It's required(only if context with own access token hasn't been set)
         #                     for the following actions: get card, find card.
-        #   context:      An instance of the class VirgilContext that manages the VirgilApi dependencies during run time.
+        #   context:       An instance of the class {VirgilContext} that manages the VirgilApi dependencies during run time.
         #                 It's required with defined Application credentials and own access_token for publishing and revoking card.
         #
         # Notice:        The both of the arguments(access_token and context) are not required for actions with Global cards.

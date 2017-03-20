@@ -42,6 +42,7 @@ module Virgil
         class ValidationToken
           attr_reader :value
 
+          # Initializes a new instance of the {ValidationToken} class
           def initialize(value)
             @value = value
           end

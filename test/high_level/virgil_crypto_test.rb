@@ -75,8 +75,8 @@ class VirgilHighLevelCryptoTest< Minitest::Test
     message = "Generate signature of message using alice's key pair"
     signature = @alice_key.sign(message)
 
-    assert_equal signature, @alice_key.sign(message.bytes)
-    assert_equal signature, @alice_key.sign(VirgilBuffer.from_string(message))
+    assert_equal signature.bytes, @alice_key.sign(message.bytes).bytes
+    assert_equal signature.bytes, @alice_key.sign(VirgilBuffer.from_string(message)).bytes
     transfer_signature_data = signature.to_base64
 
     assert_equal @alice_card.verify(message, transfer_signature_data), true

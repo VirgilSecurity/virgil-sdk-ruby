@@ -37,9 +37,11 @@ module Virgil
   module SDK
     module Client
       module Requests
+
         # Create request using trusted card's snapshot
         class AddRelationRequest < SignableRequest
 
+          # Initializes a new instance of the {AddRelationRequest} class using trusted card
           def initialize(relation_card)
             super()
             @snapshot = relation_card.to_request.snapshot
