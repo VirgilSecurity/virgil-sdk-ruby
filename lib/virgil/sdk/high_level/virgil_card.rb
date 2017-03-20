@@ -38,9 +38,16 @@ module Virgil
       # about the user and his public key. The Virgil Card identifies the user by one of his available
       # types, such as an email, a phone number, etc.
       class VirgilCard
-        attr_reader :context, :card
+
+        # An instance of the class VirgilContext that manages the VirgilApi dependencies during run time.
+        attr_reader :context
+
+        # An instance of the class Card representing cards information.
+        attr_reader :card
+
         protected :context, :card
 
+        # Initializes a new instance of the {VirgilCard} class.
         def initialize(context:, card:)
           @context = context
           @card = card
@@ -109,6 +116,7 @@ module Virgil
 
 
         # Publish synchronously the card into application Virgil Services scope
+        #
         # Raises:
         #   Virgil::SDK::Client::HTTP::BaseConnection::ApiError if access_token is invalid or
         #    Virgil Card with the same fingerprint already exists in Virgil Security services
@@ -127,6 +135,7 @@ module Virgil
 
 
         # Publish synchronously the global card into application Virgil Services scope
+        #
         # Raises:
         # Virgil Card with the same fingerprint already exists in Virgil Security services
         def publish_as_global(validation_token)

@@ -48,7 +48,7 @@ module Virgil
 
           attr_accessor :card_id, :reason
 
-          # Constructs new CreateCardRequest object
+          # Constructs new {CreateCardRequest} object
           def initialize(attributes)
             super()
             self.card_id = attributes[:card_id]

@@ -57,7 +57,7 @@ module Virgil
                       :cards_read_only_service_url, :ra_service_url, :card_validator
 
 
-        # Initializes a new VirgilClient instance.
+        # Initializes a new instance of the {VirgilClient} class.
         def initialize(
             access_token=nil,
             cards_service_url=Card::SERVICE_URL,
@@ -224,7 +224,7 @@ module Virgil
         # Adds a relation for the Virgil Card to Virgil cards service.
         #
         # Args:
-        #   request: an instance of AddRelationRequest class, that contains a trusted card.
+        #   request: an instance of {AddRelationRequest} class, that contains a trusted card.
         #
         # Returns:
         #   Updated card from server response. It's an instance of Card class.

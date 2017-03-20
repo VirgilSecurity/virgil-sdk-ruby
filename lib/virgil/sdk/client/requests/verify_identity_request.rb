@@ -41,6 +41,7 @@ module Virgil
           attr_accessor :identity, :identity_type
           private :identity_type=, :identity=
 
+          # Initializes a new instance of the {VerifyIdentityRequest} class.
           def initialize(identity, identity_type)
             self.identity_type = identity_type
             self.identity = identity

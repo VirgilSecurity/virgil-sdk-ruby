@@ -58,7 +58,7 @@ module Virgil
 
           # Raw fingerprint value.
           #
-          #  Returns:
+          # Returns:
           #    Fingerprint bytes.
           def value
             @fingerprint_bytes

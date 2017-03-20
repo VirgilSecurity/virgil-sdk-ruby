@@ -40,7 +40,7 @@ module Virgil
         class CreateCardRequest < SignableRequest
           attr_accessor :identity, :identity_type, :public_key, :data, :info, :scope
 
-          # Constructs new CreateCardRequest object
+          # Initializes a new instance of the {CreateCardRequest} class.
           def initialize(attributes)
             super()
             self.identity = attributes[:identity]

@@ -39,10 +39,13 @@ module Virgil
       # Decrypt, Sign etc.
       class VirgilKey
 
-        # context: An instance of the class VirgilContext that manages the VirgilApi dependencies during run time.
-        # private_key: An instance of the class PrivateKey
-        attr_reader :context, :private_key
+        # An instance of the {VirgilContext} class that manages the VirgilApi dependencies during run time.
+        attr_reader :context
 
+        # An instance of the {Cryptography::Keys::PrivateKey} class.
+        attr_reader :private_key
+
+        # Initializes a new instance of the {VirgilKey} class.
         def initialize(context, private_key)
           @context = context
           @private_key = private_key
@@ -85,13 +88,13 @@ module Virgil
         #
         # Args:
         #   buffer: The data for which the digital signature will be generated.
-        #           buffer can be VirgilBuffer, utf8-encoded String or Array of bytes
+        #           buffer can be {VirgilBuffer}, utf8-encoded String or Array of bytes
         #
         # Returns:
         #   A new buffer that containing the result from performing the action.
         #
         # Raises:
-        #   ArgumentError: Buffer has unsupported type if buffer doesn't have type VirgilBuffer, String or Array of bytes
+        #   ArgumentError: Buffer has unsupported type if buffer doesn't have type {VirgilBuffer}, String or Array of bytes
         def sign(buffer)
           buffer_to_sign = case buffer.class.name.split("::").last
                              when 'VirgilBuffer'
@@ -111,9 +114,9 @@ module Virgil
         # Encrypts and signs the data.
         #
         # Args:
-        #   buffer: The data wrapped by VirgilBuffer to be encrypted and signed
+        #   buffer: The data wrapped by {VirgilBuffer} to be encrypted and signed
         #     recipients: The list of VirgilCard recipients.
-        #     buffer can be VirgilBuffer, utf8-encoded String or Array of bytes
+        #     buffer can be {VirgilBuffer}, utf8-encoded String or Array of bytes
         #
         # Returns:
         #   A new buffer that containing the encrypted and signed data

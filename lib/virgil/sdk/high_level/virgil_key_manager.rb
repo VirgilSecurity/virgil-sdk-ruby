@@ -37,17 +37,20 @@ module Virgil
       # this class provides a list of methods to generate the VirgilKey
       # and further them storage in secure place.
       class VirgilKeyManager
+
+        # An instance of the {VirgilContext} class that manages the VirgilApi dependencies during run time.
         attr_reader :context
 
+        # Initializes a new instance of the {VirgilKeyManager} class.
         def initialize(context)
           @context = context
         end
 
 
-        # Generates a new VirgilKey with default parameters.
+        # Generates a new {VirgilKey} with default parameters.
         #
         # Returns:
-        #   An instance of VirgilKey class
+        #   An instance of {VirgilKey} class
         def generate
           key_pair = context.crypto.generate_keys()
           VirgilKey.new(context, key_pair.private_key)
@@ -77,21 +80,21 @@ module Virgil
 
         end
 
-        # Imports the VirgilKey from buffer.
+        # Imports the {VirgilKey} from buffer.
         #
         # Args:
         #   buffer: The buffer with Key
         #   password: The Key password
         #
         # Returns:
-        #   An instance of VirgilKey class
+        #   An instance of {VirgilKey} class
         def import(buffer, password=nil)
           private_key = context.crypto.import_private_key(buffer.bytes, password)
           VirgilKey.new(context, private_key)
         end
 
 
-        # Remove the VirgilKey from current storage by specified key name.
+        # Remove the {VirgilKey} from current storage by specified key name.
         #
         # Args:
         #   key_name: The name of the key.

@@ -36,21 +36,32 @@ module Virgil
     module HighLevel
 
       # The VirgilContext class manages the VirgilApi dependencies during run time.
-      # It also contains a list of preperties that uses to configurate the high-level components.
+      # It also contains a list of properties that uses to configure the high-level components.
       class VirgilContext
 
-        # access_token: Provides an authenticated secure access to the
-        #                 Virgil Security services. The access token also allows the API to associate
-        #                 your app requests with your Virgil Security developer’s account.
-        # client:       Virgil Security services client.
-        # crypto:       crypto API that represents a set of methods for dealing with low-level cryptographic primitives and
-        #                 algorithms.
-        # credentials:  Application authentication credentials.
-        # key_storage:  Cryptographic keys storage.
-        # use_built_in_verifiers:  indicates whether the Cards be verified with built in verifiers or not.
-        attr_reader :access_token, :client, :crypto, :credentials,
-                    :key_storage, :use_built_in_verifiers
+        # Provides an authenticated secure access to the
+        # Virgil Security services. The access token also allows the API to associate
+        # your app requests with your Virgil Security developer’s account.
+        attr_reader :access_token
 
+        # Virgil Security services client. It's an instance of the {Client::VirgilClient} class.
+        attr_reader :client
+
+        # crypto API that represents a set of methods for dealing with low-level cryptographic primitives and
+        # algorithms. It's an instance of the {VirgilCrypto} class.
+        attr_reader :crypto
+
+        # Application authentication credentials. It's an instance of the {VirgilAppCredentials} class.
+        attr_reader :credentials
+
+        # Cryptographic keys storage. It's an instance of the {Cryptography::Keys::KeyStorage} class.
+        attr_reader :key_storage
+
+        # indicates whether the Cards be verified with built in verifiers or not.
+        attr_reader :use_built_in_verifiers
+
+
+        # Initializes a new instance of the {VirgilContext} class.
         def initialize(access_token: nil, credentials: nil, key_storage_path: Cryptography::Keys::KeyStorage.default_folder,
                        cards_service_url: Client::Card::SERVICE_URL,
                        cards_read_only_service_url: Client::Card::READ_ONLY_SERVICE_URL,
