@@ -100,7 +100,7 @@ class VirgilHighLevelCryptoTest< Minitest::Test
 
     decrypted_and_verified_buf = @alice_key.decrypt_then_verify(signed_and_encrypted_buffer, @alice_card)
     decrypted_and_verified_str = @alice_key.decrypt_then_verify(signed_and_encrypted_str.to_base64, @alice_card)
-    decrypted_and_verified_bytes = @alice_key.decrypt_then_verify(signed_and_encrypted_bytes.bytes, @alice_card)
+    decrypted_and_verified_bytes = @alice_key.decrypt_then_verify(signed_and_encrypted_bytes.bytes, @bob_card, @alice_card)
 
     assert_equal decrypted_and_verified_buf.to_s, decrypted_and_verified_str.to_s
     assert_equal decrypted_and_verified_bytes.to_s, decrypted_and_verified_str.to_s

@@ -66,6 +66,7 @@ class CompatibilityTest < Minitest::Test
     assert_equal(data["original_data"], decrypted_data)
   end
 
+
   def test_sign_then_encrypt_multiple_recipients
     data = self.compatibility_data["sign_then_encrypt_multiple_recipients"]
     private_keys = data["private_keys"].map do |pk|
