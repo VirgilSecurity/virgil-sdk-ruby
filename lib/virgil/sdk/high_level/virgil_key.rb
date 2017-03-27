@@ -152,7 +152,7 @@ module Virgil
         #                  The encrypted data wrapped by VirgilBuffer or
         #                  encrypted data in base64-encoded String
         #                  or Array of bytes of encrypted data
-        #   card: The signer's VirgilCard
+        #   cards:  The list of trusted Virgil Cards, which can contains the signer's VirgilCard
         #
         # Returns:
         #   The decrypted data, which is the original plain text before encryption The decrypted data, wrapped by VirgilBuffer
@@ -160,9 +160,9 @@ module Virgil
         # Raises:
         #   ArgumentError: buffer is not valid if buffer doesn't have type VirgilBuffer, String or Array of bytes
         #   ArgumentError: recipients is not valid if recipients doesn't have type Array or empty
-        def decrypt_then_verify(cipher_buffer, card)
+        def decrypt_then_verify(cipher_buffer, *cards)
 
-          raise ArgumentError.new("card is not valid") unless card.is_a?(VirgilCard)
+          raise ArgumentError.new("card is not valid") unless cards.all? { |el| el.is_a? VirgilCard }
 
           buffer_to_decrypt = case cipher_buffer.class.name.split("::").last
                                 when 'VirgilBuffer'
@@ -175,7 +175,8 @@ module Virgil
                                   raise ArgumentError.new("Buffer has unsupported type")
                               end
 
-          bytes = context.crypto.decrypt_then_verify(buffer_to_decrypt.bytes, private_key, card.public_key)
+          public_keys = cards.map(&:public_key)
+          bytes = context.crypto.decrypt_then_verify(buffer_to_decrypt.bytes, private_key, *public_keys)
           VirgilBuffer.new(bytes)
         end
 

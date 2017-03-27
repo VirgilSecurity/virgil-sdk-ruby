@@ -51,12 +51,16 @@ module Virgil
         # Exception raised when Signature is not valid
         class SignatureIsNotValid < StandardError
           def to_s
-             "Signature is not valid"
+            "Signature is not valid"
           end
         end
 
         CUSTOM_PARAM_KEY_SIGNATURE = Crypto::Bytes.from_string(
-          'VIRGIL-DATA-SIGNATURE'
+            'VIRGIL-DATA-SIGNATURE'
+        )
+
+        CUSTOM_PARAM_KEY_SIGNER_ID = Crypto::Bytes.from_string(
+            'VIRGIL-DATA-SIGNER-ID'
         )
 
         # Generates asymmetric key pair that is comprised of both public and private keys by specified type.
@@ -70,20 +74,20 @@ module Virgil
           native_key_pair = Crypto::Native::VirgilKeyPair.generate(native_type)
           key_pair_id = self.compute_public_key_hash(native_key_pair.public_key)
           private_key = Keys::PrivateKey.new(
-            key_pair_id,
-            wrap_bytes(
-              Crypto::Native::VirgilKeyPair.private_key_to_der(
-                native_key_pair.private_key
+              key_pair_id,
+              wrap_bytes(
+                  Crypto::Native::VirgilKeyPair.private_key_to_der(
+                      native_key_pair.private_key
+                  )
               )
-            )
           )
           public_key = Keys::PublicKey.new(
-            key_pair_id,
-            wrap_bytes(
-              Crypto::Native::VirgilKeyPair.public_key_to_der(
-                native_key_pair.public_key
+              key_pair_id,
+              wrap_bytes(
+                  Crypto::Native::VirgilKeyPair.public_key_to_der(
+                      native_key_pair.public_key
+                  )
               )
-            )
           )
           return Keys::KeyPair.new(private_key, public_key)
         end
@@ -98,20 +102,20 @@ module Virgil
         #   Imported private key.
         def import_private_key(key_bytes, password=nil)
           decrypted_private_key = if !password
-            Crypto::Native::VirgilKeyPair.private_key_to_der(key_bytes)
-          else
-            Crypto::Native::VirgilKeyPair.decrypt_private_key(
-              key_bytes,
-              Crypto::Bytes.from_string(password)
-            )
-          end
+                                    Crypto::Native::VirgilKeyPair.private_key_to_der(key_bytes)
+                                  else
+                                    Crypto::Native::VirgilKeyPair.decrypt_private_key(
+                                        key_bytes,
+                                        Crypto::Bytes.from_string(password)
+                                    )
+                                  end
 
           public_key_bytes = Crypto::Native::VirgilKeyPair.extract_public_key(
-            decrypted_private_key, []
+              decrypted_private_key, []
           )
           key_pair_id = self.compute_public_key_hash(public_key_bytes)
           private_key_bytes = Crypto::Native::VirgilKeyPair.private_key_to_der(
-            decrypted_private_key
+              decrypted_private_key
           )
           return Keys::PrivateKey.new(key_pair_id, wrap_bytes(private_key_bytes))
         end
@@ -126,7 +130,7 @@ module Virgil
         def import_public_key(key_bytes)
           key_pair_id = self.compute_public_key_hash(key_bytes)
           public_key_bytes =
-            Crypto::Native::VirgilKeyPair.public_key_to_der(key_bytes)
+              Crypto::Native::VirgilKeyPair.public_key_to_der(key_bytes)
           Keys::PublicKey.new(key_pair_id, wrap_bytes(public_key_bytes))
         end
 
@@ -141,20 +145,20 @@ module Virgil
         def export_private_key(private_key, password=nil)
           unless password
             return Crypto::Native::VirgilKeyPair.private_key_to_der(
-              private_key.value
+                private_key.value
             )
           end
 
           password_bytes = Crypto::Bytes.from_string(password)
           private_key_bytes = Crypto::Native::VirgilKeyPair.encrypt_private_key(
-            private_key.value,
-            password_bytes
+              private_key.value,
+              password_bytes
           )
           wrap_bytes(
-            Crypto::Native::VirgilKeyPair.private_key_to_der(
-              private_key_bytes,
-              password_bytes
-            )
+              Crypto::Native::VirgilKeyPair.private_key_to_der(
+                  private_key_bytes,
+                  password_bytes
+              )
           )
         end
 
@@ -167,7 +171,7 @@ module Virgil
         #   Key material representation bytes.
         def export_public_key(public_key)
           wrap_bytes(
-            Crypto::Native::VirgilKeyPair.public_key_to_der(public_key.value)
+              Crypto::Native::VirgilKeyPair.public_key_to_der(public_key.value)
           )
         end
 
@@ -180,14 +184,14 @@ module Virgil
         #   Exported public key.
         def extract_public_key(private_key)
           public_key_bytes = Crypto::Native::VirgilKeyPair.extract_public_key(
-            private_key.value,
-            []
+              private_key.value,
+              []
           )
           Keys::PublicKey.new(
-            private_key.receiver_id,
-            wrap_bytes(
-              Crypto::Native::VirgilKeyPair.public_key_to_der(public_key_bytes)
-            )
+              private_key.receiver_id,
+              wrap_bytes(
+                  Crypto::Native::VirgilKeyPair.public_key_to_der(public_key_bytes)
+              )
           )
         end
 
@@ -218,9 +222,9 @@ module Virgil
         def decrypt(cipher_bytes, private_key)
           cipher = Crypto::Native::VirgilCipher.new
           decrypted_bytes = cipher.decrypt_with_key(
-            cipher_bytes,
-            private_key.receiver_id,
-            private_key.value
+              cipher_bytes,
+              private_key.receiver_id,
+              private_key.value
           )
           wrap_bytes(decrypted_bytes)
         end
@@ -241,9 +245,16 @@ module Virgil
           cipher = Crypto::Native::VirgilCipher.new
           custom_bytes = cipher.custom_params
           custom_bytes.set_data(
-            CUSTOM_PARAM_KEY_SIGNATURE,
-            signature
+              CUSTOM_PARAM_KEY_SIGNATURE,
+              signature
           )
+
+          public_key = extract_public_key(private_key)
+          custom_bytes.set_data(
+              CUSTOM_PARAM_KEY_SIGNER_ID,
+              wrap_bytes(public_key.receiver_id)
+          )
+
           recipients.each do |public_key|
             cipher.add_key_recipient(public_key.receiver_id, public_key.value)
           end
@@ -255,27 +266,40 @@ module Virgil
         # Args:
         #   bytes: encrypted data bytes.
         #   private_key: private key for decryption.
-        #   public_key: public key for verification.
+        #   public_keys: a list of public keys for verification, which can contain signer's public key.
         #
         # Returns:
         #   Decrypted data bytes.
         #
         # Raises:
         #   SignatureIsNotValid: if signature is not verified.
-        def decrypt_then_verify(bytes, private_key, public_key)
+        def decrypt_then_verify(bytes, private_key, *public_keys)
           cipher = Crypto::Native::VirgilCipher.new
           decrypted_bytes = cipher.decrypt_with_key(
-            bytes,
-            private_key.receiver_id,
-            private_key.value
+              bytes,
+              private_key.receiver_id,
+              private_key.value
           )
           signature = cipher.custom_params.get_data(CUSTOM_PARAM_KEY_SIGNATURE)
-          is_valid = self.verify(decrypted_bytes, signature, public_key)
+
+          signer_public_key = public_keys.first
+          if public_keys.count > 1
+            signer_id = cipher.custom_params.get_data(CUSTOM_PARAM_KEY_SIGNER_ID)
+            public_keys.each do |public_key|
+              if public_key.receiver_id == signer_id
+                signer_public_key = public_key
+                break
+              end
+            end
+          end
+
+          is_valid = self.verify(decrypted_bytes, signature, signer_public_key)
           unless is_valid
             raise SignatureIsNotValid.new
           end
           wrap_bytes(decrypted_bytes)
         end
+
 
         # Signs the specified data using Private key.
         #
@@ -331,10 +355,10 @@ module Virgil
           source = Crypto::VirgilStreamDataSource.new(input_stream)
           sink = Crypto::VirgilStreamDataSink.new(output_stream)
           cipher.decrypt_with_key(
-            source,
-            sink,
-            private_key.receiver_id,
-            private_key.value
+              source,
+              sink,
+              private_key.receiver_id,
+              private_key.value
           )
         end
 
