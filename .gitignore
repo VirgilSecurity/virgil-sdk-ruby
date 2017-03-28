@@ -12,4 +12,8 @@ lib/virgil/sdk/virgil_crypto_ruby.so
 *sample.rb
 key_storage
 *.virgilkey
+<<<<<<< HEAD
 test/support/env.yml
+=======
+/test/support/env.yml
+>>>>>>> 66336f9... docker environment is changed
