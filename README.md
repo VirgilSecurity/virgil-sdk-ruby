@@ -125,7 +125,7 @@ Our developer support team is here to help you. You can find us on [Twitter](htt
 [_getstarted_storage]: https://virgilsecurity.com/docs/use-cases/secure-data-at-rest
 [_getstarted_data_integrity]: https://virgilsecurity.com/docs/use-cases/data-verification
 [_getstarted_passwordless_login]: https://virgilsecurity.com/docs/use-cases/passwordless-authentication
-[_guides]: https://stg.virgilsecurity.com/docs/sdk/ruby/features
+[_guides]: https://virgilsecurity.com/docs/sdk/ruby/features
 [_guide_initialization]: https://virgilsecurity.com/docs/sdk/ruby/getting-started#initializing
 [_guide_virgil_cards]: https://virgilsecurity.com/docs/sdk/ruby/features#virgil-cards
 [_guide_virgil_keys]: https://virgilsecurity.com/docs/sdk/ruby/features#virgil-keys
