@@ -1,11 +1,17 @@
 language: ruby
 before_install:
 - openssl aes-256-cbc -K $encrypted_a30fbaed9b64_key -iv $encrypted_a30fbaed9b64_iv
-  -in app.virgilkey.enc -out app.virgilkey -d
+  -in travis/travis_rsa.enc -out travis/travis_rsa -d
+- openssl aes-256-cbc -K $encrypted_a30fbaed9b64_key -iv $encrypted_a30fbaed9b64_iv
+  -in travis/app.virgilkey.enc -out app.virgilkey -d
+  - chmod 0600 travis/travis_rsa
+  - cp travis/travis_rsa ~/.ssh/id_rsa
 - rvm install 2.4.1
 rvm:
-- 2.2
 - 2.4.1
 script:
 - rake
 - yardoc lib/*  --output-dir docs
+- git add .
+- git commit -m "auto generated yaml documentation"
+- git push origin master
