@@ -1,0 +1,9 @@
+language: ruby
+before_install:
+  - rvm install 2.4.1
+rvm:
+  - 2.2
+  - 2.4.1
+script:
+  - rake
+  - yardoc lib/*  --output-dir docs
