@@ -1,9 +1,14 @@
 language: ruby
 before_install:
-  - rvm install 2.4.1
+- rvm install 2.4.1
 rvm:
-  - 2.2
-  - 2.4.1
+- 2.2
+- 2.4.1
 script:
-  - rake
-  - yardoc lib/*  --output-dir docs
+- rake
+- yardoc lib/*  --output-dir docs
+env:
+  matrix:
+  - secure: ''
+  global:
+    secure: FpMhA7EtIS8+o6iE0HgUR49Mbm167FqdgTNwUJPC2J5g4ULvosGZURJK6CyJPUcQvsrzmbfQ0Sne+XFG6t6gRwHspMYD+5zW3Zy0B6ihbpOV9Fk8iKlLdrn/lLhZ39S3VWRc34wRY0xbnuOllCt55CYmhgW26jrdqsl/XI0u44r/bWWfh19616LnKgs2gP8AeT/Ngv9PyJot7hbvCaLzsdYOp0WdGzbNNTmtQwqS1hZ1J0d7AkgSMVB0QZsJohWOb6XFOS0/QeWj3NSxEN0AfmGIR0GlNtzUUJBJ3KL9/j/2cmzM17iiSix+9UHAXyStqKrB6aiPQWPKMlNNqqoOeYpMcFeWhvBAkxjIAhdoRocPmL7NC2PGydMKHjMq2up1+L+UijpEobjXjI9igwbNn8o7m65uuEKTGx/krfl0l06lvG1ymDMwejsL86Ctt7M1a1Op5UivtQ3VcEfbj2XngAv3DnfLBb9doQgpo1J49QGLHUuAklAnPZqk1bu0PEY0Z7rmAte1Ths0RAu6oN05rJjQWCMEupWs4GJ6FgxWLd/itSTDy7vFBLChalP0NZHE3jzad8HQNbP6uPa2wk5JTm7fIYT6j+X4yqU1oP02n6MRwF5gipc4WunwZ6GDjhaxWbD97y9SCMEtcyumE8LWwDXTWhRPGl5KcXwrUwF85xI=
