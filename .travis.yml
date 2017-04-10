@@ -1,5 +1,7 @@
 language: ruby
 before_install:
+- openssl aes-256-cbc -K $encrypted_a30fbaed9b64_key -iv $encrypted_a30fbaed9b64_iv
+  -in app.virgilkey.enc -out app.virgilkey -d
 - rvm install 2.4.1
 rvm:
 - 2.2
