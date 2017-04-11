@@ -1,7 +1,8 @@
 language: ruby
+branches:
+  only:
+    - master
 before_install:
-- git config --global user.email "marfachaiko@gmail.com"
-- git config --global user.name "travis"
 - openssl aes-256-cbc -K $encrypted_a30fbaed9b64_key -iv $encrypted_a30fbaed9b64_iv
   -in secrets.tar.enc -out secrets.tar -d
 - tar xvf secrets.tar
@@ -13,6 +14,5 @@ rvm:
 script:
 - rake
 - yardoc lib/*  --output-dir docs
-- git add .
-- git commit -m "auto generated yaml documentation"
-- git push origin master
+after_success:
+./deploy_docs
