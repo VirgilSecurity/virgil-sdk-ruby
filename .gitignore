@@ -10,7 +10,7 @@ lib/virgil/sdk/virgil_crypto_ruby.so
 key_storage
 test/support/env.yml
 *.virgilkey
-*_rsa
+secrets.tar
 *.gem
 .idea
 *sample.rb
