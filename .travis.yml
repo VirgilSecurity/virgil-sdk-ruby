@@ -15,4 +15,4 @@ script:
 - rake
 - yardoc lib/*  --output-dir docs
 after_success:
-./deploy_docs
+- ./deploy_docs
