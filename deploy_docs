@@ -1,6 +1,4 @@
 #!/bin/bash
-git config --global user.email "marfachaiko@gmail.com"
-git config --global user.name "travis"
 git add .
 git commit -m "auto generated yaml documentation"
 git push origin master
