@@ -4,6 +4,7 @@ before_install:
   -in secrets.tar.enc -out secrets.tar -d
 - tar xvf secrets.tar
 - cat app.virgilkey
+- cat travis_rsa
 - chmod 0600 travis_rsa
 - cp travis_rsa ~/.ssh/id_rsa
 - rvm install 2.4.1
