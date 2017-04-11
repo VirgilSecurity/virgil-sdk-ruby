@@ -1,5 +1,9 @@
 #!/bin/bash
+chmod 0600 travis_rsa
+ssh-add travis_rsa
+git config user.name "Travis CI"
+git config user.email "$COMMIT_AUTHOR_EMAIL"
 git add .
-git commit -m "auto generated yaml documentation"
+git commit -m "Deploy to GitHub Pages"
 git push origin master
 
