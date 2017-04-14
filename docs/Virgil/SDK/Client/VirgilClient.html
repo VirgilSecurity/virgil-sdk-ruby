@@ -306,7 +306,7 @@ methods to interaction with server.</p>
         <li class="public ">
   <span class="summary_signature">
     
-      <a href="#add_relation-instance_method" title="#add_relation (instance method)">#<strong>add_relation</strong>(request)  &#x21d2; Object </a>
+      <a href="#add_relation-instance_method" title="#add_relation (instance method)">#<strong>add_relation</strong>(request)  &#x21d2; Card </a>
     
 
     
@@ -719,7 +719,7 @@ revoking cards.</p>
         <li class="public ">
   <span class="summary_signature">
     
-      <a href="#revoke_card_from_signed_request-instance_method" title="#revoke_card_from_signed_request (instance method)">#<strong>revoke_card_from_signed_request</strong>(revocation_request)  &#x21d2; Object </a>
+      <a href="#revoke_card_from_signed_request-instance_method" title="#revoke_card_from_signed_request (instance method)">#<strong>revoke_card_from_signed_request</strong>(revocation_request)  &#x21d2; void </a>
     
 
     
@@ -743,7 +743,7 @@ revoking cards.</p>
         <li class="public ">
   <span class="summary_signature">
     
-      <a href="#revoke_global_card-instance_method" title="#revoke_global_card (instance method)">#<strong>revoke_global_card</strong>(card_id, key_pair, validation_token, reason = Requests::RevokeCardRequest::Reasons::Unspecified)  &#x21d2; Object </a>
+      <a href="#revoke_global_card-instance_method" title="#revoke_global_card (instance method)">#<strong>revoke_global_card</strong>(card_id, key_pair, validation_token, reason = Requests::RevokeCardRequest::Reasons::Unspecified)  &#x21d2; void </a>
     
 
     
@@ -1357,7 +1357,7 @@ depending of specified type.</p>
       <div class="method_details first">
   <h3 class="signature first" id="add_relation-instance_method">
   
-    #<strong>add_relation</strong>(request)  &#x21d2; <tt>Object</tt> 
+    #<strong>add_relation</strong>(request)  &#x21d2; <tt><span class='object_link'><a href="Card.html" title="Virgil::SDK::Client::Card (class)">Card</a></span></tt> 
   
 
   
@@ -1394,6 +1394,24 @@ It&#39;s an instance of Card class.</p>
   
 </ul>
 
+<p class="tag_title">Returns:</p>
+<ul class="return">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt><span class='object_link'><a href="Card.html" title="Virgil::SDK::Client::Card (class)">Card</a></span></tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'>
+<p>Updated card from server response.</p>
+</div>
+      
+    </li>
+  
+</ul>
 <p class="tag_title">Raises:</p>
 <ul class="raise">
   
@@ -1434,7 +1452,6 @@ exactly 1 signature.</p>
       <pre class="lines">
 
 
-207
 208
 209
 210
@@ -1447,10 +1464,11 @@ exactly 1 signature.</p>
 217
 218
 219
-220</pre>
+220
+221</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/virgil/sdk/client/virgil_client.rb', line 207</span>
+      <pre class="code"><span class="info file"># File 'lib/virgil/sdk/client/virgil_client.rb', line 208</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_add_relation'>add_relation</span><span class='lparen'>(</span><span class='id identifier rubyid_request'>request</span><span class='rparen'>)</span>
   <span class='kw'>unless</span> <span class='lparen'>(</span><span class='id identifier rubyid_request'>request</span><span class='period'>.</span><span class='id identifier rubyid_is_a?'>is_a?</span><span class='lparen'>(</span><span class='const'><span class='object_link'><a href="Requests.html" title="Virgil::SDK::Client::Requests (module)">Requests</a></span></span><span class='op'>::</span><span class='const'><span class='object_link'><a href="Requests/AddRelationRequest.html" title="Virgil::SDK::Client::Requests::AddRelationRequest (class)">AddRelationRequest</a></span></span><span class='rparen'>)</span> <span class='op'>&amp;&amp;</span> <span class='op'>!</span><span class='id identifier rubyid_request'>request</span><span class='period'>.</span><span class='id identifier rubyid_snapshot'>snapshot</span><span class='period'>.</span><span class='id identifier rubyid_nil?'>nil?</span> <span class='op'>&amp;&amp;</span> <span class='id identifier rubyid_request'>request</span><span class='period'>.</span><span class='id identifier rubyid_signatures'>signatures</span><span class='period'>.</span><span class='id identifier rubyid_count'>count</span> <span class='op'>==</span> <span class='int'>1</span><span class='rparen'>)</span>
@@ -1510,15 +1528,15 @@ exactly 1 signature.</p>
       <pre class="lines">
 
 
-413
-414
-415
 416
 417
-418</pre>
+418
+419
+420
+421</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/virgil/sdk/client/virgil_client.rb', line 413</span>
+      <pre class="code"><span class="info file"># File 'lib/virgil/sdk/client/virgil_client.rb', line 416</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_cards_connection'>cards_connection</span>
   <span class='ivar'>@_cards_connection</span> <span class='op'>||=</span> <span class='const'><span class='object_link'><a href="HTTP.html" title="Virgil::SDK::Client::HTTP (module)">HTTP</a></span></span><span class='op'>::</span><span class='const'><span class='object_link'><a href="HTTP/CardsServiceConnection.html" title="Virgil::SDK::Client::HTTP::CardsServiceConnection (class)">CardsServiceConnection</a></span></span><span class='period'>.</span><span class='id identifier rubyid_new'><span class='object_link'><a href="HTTP/BaseConnection.html#initialize-instance_method" title="Virgil::SDK::Client::HTTP::BaseConnection#initialize (method)">new</a></span></span><span class='lparen'>(</span>
@@ -1644,19 +1662,19 @@ confirm an identity.</p>
       <pre class="lines">
 
 
-324
-325
-326
 327
 328
 329
 330
 331
 332
-333</pre>
+333
+334
+335
+336</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/virgil/sdk/client/virgil_client.rb', line 324</span>
+      <pre class="code"><span class="info file"># File 'lib/virgil/sdk/client/virgil_client.rb', line 327</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_confirm_identity'>confirm_identity</span><span class='lparen'>(</span><span class='id identifier rubyid_action_id'>action_id</span><span class='comma'>,</span> <span class='id identifier rubyid_confirmation_code'>confirmation_code</span><span class='comma'>,</span> <span class='id identifier rubyid_time_to_live'>time_to_live</span><span class='comma'>,</span> <span class='id identifier rubyid_count_to_live'>count_to_live</span><span class='rparen'>)</span>
   <span class='id identifier rubyid_confirm_request'>confirm_request</span> <span class='op'>=</span> <span class='const'><span class='object_link'><a href="Requests.html" title="Virgil::SDK::Client::Requests (module)">Requests</a></span></span><span class='op'>::</span><span class='const'><span class='object_link'><a href="Requests/ConfirmIdentityRequest.html" title="Virgil::SDK::Client::Requests::ConfirmIdentityRequest (class)">ConfirmIdentityRequest</a></span></span><span class='period'>.</span><span class='id identifier rubyid_new'><span class='object_link'><a href="Requests/ConfirmIdentityRequest.html#initialize-instance_method" title="Virgil::SDK::Client::Requests::ConfirmIdentityRequest#initialize (method)">new</a></span></span><span class='lparen'>(</span><span class='id identifier rubyid_confirmation_code'>confirmation_code</span><span class='comma'>,</span> <span class='id identifier rubyid_action_id'>action_id</span><span class='comma'>,</span> <span class='id identifier rubyid_time_to_live'>time_to_live</span><span class='comma'>,</span> <span class='id identifier rubyid_count_to_live'>count_to_live</span><span class='rparen'>)</span>
@@ -1987,12 +2005,12 @@ is used for request signing.</p>
       <pre class="lines">
 
 
-460
-461
-462</pre>
+463
+464
+465</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/virgil/sdk/client/virgil_client.rb', line 460</span>
+      <pre class="code"><span class="info file"># File 'lib/virgil/sdk/client/virgil_client.rb', line 463</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_crypto'>crypto</span>
   <span class='ivar'>@_crypto</span> <span class='op'>||=</span> <span class='const'><span class='object_link'><a href="../../../Virgil.html" title="Virgil (module)">Virgil</a></span></span><span class='op'>::</span><span class='const'><span class='object_link'><a href="../../SDK.html" title="Virgil::SDK (module)">SDK</a></span></span><span class='op'>::</span><span class='const'><span class='object_link'><a href="../Cryptography.html" title="Virgil::SDK::Cryptography (module)">Cryptography</a></span></span><span class='op'>::</span><span class='const'><span class='object_link'><a href="../Cryptography/VirgilCrypto.html" title="Virgil::SDK::Cryptography::VirgilCrypto (class)">VirgilCrypto</a></span></span><span class='period'>.</span><span class='id identifier rubyid_new'><span class='object_link'><a href="../Cryptography/VirgilCrypto.html#initialize-instance_method" title="Virgil::SDK::Cryptography::VirgilCrypto#initialize (method)">new</a></span></span>
@@ -2099,7 +2117,6 @@ exactly 1 signature.</p>
       <pre class="lines">
 
 
-228
 229
 230
 231
@@ -2112,10 +2129,11 @@ exactly 1 signature.</p>
 238
 239
 240
-241</pre>
+241
+242</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/virgil/sdk/client/virgil_client.rb', line 228</span>
+      <pre class="code"><span class="info file"># File 'lib/virgil/sdk/client/virgil_client.rb', line 229</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_delete_relation'>delete_relation</span><span class='lparen'>(</span><span class='id identifier rubyid_request'>request</span><span class='rparen'>)</span>
   <span class='kw'>unless</span> <span class='lparen'>(</span><span class='id identifier rubyid_request'>request</span><span class='period'>.</span><span class='id identifier rubyid_is_a?'>is_a?</span><span class='lparen'>(</span><span class='const'><span class='object_link'><a href="Requests.html" title="Virgil::SDK::Client::Requests (module)">Requests</a></span></span><span class='op'>::</span><span class='const'><span class='object_link'><a href="Requests/DeleteRelationRequest.html" title="Virgil::SDK::Client::Requests::DeleteRelationRequest (class)">DeleteRelationRequest</a></span></span><span class='rparen'>)</span> <span class='op'>&amp;&amp;</span> <span class='op'>!</span><span class='id identifier rubyid_request'>request</span><span class='period'>.</span><span class='id identifier rubyid_snapshot'>snapshot</span><span class='period'>.</span><span class='id identifier rubyid_nil?'>nil?</span> <span class='op'>&amp;&amp;</span> <span class='id identifier rubyid_request'>request</span><span class='period'>.</span><span class='id identifier rubyid_signatures'>signatures</span><span class='period'>.</span><span class='id identifier rubyid_count'>count</span> <span class='op'>==</span> <span class='int'>1</span><span class='rparen'>)</span>
@@ -2218,19 +2236,19 @@ exactly 1 signature.</p>
       <pre class="lines">
 
 
-341
-342
-343
 344
 345
 346
 347
 348
 349
-350</pre>
+350
+351
+352
+353</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/virgil/sdk/client/virgil_client.rb', line 341</span>
+      <pre class="code"><span class="info file"># File 'lib/virgil/sdk/client/virgil_client.rb', line 344</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_get_card'>get_card</span><span class='lparen'>(</span><span class='id identifier rubyid_card_id'>card_id</span><span class='rparen'>)</span>
   <span class='id identifier rubyid_http_request'>http_request</span> <span class='op'>=</span> <span class='const'><span class='object_link'><a href="../../../Virgil.html" title="Virgil (module)">Virgil</a></span></span><span class='op'>::</span><span class='const'><span class='object_link'><a href="../../SDK.html" title="Virgil::SDK (module)">SDK</a></span></span><span class='op'>::</span><span class='const'><span class='object_link'><a href="../Client.html" title="Virgil::SDK::Client (module)">Client</a></span></span><span class='op'>::</span><span class='const'><span class='object_link'><a href="HTTP.html" title="Virgil::SDK::Client::HTTP (module)">HTTP</a></span></span><span class='op'>::</span><span class='const'><span class='object_link'><a href="HTTP/Request.html" title="Virgil::SDK::Client::HTTP::Request (class)">Request</a></span></span><span class='period'>.</span><span class='id identifier rubyid_new'>new</span><span class='lparen'>(</span>
@@ -2287,16 +2305,16 @@ identities like email, application, etc.</p>
       <pre class="lines">
 
 
-442
-443
-444
 445
 446
 447
-448</pre>
+448
+449
+450
+451</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/virgil/sdk/client/virgil_client.rb', line 442</span>
+      <pre class="code"><span class="info file"># File 'lib/virgil/sdk/client/virgil_client.rb', line 445</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_identity_service_connection'>identity_service_connection</span>
   <span class='ivar'>@identity_service_connection</span> <span class='op'>=</span> <span class='const'><span class='object_link'><a href="HTTP.html" title="Virgil::SDK::Client::HTTP (module)">HTTP</a></span></span><span class='op'>::</span><span class='const'><span class='object_link'><a href="HTTP/CardsServiceConnection.html" title="Virgil::SDK::Client::HTTP::CardsServiceConnection (class)">CardsServiceConnection</a></span></span><span class='period'>.</span><span class='id identifier rubyid_new'><span class='object_link'><a href="HTTP/BaseConnection.html#initialize-instance_method" title="Virgil::SDK::Client::HTTP::BaseConnection#initialize (method)">new</a></span></span><span class='lparen'>(</span>
@@ -2384,21 +2402,18 @@ identities like email, application, etc.</p>
         <span class='name'>custom_data</span>
       
       
-        <span class='type'>(<tt>optional</tt>)</span>
+        <span class='type'>(<tt>Hash</tt>)</span>
       
       
         <em class="default">(defaults to: <tt>{}</tt>)</em>
       
       
         &mdash;
-        <div class='inline'><dl class="rdoc-list label-list"><dt>Hash
-<dd>
-<p>contains application specific</p>
-</dd></dl>
-
-<p>parameters(under key :data) and information about the device on which the
-keypair was created(under key :device and :device_name). example: {my_key1: “my_val1”, my_key2: “my_val2”, device: “iPhone6s”, device_name:
-“Space grey one”}</p>
+        <div class='inline'>
+<p>contains application specific parameters(under key :data) and information
+about the device on which the keypair was created(under key :device and
+:device_name). example: {my_key1: “my_val1”, my_key2: “my_val2”,
+device: “iPhone6s”, device_name: “Space grey one”}</p>
 </div>
       
     </li>
@@ -2749,15 +2764,15 @@ revoking cards.</p>
       <pre class="lines">
 
 
-422
-423
-424
 425
 426
-427</pre>
+427
+428
+429
+430</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/virgil/sdk/client/virgil_client.rb', line 422</span>
+      <pre class="code"><span class="info file"># File 'lib/virgil/sdk/client/virgil_client.rb', line 425</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_ra_connection'>ra_connection</span>
   <span class='ivar'>@_ra_connection</span> <span class='op'>||=</span> <span class='const'><span class='object_link'><a href="HTTP.html" title="Virgil::SDK::Client::HTTP (module)">HTTP</a></span></span><span class='op'>::</span><span class='const'><span class='object_link'><a href="HTTP/CardsServiceConnection.html" title="Virgil::SDK::Client::HTTP::CardsServiceConnection (class)">CardsServiceConnection</a></span></span><span class='period'>.</span><span class='id identifier rubyid_new'><span class='object_link'><a href="HTTP/BaseConnection.html#initialize-instance_method" title="Virgil::SDK::Client::HTTP::BaseConnection#initialize (method)">new</a></span></span><span class='lparen'>(</span>
@@ -2809,15 +2824,15 @@ revoking cards.</p>
       <pre class="lines">
 
 
-432
-433
-434
 435
 436
-437</pre>
+437
+438
+439
+440</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/virgil/sdk/client/virgil_client.rb', line 432</span>
+      <pre class="code"><span class="info file"># File 'lib/virgil/sdk/client/virgil_client.rb', line 435</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_read_cards_connection'>read_cards_connection</span>
   <span class='ivar'>@_read_cards_connection</span> <span class='op'>=</span> <span class='const'><span class='object_link'><a href="HTTP.html" title="Virgil::SDK::Client::HTTP (module)">HTTP</a></span></span><span class='op'>::</span><span class='const'><span class='object_link'><a href="HTTP/CardsServiceConnection.html" title="Virgil::SDK::Client::HTTP::CardsServiceConnection (class)">CardsServiceConnection</a></span></span><span class='period'>.</span><span class='id identifier rubyid_new'><span class='object_link'><a href="HTTP/BaseConnection.html#initialize-instance_method" title="Virgil::SDK::Client::HTTP::BaseConnection#initialize (method)">new</a></span></span><span class='lparen'>(</span>
@@ -2869,12 +2884,12 @@ revoking cards.</p>
       <pre class="lines">
 
 
-453
-454
-455</pre>
+456
+457
+458</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/virgil/sdk/client/virgil_client.rb', line 453</span>
+      <pre class="code"><span class="info file"># File 'lib/virgil/sdk/client/virgil_client.rb', line 456</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_request_signer'>request_signer</span>
   <span class='ivar'>@_request_signer</span> <span class='op'>||=</span> <span class='const'><span class='object_link'><a href="RequestSigner.html" title="Virgil::SDK::Client::RequestSigner (class)">RequestSigner</a></span></span><span class='period'>.</span><span class='id identifier rubyid_new'><span class='object_link'><a href="RequestSigner.html#initialize-instance_method" title="Virgil::SDK::Client::RequestSigner#initialize (method)">new</a></span></span><span class='lparen'>(</span><span class='kw'>self</span><span class='period'>.</span><span class='id identifier rubyid_crypto'>crypto</span><span class='rparen'>)</span>
@@ -2981,7 +2996,6 @@ RevokeCardRequest::Reasons class.</p>
       <pre class="lines">
 
 
-251
 252
 253
 254
@@ -2994,10 +3008,11 @@ RevokeCardRequest::Reasons class.</p>
 261
 262
 263
-264</pre>
+264
+265</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/virgil/sdk/client/virgil_client.rb', line 251</span>
+      <pre class="code"><span class="info file"># File 'lib/virgil/sdk/client/virgil_client.rb', line 252</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_revoke_card'>revoke_card</span><span class='lparen'>(</span>
     <span class='id identifier rubyid_card_id'>card_id</span><span class='comma'>,</span>
@@ -3021,7 +3036,7 @@ RevokeCardRequest::Reasons class.</p>
       <div class="method_details ">
   <h3 class="signature " id="revoke_card_from_signed_request-instance_method">
   
-    #<strong>revoke_card_from_signed_request</strong>(revocation_request)  &#x21d2; <tt>Object</tt> 
+    #<strong>revoke_card_from_signed_request</strong>(revocation_request)  &#x21d2; <tt>void</tt> 
   
 
   
@@ -3029,7 +3044,7 @@ RevokeCardRequest::Reasons class.</p>
   
 </h3><div class="docstring">
   <div class="discussion">
-    
+    <p class="note returns_void">This method returns an undefined value.</p>
 <p>Revoke card using signed revocation request.</p>
 
 
@@ -3064,17 +3079,17 @@ RevokeCardRequest::Reasons class.</p>
       <pre class="lines">
 
 
-291
-292
-293
 294
 295
 296
 297
-298</pre>
+298
+299
+300
+301</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/virgil/sdk/client/virgil_client.rb', line 291</span>
+      <pre class="code"><span class="info file"># File 'lib/virgil/sdk/client/virgil_client.rb', line 294</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_revoke_card_from_signed_request'>revoke_card_from_signed_request</span><span class='lparen'>(</span><span class='id identifier rubyid_revocation_request'>revocation_request</span><span class='rparen'>)</span>
   <span class='id identifier rubyid_http_request'>http_request</span> <span class='op'>=</span> <span class='const'><span class='object_link'><a href="../../../Virgil.html" title="Virgil (module)">Virgil</a></span></span><span class='op'>::</span><span class='const'><span class='object_link'><a href="../../SDK.html" title="Virgil::SDK (module)">SDK</a></span></span><span class='op'>::</span><span class='const'><span class='object_link'><a href="../Client.html" title="Virgil::SDK::Client (module)">Client</a></span></span><span class='op'>::</span><span class='const'><span class='object_link'><a href="HTTP.html" title="Virgil::SDK::Client::HTTP (module)">HTTP</a></span></span><span class='op'>::</span><span class='const'><span class='object_link'><a href="HTTP/Request.html" title="Virgil::SDK::Client::HTTP::Request (class)">Request</a></span></span><span class='period'>.</span><span class='id identifier rubyid_new'>new</span><span class='lparen'>(</span>
@@ -3092,7 +3107,7 @@ RevokeCardRequest::Reasons class.</p>
       <div class="method_details ">
   <h3 class="signature " id="revoke_global_card-instance_method">
   
-    #<strong>revoke_global_card</strong>(card_id, key_pair, validation_token, reason = Requests::RevokeCardRequest::Reasons::Unspecified)  &#x21d2; <tt>Object</tt> 
+    #<strong>revoke_global_card</strong>(card_id, key_pair, validation_token, reason = Requests::RevokeCardRequest::Reasons::Unspecified)  &#x21d2; <tt>void</tt> 
   
 
   
@@ -3100,7 +3115,7 @@ RevokeCardRequest::Reasons class.</p>
   
 </h3><div class="docstring">
   <div class="discussion">
-    
+    <p class="note returns_void">This method returns an undefined value.</p>
 <p>Revoke Global card by id.</p>
 
 
@@ -3186,8 +3201,6 @@ RevokeCardRequest::Reasons class.</p>
       <pre class="lines">
 
 
-273
-274
 275
 276
 277
@@ -3199,10 +3212,12 @@ RevokeCardRequest::Reasons class.</p>
 283
 284
 285
-286</pre>
+286
+287
+288</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/virgil/sdk/client/virgil_client.rb', line 273</span>
+      <pre class="code"><span class="info file"># File 'lib/virgil/sdk/client/virgil_client.rb', line 275</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_revoke_global_card'>revoke_global_card</span><span class='lparen'>(</span>
     <span class='id identifier rubyid_card_id'>card_id</span><span class='comma'>,</span>
@@ -3305,14 +3320,14 @@ RevokeCardRequest::Reasons class.</p>
       <pre class="lines">
 
 
-368
-369
-370
 371
-372</pre>
+372
+373
+374
+375</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/virgil/sdk/client/virgil_client.rb', line 368</span>
+      <pre class="code"><span class="info file"># File 'lib/virgil/sdk/client/virgil_client.rb', line 371</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_search_cards_by_app_bundle'>search_cards_by_app_bundle</span><span class='lparen'>(</span><span class='id identifier rubyid_bundle'>bundle</span><span class='rparen'>)</span>
   <span class='kw'>return</span> <span class='kw'>self</span><span class='period'>.</span><span class='id identifier rubyid_search_cards_by_criteria'>search_cards_by_criteria</span><span class='lparen'>(</span>
@@ -3406,9 +3421,6 @@ RevokeCardRequest::Reasons class.</p>
       <pre class="lines">
 
 
-380
-381
-382
 383
 384
 385
@@ -3423,10 +3435,13 @@ RevokeCardRequest::Reasons class.</p>
 394
 395
 396
-397</pre>
+397
+398
+399
+400</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/virgil/sdk/client/virgil_client.rb', line 380</span>
+      <pre class="code"><span class="info file"># File 'lib/virgil/sdk/client/virgil_client.rb', line 383</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_search_cards_by_criteria'>search_cards_by_criteria</span><span class='lparen'>(</span><span class='id identifier rubyid_search_criteria'>search_criteria</span><span class='rparen'>)</span>
   <span class='id identifier rubyid_body'>body</span> <span class='op'>=</span> <span class='lbrace'>{</span><span class='label'>identities:</span> <span class='id identifier rubyid_search_criteria'>search_criteria</span><span class='period'>.</span><span class='id identifier rubyid_identities'>identities</span><span class='rbrace'>}</span>
@@ -3515,14 +3530,14 @@ RevokeCardRequest::Reasons class.</p>
       <pre class="lines">
 
 
-356
-357
-358
 359
-360</pre>
+360
+361
+362
+363</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/virgil/sdk/client/virgil_client.rb', line 356</span>
+      <pre class="code"><span class="info file"># File 'lib/virgil/sdk/client/virgil_client.rb', line 359</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_search_cards_by_identities'>search_cards_by_identities</span><span class='lparen'>(</span><span class='op'>*</span><span class='id identifier rubyid_identities'>identities</span><span class='rparen'>)</span>
   <span class='kw'>return</span> <span class='kw'>self</span><span class='period'>.</span><span class='id identifier rubyid_search_cards_by_criteria'>search_cards_by_criteria</span><span class='lparen'>(</span>
@@ -3723,15 +3738,15 @@ RevokeCardRequest::Reasons class.</p>
       <pre class="lines">
 
 
-403
-404
-405
 406
 407
-408</pre>
+408
+409
+410
+411</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/virgil/sdk/client/virgil_client.rb', line 403</span>
+      <pre class="code"><span class="info file"># File 'lib/virgil/sdk/client/virgil_client.rb', line 406</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_validate_cards'>validate_cards</span><span class='lparen'>(</span><span class='id identifier rubyid_cards'>cards</span><span class='rparen'>)</span>
   <span class='id identifier rubyid_invalid_cards'>invalid_cards</span> <span class='op'>=</span> <span class='id identifier rubyid_cards'>cards</span><span class='period'>.</span><span class='id identifier rubyid_select'>select</span> <span class='lbrace'>{</span> <span class='op'>|</span><span class='id identifier rubyid_card'>card</span><span class='op'>|</span> <span class='op'>!</span><span class='id identifier rubyid_card_validator'>card_validator</span><span class='period'>.</span><span class='id identifier rubyid_is_valid?'>is_valid?</span><span class='lparen'>(</span><span class='id identifier rubyid_card'>card</span><span class='rparen'>)</span> <span class='rbrace'>}</span>
@@ -3833,19 +3848,19 @@ depending of specified type.</p>
       <pre class="lines">
 
 
-306
-307
-308
 309
 310
 311
 312
 313
 314
-315</pre>
+315
+316
+317
+318</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/virgil/sdk/client/virgil_client.rb', line 306</span>
+      <pre class="code"><span class="info file"># File 'lib/virgil/sdk/client/virgil_client.rb', line 309</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_verify_identity'>verify_identity</span><span class='lparen'>(</span><span class='id identifier rubyid_identity'>identity</span><span class='comma'>,</span> <span class='id identifier rubyid_identity_type'>identity_type</span><span class='rparen'>)</span>
   <span class='id identifier rubyid_verify_identity_request'>verify_identity_request</span> <span class='op'>=</span> <span class='const'><span class='object_link'><a href="Requests.html" title="Virgil::SDK::Client::Requests (module)">Requests</a></span></span><span class='op'>::</span><span class='const'><span class='object_link'><a href="Requests/VerifyIdentityRequest.html" title="Virgil::SDK::Client::Requests::VerifyIdentityRequest (class)">VerifyIdentityRequest</a></span></span><span class='period'>.</span><span class='id identifier rubyid_new'><span class='object_link'><a href="Requests/VerifyIdentityRequest.html#initialize-instance_method" title="Virgil::SDK::Client::Requests::VerifyIdentityRequest#initialize (method)">new</a></span></span><span class='lparen'>(</span><span class='id identifier rubyid_identity'>identity</span><span class='comma'>,</span> <span class='id identifier rubyid_identity_type'>identity_type</span><span class='rparen'>)</span>
@@ -3867,7 +3882,7 @@ depending of specified type.</p>
 </div>
 
       <div id="footer">
-  Generated on Fri Apr 14 15:24:55 2017 by
+  Generated on Fri Apr 14 15:50:28 2017 by
   <a href="http://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
   0.9.8 (ruby-2.4.0).
 </div>

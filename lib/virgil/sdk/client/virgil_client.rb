@@ -107,7 +107,7 @@ module Virgil
         # @param identity [String] Created card identity.
         # @param identity_type [String] Created card identity type.
         # @param private_key [Cryptography::Keys::PrivateKey] Private key of the created card.
-        # @param custom_data(optional) [Hash] contains application specific
+        # @param custom_data [Hash] contains application specific
         #   parameters(under key :data) and information about the device
         #   on which the keypair was created(under key :device and :device_name).
         #   example: {data: {my_key1: "my_val1", my_key2: "my_val2"}, device: "iPhone6s", device_name: "Space grey one"}
@@ -133,7 +133,7 @@ module Virgil
         # @param identity [String] Created card identity.
         # @param identity_type [String] Created card identity type.
         # @param private_key [Cryptography::Keys::PrivateKey] Private key of the created card.
-        # @param custom_data(optional) [Hash] contains application specific
+        # @param custom_data [Hash] contains application specific
         #   parameters(under key :data) and information about the device
         #   on which the keypair was created(under key :device and :device_name).
         #   example: {data: {my_key1: "my_val1", my_key2: "my_val2"}, device: "iPhone6s", device_name: "Space grey one"}
