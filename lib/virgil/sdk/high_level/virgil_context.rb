@@ -42,22 +42,28 @@ module Virgil
         # Provides an authenticated secure access to the
         # Virgil Security services. The access token also allows the API to associate
         # your app requests with your Virgil Security developer’s account.
+        # @return [String]
         attr_reader :access_token
 
-        # Virgil Security services client. It's an instance of the {Client::VirgilClient} class.
+        # Virgil Security services client.
+        # @return [Client::VirgilClient]
         attr_reader :client
 
         # crypto API that represents a set of methods for dealing with low-level cryptographic primitives and
-        # algorithms. It's an instance of the {VirgilCrypto} class.
+        # algorithms.
+        # @return [VirgilCrypto]
         attr_reader :crypto
 
-        # Application authentication credentials. It's an instance of the {VirgilAppCredentials} class.
+        # Application authentication credentials.
+        # @return [VirgilAppCredentials]
         attr_reader :credentials
 
-        # Cryptographic keys storage. It's an instance of the {Cryptography::Keys::KeyStorage} class.
+        # Cryptographic keys storage.
+        # @return [Cryptography::Keys::KeyStorage]
         attr_reader :key_storage
 
         # indicates whether the Cards be verified with built in verifiers or not.
+        # @return [Boolean]
         attr_reader :use_built_in_verifiers
 
 

@@ -197,7 +197,7 @@ signature generation and verification, and encryption and decryption</p>
         <li class="public ">
   <span class="summary_signature">
     
-      <a href="#calculate_fingerprint-instance_method" title="#calculate_fingerprint (instance method)">#<strong>calculate_fingerprint</strong>(bytes)  &#x21d2; Object </a>
+      <a href="#calculate_fingerprint-instance_method" title="#calculate_fingerprint (instance method)">#<strong>calculate_fingerprint</strong>(bytes)  &#x21d2; Hashes::Fingerprint </a>
     
 
     
@@ -221,7 +221,7 @@ signature generation and verification, and encryption and decryption</p>
         <li class="public ">
   <span class="summary_signature">
     
-      <a href="#compute_hash-instance_method" title="#compute_hash (instance method)">#<strong>compute_hash</strong>(bytes, algorithm)  &#x21d2; Object </a>
+      <a href="#compute_hash-instance_method" title="#compute_hash (instance method)">#<strong>compute_hash</strong>(bytes, algorithm)  &#x21d2; Crypto::Bytes </a>
     
 
     
@@ -245,7 +245,7 @@ signature generation and verification, and encryption and decryption</p>
         <li class="public ">
   <span class="summary_signature">
     
-      <a href="#compute_public_key_hash-instance_method" title="#compute_public_key_hash (instance method)">#<strong>compute_public_key_hash</strong>(public_key)  &#x21d2; Object </a>
+      <a href="#compute_public_key_hash-instance_method" title="#compute_public_key_hash (instance method)">#<strong>compute_public_key_hash</strong>(public_key)  &#x21d2; Crypto::Bytes </a>
     
 
     
@@ -269,7 +269,7 @@ signature generation and verification, and encryption and decryption</p>
         <li class="public ">
   <span class="summary_signature">
     
-      <a href="#decrypt-instance_method" title="#decrypt (instance method)">#<strong>decrypt</strong>(cipher_bytes, private_key)  &#x21d2; Object </a>
+      <a href="#decrypt-instance_method" title="#decrypt (instance method)">#<strong>decrypt</strong>(cipher_bytes, private_key)  &#x21d2; Crypto::Bytes </a>
     
 
     
@@ -293,7 +293,7 @@ signature generation and verification, and encryption and decryption</p>
         <li class="public ">
   <span class="summary_signature">
     
-      <a href="#decrypt_stream-instance_method" title="#decrypt_stream (instance method)">#<strong>decrypt_stream</strong>(input_stream, output_stream, private_key)  &#x21d2; Object </a>
+      <a href="#decrypt_stream-instance_method" title="#decrypt_stream (instance method)">#<strong>decrypt_stream</strong>(input_stream, output_stream, private_key)  &#x21d2; Crypto::Bytes </a>
     
 
     
@@ -317,7 +317,7 @@ signature generation and verification, and encryption and decryption</p>
         <li class="public ">
   <span class="summary_signature">
     
-      <a href="#decrypt_then_verify-instance_method" title="#decrypt_then_verify (instance method)">#<strong>decrypt_then_verify</strong>(bytes, private_key, *public_keys)  &#x21d2; Object </a>
+      <a href="#decrypt_then_verify-instance_method" title="#decrypt_then_verify (instance method)">#<strong>decrypt_then_verify</strong>(bytes, private_key, *public_keys)  &#x21d2; Crypto::Bytes </a>
     
 
     
@@ -341,7 +341,7 @@ signature generation and verification, and encryption and decryption</p>
         <li class="public ">
   <span class="summary_signature">
     
-      <a href="#encrypt-instance_method" title="#encrypt (instance method)">#<strong>encrypt</strong>(bytes, *recipients)  &#x21d2; Object </a>
+      <a href="#encrypt-instance_method" title="#encrypt (instance method)">#<strong>encrypt</strong>(bytes, *recipients)  &#x21d2; Crypto::Bytes </a>
     
 
     
@@ -365,7 +365,7 @@ signature generation and verification, and encryption and decryption</p>
         <li class="public ">
   <span class="summary_signature">
     
-      <a href="#encrypt_stream-instance_method" title="#encrypt_stream (instance method)">#<strong>encrypt_stream</strong>(input_stream, output_stream, *recipients)  &#x21d2; Object </a>
+      <a href="#encrypt_stream-instance_method" title="#encrypt_stream (instance method)">#<strong>encrypt_stream</strong>(input_stream, output_stream, *recipients)  &#x21d2; Crypto::Bytes </a>
     
 
     
@@ -389,7 +389,7 @@ signature generation and verification, and encryption and decryption</p>
         <li class="public ">
   <span class="summary_signature">
     
-      <a href="#export_private_key-instance_method" title="#export_private_key (instance method)">#<strong>export_private_key</strong>(private_key, password = nil)  &#x21d2; Object </a>
+      <a href="#export_private_key-instance_method" title="#export_private_key (instance method)">#<strong>export_private_key</strong>(private_key, password = nil)  &#x21d2; Crypto::Bytes </a>
     
 
     
@@ -413,7 +413,7 @@ signature generation and verification, and encryption and decryption</p>
         <li class="public ">
   <span class="summary_signature">
     
-      <a href="#export_public_key-instance_method" title="#export_public_key (instance method)">#<strong>export_public_key</strong>(public_key)  &#x21d2; Object </a>
+      <a href="#export_public_key-instance_method" title="#export_public_key (instance method)">#<strong>export_public_key</strong>(public_key)  &#x21d2; Crypto::Bytes </a>
     
 
     
@@ -437,7 +437,7 @@ signature generation and verification, and encryption and decryption</p>
         <li class="public ">
   <span class="summary_signature">
     
-      <a href="#extract_public_key-instance_method" title="#extract_public_key (instance method)">#<strong>extract_public_key</strong>(private_key)  &#x21d2; Object </a>
+      <a href="#extract_public_key-instance_method" title="#extract_public_key (instance method)">#<strong>extract_public_key</strong>(private_key)  &#x21d2; Keys::PublicKey </a>
     
 
     
@@ -461,7 +461,7 @@ signature generation and verification, and encryption and decryption</p>
         <li class="public ">
   <span class="summary_signature">
     
-      <a href="#generate_keys-instance_method" title="#generate_keys (instance method)">#<strong>generate_keys</strong>(keys_type = @key_pair_type)  &#x21d2; Object </a>
+      <a href="#generate_keys-instance_method" title="#generate_keys (instance method)">#<strong>generate_keys</strong>(keys_type = @key_pair_type)  &#x21d2; Keys::KeyPair </a>
     
 
     
@@ -486,7 +486,7 @@ keys by specified type.</p>
         <li class="public ">
   <span class="summary_signature">
     
-      <a href="#import_private_key-instance_method" title="#import_private_key (instance method)">#<strong>import_private_key</strong>(key_bytes, password = nil)  &#x21d2; Object </a>
+      <a href="#import_private_key-instance_method" title="#import_private_key (instance method)">#<strong>import_private_key</strong>(key_bytes, password = nil)  &#x21d2; Keys::PrivateKey </a>
     
 
     
@@ -510,7 +510,7 @@ keys by specified type.</p>
         <li class="public ">
   <span class="summary_signature">
     
-      <a href="#import_public_key-instance_method" title="#import_public_key (instance method)">#<strong>import_public_key</strong>(key_bytes)  &#x21d2; Object </a>
+      <a href="#import_public_key-instance_method" title="#import_public_key (instance method)">#<strong>import_public_key</strong>(key_bytes)  &#x21d2; Keys::PublicKey </a>
     
 
     
@@ -560,7 +560,7 @@ keys by specified type.</p>
         <li class="public ">
   <span class="summary_signature">
     
-      <a href="#sign-instance_method" title="#sign (instance method)">#<strong>sign</strong>(bytes, private_key)  &#x21d2; Object </a>
+      <a href="#sign-instance_method" title="#sign (instance method)">#<strong>sign</strong>(bytes, private_key)  &#x21d2; Crypto::Bytes </a>
     
 
     
@@ -584,7 +584,7 @@ keys by specified type.</p>
         <li class="public ">
   <span class="summary_signature">
     
-      <a href="#sign_stream-instance_method" title="#sign_stream (instance method)">#<strong>sign_stream</strong>(input_stream, private_key)  &#x21d2; Object </a>
+      <a href="#sign_stream-instance_method" title="#sign_stream (instance method)">#<strong>sign_stream</strong>(input_stream, private_key)  &#x21d2; Crypto::Bytes </a>
     
 
     
@@ -608,7 +608,7 @@ keys by specified type.</p>
         <li class="public ">
   <span class="summary_signature">
     
-      <a href="#sign_then_encrypt-instance_method" title="#sign_then_encrypt (instance method)">#<strong>sign_then_encrypt</strong>(bytes, private_key, *recipients)  &#x21d2; Object </a>
+      <a href="#sign_then_encrypt-instance_method" title="#sign_then_encrypt (instance method)">#<strong>sign_then_encrypt</strong>(bytes, private_key, *recipients)  &#x21d2; Crypto::Bytes </a>
     
 
     
@@ -632,7 +632,7 @@ keys by specified type.</p>
         <li class="public ">
   <span class="summary_signature">
     
-      <a href="#verify-instance_method" title="#verify (instance method)">#<strong>verify</strong>(bytes, signature, signer_public_key)  &#x21d2; Object </a>
+      <a href="#verify-instance_method" title="#verify (instance method)">#<strong>verify</strong>(bytes, signature, signer_public_key)  &#x21d2; Boolean </a>
     
 
     
@@ -657,7 +657,7 @@ public key.</p>
         <li class="public ">
   <span class="summary_signature">
     
-      <a href="#verify_stream-instance_method" title="#verify_stream (instance method)">#<strong>verify_stream</strong>(input_stream, signature, signer_public_key)  &#x21d2; Object </a>
+      <a href="#verify_stream-instance_method" title="#verify_stream (instance method)">#<strong>verify_stream</strong>(input_stream, signature, signer_public_key)  &#x21d2; Boolean </a>
     
 
     
@@ -785,7 +785,7 @@ Public key.</p>
       <div class="method_details first">
   <h3 class="signature first" id="calculate_fingerprint-instance_method">
   
-    #<strong>calculate_fingerprint</strong>(bytes)  &#x21d2; <tt>Object</tt> 
+    #<strong>calculate_fingerprint</strong>(bytes)  &#x21d2; <tt><span class='object_link'><a href="Hashes/Fingerprint.html" title="Virgil::SDK::Cryptography::Hashes::Fingerprint (class)">Hashes::Fingerprint</a></span></tt> 
   
 
   
@@ -796,19 +796,49 @@ Public key.</p>
     
 <p>Calculates the fingerprint.</p>
 
-<p>Args:</p>
-
-<pre class="code ruby"><code class="ruby">bytes: data bytes for fingerprint calculation.</code></pre>
-
-<p>Returns:</p>
-
-<pre class="code ruby"><code class="ruby">Fingerprint of the source data.</code></pre>
-
 
   </div>
 </div>
 <div class="tags">
+  <p class="tag_title">Parameters:</p>
+<ul class="param">
   
+    <li>
+      
+        <span class='name'>bytes</span>
+      
+      
+        <span class='type'>(<tt>Crypto::Bytes</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'>
+<p>data bytes for fingerprint calculation.</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+<p class="tag_title">Returns:</p>
+<ul class="return">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt><span class='object_link'><a href="Hashes/Fingerprint.html" title="Virgil::SDK::Cryptography::Hashes::Fingerprint (class)">Hashes::Fingerprint</a></span></tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'>
+<p>Fingerprint of the source data.</p>
+</div>
+      
+    </li>
+  
+</ul>
 
 </div><table class="source_code">
   <tr>
@@ -816,13 +846,13 @@ Public key.</p>
       <pre class="lines">
 
 
-401
-402
-403
-404</pre>
+341
+342
+343
+344</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/virgil/sdk/cryptography/virgil_crypto.rb', line 401</span>
+      <pre class="code"><span class="info file"># File 'lib/virgil/sdk/cryptography/virgil_crypto.rb', line 341</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_calculate_fingerprint'>calculate_fingerprint</span><span class='lparen'>(</span><span class='id identifier rubyid_bytes'>bytes</span><span class='rparen'>)</span>
   <span class='id identifier rubyid_hash_bytes'>hash_bytes</span> <span class='op'>=</span> <span class='kw'>self</span><span class='period'>.</span><span class='id identifier rubyid_compute_hash'>compute_hash</span><span class='lparen'>(</span><span class='id identifier rubyid_bytes'>bytes</span><span class='comma'>,</span> <span class='const'><span class='object_link'><a href="Hashes.html" title="Virgil::SDK::Cryptography::Hashes (module)">Hashes</a></span></span><span class='op'>::</span><span class='const'><span class='object_link'><a href="Hashes/HashAlgorithm.html" title="Virgil::SDK::Cryptography::Hashes::HashAlgorithm (class)">HashAlgorithm</a></span></span><span class='op'>::</span><span class='const'><span class='object_link'><a href="Hashes/HashAlgorithm.html#SHA256-constant" title="Virgil::SDK::Cryptography::Hashes::HashAlgorithm::SHA256 (constant)">SHA256</a></span></span><span class='rparen'>)</span>
@@ -836,7 +866,7 @@ Public key.</p>
       <div class="method_details ">
   <h3 class="signature " id="compute_hash-instance_method">
   
-    #<strong>compute_hash</strong>(bytes, algorithm)  &#x21d2; <tt>Object</tt> 
+    #<strong>compute_hash</strong>(bytes, algorithm)  &#x21d2; <tt>Crypto::Bytes</tt> 
   
 
   
@@ -847,21 +877,65 @@ Public key.</p>
     
 <p>Computes the hash of specified data.</p>
 
-<p>Args:</p>
-
-<pre class="code ruby"><code class="ruby">bytes: data bytes for fingerprint calculation.
-algorithm: hashing algorithm.
-  The possible values can be found in HashAlgorithm enum.</code></pre>
-
-<p>Returns:</p>
-
-<pre class="code ruby"><code class="ruby">Hash bytes.</code></pre>
-
 
   </div>
 </div>
 <div class="tags">
+  <p class="tag_title">Parameters:</p>
+<ul class="param">
   
+    <li>
+      
+        <span class='name'>bytes</span>
+      
+      
+        <span class='type'>(<tt>Crypto::Bytes</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'>
+<p>data bytes for fingerprint calculation.</p>
+</div>
+      
+    </li>
+  
+    <li>
+      
+        <span class='name'>algorithm</span>
+      
+      
+        <span class='type'>(<tt><span class='object_link'><a href="Hashes/HashAlgorithm.html" title="Virgil::SDK::Cryptography::Hashes::HashAlgorithm (class)">Hashes::HashAlgorithm</a></span></tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'>
+<p>hashing algorithm. The possible values can be found in HashAlgorithm enum.</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+<p class="tag_title">Returns:</p>
+<ul class="return">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt>Crypto::Bytes</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'>
+<p>Hash bytes.</p>
+</div>
+      
+    </li>
+  
+</ul>
 
 </div><table class="source_code">
   <tr>
@@ -869,14 +943,14 @@ algorithm: hashing algorithm.
       <pre class="lines">
 
 
-415
-416
-417
-418
-419</pre>
+351
+352
+353
+354
+355</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/virgil/sdk/cryptography/virgil_crypto.rb', line 415</span>
+      <pre class="code"><span class="info file"># File 'lib/virgil/sdk/cryptography/virgil_crypto.rb', line 351</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_compute_hash'>compute_hash</span><span class='lparen'>(</span><span class='id identifier rubyid_bytes'>bytes</span><span class='comma'>,</span> <span class='id identifier rubyid_algorithm'>algorithm</span><span class='rparen'>)</span>
   <span class='id identifier rubyid_native_algorithm'>native_algorithm</span> <span class='op'>=</span> <span class='const'><span class='object_link'><a href="Hashes.html" title="Virgil::SDK::Cryptography::Hashes (module)">Hashes</a></span></span><span class='op'>::</span><span class='const'><span class='object_link'><a href="Hashes/HashAlgorithm.html" title="Virgil::SDK::Cryptography::Hashes::HashAlgorithm (class)">HashAlgorithm</a></span></span><span class='period'>.</span><span class='id identifier rubyid_convert_to_native'><span class='object_link'><a href="Hashes/HashAlgorithm.html#convert_to_native-class_method" title="Virgil::SDK::Cryptography::Hashes::HashAlgorithm.convert_to_native (method)">convert_to_native</a></span></span><span class='lparen'>(</span><span class='id identifier rubyid_algorithm'>algorithm</span><span class='rparen'>)</span>
@@ -891,7 +965,7 @@ algorithm: hashing algorithm.
       <div class="method_details ">
   <h3 class="signature " id="compute_public_key_hash-instance_method">
   
-    #<strong>compute_public_key_hash</strong>(public_key)  &#x21d2; <tt>Object</tt> 
+    #<strong>compute_public_key_hash</strong>(public_key)  &#x21d2; <tt>Crypto::Bytes</tt> 
   
 
   
@@ -902,19 +976,49 @@ algorithm: hashing algorithm.
     
 <p>Computes the hash of specified public key using SHA256 algorithm.</p>
 
-<p>Args:</p>
-
-<pre class="code ruby"><code class="ruby">public_key: public key for hashing.</code></pre>
-
-<p>Returns:</p>
-
-<pre class="code ruby"><code class="ruby">Hash bytes.</code></pre>
-
 
   </div>
 </div>
 <div class="tags">
+  <p class="tag_title">Parameters:</p>
+<ul class="param">
   
+    <li>
+      
+        <span class='name'>public_key</span>
+      
+      
+        <span class='type'>(<tt><span class='object_link'><a href="Keys/PublicKey.html" title="Virgil::SDK::Cryptography::Keys::PublicKey (class)">Keys::PublicKey</a></span></tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'>
+<p>public key for hashing.</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+<p class="tag_title">Returns:</p>
+<ul class="return">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt>Crypto::Bytes</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'>
+<p>Hash bytes.</p>
+</div>
+      
+    </li>
+  
+</ul>
 
 </div><table class="source_code">
   <tr>
@@ -922,13 +1026,13 @@ algorithm: hashing algorithm.
       <pre class="lines">
 
 
-428
-429
-430
-431</pre>
+360
+361
+362
+363</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/virgil/sdk/cryptography/virgil_crypto.rb', line 428</span>
+      <pre class="code"><span class="info file"># File 'lib/virgil/sdk/cryptography/virgil_crypto.rb', line 360</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_compute_public_key_hash'>compute_public_key_hash</span><span class='lparen'>(</span><span class='id identifier rubyid_public_key'>public_key</span><span class='rparen'>)</span>
   <span class='id identifier rubyid_public_key_der'>public_key_der</span> <span class='op'>=</span> <span class='const'>Crypto</span><span class='op'>::</span><span class='const'>Native</span><span class='op'>::</span><span class='const'>VirgilKeyPair</span><span class='period'>.</span><span class='id identifier rubyid_public_key_to_der'>public_key_to_der</span><span class='lparen'>(</span><span class='id identifier rubyid_public_key'>public_key</span><span class='rparen'>)</span>
@@ -942,7 +1046,7 @@ algorithm: hashing algorithm.
       <div class="method_details ">
   <h3 class="signature " id="decrypt-instance_method">
   
-    #<strong>decrypt</strong>(cipher_bytes, private_key)  &#x21d2; <tt>Object</tt> 
+    #<strong>decrypt</strong>(cipher_bytes, private_key)  &#x21d2; <tt>Crypto::Bytes</tt> 
   
 
   
@@ -953,20 +1057,65 @@ algorithm: hashing algorithm.
     
 <p>Decrypts the specified bytes using Private key.</p>
 
-<p>Args:</p>
-
-<pre class="code ruby"><code class="ruby">bytes: encrypted bytes bytes for decryption.
-private_key: private key for decryption.</code></pre>
-
-<p>Returns:</p>
-
-<pre class="code ruby"><code class="ruby">Decrypted bytes bytes.</code></pre>
-
 
   </div>
 </div>
 <div class="tags">
+  <p class="tag_title">Parameters:</p>
+<ul class="param">
   
+    <li>
+      
+        <span class='name'>cipher_bytes</span>
+      
+      
+        <span class='type'>(<tt>Crypto::Bytes</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'>
+<p>encrypted bytes bytes for decryption.</p>
+</div>
+      
+    </li>
+  
+    <li>
+      
+        <span class='name'>private_key</span>
+      
+      
+        <span class='type'>(<tt><span class='object_link'><a href="Keys/PrivateKey.html" title="Virgil::SDK::Cryptography::Keys::PrivateKey (class)">Keys::PrivateKey</a></span></tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'>
+<p>private key for decryption.</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+<p class="tag_title">Returns:</p>
+<ul class="return">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt>Crypto::Bytes</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'>
+<p>Decrypted bytes bytes.</p>
+</div>
+      
+    </li>
+  
+</ul>
 
 </div><table class="source_code">
   <tr>
@@ -974,18 +1123,18 @@ private_key: private key for decryption.</code></pre>
       <pre class="lines">
 
 
-222
-223
-224
-225
-226
-227
-228
-229
-230</pre>
+192
+193
+194
+195
+196
+197
+198
+199
+200</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/virgil/sdk/cryptography/virgil_crypto.rb', line 222</span>
+      <pre class="code"><span class="info file"># File 'lib/virgil/sdk/cryptography/virgil_crypto.rb', line 192</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_decrypt'>decrypt</span><span class='lparen'>(</span><span class='id identifier rubyid_cipher_bytes'>cipher_bytes</span><span class='comma'>,</span> <span class='id identifier rubyid_private_key'>private_key</span><span class='rparen'>)</span>
   <span class='id identifier rubyid_cipher'>cipher</span> <span class='op'>=</span> <span class='const'>Crypto</span><span class='op'>::</span><span class='const'>Native</span><span class='op'>::</span><span class='const'>VirgilCipher</span><span class='period'>.</span><span class='id identifier rubyid_new'>new</span>
@@ -1004,7 +1153,7 @@ private_key: private key for decryption.</code></pre>
       <div class="method_details ">
   <h3 class="signature " id="decrypt_stream-instance_method">
   
-    #<strong>decrypt_stream</strong>(input_stream, output_stream, private_key)  &#x21d2; <tt>Object</tt> 
+    #<strong>decrypt_stream</strong>(input_stream, output_stream, private_key)  &#x21d2; <tt>Crypto::Bytes</tt> 
   
 
   
@@ -1015,17 +1164,81 @@ private_key: private key for decryption.</code></pre>
     
 <p>Decrypts the specified stream using Private key.</p>
 
-<p>Args:</p>
-
-<pre class="code ruby"><code class="ruby">input_stream: readable stream containing input data.
-output_stream: writable stream for output.
-private_key: private key for decryption.</code></pre>
-
 
   </div>
 </div>
 <div class="tags">
+  <p class="tag_title">Parameters:</p>
+<ul class="param">
   
+    <li>
+      
+        <span class='name'>input_stream</span>
+      
+      
+        <span class='type'>(<tt>StringIO</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'>
+<p>readable stream containing input data.</p>
+</div>
+      
+    </li>
+  
+    <li>
+      
+        <span class='name'>output_stream</span>
+      
+      
+        <span class='type'>(<tt>StringIO</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'>
+<p>writable stream for output.</p>
+</div>
+      
+    </li>
+  
+    <li>
+      
+        <span class='name'>private_key</span>
+      
+      
+        <span class='type'>(<tt><span class='object_link'><a href="Keys/PrivateKey.html" title="Virgil::SDK::Cryptography::Keys::PrivateKey (class)">Keys::PrivateKey</a></span></tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'>
+<p>private key for decryption.</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+<p class="tag_title">Returns:</p>
+<ul class="return">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt>Crypto::Bytes</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'>
+<p>Decrypted data bytes.</p>
+</div>
+      
+    </li>
+  
+</ul>
 
 </div><table class="source_code">
   <tr>
@@ -1033,20 +1246,20 @@ private_key: private key for decryption.</code></pre>
       <pre class="lines">
 
 
-353
-354
-355
-356
-357
-358
-359
-360
-361
-362
-363</pre>
+305
+306
+307
+308
+309
+310
+311
+312
+313
+314
+315</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/virgil/sdk/cryptography/virgil_crypto.rb', line 353</span>
+      <pre class="code"><span class="info file"># File 'lib/virgil/sdk/cryptography/virgil_crypto.rb', line 305</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_decrypt_stream'>decrypt_stream</span><span class='lparen'>(</span><span class='id identifier rubyid_input_stream'>input_stream</span><span class='comma'>,</span> <span class='id identifier rubyid_output_stream'>output_stream</span><span class='comma'>,</span> <span class='id identifier rubyid_private_key'>private_key</span><span class='rparen'>)</span>
   <span class='id identifier rubyid_cipher'>cipher</span> <span class='op'>=</span> <span class='const'>Crypto</span><span class='op'>::</span><span class='const'>Native</span><span class='op'>::</span><span class='const'>VirgilChunkCipher</span><span class='period'>.</span><span class='id identifier rubyid_new'>new</span>
@@ -1067,7 +1280,7 @@ private_key: private key for decryption.</code></pre>
       <div class="method_details ">
   <h3 class="signature " id="decrypt_then_verify-instance_method">
   
-    #<strong>decrypt_then_verify</strong>(bytes, private_key, *public_keys)  &#x21d2; <tt>Object</tt> 
+    #<strong>decrypt_then_verify</strong>(bytes, private_key, *public_keys)  &#x21d2; <tt>Crypto::Bytes</tt> 
   
 
   
@@ -1078,25 +1291,100 @@ private_key: private key for decryption.</code></pre>
     
 <p>Decrypts and verifies the data.</p>
 
-<p>Args:</p>
-
-<pre class="code ruby"><code class="ruby">bytes: encrypted data bytes.
-private_key: private key for decryption.
-public_keys: a list of public keys for verification, which can contain signer&#39;s public key.</code></pre>
-
-<p>Returns:</p>
-
-<pre class="code ruby"><code class="ruby">Decrypted data bytes.</code></pre>
-
-<p>Raises:</p>
-
-<pre class="code ruby"><code class="ruby">SignatureIsNotValid: if signature is not verified.</code></pre>
-
 
   </div>
 </div>
 <div class="tags">
+  <p class="tag_title">Parameters:</p>
+<ul class="param">
   
+    <li>
+      
+        <span class='name'>bytes</span>
+      
+      
+        <span class='type'>(<tt>Crypto::Bytes</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'>
+<p>encrypted data bytes.</p>
+</div>
+      
+    </li>
+  
+    <li>
+      
+        <span class='name'>private_key</span>
+      
+      
+        <span class='type'>(<tt><span class='object_link'><a href="Keys/PrivateKey.html" title="Virgil::SDK::Cryptography::Keys::PrivateKey (class)">Keys::PrivateKey</a></span></tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'>
+<p>private key for decryption.</p>
+</div>
+      
+    </li>
+  
+    <li>
+      
+        <span class='name'>*public_keys</span>
+      
+      
+        <span class='type'>(<tt>Array&lt;<span class='object_link'><a href="Keys/PublicKey.html" title="Virgil::SDK::Cryptography::Keys::PublicKey (class)">Keys::PublicKey</a></span>&gt;</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'>
+<p>a list of public keys for verification, which can contain signer&#39;s
+public key.</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+<p class="tag_title">Returns:</p>
+<ul class="return">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt>Crypto::Bytes</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'>
+<p>Decrypted data bytes.</p>
+</div>
+      
+    </li>
+  
+</ul>
+<p class="tag_title">Raises:</p>
+<ul class="raise">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt><span class='object_link'><a href="VirgilCrypto/SignatureIsNotValid.html" title="Virgil::SDK::Cryptography::VirgilCrypto::SignatureIsNotValid (class)">SignatureIsNotValid</a></span></tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'>
+<p>if signature is not verified.</p>
+</div>
+      
+    </li>
+  
+</ul>
 
 </div><table class="source_code">
   <tr>
@@ -1104,35 +1392,35 @@ public_keys: a list of public keys for verification, which can contain signer&#3
       <pre class="lines">
 
 
-276
-277
-278
-279
-280
-281
-282
-283
-284
-285
-286
-287
-288
-289
-290
-291
-292
-293
-294
-295
-296
-297
-298
-299
-300
-301</pre>
+237
+238
+239
+240
+241
+242
+243
+244
+245
+246
+247
+248
+249
+250
+251
+252
+253
+254
+255
+256
+257
+258
+259
+260
+261
+262</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/virgil/sdk/cryptography/virgil_crypto.rb', line 276</span>
+      <pre class="code"><span class="info file"># File 'lib/virgil/sdk/cryptography/virgil_crypto.rb', line 237</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_decrypt_then_verify'>decrypt_then_verify</span><span class='lparen'>(</span><span class='id identifier rubyid_bytes'>bytes</span><span class='comma'>,</span> <span class='id identifier rubyid_private_key'>private_key</span><span class='comma'>,</span> <span class='op'>*</span><span class='id identifier rubyid_public_keys'>public_keys</span><span class='rparen'>)</span>
   <span class='id identifier rubyid_cipher'>cipher</span> <span class='op'>=</span> <span class='const'>Crypto</span><span class='op'>::</span><span class='const'>Native</span><span class='op'>::</span><span class='const'>VirgilCipher</span><span class='period'>.</span><span class='id identifier rubyid_new'>new</span>
@@ -1168,7 +1456,7 @@ public_keys: a list of public keys for verification, which can contain signer&#3
       <div class="method_details ">
   <h3 class="signature " id="encrypt-instance_method">
   
-    #<strong>encrypt</strong>(bytes, *recipients)  &#x21d2; <tt>Object</tt> 
+    #<strong>encrypt</strong>(bytes, *recipients)  &#x21d2; <tt>Crypto::Bytes</tt> 
   
 
   
@@ -1179,20 +1467,65 @@ public_keys: a list of public keys for verification, which can contain signer&#3
     
 <p>Encrypts the specified bytes using recipients Public keys.</p>
 
-<p>Args:</p>
-
-<pre class="code ruby"><code class="ruby">bytes: raw data bytes for encryption.
-recipients: list of recipients&#39; public keys.</code></pre>
-
-<p>Returns:</p>
-
-<pre class="code ruby"><code class="ruby">Encrypted bytes bytes.</code></pre>
-
 
   </div>
 </div>
 <div class="tags">
+  <p class="tag_title">Parameters:</p>
+<ul class="param">
   
+    <li>
+      
+        <span class='name'>bytes</span>
+      
+      
+        <span class='type'>(<tt>Virgil::Crypto::Bytes</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'>
+<p>raw data bytes for encryption.</p>
+</div>
+      
+    </li>
+  
+    <li>
+      
+        <span class='name'>*recipients</span>
+      
+      
+        <span class='type'>(<tt>Array&lt;<span class='object_link'><a href="Keys/PublicKey.html" title="Virgil::SDK::Cryptography::Keys::PublicKey (class)">Keys::PublicKey</a></span>&gt;</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'>
+<p>list of recipients&#39; public keys.</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+<p class="tag_title">Returns:</p>
+<ul class="return">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt>Crypto::Bytes</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'>
+<p>Encrypted bytes.</p>
+</div>
+      
+    </li>
+  
+</ul>
 
 </div><table class="source_code">
   <tr>
@@ -1200,16 +1533,16 @@ recipients: list of recipients&#39; public keys.</code></pre>
       <pre class="lines">
 
 
-206
-207
-208
-209
-210
-211
-212</pre>
+180
+181
+182
+183
+184
+185
+186</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/virgil/sdk/cryptography/virgil_crypto.rb', line 206</span>
+      <pre class="code"><span class="info file"># File 'lib/virgil/sdk/cryptography/virgil_crypto.rb', line 180</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_encrypt'>encrypt</span><span class='lparen'>(</span><span class='id identifier rubyid_bytes'>bytes</span><span class='comma'>,</span> <span class='op'>*</span><span class='id identifier rubyid_recipients'>recipients</span><span class='rparen'>)</span>
   <span class='id identifier rubyid_cipher'>cipher</span> <span class='op'>=</span> <span class='const'>Crypto</span><span class='op'>::</span><span class='const'>Native</span><span class='op'>::</span><span class='const'>VirgilCipher</span><span class='period'>.</span><span class='id identifier rubyid_new'>new</span>
@@ -1226,7 +1559,7 @@ recipients: list of recipients&#39; public keys.</code></pre>
       <div class="method_details ">
   <h3 class="signature " id="encrypt_stream-instance_method">
   
-    #<strong>encrypt_stream</strong>(input_stream, output_stream, *recipients)  &#x21d2; <tt>Object</tt> 
+    #<strong>encrypt_stream</strong>(input_stream, output_stream, *recipients)  &#x21d2; <tt>Crypto::Bytes</tt> 
   
 
   
@@ -1237,17 +1570,81 @@ recipients: list of recipients&#39; public keys.</code></pre>
     
 <p>Encrypts the specified stream using recipients Public keys.</p>
 
-<p>Args:</p>
-
-<pre class="code ruby"><code class="ruby">input_stream: readable stream containing input bytes.
-output_stream: writable stream for output.
-recipients: list of recipients&#39; public keys.</code></pre>
-
 
   </div>
 </div>
 <div class="tags">
+  <p class="tag_title">Parameters:</p>
+<ul class="param">
   
+    <li>
+      
+        <span class='name'>input_stream</span>
+      
+      
+        <span class='type'>(<tt>StringIO</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'>
+<p>readable stream containing input bytes.</p>
+</div>
+      
+    </li>
+  
+    <li>
+      
+        <span class='name'>output_stream</span>
+      
+      
+        <span class='type'>(<tt>StringIO</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'>
+<p>writable stream for output.</p>
+</div>
+      
+    </li>
+  
+    <li>
+      
+        <span class='name'>*recipients</span>
+      
+      
+        <span class='type'>(<tt>Array&lt;<span class='object_link'><a href="Keys/PublicKey.html" title="Virgil::SDK::Cryptography::Keys::PublicKey (class)">Keys::PublicKey</a></span>&gt;</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'>
+<p>list of recipients&#39; public keys.</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+<p class="tag_title">Returns:</p>
+<ul class="return">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt>Crypto::Bytes</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'>
+<p>encrypted bytes.</p>
+</div>
+      
+    </li>
+  
+</ul>
 
 </div><table class="source_code">
   <tr>
@@ -1255,18 +1652,18 @@ recipients: list of recipients&#39; public keys.</code></pre>
       <pre class="lines">
 
 
-337
-338
-339
-340
-341
-342
-343
-344
-345</pre>
+290
+291
+292
+293
+294
+295
+296
+297
+298</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/virgil/sdk/cryptography/virgil_crypto.rb', line 337</span>
+      <pre class="code"><span class="info file"># File 'lib/virgil/sdk/cryptography/virgil_crypto.rb', line 290</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_encrypt_stream'>encrypt_stream</span><span class='lparen'>(</span><span class='id identifier rubyid_input_stream'>input_stream</span><span class='comma'>,</span> <span class='id identifier rubyid_output_stream'>output_stream</span><span class='comma'>,</span> <span class='op'>*</span><span class='id identifier rubyid_recipients'>recipients</span><span class='rparen'>)</span>
   <span class='id identifier rubyid_cipher'>cipher</span> <span class='op'>=</span> <span class='const'>Crypto</span><span class='op'>::</span><span class='const'>Native</span><span class='op'>::</span><span class='const'>VirgilChunkCipher</span><span class='period'>.</span><span class='id identifier rubyid_new'>new</span>
@@ -1285,7 +1682,7 @@ recipients: list of recipients&#39; public keys.</code></pre>
       <div class="method_details ">
   <h3 class="signature " id="export_private_key-instance_method">
   
-    #<strong>export_private_key</strong>(private_key, password = nil)  &#x21d2; <tt>Object</tt> 
+    #<strong>export_private_key</strong>(private_key, password = nil)  &#x21d2; <tt>Crypto::Bytes</tt> 
   
 
   
@@ -1296,20 +1693,67 @@ recipients: list of recipients&#39; public keys.</code></pre>
     
 <p>Exports the Private key into material representation.</p>
 
-<p>Args:</p>
-
-<pre class="code ruby"><code class="ruby">private_key: private key for export.
-password: private key password, nil by default.</code></pre>
-
-<p>Returns:</p>
-
-<pre class="code ruby"><code class="ruby">Key material representation bytes.</code></pre>
-
 
   </div>
 </div>
 <div class="tags">
+  <p class="tag_title">Parameters:</p>
+<ul class="param">
   
+    <li>
+      
+        <span class='name'>private_key</span>
+      
+      
+        <span class='type'>(<tt><span class='object_link'><a href="Keys/PrivateKey.html" title="Virgil::SDK::Cryptography::Keys::PrivateKey (class)">Keys::PrivateKey</a></span></tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'>
+<p>private key for export.</p>
+</div>
+      
+    </li>
+  
+    <li>
+      
+        <span class='name'>password</span>
+      
+      
+        <span class='type'>(<tt>String</tt>)</span>
+      
+      
+        <em class="default">(defaults to: <tt>nil</tt>)</em>
+      
+      
+        &mdash;
+        <div class='inline'>
+<p>private key password, nil by default.</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+<p class="tag_title">Returns:</p>
+<ul class="return">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt>Crypto::Bytes</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'>
+<p>Private key material representation bytes.</p>
+</div>
+      
+    </li>
+  
+</ul>
 
 </div><table class="source_code">
   <tr>
@@ -1317,28 +1761,28 @@ password: private key password, nil by default.</code></pre>
       <pre class="lines">
 
 
+131
+132
+133
+134
+135
+136
+137
+138
+139
+140
+141
+142
+143
+144
 145
 146
 147
 148
-149
-150
-151
-152
-153
-154
-155
-156
-157
-158
-159
-160
-161
-162
-163</pre>
+149</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/virgil/sdk/cryptography/virgil_crypto.rb', line 145</span>
+      <pre class="code"><span class="info file"># File 'lib/virgil/sdk/cryptography/virgil_crypto.rb', line 131</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_export_private_key'>export_private_key</span><span class='lparen'>(</span><span class='id identifier rubyid_private_key'>private_key</span><span class='comma'>,</span> <span class='id identifier rubyid_password'>password</span><span class='op'>=</span><span class='kw'>nil</span><span class='rparen'>)</span>
   <span class='kw'>unless</span> <span class='id identifier rubyid_password'>password</span>
@@ -1367,7 +1811,7 @@ password: private key password, nil by default.</code></pre>
       <div class="method_details ">
   <h3 class="signature " id="export_public_key-instance_method">
   
-    #<strong>export_public_key</strong>(public_key)  &#x21d2; <tt>Object</tt> 
+    #<strong>export_public_key</strong>(public_key)  &#x21d2; <tt>Crypto::Bytes</tt> 
   
 
   
@@ -1378,19 +1822,49 @@ password: private key password, nil by default.</code></pre>
     
 <p>Exports the Public key into material representation.</p>
 
-<p>Args:</p>
-
-<pre class="code ruby"><code class="ruby">public_key: public key for export.</code></pre>
-
-<p>Returns:</p>
-
-<pre class="code ruby"><code class="ruby">Key material representation bytes.</code></pre>
-
 
   </div>
 </div>
 <div class="tags">
+  <p class="tag_title">Parameters:</p>
+<ul class="param">
   
+    <li>
+      
+        <span class='name'>public_key</span>
+      
+      
+        <span class='type'>(<tt><span class='object_link'><a href="Keys/PublicKey.html" title="Virgil::SDK::Cryptography::Keys::PublicKey (class)">Keys::PublicKey</a></span></tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'>
+<p>public key for export.</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+<p class="tag_title">Returns:</p>
+<ul class="return">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt>Crypto::Bytes</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'>
+<p>Key material representation bytes.</p>
+</div>
+      
+    </li>
+  
+</ul>
 
 </div><table class="source_code">
   <tr>
@@ -1398,14 +1872,14 @@ password: private key password, nil by default.</code></pre>
       <pre class="lines">
 
 
-172
-173
-174
-175
-176</pre>
+154
+155
+156
+157
+158</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/virgil/sdk/cryptography/virgil_crypto.rb', line 172</span>
+      <pre class="code"><span class="info file"># File 'lib/virgil/sdk/cryptography/virgil_crypto.rb', line 154</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_export_public_key'>export_public_key</span><span class='lparen'>(</span><span class='id identifier rubyid_public_key'>public_key</span><span class='rparen'>)</span>
   <span class='id identifier rubyid_wrap_bytes'>wrap_bytes</span><span class='lparen'>(</span>
@@ -1420,7 +1894,7 @@ password: private key password, nil by default.</code></pre>
       <div class="method_details ">
   <h3 class="signature " id="extract_public_key-instance_method">
   
-    #<strong>extract_public_key</strong>(private_key)  &#x21d2; <tt>Object</tt> 
+    #<strong>extract_public_key</strong>(private_key)  &#x21d2; <tt><span class='object_link'><a href="Keys/PublicKey.html" title="Virgil::SDK::Cryptography::Keys::PublicKey (class)">Keys::PublicKey</a></span></tt> 
   
 
   
@@ -1431,19 +1905,49 @@ password: private key password, nil by default.</code></pre>
     
 <p>Extracts the Public key from Private key.</p>
 
-<p>Args:</p>
-
-<pre class="code ruby"><code class="ruby">private_key: source private key for extraction.</code></pre>
-
-<p>Returns:</p>
-
-<pre class="code ruby"><code class="ruby">Exported public key.</code></pre>
-
 
   </div>
 </div>
 <div class="tags">
+  <p class="tag_title">Parameters:</p>
+<ul class="param">
   
+    <li>
+      
+        <span class='name'>private_key</span>
+      
+      
+        <span class='type'>(<tt><span class='object_link'><a href="Keys/PrivateKey.html" title="Virgil::SDK::Cryptography::Keys::PrivateKey (class)">Keys::PrivateKey</a></span></tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'>
+<p>source private key for extraction.</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+<p class="tag_title">Returns:</p>
+<ul class="return">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt><span class='object_link'><a href="Keys/PublicKey.html" title="Virgil::SDK::Cryptography::Keys::PublicKey (class)">Keys::PublicKey</a></span></tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'>
+<p>Exported public key.</p>
+</div>
+      
+    </li>
+  
+</ul>
 
 </div><table class="source_code">
   <tr>
@@ -1451,21 +1955,21 @@ password: private key password, nil by default.</code></pre>
       <pre class="lines">
 
 
-185
-186
-187
-188
-189
-190
-191
-192
-193
-194
-195
-196</pre>
+163
+164
+165
+166
+167
+168
+169
+170
+171
+172
+173
+174</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/virgil/sdk/cryptography/virgil_crypto.rb', line 185</span>
+      <pre class="code"><span class="info file"># File 'lib/virgil/sdk/cryptography/virgil_crypto.rb', line 163</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_extract_public_key'>extract_public_key</span><span class='lparen'>(</span><span class='id identifier rubyid_private_key'>private_key</span><span class='rparen'>)</span>
   <span class='id identifier rubyid_public_key_bytes'>public_key_bytes</span> <span class='op'>=</span> <span class='const'>Crypto</span><span class='op'>::</span><span class='const'>Native</span><span class='op'>::</span><span class='const'>VirgilKeyPair</span><span class='period'>.</span><span class='id identifier rubyid_extract_public_key'>extract_public_key</span><span class='lparen'>(</span>
@@ -1487,7 +1991,7 @@ password: private key password, nil by default.</code></pre>
       <div class="method_details ">
   <h3 class="signature " id="generate_keys-instance_method">
   
-    #<strong>generate_keys</strong>(keys_type = @key_pair_type)  &#x21d2; <tt>Object</tt> 
+    #<strong>generate_keys</strong>(keys_type = @key_pair_type)  &#x21d2; <tt><span class='object_link'><a href="Keys/KeyPair.html" title="Virgil::SDK::Cryptography::Keys::KeyPair (class)">Keys::KeyPair</a></span></tt> 
   
 
   
@@ -1497,20 +2001,54 @@ password: private key password, nil by default.</code></pre>
   <div class="discussion">
     
 <p>Generates asymmetric key pair that is comprised of both public and private
-keys by specified type. Args:</p>
-
-<pre class="code ruby"><code class="ruby">key_pair_type: type of the generated keys.
-  The possible values can be found in KeyPairType enum.</code></pre>
-
-<p>Returns:</p>
-
-<pre class="code ruby"><code class="ruby">Generated key pair.</code></pre>
+keys by specified type.</p>
 
 
   </div>
 </div>
 <div class="tags">
+  <p class="tag_title">Parameters:</p>
+<ul class="param">
   
+    <li>
+      
+        <span class='name'>keys_type</span>
+      
+      
+        <span class='type'>(<tt>Symbol</tt>)</span>
+      
+      
+        <em class="default">(defaults to: <tt>@key_pair_type</tt>)</em>
+      
+      
+        &mdash;
+        <div class='inline'>
+<p>type of the generated keys. The possible values can be found in KeyPairType
+enum.</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+<p class="tag_title">Returns:</p>
+<ul class="return">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt><span class='object_link'><a href="Keys/KeyPair.html" title="Virgil::SDK::Cryptography::Keys::KeyPair (class)">Keys::KeyPair</a></span></tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'>
+<p>Generated key pair.</p>
+</div>
+      
+    </li>
+  
+</ul>
 
 </div><table class="source_code">
   <tr>
@@ -1518,6 +2056,8 @@ keys by specified type. Args:</p>
       <pre class="lines">
 
 
+70
+71
 72
 73
 74
@@ -1537,12 +2077,10 @@ keys by specified type. Args:</p>
 88
 89
 90
-91
-92
-93</pre>
+91</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/virgil/sdk/cryptography/virgil_crypto.rb', line 72</span>
+      <pre class="code"><span class="info file"># File 'lib/virgil/sdk/cryptography/virgil_crypto.rb', line 70</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_generate_keys'>generate_keys</span><span class='lparen'>(</span><span class='id identifier rubyid_keys_type'>keys_type</span><span class='op'>=</span><span class='ivar'>@key_pair_type</span><span class='rparen'>)</span>
   <span class='id identifier rubyid_native_type'>native_type</span> <span class='op'>=</span> <span class='const'><span class='object_link'><a href="Keys.html" title="Virgil::SDK::Cryptography::Keys (module)">Keys</a></span></span><span class='op'>::</span><span class='const'><span class='object_link'><a href="Keys/KeyPairType.html" title="Virgil::SDK::Cryptography::Keys::KeyPairType (class)">KeyPairType</a></span></span><span class='period'>.</span><span class='id identifier rubyid_convert_to_native'><span class='object_link'><a href="Keys/KeyPairType.html#convert_to_native-class_method" title="Virgil::SDK::Cryptography::Keys::KeyPairType.convert_to_native (method)">convert_to_native</a></span></span><span class='lparen'>(</span><span class='id identifier rubyid_keys_type'>keys_type</span><span class='rparen'>)</span>
@@ -1574,7 +2112,7 @@ keys by specified type. Args:</p>
       <div class="method_details ">
   <h3 class="signature " id="import_private_key-instance_method">
   
-    #<strong>import_private_key</strong>(key_bytes, password = nil)  &#x21d2; <tt>Object</tt> 
+    #<strong>import_private_key</strong>(key_bytes, password = nil)  &#x21d2; <tt><span class='object_link'><a href="Keys/PrivateKey.html" title="Virgil::SDK::Cryptography::Keys::PrivateKey (class)">Keys::PrivateKey</a></span></tt> 
   
 
   
@@ -1585,20 +2123,67 @@ keys by specified type. Args:</p>
     
 <p>Imports the Private key from material representation.</p>
 
-<p>Args:</p>
-
-<pre class="code ruby"><code class="ruby">key_bytes: key material representation bytes.
-password: private key password, nil by default.</code></pre>
-
-<p>Returns:</p>
-
-<pre class="code ruby"><code class="ruby">Imported private key.</code></pre>
-
 
   </div>
 </div>
 <div class="tags">
+  <p class="tag_title">Parameters:</p>
+<ul class="param">
   
+    <li>
+      
+        <span class='name'>key_bytes</span>
+      
+      
+        <span class='type'>(<tt>Crypto::Bytes</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'>
+<p>private key material representation bytes.</p>
+</div>
+      
+    </li>
+  
+    <li>
+      
+        <span class='name'>password</span>
+      
+      
+        <span class='type'>(<tt>String</tt>)</span>
+      
+      
+        <em class="default">(defaults to: <tt>nil</tt>)</em>
+      
+      
+        &mdash;
+        <div class='inline'>
+<p>private key password, nil by default.</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+<p class="tag_title">Returns:</p>
+<ul class="return">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt><span class='object_link'><a href="Keys/PrivateKey.html" title="Virgil::SDK::Cryptography::Keys::PrivateKey (class)">Keys::PrivateKey</a></span></tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'>
+<p>Imported private key.</p>
+</div>
+      
+    </li>
+  
+</ul>
 
 </div><table class="source_code">
   <tr>
@@ -1606,6 +2191,12 @@ password: private key password, nil by default.</code></pre>
       <pre class="lines">
 
 
+97
+98
+99
+100
+101
+102
 103
 104
 105
@@ -1618,16 +2209,10 @@ password: private key password, nil by default.</code></pre>
 112
 113
 114
-115
-116
-117
-118
-119
-120
-121</pre>
+115</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/virgil/sdk/cryptography/virgil_crypto.rb', line 103</span>
+      <pre class="code"><span class="info file"># File 'lib/virgil/sdk/cryptography/virgil_crypto.rb', line 97</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_import_private_key'>import_private_key</span><span class='lparen'>(</span><span class='id identifier rubyid_key_bytes'>key_bytes</span><span class='comma'>,</span> <span class='id identifier rubyid_password'>password</span><span class='op'>=</span><span class='kw'>nil</span><span class='rparen'>)</span>
   <span class='id identifier rubyid_decrypted_private_key'>decrypted_private_key</span> <span class='op'>=</span> <span class='kw'>if</span> <span class='op'>!</span><span class='id identifier rubyid_password'>password</span>
@@ -1656,7 +2241,7 @@ password: private key password, nil by default.</code></pre>
       <div class="method_details ">
   <h3 class="signature " id="import_public_key-instance_method">
   
-    #<strong>import_public_key</strong>(key_bytes)  &#x21d2; <tt>Object</tt> 
+    #<strong>import_public_key</strong>(key_bytes)  &#x21d2; <tt><span class='object_link'><a href="Keys/PublicKey.html" title="Virgil::SDK::Cryptography::Keys::PublicKey (class)">Keys::PublicKey</a></span></tt> 
   
 
   
@@ -1667,19 +2252,49 @@ password: private key password, nil by default.</code></pre>
     
 <p>Imports the Public key from material representation.</p>
 
-<p>Args:</p>
-
-<pre class="code ruby"><code class="ruby">key_bytes: key material representation bytes.</code></pre>
-
-<p>Returns:</p>
-
-<pre class="code ruby"><code class="ruby">Imported public key.</code></pre>
-
 
   </div>
 </div>
 <div class="tags">
+  <p class="tag_title">Parameters:</p>
+<ul class="param">
   
+    <li>
+      
+        <span class='name'>key_bytes</span>
+      
+      
+        <span class='type'>(<tt>Crypto::Bytes</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'>
+<p>public key material representation bytes.</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+<p class="tag_title">Returns:</p>
+<ul class="return">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt><span class='object_link'><a href="Keys/PublicKey.html" title="Virgil::SDK::Cryptography::Keys::PublicKey (class)">Keys::PublicKey</a></span></tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'>
+<p>Imported public key.</p>
+</div>
+      
+    </li>
+  
+</ul>
 
 </div><table class="source_code">
   <tr>
@@ -1687,15 +2302,15 @@ password: private key password, nil by default.</code></pre>
       <pre class="lines">
 
 
-130
-131
-132
-133
-134
-135</pre>
+120
+121
+122
+123
+124
+125</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/virgil/sdk/cryptography/virgil_crypto.rb', line 130</span>
+      <pre class="code"><span class="info file"># File 'lib/virgil/sdk/cryptography/virgil_crypto.rb', line 120</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_import_public_key'>import_public_key</span><span class='lparen'>(</span><span class='id identifier rubyid_key_bytes'>key_bytes</span><span class='rparen'>)</span>
   <span class='id identifier rubyid_key_pair_id'>key_pair_id</span> <span class='op'>=</span> <span class='kw'>self</span><span class='period'>.</span><span class='id identifier rubyid_compute_public_key_hash'>compute_public_key_hash</span><span class='lparen'>(</span><span class='id identifier rubyid_key_bytes'>key_bytes</span><span class='rparen'>)</span>
@@ -1711,7 +2326,7 @@ password: private key password, nil by default.</code></pre>
       <div class="method_details ">
   <h3 class="signature " id="sign-instance_method">
   
-    #<strong>sign</strong>(bytes, private_key)  &#x21d2; <tt>Object</tt> 
+    #<strong>sign</strong>(bytes, private_key)  &#x21d2; <tt>Crypto::Bytes</tt> 
   
 
   
@@ -1722,20 +2337,65 @@ password: private key password, nil by default.</code></pre>
     
 <p>Signs the specified data using Private key.</p>
 
-<p>Args:</p>
-
-<pre class="code ruby"><code class="ruby">bytes: raw data bytes for signing.
-private_key: private key for signing.</code></pre>
-
-<p>Returns:</p>
-
-<pre class="code ruby"><code class="ruby">Signature data.</code></pre>
-
 
   </div>
 </div>
 <div class="tags">
+  <p class="tag_title">Parameters:</p>
+<ul class="param">
   
+    <li>
+      
+        <span class='name'>bytes</span>
+      
+      
+        <span class='type'>(<tt>Crypto::Bytes</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'>
+<p>raw data bytes for signing.</p>
+</div>
+      
+    </li>
+  
+    <li>
+      
+        <span class='name'>private_key</span>
+      
+      
+        <span class='type'>(<tt><span class='object_link'><a href="Keys/PrivateKey.html" title="Virgil::SDK::Cryptography::Keys::PrivateKey (class)">Keys::PrivateKey</a></span></tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'>
+<p>private key for signing.</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+<p class="tag_title">Returns:</p>
+<ul class="return">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt>Crypto::Bytes</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'>
+<p>Signature data.</p>
+</div>
+      
+    </li>
+  
+</ul>
 
 </div><table class="source_code">
   <tr>
@@ -1743,13 +2403,13 @@ private_key: private key for signing.</code></pre>
       <pre class="lines">
 
 
-312
-313
-314
-315</pre>
+269
+270
+271
+272</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/virgil/sdk/cryptography/virgil_crypto.rb', line 312</span>
+      <pre class="code"><span class="info file"># File 'lib/virgil/sdk/cryptography/virgil_crypto.rb', line 269</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_sign'>sign</span><span class='lparen'>(</span><span class='id identifier rubyid_bytes'>bytes</span><span class='comma'>,</span> <span class='id identifier rubyid_private_key'>private_key</span><span class='rparen'>)</span>
   <span class='id identifier rubyid_signer'>signer</span> <span class='op'>=</span> <span class='const'>Crypto</span><span class='op'>::</span><span class='const'>Native</span><span class='op'>::</span><span class='const'>VirgilSigner</span><span class='period'>.</span><span class='id identifier rubyid_new'>new</span>
@@ -1763,7 +2423,7 @@ private_key: private key for signing.</code></pre>
       <div class="method_details ">
   <h3 class="signature " id="sign_stream-instance_method">
   
-    #<strong>sign_stream</strong>(input_stream, private_key)  &#x21d2; <tt>Object</tt> 
+    #<strong>sign_stream</strong>(input_stream, private_key)  &#x21d2; <tt>Crypto::Bytes</tt> 
   
 
   
@@ -1774,20 +2434,65 @@ private_key: private key for signing.</code></pre>
     
 <p>Signs the specified stream using Private key.</p>
 
-<p>Args:</p>
-
-<pre class="code ruby"><code class="ruby">input_stream: readable stream containing input data.
-private_key: private key for signing.</code></pre>
-
-<p>Returns:</p>
-
-<pre class="code ruby"><code class="ruby">Signature bytes.</code></pre>
-
 
   </div>
 </div>
 <div class="tags">
+  <p class="tag_title">Parameters:</p>
+<ul class="param">
   
+    <li>
+      
+        <span class='name'>input_stream</span>
+      
+      
+        <span class='type'>(<tt>StringIO</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'>
+<p>readable stream containing input data.</p>
+</div>
+      
+    </li>
+  
+    <li>
+      
+        <span class='name'>private_key</span>
+      
+      
+        <span class='type'>(<tt><span class='object_link'><a href="Keys/PrivateKey.html" title="Virgil::SDK::Cryptography::Keys::PrivateKey (class)">Keys::PrivateKey</a></span></tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'>
+<p>private key for signing.</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+<p class="tag_title">Returns:</p>
+<ul class="return">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt>Crypto::Bytes</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'>
+<p>Signature bytes.</p>
+</div>
+      
+    </li>
+  
+</ul>
 
 </div><table class="source_code">
   <tr>
@@ -1795,14 +2500,14 @@ private_key: private key for signing.</code></pre>
       <pre class="lines">
 
 
-373
-374
-375
-376
-377</pre>
+321
+322
+323
+324
+325</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/virgil/sdk/cryptography/virgil_crypto.rb', line 373</span>
+      <pre class="code"><span class="info file"># File 'lib/virgil/sdk/cryptography/virgil_crypto.rb', line 321</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_sign_stream'>sign_stream</span><span class='lparen'>(</span><span class='id identifier rubyid_input_stream'>input_stream</span><span class='comma'>,</span> <span class='id identifier rubyid_private_key'>private_key</span><span class='rparen'>)</span>
   <span class='id identifier rubyid_signer'>signer</span> <span class='op'>=</span> <span class='const'>Crypto</span><span class='op'>::</span><span class='const'>Native</span><span class='op'>::</span><span class='const'>VirgilStreamSigner</span><span class='period'>.</span><span class='id identifier rubyid_new'>new</span>
@@ -1817,7 +2522,7 @@ private_key: private key for signing.</code></pre>
       <div class="method_details ">
   <h3 class="signature " id="sign_then_encrypt-instance_method">
   
-    #<strong>sign_then_encrypt</strong>(bytes, private_key, *recipients)  &#x21d2; <tt>Object</tt> 
+    #<strong>sign_then_encrypt</strong>(bytes, private_key, *recipients)  &#x21d2; <tt>Crypto::Bytes</tt> 
   
 
   
@@ -1828,22 +2533,81 @@ private_key: private key for signing.</code></pre>
     
 <p>Signs and encrypts the data.</p>
 
-<p>Args:</p>
-
-<pre class="code ruby"><code class="ruby">bytes: data bytes for signing and encryption.
-private_key: private key to sign the data.
-recipients: list of recipients&#39; public keys.
-  Used for data encryption.</code></pre>
-
-<p>Returns:</p>
-
-<pre class="code ruby"><code class="ruby">Signed and encrypted data bytes.</code></pre>
-
 
   </div>
 </div>
 <div class="tags">
+  <p class="tag_title">Parameters:</p>
+<ul class="param">
   
+    <li>
+      
+        <span class='name'>bytes</span>
+      
+      
+        <span class='type'>(<tt>Crypto::Bytes</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'>
+<p>data bytes for signing and encryption.</p>
+</div>
+      
+    </li>
+  
+    <li>
+      
+        <span class='name'>private_key</span>
+      
+      
+        <span class='type'>(<tt><span class='object_link'><a href="Keys/PrivateKey.html" title="Virgil::SDK::Cryptography::Keys::PrivateKey (class)">Keys::PrivateKey</a></span></tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'>
+<p>private key to sign the data.</p>
+</div>
+      
+    </li>
+  
+    <li>
+      
+        <span class='name'>*recipients</span>
+      
+      
+        <span class='type'>(<tt>Array&lt;<span class='object_link'><a href="Keys/PublicKey.html" title="Virgil::SDK::Cryptography::Keys::PublicKey (class)">Keys::PublicKey</a></span>&gt;</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'>
+<p>list of recipients&#39; public keys used for data encryption.</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+<p class="tag_title">Returns:</p>
+<ul class="return">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt>Crypto::Bytes</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'>
+<p>Signed and encrypted data bytes.</p>
+</div>
+      
+    </li>
+  
+</ul>
 
 </div><table class="source_code">
   <tr>
@@ -1851,30 +2615,30 @@ recipients: list of recipients&#39; public keys.
       <pre class="lines">
 
 
-242
-243
-244
-245
-246
-247
-248
-249
-250
-251
-252
-253
-254
-255
-256
-257
-258
-259
-260
-261
-262</pre>
+208
+209
+210
+211
+212
+213
+214
+215
+216
+217
+218
+219
+220
+221
+222
+223
+224
+225
+226
+227
+228</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/virgil/sdk/cryptography/virgil_crypto.rb', line 242</span>
+      <pre class="code"><span class="info file"># File 'lib/virgil/sdk/cryptography/virgil_crypto.rb', line 208</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_sign_then_encrypt'>sign_then_encrypt</span><span class='lparen'>(</span><span class='id identifier rubyid_bytes'>bytes</span><span class='comma'>,</span> <span class='id identifier rubyid_private_key'>private_key</span><span class='comma'>,</span> <span class='op'>*</span><span class='id identifier rubyid_recipients'>recipients</span><span class='rparen'>)</span>
   <span class='id identifier rubyid_signer'>signer</span> <span class='op'>=</span> <span class='const'>Crypto</span><span class='op'>::</span><span class='const'>Native</span><span class='op'>::</span><span class='const'>VirgilSigner</span><span class='period'>.</span><span class='id identifier rubyid_new'>new</span>
@@ -1905,7 +2669,7 @@ recipients: list of recipients&#39; public keys.
       <div class="method_details ">
   <h3 class="signature " id="verify-instance_method">
   
-    #<strong>verify</strong>(bytes, signature, signer_public_key)  &#x21d2; <tt>Object</tt> 
+    #<strong>verify</strong>(bytes, signature, signer_public_key)  &#x21d2; <tt>Boolean</tt> 
   
 
   
@@ -1917,21 +2681,81 @@ recipients: list of recipients&#39; public keys.
 <p>Verifies the specified signature using original data and signer&#39;s
 public key.</p>
 
-<p>Args:</p>
-
-<pre class="code ruby"><code class="ruby">bytes: original data bytes for verification.
-signature: signature bytes for verification.
-signer_public_key: signer public key for verification.</code></pre>
-
-<p>Returns:</p>
-
-<pre class="code ruby"><code class="ruby">True if signature is valid, False otherwise.</code></pre>
-
 
   </div>
 </div>
 <div class="tags">
+  <p class="tag_title">Parameters:</p>
+<ul class="param">
   
+    <li>
+      
+        <span class='name'>bytes</span>
+      
+      
+        <span class='type'>(<tt>Crypto::Bytes</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'>
+<p>original data bytes for verification.</p>
+</div>
+      
+    </li>
+  
+    <li>
+      
+        <span class='name'>signature</span>
+      
+      
+        <span class='type'>(<tt>Crypto::Bytes</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'>
+<p>signature bytes for verification.</p>
+</div>
+      
+    </li>
+  
+    <li>
+      
+        <span class='name'>signer_public_key</span>
+      
+      
+        <span class='type'>(<tt><span class='object_link'><a href="Keys/PublicKey.html" title="Virgil::SDK::Cryptography::Keys::PublicKey (class)">Keys::PublicKey</a></span></tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'>
+<p>signer public key for verification.</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+<p class="tag_title">Returns:</p>
+<ul class="return">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt>Boolean</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'>
+<p>True if signature is valid, False otherwise.</p>
+</div>
+      
+    </li>
+  
+</ul>
 
 </div><table class="source_code">
   <tr>
@@ -1939,13 +2763,13 @@ signer_public_key: signer public key for verification.</code></pre>
       <pre class="lines">
 
 
-326
-327
-328
-329</pre>
+280
+281
+282
+283</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/virgil/sdk/cryptography/virgil_crypto.rb', line 326</span>
+      <pre class="code"><span class="info file"># File 'lib/virgil/sdk/cryptography/virgil_crypto.rb', line 280</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_verify'>verify</span><span class='lparen'>(</span><span class='id identifier rubyid_bytes'>bytes</span><span class='comma'>,</span> <span class='id identifier rubyid_signature'>signature</span><span class='comma'>,</span> <span class='id identifier rubyid_signer_public_key'>signer_public_key</span><span class='rparen'>)</span>
   <span class='id identifier rubyid_signer'>signer</span> <span class='op'>=</span> <span class='const'>Crypto</span><span class='op'>::</span><span class='const'>Native</span><span class='op'>::</span><span class='const'>VirgilSigner</span><span class='period'>.</span><span class='id identifier rubyid_new'>new</span>
@@ -1959,7 +2783,7 @@ signer_public_key: signer public key for verification.</code></pre>
       <div class="method_details ">
   <h3 class="signature " id="verify_stream-instance_method">
   
-    #<strong>verify_stream</strong>(input_stream, signature, signer_public_key)  &#x21d2; <tt>Object</tt> 
+    #<strong>verify_stream</strong>(input_stream, signature, signer_public_key)  &#x21d2; <tt>Boolean</tt> 
   
 
   
@@ -1971,21 +2795,81 @@ signer_public_key: signer public key for verification.</code></pre>
 <p>Verifies the specified signature using original stream and signer&#39;s
 Public key.</p>
 
-<p>Args:</p>
-
-<pre class="code ruby"><code class="ruby">input_stream: readable stream containing input data.
-signature: signature bytes for verification.
-signer_public_key: signer public key for verification.</code></pre>
-
-<p>Returns:</p>
-
-<pre class="code ruby"><code class="ruby">True if signature is valid, False otherwise.</code></pre>
-
 
   </div>
 </div>
 <div class="tags">
+  <p class="tag_title">Parameters:</p>
+<ul class="param">
   
+    <li>
+      
+        <span class='name'>input_stream</span>
+      
+      
+        <span class='type'>(<tt>StringIO</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'>
+<p>readable stream containing input data.</p>
+</div>
+      
+    </li>
+  
+    <li>
+      
+        <span class='name'>signature</span>
+      
+      
+        <span class='type'>(<tt>Crypto::Bytes</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'>
+<p>signature bytes for verification.</p>
+</div>
+      
+    </li>
+  
+    <li>
+      
+        <span class='name'>signer_public_key</span>
+      
+      
+        <span class='type'>(<tt><span class='object_link'><a href="Keys/PublicKey.html" title="Virgil::SDK::Cryptography::Keys::PublicKey (class)">Keys::PublicKey</a></span></tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'>
+<p>signer public key for verification.</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+<p class="tag_title">Returns:</p>
+<ul class="return">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt>Boolean</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'>
+<p>True if signature is valid, False otherwise.</p>
+</div>
+      
+    </li>
+  
+</ul>
 
 </div><table class="source_code">
   <tr>
@@ -1993,14 +2877,14 @@ signer_public_key: signer public key for verification.</code></pre>
       <pre class="lines">
 
 
-388
-389
-390
-391
-392</pre>
+332
+333
+334
+335
+336</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/virgil/sdk/cryptography/virgil_crypto.rb', line 388</span>
+      <pre class="code"><span class="info file"># File 'lib/virgil/sdk/cryptography/virgil_crypto.rb', line 332</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_verify_stream'>verify_stream</span><span class='lparen'>(</span><span class='id identifier rubyid_input_stream'>input_stream</span><span class='comma'>,</span> <span class='id identifier rubyid_signature'>signature</span><span class='comma'>,</span> <span class='id identifier rubyid_signer_public_key'>signer_public_key</span><span class='rparen'>)</span>
   <span class='id identifier rubyid_signer'>signer</span> <span class='op'>=</span> <span class='const'>Crypto</span><span class='op'>::</span><span class='const'>Native</span><span class='op'>::</span><span class='const'>VirgilStreamSigner</span><span class='period'>.</span><span class='id identifier rubyid_new'>new</span>
@@ -2017,7 +2901,7 @@ signer_public_key: signer public key for verification.</code></pre>
 </div>
 
       <div id="footer">
-  Generated on Tue Apr 11 12:15:35 2017 by
+  Generated on Fri Apr 14 15:24:56 2017 by
   <a href="http://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
   0.9.8 (ruby-2.4.0).
 </div>

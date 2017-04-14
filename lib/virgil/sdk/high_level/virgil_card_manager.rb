@@ -38,7 +38,8 @@ module Virgil
       # This class provides a list of methods to manage the VirgilCard entities.
       class VirgilCardManager
 
-        # An instance of the {VirgilContext} class that manages the VirgilApi dependencies during run time.
+        # manages the VirgilApi dependencies during run time.
+        # @return [VirgilContext]
         attr_reader :context
         protected :context
 
@@ -79,15 +80,10 @@ module Virgil
           end
 
           # Encrypts the specified data using recipients Public keys.
-          #
-          # Args:
-          #   buffer: The data to be encrypted. It can be {VirgilBuffer}, utf8 String or Array of bytes.
-          #
-          # Returns:
-          #   Encrypted data for current recipients Public keys.
-          #
-          # Raises:
-          #   ArgumentError: Buffer has unsupported type if buffer doesn't have type VirgilBuffer, String or Array of bytes.
+          # @param buffer [VirgilBuffer, Crypto::Bytes, String] The data to be encrypted.
+          #   It can be {VirgilBuffer}, utf8 String or Array of bytes.
+          # @return [VirgilBuffer] Encrypted data for current recipients Public keys.
+          # @raise [ArgumentError] if buffer doesn't have type VirgilBuffer, String or Array of bytes.
           def encrypt(buffer)
             all_public_keys = self.map(&:public_key)
             buffer_to_encrypt = case buffer.class.name.split("::").last
@@ -108,17 +104,13 @@ module Virgil
 
 
         # Creates a new Virgil Card that is representing user's Public key and information.
-        #
-        # Args:
-        #   identity: The user's identity.
-        #   owner_key: The owner's Virgil key.
-        #   custom_data(optional): is an associative array that contains application specific
-        #                          parameters(under key :data) and information about the device
-        #                          on which the keypair was created(under key :device and :device_name).
-        #                          example: {data: {my_key1: "my_val1", my_key2: "my_val2"}, device: "iPhone6s", device_name: "Space grey one"}.
-        #
-        # Returns:
-        #   Created unpublished Virgil Card that is representing user's Public key.
+        # @param identity [String] The user's identity.
+        # @param owner_key [VirgilKey] The owner's Virgil key.
+        # @param custom_data [Hash] is an associative array that contains application specific
+        #   parameters(under key :data) and information about the device
+        #   on which the keypair was created(under key :device and :device_name).
+        #   example: {data: {my_key1: "my_val1", my_key2: "my_val2"}, device: "iPhone6s", device_name: "Space grey one"}.
+        # @return [VirgilCard] Created unpublished Virgil Card that is representing user's Public key.
         def create(identity, owner_key, custom_data={})
           card = context.client.new_card(
               identity,
@@ -132,17 +124,14 @@ module Virgil
 
 
         # Creates a new Global Virgil Card that is representing user's Public key and information.
-        #
-        # Args:
-        #   identity: The user's identity.
-        #   owner_key: The owner's Virgil key.
-        #   custom_data(optional): is an associative array that contains application specific
-        #                          parameters(under key :data) and information about the device
-        #                          on which the keypair was created(under key :device and :device_name).
-        #                          example: {data: {my_key1: "my_val1", my_key2: "my_val2"}, device: "iPhone6s", device_name: "Space grey one"}.
-        #
-        # Returns:
-        #   Created unpublished Global Virgil Card that is representing user's Public key.
+        # @param identity [String] The user's identity.
+        # @param identity_type [String] it can be VirgilIdentity::EMAIL or VirgilIdentity::APPLICATION.
+        # @param owner_key [VirgilKey] The owner's Virgil key.
+        # @param custom_data [Hash] is an associative array that contains application specific
+        #   parameters(under key :data) and information about the device
+        #   on which the keypair was created(under key :device and :device_name).
+        #   example: {data: {my_key1: "my_val1", my_key2: "my_val2"}, device: "iPhone6s", device_name: "Space grey one"}.
+        # @return [VirgilCard] Created unpublished Global Virgil Card that is representing user's Public key.
         def create_global(identity:, identity_type:, owner_key:, custom_data: {})
           card = context.client.new_global_card(
               identity,
@@ -155,72 +144,49 @@ module Virgil
 
 
         # Publish asynchronously a card into application Virgil Services scope.
-        #
-        # Args:
-        #     card: the card to be published.
-        #
-        # Raises:
-        # {Virgil::SDK::Client::HTTP::BaseConnection::ApiError} if application credentials are invalid or
-        # Virgil Card with the same fingerprint already exists in Virgil Security services.
+        # @param card [VirgilCard] the card to be published.
+        # @raise [Virgil::SDK::Client::HTTP::BaseConnection::ApiError] if application credentials are invalid or
+        #   Virgil Card with the same fingerprint already exists in Virgil Security services.
         def publish_async(card)
           card.publish_async
         end
 
 
         # Publish synchronously a card into application Virgil Services scope.
-        #
-        # Args:
-        #     card: the card to be published.
-        #
-        # Raises:
-        #   Client::HTTP::BaseConnection::ApiError if application credentials are invalid or
+        # @param card [VirgilCard] the card to be published.
+        # @raise [Client::HTTP::BaseConnection::ApiError] if application credentials are invalid or
         #    Virgil Card with the same fingerprint already exists in Virgil Security services.
-        #   AppCredentialsException:  For this action we need app_id and app_key
-        #    if application credentials are missing.
+        # @raise [AppCredentialsException]: if application credentials(app_key and app_id) are missing.
         def publish(card)
           card.publish
         end
 
 
         # Publish a global card into application Virgil Services scope.
-        # Args:
-        #     card: the global card to be published.
-        # Raises:
-        #     Client::HTTP::BaseConnection::ApiError if VirgilIdentity Validation Token is invalid or has expired
-        #       Virgil Card with the same fingerprint already exists in Virgil Security services.
+        # @param card [VirgilCard] the global card to be published.
+        # @raise [Client::HTTP::BaseConnection::ApiError] if VirgilIdentity Validation Token is invalid or has expired
+        #   Virgil Card with the same fingerprint already exists in Virgil Security services.
         def publish_global(card, validation_token)
           card.publish_as_global(validation_token)
         end
 
 
         # Get a card from Virgil Security services by specified Card ID.
-        #
-        # Args:
-        #   card_id: unique string that identifies the Card within Virgil Security services.
-        #
-        # Returns:
-        #   Found card from server response.
-        #
-        # Raises:
-        #   VirgilClient::InvalidCardException if client has validator
-        #    and retrieved card signatures are not valid.
+        # @param card_id [String] unique string that identifies the Card within Virgil Security services.
+        # @return [VirgilCard] Found card from server response.
+        # @raise [VirgilClient::InvalidCardException] if client has validator
+        #   and retrieved card signatures are not valid.
         def get(card_id)
           VirgilCard.new(context: context, card: context.client.get_card(card_id))
         end
 
 
         # Find Virgil cards by specified identities in application scope.
-        #
-        # Args:
-        #   identities: the list of identities.
-        #
-        # Returns:
-        #   A list of found Virgil cards.
-        #
-        # Raises:
-        #   VirgilClient::InvalidCardException if client has validator
+        # @param *identities [Array<String>] the list of identities.
+        # @return [Array<VirgilCard>] A list of found Virgil cards.
+        # @raise [VirgilClient::InvalidCardException] if client has validator
         #   and retrieved card signatures are not valid.
-        #   AccessTokenException: "For this action access token can't be empty".
+        # @raise [AccessTokenException] if access token is empty.
         def find(*identities)
 
           raise AccessTokenException unless (context && context.access_token)
@@ -234,16 +200,10 @@ module Virgil
 
 
         # Find Global Virgil cards by specified identity type and identities.
-        #
-        # Args:
-        #   identity_type: the identity type(VirgilIdentity::EMAIL or VirgilIdentity::APPLICATION).
-        #   identities: the list of identities.
-        #
-        # Returns:
-        #   A list of found Global Virgil cards.
-        #
-        # Raises:
-        #   VirgilClient::InvalidCardException if client has validator
+        # @param identity_type [String] it can be VirgilIdentity::EMAIL or VirgilIdentity::APPLICATION.
+        # @param *identities [Array<String>] the list of identities.
+        # @return [Array<VirgilCard>] A list of found Global Virgil cards.
+        # @raise [VirgilClient::InvalidCardException] if client has validator
         #   and retrieved card signatures are not valid.
         def find_global(identity_type, *identities)
 
@@ -258,15 +218,10 @@ module Virgil
 
 
         # Revoke a card from Virgil Services.
-        #
-        # Args:
-        #   card: the card to be revoked.
-        #
-        # Raises:
-        #   Client::HTTP::BaseConnection::ApiError if the card was not published
+        # @param card [VirgilCard] the card to be revoked.
+        # @raise [Client::HTTP::BaseConnection::ApiError] if the card was not published
         #   or application credentials are not valid.
-        #   AppCredentialsException:  For this action we need app_id and app_key
-        #    if application credentials are missing.
+        # @raise [AppCredentialsException] if application credentials are missing.
         def revoke(card)
           validate_app_credentials
 
@@ -278,14 +233,10 @@ module Virgil
 
 
         # Revoke a Global card from Virgil Services.
-        #
-        # Args:
-        #   card: the global card to be revoked.
-        #   key_pair: The Key associated with the revoking Global Card. It's an instance of VirgilKey class.
-        #   validation_token: is an identity token.
-        #
-        # Raises:
-        #   Client::HTTP::BaseConnection::ApiError if the global card was not published.
+        # @param global_card [VirgilCard] the global card to be revoked.
+        # @param key_pair [VirgilKey] The Key associated with the revoking Global Card.
+        # @param validation_token [VirgilIdentity::ValidationToken] is an identity token.
+        # @raise [Client::HTTP::BaseConnection::ApiError] if the global card was not published.
         def revoke_global(global_card, key_pair, validation_token)
           context.client.revoke_global_card(global_card.id, key_pair, validation_token)
 
@@ -293,12 +244,8 @@ module Virgil
 
 
         # Create new Card from base64-encoded json representation of card's content_snapshot and meta.
-        #
-        # Args:
-        #   exported_card: base64-encoded json representation of card.
-        #
-        # Returns:
-        #     Virgil Card restored from snapshot.
+        # @param exported_card [String] base64-encoded json representation of card.
+        # @return [VirgilCard] Virgil Card restored from snapshot.
         def import(exported_card)
           request = Client::Requests::CreateCardRequest.import(exported_card)
 

@@ -42,13 +42,16 @@ module Virgil
       # user's identity and a Public key.
       class VirgilApi
 
-        # an instance of the {VirgilContext} class that manages the VirgilApi dependencies during run time.
+        # Virgil Context that manages the VirgilApi dependencies during run time.
+        # @return [VirgilContext]
         attr_accessor :context
 
-        # an instance of the {VirgilKeyManager} class that provides a work with VirgilKey entities.
+        # Virgil Key Manager that provides a work with VirgilKey entities.
+        # @return [VirgilKeyManager]
         attr_accessor :keys
 
-        # an instance of the {VirgilCardManager} class that provides a work with VirgilCard entities.
+        # Virgil Card Manager that provides a work with VirgilCard entities.
+        # @return [VirgilCardManager]
         attr_accessor :cards
 
         class VirgilApiException < StandardError
@@ -65,18 +68,16 @@ module Virgil
 
 
         # Initializes a new instance of the {VirgilApi} class.
-        #
-        # Args:
-        #   access_token:  Retrieved string value from development deshboard that provides an authenticated secure access to the
+        # @param access_token: [String] Retrieved string value from development deshboard that provides an authenticated secure access to the
         #                   Virgil Security services. The access token also allows the API to associate
         #                   your app requests with your Virgil Security developer’s account.
         #                   It's not required if context with own access token has been set.
         #                   It's required(only if context with own access token hasn't been set)
         #                     for the following actions: get card, find card.
-        #   context:       An instance of the class VirgilContext that manages the VirgilApi dependencies during run time.
+        # @param context: [VirgilContext] Virgil Context that manages the VirgilApi dependencies during run time.
         #                 It's required with defined Application credentials and own access_token for publishing and revoking card.
         #
-        # Notice:        The both of the arguments(access_token and context) are not required for actions with Global cards.
+        # @note The both of the arguments(access_token and context) are not required for actions with Global cards.
         def initialize(access_token: nil, context: nil)
 
           if (access_token && context)

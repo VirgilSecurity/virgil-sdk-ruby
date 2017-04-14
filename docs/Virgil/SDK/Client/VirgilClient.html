@@ -131,7 +131,7 @@ methods to interaction with server.</p>
       <li class="public ">
   <span class="summary_signature">
     
-      <a href="#access_token-instance_method" title="#access_token (instance method)">#<strong>access_token</strong>  &#x21d2; Object </a>
+      <a href="#access_token-instance_method" title="#access_token (instance method)">#<strong>access_token</strong>  &#x21d2; String </a>
     
 
     
@@ -149,7 +149,7 @@ methods to interaction with server.</p>
 
   
     <span class="summary_desc"><div class='inline'>
-<p>Returns the value of attribute access_token.</p>
+<p>Provides an authenticated secure access to the Virgil Security services.</p>
 </div></span>
   
 </li>
@@ -158,7 +158,7 @@ methods to interaction with server.</p>
       <li class="public ">
   <span class="summary_signature">
     
-      <a href="#card_validator-instance_method" title="#card_validator (instance method)">#<strong>card_validator</strong>  &#x21d2; Object </a>
+      <a href="#card_validator-instance_method" title="#card_validator (instance method)">#<strong>card_validator</strong>  &#x21d2; CardValidator </a>
     
 
     
@@ -176,7 +176,7 @@ methods to interaction with server.</p>
 
   
     <span class="summary_desc"><div class='inline'>
-<p>Returns the value of attribute card_validator.</p>
+<p>The current value of card_validator.</p>
 </div></span>
   
 </li>
@@ -185,7 +185,7 @@ methods to interaction with server.</p>
       <li class="public ">
   <span class="summary_signature">
     
-      <a href="#cards_read_only_service_url-instance_method" title="#cards_read_only_service_url (instance method)">#<strong>cards_read_only_service_url</strong>  &#x21d2; Object </a>
+      <a href="#cards_read_only_service_url-instance_method" title="#cards_read_only_service_url (instance method)">#<strong>cards_read_only_service_url</strong>  &#x21d2; String </a>
     
 
     
@@ -203,7 +203,7 @@ methods to interaction with server.</p>
 
   
     <span class="summary_desc"><div class='inline'>
-<p>Returns the value of attribute cards_read_only_service_url.</p>
+<p>Virgil Cards RO service url.</p>
 </div></span>
   
 </li>
@@ -212,7 +212,7 @@ methods to interaction with server.</p>
       <li class="public ">
   <span class="summary_signature">
     
-      <a href="#cards_service_url-instance_method" title="#cards_service_url (instance method)">#<strong>cards_service_url</strong>  &#x21d2; Object </a>
+      <a href="#cards_service_url-instance_method" title="#cards_service_url (instance method)">#<strong>cards_service_url</strong>  &#x21d2; String </a>
     
 
     
@@ -230,7 +230,7 @@ methods to interaction with server.</p>
 
   
     <span class="summary_desc"><div class='inline'>
-<p>Returns the value of attribute cards_service_url.</p>
+<p>Virgil Cards service url.</p>
 </div></span>
   
 </li>
@@ -239,7 +239,7 @@ methods to interaction with server.</p>
       <li class="public ">
   <span class="summary_signature">
     
-      <a href="#identity_service_url-instance_method" title="#identity_service_url (instance method)">#<strong>identity_service_url</strong>  &#x21d2; Object </a>
+      <a href="#identity_service_url-instance_method" title="#identity_service_url (instance method)">#<strong>identity_service_url</strong>  &#x21d2; String </a>
     
 
     
@@ -257,7 +257,7 @@ methods to interaction with server.</p>
 
   
     <span class="summary_desc"><div class='inline'>
-<p>Returns the value of attribute identity_service_url.</p>
+<p>Virgil Identity service url.</p>
 </div></span>
   
 </li>
@@ -266,7 +266,7 @@ methods to interaction with server.</p>
       <li class="public ">
   <span class="summary_signature">
     
-      <a href="#ra_service_url-instance_method" title="#ra_service_url (instance method)">#<strong>ra_service_url</strong>  &#x21d2; Object </a>
+      <a href="#ra_service_url-instance_method" title="#ra_service_url (instance method)">#<strong>ra_service_url</strong>  &#x21d2; String </a>
     
 
     
@@ -284,7 +284,7 @@ methods to interaction with server.</p>
 
   
     <span class="summary_desc"><div class='inline'>
-<p>Returns the value of attribute ra_service_url.</p>
+<p>Virgil RA service url.</p>
 </div></span>
   
 </li>
@@ -330,7 +330,7 @@ methods to interaction with server.</p>
         <li class="public ">
   <span class="summary_signature">
     
-      <a href="#cards_connection-instance_method" title="#cards_connection (instance method)">#<strong>cards_connection</strong>  &#x21d2; Object </a>
+      <a href="#cards_connection-instance_method" title="#cards_connection (instance method)">#<strong>cards_connection</strong>  &#x21d2; HTTP::CardsServiceConnection </a>
     
 
     
@@ -354,7 +354,7 @@ methods to interaction with server.</p>
         <li class="public ">
   <span class="summary_signature">
     
-      <a href="#confirm_identity-instance_method" title="#confirm_identity (instance method)">#<strong>confirm_identity</strong>(action_id, confirmation_code, time_to_live, count_to_live)  &#x21d2; Object </a>
+      <a href="#confirm_identity-instance_method" title="#confirm_identity (instance method)">#<strong>confirm_identity</strong>(action_id, confirmation_code, time_to_live, count_to_live)  &#x21d2; String </a>
     
 
     
@@ -379,7 +379,7 @@ confirm an identity.</p>
         <li class="public ">
   <span class="summary_signature">
     
-      <a href="#create_card-instance_method" title="#create_card (instance method)">#<strong>create_card</strong>(identity, identity_type, key_pair, app_id, app_key)  &#x21d2; Object </a>
+      <a href="#create_card-instance_method" title="#create_card (instance method)">#<strong>create_card</strong>(identity, identity_type, key_pair, app_id, app_key)  &#x21d2; Card </a>
     
 
     
@@ -403,7 +403,7 @@ confirm an identity.</p>
         <li class="public ">
   <span class="summary_signature">
     
-      <a href="#create_card_from_signed_request-instance_method" title="#create_card_from_signed_request (instance method)">#<strong>create_card_from_signed_request</strong>(create_request)  &#x21d2; Object </a>
+      <a href="#create_card_from_signed_request-instance_method" title="#create_card_from_signed_request (instance method)">#<strong>create_card_from_signed_request</strong>(create_request)  &#x21d2; Card </a>
     
 
     
@@ -427,7 +427,7 @@ confirm an identity.</p>
         <li class="public ">
   <span class="summary_signature">
     
-      <a href="#crypto-instance_method" title="#crypto (instance method)">#<strong>crypto</strong>  &#x21d2; Object </a>
+      <a href="#crypto-instance_method" title="#crypto (instance method)">#<strong>crypto</strong>  &#x21d2; Cryptography::VirgilCrypto </a>
     
 
     
@@ -451,7 +451,7 @@ confirm an identity.</p>
         <li class="public ">
   <span class="summary_signature">
     
-      <a href="#delete_relation-instance_method" title="#delete_relation (instance method)">#<strong>delete_relation</strong>(request)  &#x21d2; Object </a>
+      <a href="#delete_relation-instance_method" title="#delete_relation (instance method)">#<strong>delete_relation</strong>(request)  &#x21d2; Card </a>
     
 
     
@@ -475,7 +475,7 @@ confirm an identity.</p>
         <li class="public ">
   <span class="summary_signature">
     
-      <a href="#get_card-instance_method" title="#get_card (instance method)">#<strong>get_card</strong>(card_id)  &#x21d2; Object </a>
+      <a href="#get_card-instance_method" title="#get_card (instance method)">#<strong>get_card</strong>(card_id)  &#x21d2; Card </a>
     
 
     
@@ -499,7 +499,7 @@ confirm an identity.</p>
         <li class="public ">
   <span class="summary_signature">
     
-      <a href="#identity_service_connection-instance_method" title="#identity_service_connection (instance method)">#<strong>identity_service_connection</strong>  &#x21d2; Object </a>
+      <a href="#identity_service_connection-instance_method" title="#identity_service_connection (instance method)">#<strong>identity_service_connection</strong>  &#x21d2; HTTP::CardsServiceConnection </a>
     
 
     
@@ -550,7 +550,7 @@ identities like email, application, etc.</p>
         <li class="public ">
   <span class="summary_signature">
     
-      <a href="#new_card-instance_method" title="#new_card (instance method)">#<strong>new_card</strong>(identity, identity_type, private_key, custom_data = {})  &#x21d2; Object </a>
+      <a href="#new_card-instance_method" title="#new_card (instance method)">#<strong>new_card</strong>(identity, identity_type, private_key, custom_data = {})  &#x21d2; Card </a>
     
 
     
@@ -574,7 +574,7 @@ identities like email, application, etc.</p>
         <li class="public ">
   <span class="summary_signature">
     
-      <a href="#new_global_card-instance_method" title="#new_global_card (instance method)">#<strong>new_global_card</strong>(identity, identity_type, private_key, custom_data = {})  &#x21d2; Object </a>
+      <a href="#new_global_card-instance_method" title="#new_global_card (instance method)">#<strong>new_global_card</strong>(identity, identity_type, private_key, custom_data = {})  &#x21d2; Card </a>
     
 
     
@@ -598,7 +598,7 @@ identities like email, application, etc.</p>
         <li class="public ">
   <span class="summary_signature">
     
-      <a href="#publish_as_global_card-instance_method" title="#publish_as_global_card (instance method)">#<strong>publish_as_global_card</strong>(card)  &#x21d2; Object </a>
+      <a href="#publish_as_global_card-instance_method" title="#publish_as_global_card (instance method)">#<strong>publish_as_global_card</strong>(card)  &#x21d2; Card </a>
     
 
     
@@ -622,7 +622,7 @@ identities like email, application, etc.</p>
         <li class="public ">
   <span class="summary_signature">
     
-      <a href="#ra_connection-instance_method" title="#ra_connection (instance method)">#<strong>ra_connection</strong>  &#x21d2; Object </a>
+      <a href="#ra_connection-instance_method" title="#ra_connection (instance method)">#<strong>ra_connection</strong>  &#x21d2; HTTP::CardsServiceConnection </a>
     
 
     
@@ -647,7 +647,7 @@ revoking cards.</p>
         <li class="public ">
   <span class="summary_signature">
     
-      <a href="#read_cards_connection-instance_method" title="#read_cards_connection (instance method)">#<strong>read_cards_connection</strong>  &#x21d2; Object </a>
+      <a href="#read_cards_connection-instance_method" title="#read_cards_connection (instance method)">#<strong>read_cards_connection</strong>  &#x21d2; HTTP::CardsServiceConnection </a>
     
 
     
@@ -671,7 +671,7 @@ revoking cards.</p>
         <li class="public ">
   <span class="summary_signature">
     
-      <a href="#request_signer-instance_method" title="#request_signer (instance method)">#<strong>request_signer</strong>  &#x21d2; Object </a>
+      <a href="#request_signer-instance_method" title="#request_signer (instance method)">#<strong>request_signer</strong>  &#x21d2; RequestSigner </a>
     
 
     
@@ -695,7 +695,7 @@ revoking cards.</p>
         <li class="public ">
   <span class="summary_signature">
     
-      <a href="#revoke_card-instance_method" title="#revoke_card (instance method)">#<strong>revoke_card</strong>(card_id, app_id, app_key, reason = Requests::RevokeCardRequest::Reasons::Unspecified)  &#x21d2; Object </a>
+      <a href="#revoke_card-instance_method" title="#revoke_card (instance method)">#<strong>revoke_card</strong>(card_id, app_id, app_key, reason = Requests::RevokeCardRequest::Reasons::Unspecified)  &#x21d2; void </a>
     
 
     
@@ -767,7 +767,7 @@ revoking cards.</p>
         <li class="public ">
   <span class="summary_signature">
     
-      <a href="#search_cards_by_app_bundle-instance_method" title="#search_cards_by_app_bundle (instance method)">#<strong>search_cards_by_app_bundle</strong>(bundle)  &#x21d2; Object </a>
+      <a href="#search_cards_by_app_bundle-instance_method" title="#search_cards_by_app_bundle (instance method)">#<strong>search_cards_by_app_bundle</strong>(bundle)  &#x21d2; Array&lt;Card&gt; </a>
     
 
     
@@ -791,7 +791,7 @@ revoking cards.</p>
         <li class="public ">
   <span class="summary_signature">
     
-      <a href="#search_cards_by_criteria-instance_method" title="#search_cards_by_criteria (instance method)">#<strong>search_cards_by_criteria</strong>(search_criteria)  &#x21d2; Object </a>
+      <a href="#search_cards_by_criteria-instance_method" title="#search_cards_by_criteria (instance method)">#<strong>search_cards_by_criteria</strong>(search_criteria)  &#x21d2; Array&lt;Card&gt; </a>
     
 
     
@@ -815,7 +815,7 @@ revoking cards.</p>
         <li class="public ">
   <span class="summary_signature">
     
-      <a href="#search_cards_by_identities-instance_method" title="#search_cards_by_identities (instance method)">#<strong>search_cards_by_identities</strong>(*identities)  &#x21d2; Object </a>
+      <a href="#search_cards_by_identities-instance_method" title="#search_cards_by_identities (instance method)">#<strong>search_cards_by_identities</strong>(*identities)  &#x21d2; Array&lt;Card&gt; </a>
     
 
     
@@ -839,7 +839,7 @@ revoking cards.</p>
         <li class="public ">
   <span class="summary_signature">
     
-      <a href="#sign_and_publish_card-instance_method" title="#sign_and_publish_card (instance method)">#<strong>sign_and_publish_card</strong>(card, app_id, app_key)  &#x21d2; Object </a>
+      <a href="#sign_and_publish_card-instance_method" title="#sign_and_publish_card (instance method)">#<strong>sign_and_publish_card</strong>(card, app_id, app_key)  &#x21d2; Card </a>
     
 
     
@@ -887,7 +887,7 @@ revoking cards.</p>
         <li class="public ">
   <span class="summary_signature">
     
-      <a href="#verify_identity-instance_method" title="#verify_identity (instance method)">#<strong>verify_identity</strong>(identity, identity_type)  &#x21d2; Object </a>
+      <a href="#verify_identity-instance_method" title="#verify_identity (instance method)">#<strong>verify_identity</strong>(identity, identity_type)  &#x21d2; String </a>
     
 
     
@@ -941,22 +941,22 @@ depending of specified type.</p>
       <pre class="lines">
 
 
-61
-62
-63
-64
-65
-66
-67
-68
 69
 70
 71
 72
-73</pre>
+73
+74
+75
+76
+77
+78
+79
+80
+81</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/virgil/sdk/client/virgil_client.rb', line 61</span>
+      <pre class="code"><span class="info file"># File 'lib/virgil/sdk/client/virgil_client.rb', line 69</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_initialize'>initialize</span><span class='lparen'>(</span>
     <span class='id identifier rubyid_access_token'>access_token</span><span class='op'>=</span><span class='kw'>nil</span><span class='comma'>,</span>
@@ -986,7 +986,7 @@ depending of specified type.</p>
       <div class="method_details first">
   <h3 class="signature first" id="access_token-instance_method">
   
-    #<strong>access_token</strong>  &#x21d2; <tt>Object</tt> 
+    #<strong>access_token</strong>  &#x21d2; <tt>String</tt> 
   
 
   
@@ -995,13 +995,31 @@ depending of specified type.</p>
 </h3><div class="docstring">
   <div class="discussion">
     
-<p>Returns the value of attribute access_token</p>
+<p>Provides an authenticated secure access to the Virgil Security services.</p>
 
 
   </div>
 </div>
 <div class="tags">
   
+<p class="tag_title">Returns:</p>
+<ul class="return">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt>String</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'>
+<p>the current value of access_token</p>
+</div>
+      
+    </li>
+  
+</ul>
 
 </div><table class="source_code">
   <tr>
@@ -1009,12 +1027,12 @@ depending of specified type.</p>
       <pre class="lines">
 
 
-56
-57
-58</pre>
+48
+49
+50</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/virgil/sdk/client/virgil_client.rb', line 56</span>
+      <pre class="code"><span class="info file"># File 'lib/virgil/sdk/client/virgil_client.rb', line 48</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_access_token'>access_token</span>
   <span class='ivar'>@access_token</span>
@@ -1029,7 +1047,7 @@ depending of specified type.</p>
       <div class="method_details ">
   <h3 class="signature " id="card_validator-instance_method">
   
-    #<strong>card_validator</strong>  &#x21d2; <tt>Object</tt> 
+    #<strong>card_validator</strong>  &#x21d2; <tt><span class='object_link'><a href="CardValidator.html" title="Virgil::SDK::Client::CardValidator (class)">CardValidator</a></span></tt> 
   
 
   
@@ -1038,13 +1056,31 @@ depending of specified type.</p>
 </h3><div class="docstring">
   <div class="discussion">
     
-<p>Returns the value of attribute card_validator</p>
+<p>Returns the current value of card_validator</p>
 
 
   </div>
 </div>
 <div class="tags">
   
+<p class="tag_title">Returns:</p>
+<ul class="return">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt><span class='object_link'><a href="CardValidator.html" title="Virgil::SDK::Client::CardValidator (class)">CardValidator</a></span></tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'>
+<p>the current value of card_validator</p>
+</div>
+      
+    </li>
+  
+</ul>
 
 </div><table class="source_code">
   <tr>
@@ -1052,12 +1088,12 @@ depending of specified type.</p>
       <pre class="lines">
 
 
-56
-57
-58</pre>
+48
+49
+50</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/virgil/sdk/client/virgil_client.rb', line 56</span>
+      <pre class="code"><span class="info file"># File 'lib/virgil/sdk/client/virgil_client.rb', line 48</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_card_validator'>card_validator</span>
   <span class='ivar'>@card_validator</span>
@@ -1072,7 +1108,7 @@ depending of specified type.</p>
       <div class="method_details ">
   <h3 class="signature " id="cards_read_only_service_url-instance_method">
   
-    #<strong>cards_read_only_service_url</strong>  &#x21d2; <tt>Object</tt> 
+    #<strong>cards_read_only_service_url</strong>  &#x21d2; <tt>String</tt> 
   
 
   
@@ -1081,13 +1117,31 @@ depending of specified type.</p>
 </h3><div class="docstring">
   <div class="discussion">
     
-<p>Returns the value of attribute cards_read_only_service_url</p>
+<p>Virgil Cards RO service url</p>
 
 
   </div>
 </div>
 <div class="tags">
   
+<p class="tag_title">Returns:</p>
+<ul class="return">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt>String</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'>
+<p>the current value of cards_read_only_service_url</p>
+</div>
+      
+    </li>
+  
+</ul>
 
 </div><table class="source_code">
   <tr>
@@ -1095,12 +1149,12 @@ depending of specified type.</p>
       <pre class="lines">
 
 
-56
-57
-58</pre>
+48
+49
+50</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/virgil/sdk/client/virgil_client.rb', line 56</span>
+      <pre class="code"><span class="info file"># File 'lib/virgil/sdk/client/virgil_client.rb', line 48</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_cards_read_only_service_url'>cards_read_only_service_url</span>
   <span class='ivar'>@cards_read_only_service_url</span>
@@ -1115,7 +1169,7 @@ depending of specified type.</p>
       <div class="method_details ">
   <h3 class="signature " id="cards_service_url-instance_method">
   
-    #<strong>cards_service_url</strong>  &#x21d2; <tt>Object</tt> 
+    #<strong>cards_service_url</strong>  &#x21d2; <tt>String</tt> 
   
 
   
@@ -1124,13 +1178,31 @@ depending of specified type.</p>
 </h3><div class="docstring">
   <div class="discussion">
     
-<p>Returns the value of attribute cards_service_url</p>
+<p>Virgil Cards service url</p>
 
 
   </div>
 </div>
 <div class="tags">
   
+<p class="tag_title">Returns:</p>
+<ul class="return">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt>String</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'>
+<p>the current value of cards_service_url</p>
+</div>
+      
+    </li>
+  
+</ul>
 
 </div><table class="source_code">
   <tr>
@@ -1138,12 +1210,12 @@ depending of specified type.</p>
       <pre class="lines">
 
 
-56
-57
-58</pre>
+48
+49
+50</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/virgil/sdk/client/virgil_client.rb', line 56</span>
+      <pre class="code"><span class="info file"># File 'lib/virgil/sdk/client/virgil_client.rb', line 48</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_cards_service_url'>cards_service_url</span>
   <span class='ivar'>@cards_service_url</span>
@@ -1158,7 +1230,7 @@ depending of specified type.</p>
       <div class="method_details ">
   <h3 class="signature " id="identity_service_url-instance_method">
   
-    #<strong>identity_service_url</strong>  &#x21d2; <tt>Object</tt> 
+    #<strong>identity_service_url</strong>  &#x21d2; <tt>String</tt> 
   
 
   
@@ -1167,13 +1239,31 @@ depending of specified type.</p>
 </h3><div class="docstring">
   <div class="discussion">
     
-<p>Returns the value of attribute identity_service_url</p>
+<p>Virgil Identity service url</p>
 
 
   </div>
 </div>
 <div class="tags">
   
+<p class="tag_title">Returns:</p>
+<ul class="return">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt>String</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'>
+<p>the current value of identity_service_url</p>
+</div>
+      
+    </li>
+  
+</ul>
 
 </div><table class="source_code">
   <tr>
@@ -1181,12 +1271,12 @@ depending of specified type.</p>
       <pre class="lines">
 
 
-56
-57
-58</pre>
+48
+49
+50</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/virgil/sdk/client/virgil_client.rb', line 56</span>
+      <pre class="code"><span class="info file"># File 'lib/virgil/sdk/client/virgil_client.rb', line 48</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_identity_service_url'>identity_service_url</span>
   <span class='ivar'>@identity_service_url</span>
@@ -1201,7 +1291,7 @@ depending of specified type.</p>
       <div class="method_details ">
   <h3 class="signature " id="ra_service_url-instance_method">
   
-    #<strong>ra_service_url</strong>  &#x21d2; <tt>Object</tt> 
+    #<strong>ra_service_url</strong>  &#x21d2; <tt>String</tt> 
   
 
   
@@ -1210,13 +1300,31 @@ depending of specified type.</p>
 </h3><div class="docstring">
   <div class="discussion">
     
-<p>Returns the value of attribute ra_service_url</p>
+<p>Virgil RA service url</p>
 
 
   </div>
 </div>
 <div class="tags">
   
+<p class="tag_title">Returns:</p>
+<ul class="return">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt>String</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'>
+<p>the current value of ra_service_url</p>
+</div>
+      
+    </li>
+  
+</ul>
 
 </div><table class="source_code">
   <tr>
@@ -1224,12 +1332,12 @@ depending of specified type.</p>
       <pre class="lines">
 
 
-56
-57
-58</pre>
+48
+49
+50</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/virgil/sdk/client/virgil_client.rb', line 56</span>
+      <pre class="code"><span class="info file"># File 'lib/virgil/sdk/client/virgil_client.rb', line 48</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_ra_service_url'>ra_service_url</span>
   <span class='ivar'>@ra_service_url</span>
@@ -1260,24 +1368,65 @@ depending of specified type.</p>
     
 <p>Adds a relation for the Virgil Card to Virgil cards service.</p>
 
-<p>Args:</p>
-
-<pre class="code ruby"><code class="ruby">request: an instance of {AddRelationRequest} class, that contains a trusted card.</code></pre>
-
-<p>Returns:</p>
-
-<pre class="code ruby"><code class="ruby">Updated card from server response. It&#39;s an instance of Card class.</code></pre>
-
-<p>Raises:</p>
-
-<pre class="code ruby"><code class="ruby">ArgumentError: if request doesn&#39;t have trusted card&#39;s snapshot or doesn&#39;t have exactly 1 signature.
-Client::HTTP::BaseConnection::ApiError if some error has occurred on the server.</code></pre>
-
 
   </div>
 </div>
 <div class="tags">
+  <p class="tag_title">Parameters:</p>
+<ul class="param">
   
+    <li>
+      
+        <span class='name'>request</span>
+      
+      
+        <span class='type'>(<tt>AddRelationRequest</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'>
+<p>request that contains a trusted card. Updated card from server response.
+It&#39;s an instance of Card class.</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+<p class="tag_title">Raises:</p>
+<ul class="raise">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt>ArgumentError</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'>
+<p>if request doesn&#39;t have trusted card&#39;s snapshot or doesn&#39;t have
+exactly 1 signature.</p>
+</div>
+      
+    </li>
+  
+    <li>
+      
+      
+        <span class='type'>(<tt><span class='object_link'><a href="HTTP/BaseConnection/ApiError.html" title="Virgil::SDK::Client::HTTP::BaseConnection::ApiError (class)">Client::HTTP::BaseConnection::ApiError</a></span></tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'>
+<p>if some error has occurred on the server.</p>
+</div>
+      
+    </li>
+  
+</ul>
 
 </div><table class="source_code">
   <tr>
@@ -1285,23 +1434,23 @@ Client::HTTP::BaseConnection::ApiError if some error has occurred on the server.
       <pre class="lines">
 
 
-235
-236
-237
-238
-239
-240
-241
-242
-243
-244
-245
-246
-247
-248</pre>
+207
+208
+209
+210
+211
+212
+213
+214
+215
+216
+217
+218
+219
+220</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/virgil/sdk/client/virgil_client.rb', line 235</span>
+      <pre class="code"><span class="info file"># File 'lib/virgil/sdk/client/virgil_client.rb', line 207</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_add_relation'>add_relation</span><span class='lparen'>(</span><span class='id identifier rubyid_request'>request</span><span class='rparen'>)</span>
   <span class='kw'>unless</span> <span class='lparen'>(</span><span class='id identifier rubyid_request'>request</span><span class='period'>.</span><span class='id identifier rubyid_is_a?'>is_a?</span><span class='lparen'>(</span><span class='const'><span class='object_link'><a href="Requests.html" title="Virgil::SDK::Client::Requests (module)">Requests</a></span></span><span class='op'>::</span><span class='const'><span class='object_link'><a href="Requests/AddRelationRequest.html" title="Virgil::SDK::Client::Requests::AddRelationRequest (class)">AddRelationRequest</a></span></span><span class='rparen'>)</span> <span class='op'>&amp;&amp;</span> <span class='op'>!</span><span class='id identifier rubyid_request'>request</span><span class='period'>.</span><span class='id identifier rubyid_snapshot'>snapshot</span><span class='period'>.</span><span class='id identifier rubyid_nil?'>nil?</span> <span class='op'>&amp;&amp;</span> <span class='id identifier rubyid_request'>request</span><span class='period'>.</span><span class='id identifier rubyid_signatures'>signatures</span><span class='period'>.</span><span class='id identifier rubyid_count'>count</span> <span class='op'>==</span> <span class='int'>1</span><span class='rparen'>)</span>
@@ -1325,7 +1474,7 @@ Client::HTTP::BaseConnection::ApiError if some error has occurred on the server.
       <div class="method_details ">
   <h3 class="signature " id="cards_connection-instance_method">
   
-    #<strong>cards_connection</strong>  &#x21d2; <tt>Object</tt> 
+    #<strong>cards_connection</strong>  &#x21d2; <tt><span class='object_link'><a href="HTTP/CardsServiceConnection.html" title="Virgil::SDK::Client::HTTP::CardsServiceConnection (class)">HTTP::CardsServiceConnection</a></span></tt> 
   
 
   
@@ -1341,6 +1490,19 @@ Client::HTTP::BaseConnection::ApiError if some error has occurred on the server.
 </div>
 <div class="tags">
   
+<p class="tag_title">Returns:</p>
+<ul class="return">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt><span class='object_link'><a href="HTTP/CardsServiceConnection.html" title="Virgil::SDK::Client::HTTP::CardsServiceConnection (class)">HTTP::CardsServiceConnection</a></span></tt>)</span>
+      
+      
+      
+    </li>
+  
+</ul>
 
 </div><table class="source_code">
   <tr>
@@ -1348,15 +1510,15 @@ Client::HTTP::BaseConnection::ApiError if some error has occurred on the server.
       <pre class="lines">
 
 
-482
-483
-484
-485
-486
-487</pre>
+413
+414
+415
+416
+417
+418</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/virgil/sdk/client/virgil_client.rb', line 482</span>
+      <pre class="code"><span class="info file"># File 'lib/virgil/sdk/client/virgil_client.rb', line 413</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_cards_connection'>cards_connection</span>
   <span class='ivar'>@_cards_connection</span> <span class='op'>||=</span> <span class='const'><span class='object_link'><a href="HTTP.html" title="Virgil::SDK::Client::HTTP (module)">HTTP</a></span></span><span class='op'>::</span><span class='const'><span class='object_link'><a href="HTTP/CardsServiceConnection.html" title="Virgil::SDK::Client::HTTP::CardsServiceConnection (class)">CardsServiceConnection</a></span></span><span class='period'>.</span><span class='id identifier rubyid_new'><span class='object_link'><a href="HTTP/BaseConnection.html#initialize-instance_method" title="Virgil::SDK::Client::HTTP::BaseConnection#initialize (method)">new</a></span></span><span class='lparen'>(</span>
@@ -1372,7 +1534,7 @@ Client::HTTP::BaseConnection::ApiError if some error has occurred on the server.
       <div class="method_details ">
   <h3 class="signature " id="confirm_identity-instance_method">
   
-    #<strong>confirm_identity</strong>(action_id, confirmation_code, time_to_live, count_to_live)  &#x21d2; <tt>Object</tt> 
+    #<strong>confirm_identity</strong>(action_id, confirmation_code, time_to_live, count_to_live)  &#x21d2; <tt>String</tt> 
   
 
   
@@ -1384,22 +1546,97 @@ Client::HTTP::BaseConnection::ApiError if some error has occurred on the server.
 <p>Confirms the identity using confirmation code, that has been generated to
 confirm an identity.</p>
 
-<p>Args:</p>
-
-<pre class="code ruby"><code class="ruby">action_id: The action identifier that was obtained on verification step.
-confirmation_code: The confirmation code that was received on email box.
-time_to_live: The time to live.
-count_to_live: The count to live.</code></pre>
-
-<p>Returns:</p>
-
-<pre class="code ruby"><code class="ruby">A string that represent an identity validation token.</code></pre>
-
 
   </div>
 </div>
 <div class="tags">
+  <p class="tag_title">Parameters:</p>
+<ul class="param">
   
+    <li>
+      
+        <span class='name'>action_id</span>
+      
+      
+        <span class='type'>(<tt>String</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'>
+<p>The action identifier that was obtained on verification step.</p>
+</div>
+      
+    </li>
+  
+    <li>
+      
+        <span class='name'>confirmation_code</span>
+      
+      
+        <span class='type'>(<tt>String</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'>
+<p>The confirmation code that was received on email box.</p>
+</div>
+      
+    </li>
+  
+    <li>
+      
+        <span class='name'>time_to_live</span>
+      
+      
+        <span class='type'>(<tt>Fixnum</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'>
+<p>The time to live.</p>
+</div>
+      
+    </li>
+  
+    <li>
+      
+        <span class='name'>count_to_live</span>
+      
+      
+        <span class='type'>(<tt>Fixnum</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'>
+<p>The count to live.</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+<p class="tag_title">Returns:</p>
+<ul class="return">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt>String</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'>
+<p>an identity validation token value.</p>
+</div>
+      
+    </li>
+  
+</ul>
 
 </div><table class="source_code">
   <tr>
@@ -1407,19 +1644,19 @@ count_to_live: The count to live.</code></pre>
       <pre class="lines">
 
 
-372
-373
-374
-375
-376
-377
-378
-379
-380
-381</pre>
+324
+325
+326
+327
+328
+329
+330
+331
+332
+333</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/virgil/sdk/client/virgil_client.rb', line 372</span>
+      <pre class="code"><span class="info file"># File 'lib/virgil/sdk/client/virgil_client.rb', line 324</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_confirm_identity'>confirm_identity</span><span class='lparen'>(</span><span class='id identifier rubyid_action_id'>action_id</span><span class='comma'>,</span> <span class='id identifier rubyid_confirmation_code'>confirmation_code</span><span class='comma'>,</span> <span class='id identifier rubyid_time_to_live'>time_to_live</span><span class='comma'>,</span> <span class='id identifier rubyid_count_to_live'>count_to_live</span><span class='rparen'>)</span>
   <span class='id identifier rubyid_confirm_request'>confirm_request</span> <span class='op'>=</span> <span class='const'><span class='object_link'><a href="Requests.html" title="Virgil::SDK::Client::Requests (module)">Requests</a></span></span><span class='op'>::</span><span class='const'><span class='object_link'><a href="Requests/ConfirmIdentityRequest.html" title="Virgil::SDK::Client::Requests::ConfirmIdentityRequest (class)">ConfirmIdentityRequest</a></span></span><span class='period'>.</span><span class='id identifier rubyid_new'><span class='object_link'><a href="Requests/ConfirmIdentityRequest.html#initialize-instance_method" title="Virgil::SDK::Client::Requests::ConfirmIdentityRequest#initialize (method)">new</a></span></span><span class='lparen'>(</span><span class='id identifier rubyid_confirmation_code'>confirmation_code</span><span class='comma'>,</span> <span class='id identifier rubyid_action_id'>action_id</span><span class='comma'>,</span> <span class='id identifier rubyid_time_to_live'>time_to_live</span><span class='comma'>,</span> <span class='id identifier rubyid_count_to_live'>count_to_live</span><span class='rparen'>)</span>
@@ -1439,7 +1676,7 @@ count_to_live: The count to live.</code></pre>
       <div class="method_details ">
   <h3 class="signature " id="create_card-instance_method">
   
-    #<strong>create_card</strong>(identity, identity_type, key_pair, app_id, app_key)  &#x21d2; <tt>Object</tt> 
+    #<strong>create_card</strong>(identity, identity_type, key_pair, app_id, app_key)  &#x21d2; <tt><span class='object_link'><a href="Card.html" title="Virgil::SDK::Client::Card (class)">Card</a></span></tt> 
   
 
   
@@ -1450,24 +1687,114 @@ count_to_live: The count to live.</code></pre>
     
 <p>Create published new card from given attributes.</p>
 
-<p>Args:</p>
-
-<pre class="code ruby"><code class="ruby">identity: Created card identity.
-identity_type: Created card identity type.
-key_pair: Key pair of the created card.
-  Public key is stored in the card, private key is used for request signing.
-app_id: Application identity for authority sign.
-app_key: Application key for authority sign.</code></pre>
-
-<p>Returns:</p>
-
-<pre class="code ruby"><code class="ruby">Created card from server response.</code></pre>
-
 
   </div>
 </div>
 <div class="tags">
+  <p class="tag_title">Parameters:</p>
+<ul class="param">
   
+    <li>
+      
+        <span class='name'>identity</span>
+      
+      
+        <span class='type'>(<tt>String</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'>
+<p>Created card identity.</p>
+</div>
+      
+    </li>
+  
+    <li>
+      
+        <span class='name'>identity_type</span>
+      
+      
+        <span class='type'>(<tt>String</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'>
+<p>Created card identity type.</p>
+</div>
+      
+    </li>
+  
+    <li>
+      
+        <span class='name'>key_pair</span>
+      
+      
+        <span class='type'>(<tt><span class='object_link'><a href="../Cryptography/Keys/KeyPair.html" title="Virgil::SDK::Cryptography::Keys::KeyPair (class)">Cryptography::Keys::KeyPair</a></span></tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'>
+<p>Key pair of the created card. Public key is stored in the card, private key
+is used for request signing.</p>
+</div>
+      
+    </li>
+  
+    <li>
+      
+        <span class='name'>app_id</span>
+      
+      
+        <span class='type'>(<tt>String</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'>
+<p>Application identity for authority sign.</p>
+</div>
+      
+    </li>
+  
+    <li>
+      
+        <span class='name'>app_key</span>
+      
+      
+        <span class='type'>(<tt><span class='object_link'><a href="../Cryptography/Keys/PrivateKey.html" title="Virgil::SDK::Cryptography::Keys::PrivateKey (class)">Cryptography::Keys::PrivateKey</a></span></tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'>
+<p>Application key for authority sign.</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+<p class="tag_title">Returns:</p>
+<ul class="return">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt><span class='object_link'><a href="Card.html" title="Virgil::SDK::Client::Card (class)">Card</a></span></tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'>
+<p>Created card from server response.</p>
+</div>
+      
+    </li>
+  
+</ul>
 
 </div><table class="source_code">
   <tr>
@@ -1475,10 +1802,6 @@ app_key: Application key for authority sign.</code></pre>
       <pre class="lines">
 
 
-88
-89
-90
-91
 92
 93
 94
@@ -1486,10 +1809,14 @@ app_key: Application key for authority sign.</code></pre>
 96
 97
 98
-99</pre>
+99
+100
+101
+102
+103</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/virgil/sdk/client/virgil_client.rb', line 88</span>
+      <pre class="code"><span class="info file"># File 'lib/virgil/sdk/client/virgil_client.rb', line 92</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_create_card'>create_card</span><span class='lparen'>(</span><span class='id identifier rubyid_identity'>identity</span><span class='comma'>,</span> <span class='id identifier rubyid_identity_type'>identity_type</span><span class='comma'>,</span> <span class='id identifier rubyid_key_pair'>key_pair</span><span class='comma'>,</span> <span class='id identifier rubyid_app_id'>app_id</span><span class='comma'>,</span> <span class='id identifier rubyid_app_key'>app_key</span><span class='rparen'>)</span>
   <span class='id identifier rubyid_request'>request</span> <span class='op'>=</span> <span class='const'><span class='object_link'><a href="../../../Virgil.html" title="Virgil (module)">Virgil</a></span></span><span class='op'>::</span><span class='const'><span class='object_link'><a href="../../SDK.html" title="Virgil::SDK (module)">SDK</a></span></span><span class='op'>::</span><span class='const'><span class='object_link'><a href="../Client.html" title="Virgil::SDK::Client (module)">Client</a></span></span><span class='op'>::</span><span class='const'><span class='object_link'><a href="Requests.html" title="Virgil::SDK::Client::Requests (module)">Requests</a></span></span><span class='op'>::</span><span class='const'><span class='object_link'><a href="Requests/CreateCardRequest.html" title="Virgil::SDK::Client::Requests::CreateCardRequest (class)">CreateCardRequest</a></span></span><span class='period'>.</span><span class='id identifier rubyid_new'><span class='object_link'><a href="Requests/CreateCardRequest.html#initialize-instance_method" title="Virgil::SDK::Client::Requests::CreateCardRequest#initialize (method)">new</a></span></span><span class='lparen'>(</span>
@@ -1511,7 +1838,7 @@ app_key: Application key for authority sign.</code></pre>
       <div class="method_details ">
   <h3 class="signature " id="create_card_from_signed_request-instance_method">
   
-    #<strong>create_card_from_signed_request</strong>(create_request)  &#x21d2; <tt>Object</tt> 
+    #<strong>create_card_from_signed_request</strong>(create_request)  &#x21d2; <tt><span class='object_link'><a href="Card.html" title="Virgil::SDK::Client::Card (class)">Card</a></span></tt> 
   
 
   
@@ -1522,24 +1849,67 @@ app_key: Application key for authority sign.</code></pre>
     
 <p>Create new card from signed creation request.</p>
 
-<p>Args:</p>
-
-<pre class="code ruby"><code class="ruby">create_request: signed card creation request.</code></pre>
-
-<p>Returns:</p>
-
-<pre class="code ruby"><code class="ruby">Created card from server response.</code></pre>
-
-<p>Raises:</p>
-
-<pre class="code ruby"><code class="ruby">VirgilClient.InvalidCardException if client has validator
-and returned card signatures are not valid.</code></pre>
-
 
   </div>
 </div>
 <div class="tags">
+  <p class="tag_title">Parameters:</p>
+<ul class="param">
   
+    <li>
+      
+        <span class='name'>create_request</span>
+      
+      
+        <span class='type'>(<tt><span class='object_link'><a href="Requests/CreateCardRequest.html" title="Virgil::SDK::Client::Requests::CreateCardRequest (class)">Requests::CreateCardRequest</a></span></tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'>
+<p>signed card creation request.</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+<p class="tag_title">Returns:</p>
+<ul class="return">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt><span class='object_link'><a href="Card.html" title="Virgil::SDK::Client::Card (class)">Card</a></span></tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'>
+<p>Created card from server response.</p>
+</div>
+      
+    </li>
+  
+</ul>
+<p class="tag_title">Raises:</p>
+<ul class="raise">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt><span class='object_link'><a href="" title="Virgil::SDK::Client::VirgilClient (class)">VirgilClient</a></span>.<span class='object_link'><a href="VirgilClient/InvalidCardException.html" title="Virgil::SDK::Client::VirgilClient::InvalidCardException (class)">InvalidCardException</a></span></tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'>
+<p>if client has validator and returned card signatures are not valid.</p>
+</div>
+      
+    </li>
+  
+</ul>
 
 </div><table class="source_code">
   <tr>
@@ -1547,20 +1917,20 @@ and returned card signatures are not valid.</code></pre>
       <pre class="lines">
 
 
-211
-212
-213
-214
-215
-216
-217
-218
-219
-220
-221</pre>
+189
+190
+191
+192
+193
+194
+195
+196
+197
+198
+199</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/virgil/sdk/client/virgil_client.rb', line 211</span>
+      <pre class="code"><span class="info file"># File 'lib/virgil/sdk/client/virgil_client.rb', line 189</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_create_card_from_signed_request'>create_card_from_signed_request</span><span class='lparen'>(</span><span class='id identifier rubyid_create_request'>create_request</span><span class='rparen'>)</span>
   <span class='id identifier rubyid_http_request'>http_request</span> <span class='op'>=</span> <span class='const'><span class='object_link'><a href="../../../Virgil.html" title="Virgil (module)">Virgil</a></span></span><span class='op'>::</span><span class='const'><span class='object_link'><a href="../../SDK.html" title="Virgil::SDK (module)">SDK</a></span></span><span class='op'>::</span><span class='const'><span class='object_link'><a href="../Client.html" title="Virgil::SDK::Client (module)">Client</a></span></span><span class='op'>::</span><span class='const'><span class='object_link'><a href="HTTP.html" title="Virgil::SDK::Client::HTTP (module)">HTTP</a></span></span><span class='op'>::</span><span class='const'><span class='object_link'><a href="HTTP/Request.html" title="Virgil::SDK::Client::HTTP::Request (class)">Request</a></span></span><span class='period'>.</span><span class='id identifier rubyid_new'>new</span><span class='lparen'>(</span>
@@ -1581,7 +1951,7 @@ and returned card signatures are not valid.</code></pre>
       <div class="method_details ">
   <h3 class="signature " id="crypto-instance_method">
   
-    #<strong>crypto</strong>  &#x21d2; <tt>Object</tt> 
+    #<strong>crypto</strong>  &#x21d2; <tt><span class='object_link'><a href="../Cryptography/VirgilCrypto.html" title="Virgil::SDK::Cryptography::VirgilCrypto (class)">Cryptography::VirgilCrypto</a></span></tt> 
   
 
   
@@ -1597,6 +1967,19 @@ and returned card signatures are not valid.</code></pre>
 </div>
 <div class="tags">
   
+<p class="tag_title">Returns:</p>
+<ul class="return">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt><span class='object_link'><a href="../Cryptography/VirgilCrypto.html" title="Virgil::SDK::Cryptography::VirgilCrypto (class)">Cryptography::VirgilCrypto</a></span></tt>)</span>
+      
+      
+      
+    </li>
+  
+</ul>
 
 </div><table class="source_code">
   <tr>
@@ -1604,12 +1987,12 @@ and returned card signatures are not valid.</code></pre>
       <pre class="lines">
 
 
-524
-525
-526</pre>
+460
+461
+462</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/virgil/sdk/client/virgil_client.rb', line 524</span>
+      <pre class="code"><span class="info file"># File 'lib/virgil/sdk/client/virgil_client.rb', line 460</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_crypto'>crypto</span>
   <span class='ivar'>@_crypto</span> <span class='op'>||=</span> <span class='const'><span class='object_link'><a href="../../../Virgil.html" title="Virgil (module)">Virgil</a></span></span><span class='op'>::</span><span class='const'><span class='object_link'><a href="../../SDK.html" title="Virgil::SDK (module)">SDK</a></span></span><span class='op'>::</span><span class='const'><span class='object_link'><a href="../Cryptography.html" title="Virgil::SDK::Cryptography (module)">Cryptography</a></span></span><span class='op'>::</span><span class='const'><span class='object_link'><a href="../Cryptography/VirgilCrypto.html" title="Virgil::SDK::Cryptography::VirgilCrypto (class)">VirgilCrypto</a></span></span><span class='period'>.</span><span class='id identifier rubyid_new'><span class='object_link'><a href="../Cryptography/VirgilCrypto.html#initialize-instance_method" title="Virgil::SDK::Cryptography::VirgilCrypto#initialize (method)">new</a></span></span>
@@ -1622,7 +2005,7 @@ and returned card signatures are not valid.</code></pre>
       <div class="method_details ">
   <h3 class="signature " id="delete_relation-instance_method">
   
-    #<strong>delete_relation</strong>(request)  &#x21d2; <tt>Object</tt> 
+    #<strong>delete_relation</strong>(request)  &#x21d2; <tt><span class='object_link'><a href="Card.html" title="Virgil::SDK::Client::Card (class)">Card</a></span></tt> 
   
 
   
@@ -1633,24 +2016,82 @@ and returned card signatures are not valid.</code></pre>
     
 <p>Deletes a relation for the Virgil Card to Virgil cards service.</p>
 
-<p>Args:</p>
-
-<pre class="code ruby"><code class="ruby">request: an instance of DeleteRelationRequest class, that contains a trusted card to be deleted.</code></pre>
-
-<p>Returns:</p>
-
-<pre class="code ruby"><code class="ruby">Updated card from server response. It&#39;s an instance of Card class.</code></pre>
-
-<p>Raises:</p>
-
-<pre class="code ruby"><code class="ruby">ArgumentError: if request doesn&#39;t have trusted card&#39;s snapshot or doesn&#39;t have exactly 1 signature.
-Client::HTTP::BaseConnection::ApiError if some error has occurred on the server.</code></pre>
-
 
   </div>
 </div>
 <div class="tags">
+  <p class="tag_title">Parameters:</p>
+<ul class="param">
   
+    <li>
+      
+        <span class='name'>request</span>
+      
+      
+        <span class='type'>(<tt>DeleteRelationRequest</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'>
+<p>request that contains a trusted card to be deleted.</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+<p class="tag_title">Returns:</p>
+<ul class="return">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt><span class='object_link'><a href="Card.html" title="Virgil::SDK::Client::Card (class)">Card</a></span></tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'>
+<p>Updated card from server response.</p>
+</div>
+      
+    </li>
+  
+</ul>
+<p class="tag_title">Raises:</p>
+<ul class="raise">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt>ArgumentError</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'>
+<p>if request doesn&#39;t have trusted card&#39;s snapshot or doesn&#39;t have
+exactly 1 signature.</p>
+</div>
+      
+    </li>
+  
+    <li>
+      
+      
+        <span class='type'>(<tt><span class='object_link'><a href="HTTP/BaseConnection/ApiError.html" title="Virgil::SDK::Client::HTTP::BaseConnection::ApiError (class)">Client::HTTP::BaseConnection::ApiError</a></span></tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'>
+<p>if some error has occurred on the server.</p>
+</div>
+      
+    </li>
+  
+</ul>
 
 </div><table class="source_code">
   <tr>
@@ -1658,23 +2099,23 @@ Client::HTTP::BaseConnection::ApiError if some error has occurred on the server.
       <pre class="lines">
 
 
-262
-263
-264
-265
-266
-267
-268
-269
-270
-271
-272
-273
-274
-275</pre>
+228
+229
+230
+231
+232
+233
+234
+235
+236
+237
+238
+239
+240
+241</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/virgil/sdk/client/virgil_client.rb', line 262</span>
+      <pre class="code"><span class="info file"># File 'lib/virgil/sdk/client/virgil_client.rb', line 228</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_delete_relation'>delete_relation</span><span class='lparen'>(</span><span class='id identifier rubyid_request'>request</span><span class='rparen'>)</span>
   <span class='kw'>unless</span> <span class='lparen'>(</span><span class='id identifier rubyid_request'>request</span><span class='period'>.</span><span class='id identifier rubyid_is_a?'>is_a?</span><span class='lparen'>(</span><span class='const'><span class='object_link'><a href="Requests.html" title="Virgil::SDK::Client::Requests (module)">Requests</a></span></span><span class='op'>::</span><span class='const'><span class='object_link'><a href="Requests/DeleteRelationRequest.html" title="Virgil::SDK::Client::Requests::DeleteRelationRequest (class)">DeleteRelationRequest</a></span></span><span class='rparen'>)</span> <span class='op'>&amp;&amp;</span> <span class='op'>!</span><span class='id identifier rubyid_request'>request</span><span class='period'>.</span><span class='id identifier rubyid_snapshot'>snapshot</span><span class='period'>.</span><span class='id identifier rubyid_nil?'>nil?</span> <span class='op'>&amp;&amp;</span> <span class='id identifier rubyid_request'>request</span><span class='period'>.</span><span class='id identifier rubyid_signatures'>signatures</span><span class='period'>.</span><span class='id identifier rubyid_count'>count</span> <span class='op'>==</span> <span class='int'>1</span><span class='rparen'>)</span>
@@ -1698,7 +2139,7 @@ Client::HTTP::BaseConnection::ApiError if some error has occurred on the server.
       <div class="method_details ">
   <h3 class="signature " id="get_card-instance_method">
   
-    #<strong>get_card</strong>(card_id)  &#x21d2; <tt>Object</tt> 
+    #<strong>get_card</strong>(card_id)  &#x21d2; <tt><span class='object_link'><a href="Card.html" title="Virgil::SDK::Client::Card (class)">Card</a></span></tt> 
   
 
   
@@ -1709,24 +2150,67 @@ Client::HTTP::BaseConnection::ApiError if some error has occurred on the server.
     
 <p>Get card by id.</p>
 
-<p>Args:</p>
-
-<pre class="code ruby"><code class="ruby">card_id: id of the card to get.</code></pre>
-
-<p>Returns:</p>
-
-<pre class="code ruby"><code class="ruby">Found card from server response.</code></pre>
-
-<p>Raises:</p>
-
-<pre class="code ruby"><code class="ruby">VirgilClient::InvalidCardException if client has validator
-and retrieved card signatures are not valid.</code></pre>
-
 
   </div>
 </div>
 <div class="tags">
+  <p class="tag_title">Parameters:</p>
+<ul class="param">
   
+    <li>
+      
+        <span class='name'>card_id</span>
+      
+      
+        <span class='type'>(<tt>String</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'>
+<p>id of the card to get.</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+<p class="tag_title">Returns:</p>
+<ul class="return">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt><span class='object_link'><a href="Card.html" title="Virgil::SDK::Client::Card (class)">Card</a></span></tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'>
+<p>Found card from server response.</p>
+</div>
+      
+    </li>
+  
+</ul>
+<p class="tag_title">Raises:</p>
+<ul class="raise">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt><span class='object_link'><a href="VirgilClient/InvalidCardException.html" title="Virgil::SDK::Client::VirgilClient::InvalidCardException (class)">VirgilClient::InvalidCardException</a></span></tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'>
+<p>if client has validator and retrieved card signatures are not valid.</p>
+</div>
+      
+    </li>
+  
+</ul>
 
 </div><table class="source_code">
   <tr>
@@ -1734,24 +2218,22 @@ and retrieved card signatures are not valid.</code></pre>
       <pre class="lines">
 
 
-395
-396
-397
-398
-399
-400
-401
-402
-403
-404
-405</pre>
+341
+342
+343
+344
+345
+346
+347
+348
+349
+350</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/virgil/sdk/client/virgil_client.rb', line 395</span>
+      <pre class="code"><span class="info file"># File 'lib/virgil/sdk/client/virgil_client.rb', line 341</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_get_card'>get_card</span><span class='lparen'>(</span><span class='id identifier rubyid_card_id'>card_id</span><span class='rparen'>)</span>
-  <span class='comment'># type: (str) -&gt; Card
-</span>  <span class='id identifier rubyid_http_request'>http_request</span> <span class='op'>=</span> <span class='const'><span class='object_link'><a href="../../../Virgil.html" title="Virgil (module)">Virgil</a></span></span><span class='op'>::</span><span class='const'><span class='object_link'><a href="../../SDK.html" title="Virgil::SDK (module)">SDK</a></span></span><span class='op'>::</span><span class='const'><span class='object_link'><a href="../Client.html" title="Virgil::SDK::Client (module)">Client</a></span></span><span class='op'>::</span><span class='const'><span class='object_link'><a href="HTTP.html" title="Virgil::SDK::Client::HTTP (module)">HTTP</a></span></span><span class='op'>::</span><span class='const'><span class='object_link'><a href="HTTP/Request.html" title="Virgil::SDK::Client::HTTP::Request (class)">Request</a></span></span><span class='period'>.</span><span class='id identifier rubyid_new'>new</span><span class='lparen'>(</span>
+  <span class='id identifier rubyid_http_request'>http_request</span> <span class='op'>=</span> <span class='const'><span class='object_link'><a href="../../../Virgil.html" title="Virgil (module)">Virgil</a></span></span><span class='op'>::</span><span class='const'><span class='object_link'><a href="../../SDK.html" title="Virgil::SDK (module)">SDK</a></span></span><span class='op'>::</span><span class='const'><span class='object_link'><a href="../Client.html" title="Virgil::SDK::Client (module)">Client</a></span></span><span class='op'>::</span><span class='const'><span class='object_link'><a href="HTTP.html" title="Virgil::SDK::Client::HTTP (module)">HTTP</a></span></span><span class='op'>::</span><span class='const'><span class='object_link'><a href="HTTP/Request.html" title="Virgil::SDK::Client::HTTP::Request (class)">Request</a></span></span><span class='period'>.</span><span class='id identifier rubyid_new'>new</span><span class='lparen'>(</span>
       <span class='label'>method:</span> <span class='const'><span class='object_link'><a href="HTTP.html" title="Virgil::SDK::Client::HTTP (module)">HTTP</a></span></span><span class='op'>::</span><span class='const'><span class='object_link'><a href="HTTP/Request.html" title="Virgil::SDK::Client::HTTP::Request (class)">Request</a></span></span><span class='op'>::</span><span class='const'><span class='object_link'><a href="HTTP/Request.html#GET-constant" title="Virgil::SDK::Client::HTTP::Request::GET (constant)">GET</a></span></span><span class='comma'>,</span>
       <span class='label'>endpoint:</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>/</span><span class='embexpr_beg'>#{</span><span class='const'><span class='object_link'><a href="Card.html" title="Virgil::SDK::Client::Card (class)">Card</a></span></span><span class='op'>::</span><span class='const'><span class='object_link'><a href="Card.html#VC_VERSION-constant" title="Virgil::SDK::Client::Card::VC_VERSION (constant)">VC_VERSION</a></span></span><span class='embexpr_end'>}</span><span class='tstring_content'>/card/</span><span class='embexpr_beg'>#{</span><span class='id identifier rubyid_card_id'>card_id</span><span class='embexpr_end'>}</span><span class='tstring_end'>&quot;</span></span><span class='comma'>,</span>
   <span class='rparen'>)</span>
@@ -1768,7 +2250,7 @@ and retrieved card signatures are not valid.</code></pre>
       <div class="method_details ">
   <h3 class="signature " id="identity_service_connection-instance_method">
   
-    #<strong>identity_service_connection</strong>  &#x21d2; <tt>Object</tt> 
+    #<strong>identity_service_connection</strong>  &#x21d2; <tt><span class='object_link'><a href="HTTP/CardsServiceConnection.html" title="Virgil::SDK::Client::HTTP::CardsServiceConnection (class)">HTTP::CardsServiceConnection</a></span></tt> 
   
 
   
@@ -1785,6 +2267,19 @@ identities like email, application, etc.</p>
 </div>
 <div class="tags">
   
+<p class="tag_title">Returns:</p>
+<ul class="return">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt><span class='object_link'><a href="HTTP/CardsServiceConnection.html" title="Virgil::SDK::Client::HTTP::CardsServiceConnection (class)">HTTP::CardsServiceConnection</a></span></tt>)</span>
+      
+      
+      
+    </li>
+  
+</ul>
 
 </div><table class="source_code">
   <tr>
@@ -1792,16 +2287,16 @@ identities like email, application, etc.</p>
       <pre class="lines">
 
 
-508
-509
-510
-511
-512
-513
-514</pre>
+442
+443
+444
+445
+446
+447
+448</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/virgil/sdk/client/virgil_client.rb', line 508</span>
+      <pre class="code"><span class="info file"># File 'lib/virgil/sdk/client/virgil_client.rb', line 442</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_identity_service_connection'>identity_service_connection</span>
   <span class='ivar'>@identity_service_connection</span> <span class='op'>=</span> <span class='const'><span class='object_link'><a href="HTTP.html" title="Virgil::SDK::Client::HTTP (module)">HTTP</a></span></span><span class='op'>::</span><span class='const'><span class='object_link'><a href="HTTP/CardsServiceConnection.html" title="Virgil::SDK::Client::HTTP::CardsServiceConnection (class)">CardsServiceConnection</a></span></span><span class='period'>.</span><span class='id identifier rubyid_new'><span class='object_link'><a href="HTTP/BaseConnection.html#initialize-instance_method" title="Virgil::SDK::Client::HTTP::BaseConnection#initialize (method)">new</a></span></span><span class='lparen'>(</span>
@@ -1818,7 +2313,7 @@ identities like email, application, etc.</p>
       <div class="method_details ">
   <h3 class="signature " id="new_card-instance_method">
   
-    #<strong>new_card</strong>(identity, identity_type, private_key, custom_data = {})  &#x21d2; <tt>Object</tt> 
+    #<strong>new_card</strong>(identity, identity_type, private_key, custom_data = {})  &#x21d2; <tt><span class='object_link'><a href="Card.html" title="Virgil::SDK::Client::Card (class)">Card</a></span></tt> 
   
 
   
@@ -1829,28 +2324,105 @@ identities like email, application, etc.</p>
     
 <p>Create unpublished local card from given attributes.</p>
 
-<p>Args:</p>
-
-<pre class="code ruby"><code class="ruby">identity: Created card identity.
-identity_type: Created card identity type.
-private_key: Private key of the created card.
-  Public key is stored in the card, private key is used for request signing.
-app_id: Application identity for authority sign.
-app_key: Application key for authority sign.
-custom_data(optional): is an associative array that contains application specific
-                       parameters(under key :data) and information about the device
-                       on which the keypair was created(under key :device and :device_name).
-                       example: {data: {my_key1: &quot;my_val1&quot;, my_key2: &quot;my_val2&quot;}, device: &quot;iPhone6s&quot;, device_name: &quot;Space grey one&quot;}</code></pre>
-
-<p>Returns:</p>
-
-<pre class="code ruby"><code class="ruby">Created local card that is not published to Virgil Security services</code></pre>
-
 
   </div>
 </div>
 <div class="tags">
+  <p class="tag_title">Parameters:</p>
+<ul class="param">
   
+    <li>
+      
+        <span class='name'>identity</span>
+      
+      
+        <span class='type'>(<tt>String</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'>
+<p>Created card identity.</p>
+</div>
+      
+    </li>
+  
+    <li>
+      
+        <span class='name'>identity_type</span>
+      
+      
+        <span class='type'>(<tt>String</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'>
+<p>Created card identity type.</p>
+</div>
+      
+    </li>
+  
+    <li>
+      
+        <span class='name'>private_key</span>
+      
+      
+        <span class='type'>(<tt><span class='object_link'><a href="../Cryptography/Keys/PrivateKey.html" title="Virgil::SDK::Cryptography::Keys::PrivateKey (class)">Cryptography::Keys::PrivateKey</a></span></tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'>
+<p>Private key of the created card.</p>
+</div>
+      
+    </li>
+  
+    <li>
+      
+        <span class='name'>custom_data</span>
+      
+      
+        <span class='type'>(<tt>optional</tt>)</span>
+      
+      
+        <em class="default">(defaults to: <tt>{}</tt>)</em>
+      
+      
+        &mdash;
+        <div class='inline'><dl class="rdoc-list label-list"><dt>Hash
+<dd>
+<p>contains application specific</p>
+</dd></dl>
+
+<p>parameters(under key :data) and information about the device on which the
+keypair was created(under key :device and :device_name). example: {my_key1: “my_val1”, my_key2: “my_val2”, device: “iPhone6s”, device_name:
+“Space grey one”}</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+<p class="tag_title">Returns:</p>
+<ul class="return">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt><span class='object_link'><a href="Card.html" title="Virgil::SDK::Client::Card (class)">Card</a></span></tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'>
+<p>Created local card that is not published to Virgil Security services</p>
+</div>
+      
+    </li>
+  
+</ul>
 
 </div><table class="source_code">
   <tr>
@@ -1858,6 +2430,9 @@ custom_data(optional): is an associative array that contains application specifi
       <pre class="lines">
 
 
+115
+116
+117
 118
 119
 120
@@ -1869,13 +2444,10 @@ custom_data(optional): is an associative array that contains application specifi
 126
 127
 128
-129
-130
-131
-132</pre>
+129</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/virgil/sdk/client/virgil_client.rb', line 118</span>
+      <pre class="code"><span class="info file"># File 'lib/virgil/sdk/client/virgil_client.rb', line 115</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_new_card'>new_card</span><span class='lparen'>(</span><span class='id identifier rubyid_identity'>identity</span><span class='comma'>,</span> <span class='id identifier rubyid_identity_type'>identity_type</span><span class='comma'>,</span> <span class='id identifier rubyid_private_key'>private_key</span><span class='comma'>,</span> <span class='id identifier rubyid_custom_data'>custom_data</span><span class='op'>=</span><span class='lbrace'>{</span><span class='rbrace'>}</span><span class='rparen'>)</span>
   <span class='id identifier rubyid_data'>data</span> <span class='op'>=</span> <span class='id identifier rubyid_custom_data'>custom_data</span><span class='lbracket'>[</span><span class='symbol'>:data</span><span class='rbracket'>]</span>
@@ -1900,7 +2472,7 @@ custom_data(optional): is an associative array that contains application specifi
       <div class="method_details ">
   <h3 class="signature " id="new_global_card-instance_method">
   
-    #<strong>new_global_card</strong>(identity, identity_type, private_key, custom_data = {})  &#x21d2; <tt>Object</tt> 
+    #<strong>new_global_card</strong>(identity, identity_type, private_key, custom_data = {})  &#x21d2; <tt><span class='object_link'><a href="Card.html" title="Virgil::SDK::Client::Card (class)">Card</a></span></tt> 
   
 
   
@@ -1911,26 +2483,105 @@ custom_data(optional): is an associative array that contains application specifi
     
 <p>Create unpublished global card from given attributes.</p>
 
-<p>Args:</p>
-
-<pre class="code ruby"><code class="ruby">identity: Created card identity.
-identity_type: Created card identity type.
-private_key: Private key of the created Global card. It&#39;s an instance of the class PrivateKey.
-              Public key is stored in the card, private key is used for request signing.
-custom_data(optional): is an associative array that contains application specific
-                       parameters(under key :data) and information about the device
-                       on which the keypair was created(under key :device and :device_name).
-                       example: {data: {my_key1: &quot;my_val1&quot;, my_key2: &quot;my_val2&quot;}, device: &quot;iPhone6s&quot;, device_name: &quot;Space grey one&quot;}</code></pre>
-
-<p>Returns:</p>
-
-<pre class="code ruby"><code class="ruby">Created global card that is not published to Virgil Security services</code></pre>
-
 
   </div>
 </div>
 <div class="tags">
+  <p class="tag_title">Parameters:</p>
+<ul class="param">
   
+    <li>
+      
+        <span class='name'>identity</span>
+      
+      
+        <span class='type'>(<tt>String</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'>
+<p>Created card identity.</p>
+</div>
+      
+    </li>
+  
+    <li>
+      
+        <span class='name'>identity_type</span>
+      
+      
+        <span class='type'>(<tt>String</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'>
+<p>Created card identity type.</p>
+</div>
+      
+    </li>
+  
+    <li>
+      
+        <span class='name'>private_key</span>
+      
+      
+        <span class='type'>(<tt><span class='object_link'><a href="../Cryptography/Keys/PrivateKey.html" title="Virgil::SDK::Cryptography::Keys::PrivateKey (class)">Cryptography::Keys::PrivateKey</a></span></tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'>
+<p>Private key of the created card.</p>
+</div>
+      
+    </li>
+  
+    <li>
+      
+        <span class='name'>custom_data</span>
+      
+      
+        <span class='type'>(<tt>optional</tt>)</span>
+      
+      
+        <em class="default">(defaults to: <tt>{}</tt>)</em>
+      
+      
+        &mdash;
+        <div class='inline'><dl class="rdoc-list label-list"><dt>Hash
+<dd>
+<p>contains application specific</p>
+</dd></dl>
+
+<p>parameters(under key :data) and information about the device on which the
+keypair was created(under key :device and :device_name). example: {my_key1: “my_val1”, my_key2: “my_val2”, device: “iPhone6s”, device_name:
+“Space grey one”}</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+<p class="tag_title">Returns:</p>
+<ul class="return">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt><span class='object_link'><a href="Card.html" title="Virgil::SDK::Client::Card (class)">Card</a></span></tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'>
+<p>Created global card that is not published to Virgil Security services</p>
+</div>
+      
+    </li>
+  
+</ul>
 
 </div><table class="source_code">
   <tr>
@@ -1938,24 +2589,24 @@ custom_data(optional): is an associative array that contains application specifi
       <pre class="lines">
 
 
+141
+142
+143
+144
+145
+146
+147
+148
 149
 150
 151
 152
 153
 154
-155
-156
-157
-158
-159
-160
-161
-162
-163</pre>
+155</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/virgil/sdk/client/virgil_client.rb', line 149</span>
+      <pre class="code"><span class="info file"># File 'lib/virgil/sdk/client/virgil_client.rb', line 141</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_new_global_card'>new_global_card</span><span class='lparen'>(</span><span class='id identifier rubyid_identity'>identity</span><span class='comma'>,</span> <span class='id identifier rubyid_identity_type'>identity_type</span><span class='comma'>,</span> <span class='id identifier rubyid_private_key'>private_key</span><span class='comma'>,</span> <span class='id identifier rubyid_custom_data'>custom_data</span><span class='op'>=</span><span class='lbrace'>{</span><span class='rbrace'>}</span><span class='rparen'>)</span>
   <span class='id identifier rubyid_data'>data</span> <span class='op'>=</span> <span class='id identifier rubyid_custom_data'>custom_data</span><span class='lbracket'>[</span><span class='symbol'>:data</span><span class='rbracket'>]</span>
@@ -1980,7 +2631,7 @@ custom_data(optional): is an associative array that contains application specifi
       <div class="method_details ">
   <h3 class="signature " id="publish_as_global_card-instance_method">
   
-    #<strong>publish_as_global_card</strong>(card)  &#x21d2; <tt>Object</tt> 
+    #<strong>publish_as_global_card</strong>(card)  &#x21d2; <tt><span class='object_link'><a href="Card.html" title="Virgil::SDK::Client::Card (class)">Card</a></span></tt> 
   
 
   
@@ -1991,20 +2642,49 @@ custom_data(optional): is an associative array that contains application specifi
     
 <p>Publishes Global card in Virgil cards service.</p>
 
-<p>Args:</p>
-
-<pre class="code ruby"><code class="ruby">card: Created Global card. It is an instance of Card class.</code></pre>
-
-<p>Returns:</p>
-
-<pre class="code ruby"><code class="ruby"><span class='const'>Global</span> <span class='id identifier rubyid_card'>card</span> <span class='id identifier rubyid_that'>that</span> <span class='id identifier rubyid_is'>is</span> <span class='id identifier rubyid_published'>published</span> <span class='id identifier rubyid_to'>to</span> <span class='const'><span class='object_link'><a href="../../../Virgil.html" title="Virgil (module)">Virgil</a></span></span> <span class='const'>Security</span> <span class='id identifier rubyid_services'>services</span>
-</code></pre>
-
 
   </div>
 </div>
 <div class="tags">
+  <p class="tag_title">Parameters:</p>
+<ul class="param">
   
+    <li>
+      
+        <span class='name'>card</span>
+      
+      
+        <span class='type'>(<tt><span class='object_link'><a href="Card.html" title="Virgil::SDK::Client::Card (class)">Card</a></span></tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'>
+<p>Created Global card.</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+<p class="tag_title">Returns:</p>
+<ul class="return">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt><span class='object_link'><a href="Card.html" title="Virgil::SDK::Client::Card (class)">Card</a></span></tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'>
+<p>Global card that is published to Virgil Security services</p>
+</div>
+      
+    </li>
+  
+</ul>
 
 </div><table class="source_code">
   <tr>
@@ -2012,13 +2692,13 @@ custom_data(optional): is an associative array that contains application specifi
       <pre class="lines">
 
 
-194
-195
-196
-197</pre>
+178
+179
+180
+181</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/virgil/sdk/client/virgil_client.rb', line 194</span>
+      <pre class="code"><span class="info file"># File 'lib/virgil/sdk/client/virgil_client.rb', line 178</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_publish_as_global_card'>publish_as_global_card</span><span class='lparen'>(</span><span class='id identifier rubyid_card'>card</span><span class='rparen'>)</span>
   <span class='id identifier rubyid_request'>request</span> <span class='op'>=</span> <span class='id identifier rubyid_card'>card</span><span class='period'>.</span><span class='id identifier rubyid_to_request'>to_request</span>
@@ -2032,7 +2712,7 @@ custom_data(optional): is an associative array that contains application specifi
       <div class="method_details ">
   <h3 class="signature " id="ra_connection-instance_method">
   
-    #<strong>ra_connection</strong>  &#x21d2; <tt>Object</tt> 
+    #<strong>ra_connection</strong>  &#x21d2; <tt><span class='object_link'><a href="HTTP/CardsServiceConnection.html" title="Virgil::SDK::Client::HTTP::CardsServiceConnection (class)">HTTP::CardsServiceConnection</a></span></tt> 
   
 
   
@@ -2049,6 +2729,19 @@ revoking cards.</p>
 </div>
 <div class="tags">
   
+<p class="tag_title">Returns:</p>
+<ul class="return">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt><span class='object_link'><a href="HTTP/CardsServiceConnection.html" title="Virgil::SDK::Client::HTTP::CardsServiceConnection (class)">HTTP::CardsServiceConnection</a></span></tt>)</span>
+      
+      
+      
+    </li>
+  
+</ul>
 
 </div><table class="source_code">
   <tr>
@@ -2056,15 +2749,15 @@ revoking cards.</p>
       <pre class="lines">
 
 
-490
-491
-492
-493
-494
-495</pre>
+422
+423
+424
+425
+426
+427</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/virgil/sdk/client/virgil_client.rb', line 490</span>
+      <pre class="code"><span class="info file"># File 'lib/virgil/sdk/client/virgil_client.rb', line 422</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_ra_connection'>ra_connection</span>
   <span class='ivar'>@_ra_connection</span> <span class='op'>||=</span> <span class='const'><span class='object_link'><a href="HTTP.html" title="Virgil::SDK::Client::HTTP (module)">HTTP</a></span></span><span class='op'>::</span><span class='const'><span class='object_link'><a href="HTTP/CardsServiceConnection.html" title="Virgil::SDK::Client::HTTP::CardsServiceConnection (class)">CardsServiceConnection</a></span></span><span class='period'>.</span><span class='id identifier rubyid_new'><span class='object_link'><a href="HTTP/BaseConnection.html#initialize-instance_method" title="Virgil::SDK::Client::HTTP::BaseConnection#initialize (method)">new</a></span></span><span class='lparen'>(</span>
@@ -2080,7 +2773,7 @@ revoking cards.</p>
       <div class="method_details ">
   <h3 class="signature " id="read_cards_connection-instance_method">
   
-    #<strong>read_cards_connection</strong>  &#x21d2; <tt>Object</tt> 
+    #<strong>read_cards_connection</strong>  &#x21d2; <tt><span class='object_link'><a href="HTTP/CardsServiceConnection.html" title="Virgil::SDK::Client::HTTP::CardsServiceConnection (class)">HTTP::CardsServiceConnection</a></span></tt> 
   
 
   
@@ -2096,6 +2789,19 @@ revoking cards.</p>
 </div>
 <div class="tags">
   
+<p class="tag_title">Returns:</p>
+<ul class="return">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt><span class='object_link'><a href="HTTP/CardsServiceConnection.html" title="Virgil::SDK::Client::HTTP::CardsServiceConnection (class)">HTTP::CardsServiceConnection</a></span></tt>)</span>
+      
+      
+      
+    </li>
+  
+</ul>
 
 </div><table class="source_code">
   <tr>
@@ -2103,15 +2809,15 @@ revoking cards.</p>
       <pre class="lines">
 
 
-499
-500
-501
-502
-503
-504</pre>
+432
+433
+434
+435
+436
+437</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/virgil/sdk/client/virgil_client.rb', line 499</span>
+      <pre class="code"><span class="info file"># File 'lib/virgil/sdk/client/virgil_client.rb', line 432</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_read_cards_connection'>read_cards_connection</span>
   <span class='ivar'>@_read_cards_connection</span> <span class='op'>=</span> <span class='const'><span class='object_link'><a href="HTTP.html" title="Virgil::SDK::Client::HTTP (module)">HTTP</a></span></span><span class='op'>::</span><span class='const'><span class='object_link'><a href="HTTP/CardsServiceConnection.html" title="Virgil::SDK::Client::HTTP::CardsServiceConnection (class)">CardsServiceConnection</a></span></span><span class='period'>.</span><span class='id identifier rubyid_new'><span class='object_link'><a href="HTTP/BaseConnection.html#initialize-instance_method" title="Virgil::SDK::Client::HTTP::BaseConnection#initialize (method)">new</a></span></span><span class='lparen'>(</span>
@@ -2127,7 +2833,7 @@ revoking cards.</p>
       <div class="method_details ">
   <h3 class="signature " id="request_signer-instance_method">
   
-    #<strong>request_signer</strong>  &#x21d2; <tt>Object</tt> 
+    #<strong>request_signer</strong>  &#x21d2; <tt><span class='object_link'><a href="RequestSigner.html" title="Virgil::SDK::Client::RequestSigner (class)">RequestSigner</a></span></tt> 
   
 
   
@@ -2143,6 +2849,19 @@ revoking cards.</p>
 </div>
 <div class="tags">
   
+<p class="tag_title">Returns:</p>
+<ul class="return">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt><span class='object_link'><a href="RequestSigner.html" title="Virgil::SDK::Client::RequestSigner (class)">RequestSigner</a></span></tt>)</span>
+      
+      
+      
+    </li>
+  
+</ul>
 
 </div><table class="source_code">
   <tr>
@@ -2150,12 +2869,12 @@ revoking cards.</p>
       <pre class="lines">
 
 
-518
-519
-520</pre>
+453
+454
+455</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/virgil/sdk/client/virgil_client.rb', line 518</span>
+      <pre class="code"><span class="info file"># File 'lib/virgil/sdk/client/virgil_client.rb', line 453</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_request_signer'>request_signer</span>
   <span class='ivar'>@_request_signer</span> <span class='op'>||=</span> <span class='const'><span class='object_link'><a href="RequestSigner.html" title="Virgil::SDK::Client::RequestSigner (class)">RequestSigner</a></span></span><span class='period'>.</span><span class='id identifier rubyid_new'><span class='object_link'><a href="RequestSigner.html#initialize-instance_method" title="Virgil::SDK::Client::RequestSigner#initialize (method)">new</a></span></span><span class='lparen'>(</span><span class='kw'>self</span><span class='period'>.</span><span class='id identifier rubyid_crypto'>crypto</span><span class='rparen'>)</span>
@@ -2168,7 +2887,7 @@ revoking cards.</p>
       <div class="method_details ">
   <h3 class="signature " id="revoke_card-instance_method">
   
-    #<strong>revoke_card</strong>(card_id, app_id, app_key, reason = Requests::RevokeCardRequest::Reasons::Unspecified)  &#x21d2; <tt>Object</tt> 
+    #<strong>revoke_card</strong>(card_id, app_id, app_key, reason = Requests::RevokeCardRequest::Reasons::Unspecified)  &#x21d2; <tt>void</tt> 
   
 
   
@@ -2176,22 +2895,85 @@ revoking cards.</p>
   
 </h3><div class="docstring">
   <div class="discussion">
-    
+    <p class="note returns_void">This method returns an undefined value.</p>
 <p>Revoke card by id.</p>
-
-<p>Args:</p>
-
-<pre class="code ruby"><code class="ruby">card_id: id of the revoked card.
-reason: card revocation reason.
-  The possible values can be found in RevokeCardRequest::Reasons class.
-app_id: Application identity for authority sign.
-app_key: Application key for authority sign.</code></pre>
 
 
   </div>
 </div>
 <div class="tags">
+  <p class="tag_title">Parameters:</p>
+<ul class="param">
   
+    <li>
+      
+        <span class='name'>card_id</span>
+      
+      
+        <span class='type'>(<tt>String</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'>
+<p>the id of the revoked card.</p>
+</div>
+      
+    </li>
+  
+    <li>
+      
+        <span class='name'>reason</span>
+      
+      
+        <span class='type'>(<tt>String</tt>)</span>
+      
+      
+        <em class="default">(defaults to: <tt>Requests::RevokeCardRequest::Reasons::Unspecified</tt>)</em>
+      
+      
+        &mdash;
+        <div class='inline'>
+<p>card revocation reason. The possible values can be found in
+RevokeCardRequest::Reasons class.</p>
+</div>
+      
+    </li>
+  
+    <li>
+      
+        <span class='name'>app_id</span>
+      
+      
+        <span class='type'>(<tt>String</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'>
+<p>Application identity for authority sign.</p>
+</div>
+      
+    </li>
+  
+    <li>
+      
+        <span class='name'>app_key</span>
+      
+      
+        <span class='type'>(<tt><span class='object_link'><a href="../Cryptography/Keys/PrivateKey.html" title="Virgil::SDK::Cryptography::Keys::PrivateKey (class)">Cryptography::Keys::PrivateKey</a></span></tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'>
+<p>Application key for authority sign.</p>
+</div>
+      
+    </li>
+  
+</ul>
+
 
 </div><table class="source_code">
   <tr>
@@ -2199,23 +2981,23 @@ app_key: Application key for authority sign.</code></pre>
       <pre class="lines">
 
 
-286
-287
-288
-289
-290
-291
-292
-293
-294
-295
-296
-297
-298
-299</pre>
+251
+252
+253
+254
+255
+256
+257
+258
+259
+260
+261
+262
+263
+264</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/virgil/sdk/client/virgil_client.rb', line 286</span>
+      <pre class="code"><span class="info file"># File 'lib/virgil/sdk/client/virgil_client.rb', line 251</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_revoke_card'>revoke_card</span><span class='lparen'>(</span>
     <span class='id identifier rubyid_card_id'>card_id</span><span class='comma'>,</span>
@@ -2250,15 +3032,31 @@ app_key: Application key for authority sign.</code></pre>
     
 <p>Revoke card using signed revocation request.</p>
 
-<p>Args:</p>
-
-<pre class="code ruby"><code class="ruby">revocation_request: signed card revocation request.</code></pre>
-
 
   </div>
 </div>
 <div class="tags">
+  <p class="tag_title">Parameters:</p>
+<ul class="param">
   
+    <li>
+      
+        <span class='name'>revocation_request</span>
+      
+      
+        <span class='type'>(<tt><span class='object_link'><a href="Requests/RevokeCardRequest.html" title="Virgil::SDK::Client::Requests::RevokeCardRequest (class)">Requests::RevokeCardRequest</a></span></tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'>
+<p>signed card revocation request.</p>
+</div>
+      
+    </li>
+  
+</ul>
+
 
 </div><table class="source_code">
   <tr>
@@ -2266,17 +3064,17 @@ app_key: Application key for authority sign.</code></pre>
       <pre class="lines">
 
 
-330
-331
-332
-333
-334
-335
-336
-337</pre>
+291
+292
+293
+294
+295
+296
+297
+298</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/virgil/sdk/client/virgil_client.rb', line 330</span>
+      <pre class="code"><span class="info file"># File 'lib/virgil/sdk/client/virgil_client.rb', line 291</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_revoke_card_from_signed_request'>revoke_card_from_signed_request</span><span class='lparen'>(</span><span class='id identifier rubyid_revocation_request'>revocation_request</span><span class='rparen'>)</span>
   <span class='id identifier rubyid_http_request'>http_request</span> <span class='op'>=</span> <span class='const'><span class='object_link'><a href="../../../Virgil.html" title="Virgil (module)">Virgil</a></span></span><span class='op'>::</span><span class='const'><span class='object_link'><a href="../../SDK.html" title="Virgil::SDK (module)">SDK</a></span></span><span class='op'>::</span><span class='const'><span class='object_link'><a href="../Client.html" title="Virgil::SDK::Client (module)">Client</a></span></span><span class='op'>::</span><span class='const'><span class='object_link'><a href="HTTP.html" title="Virgil::SDK::Client::HTTP (module)">HTTP</a></span></span><span class='op'>::</span><span class='const'><span class='object_link'><a href="HTTP/Request.html" title="Virgil::SDK::Client::HTTP::Request (class)">Request</a></span></span><span class='period'>.</span><span class='id identifier rubyid_new'>new</span><span class='lparen'>(</span>
@@ -2305,19 +3103,82 @@ app_key: Application key for authority sign.</code></pre>
     
 <p>Revoke Global card by id.</p>
 
-<p>Args:</p>
-
-<pre class="code ruby"><code class="ruby">card_id: id of the revoked Global card.
-reason: Global card revocation reason.
-        The possible values can be found in RevokeCardRequest::Reasons class.
-key_pair: The Key associated with the revoking Global Card. It&#39;s an instance of VirgilKey class.
-validation_token: is an identity token.</code></pre>
-
 
   </div>
 </div>
 <div class="tags">
+  <p class="tag_title">Parameters:</p>
+<ul class="param">
   
+    <li>
+      
+        <span class='name'>card_id</span>
+      
+      
+        <span class='type'>(<tt>String</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'>
+<p>id of the revoked Global card.</p>
+</div>
+      
+    </li>
+  
+    <li>
+      
+        <span class='name'>reason</span>
+      
+      
+        <span class='type'>(<tt>String</tt>)</span>
+      
+      
+        <em class="default">(defaults to: <tt>Requests::RevokeCardRequest::Reasons::Unspecified</tt>)</em>
+      
+      
+        &mdash;
+        <div class='inline'>
+<p>Global card revocation reason. The possible values can be found in
+RevokeCardRequest::Reasons class.</p>
+</div>
+      
+    </li>
+  
+    <li>
+      
+        <span class='name'>key_pair</span>
+      
+      
+        <span class='type'>(<tt><span class='object_link'><a href="../Cryptography/Keys/KeyPair.html" title="Virgil::SDK::Cryptography::Keys::KeyPair (class)">Cryptography::Keys::KeyPair</a></span></tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'>
+<p>The Key associated with the revoking Global Card.</p>
+</div>
+      
+    </li>
+  
+    <li>
+      
+        <span class='name'>validation_token</span>
+      
+      
+        <span class='type'>(<tt><span class='object_link'><a href="../HighLevel/VirgilIdentity/ValidationToken.html" title="Virgil::SDK::HighLevel::VirgilIdentity::ValidationToken (class)">HighLevel::VirgilIdentity::ValidationToken</a></span></tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'>
+<p>an identity token.</p>
+</div>
+      
+    </li>
+  
+</ul>
+
 
 </div><table class="source_code">
   <tr>
@@ -2325,23 +3186,23 @@ validation_token: is an identity token.</code></pre>
       <pre class="lines">
 
 
-310
-311
-312
-313
-314
-315
-316
-317
-318
-319
-320
-321
-322
-323</pre>
+273
+274
+275
+276
+277
+278
+279
+280
+281
+282
+283
+284
+285
+286</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/virgil/sdk/client/virgil_client.rb', line 310</span>
+      <pre class="code"><span class="info file"># File 'lib/virgil/sdk/client/virgil_client.rb', line 273</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_revoke_global_card'>revoke_global_card</span><span class='lparen'>(</span>
     <span class='id identifier rubyid_card_id'>card_id</span><span class='comma'>,</span>
@@ -2365,7 +3226,7 @@ validation_token: is an identity token.</code></pre>
       <div class="method_details ">
   <h3 class="signature " id="search_cards_by_app_bundle-instance_method">
   
-    #<strong>search_cards_by_app_bundle</strong>(bundle)  &#x21d2; <tt>Object</tt> 
+    #<strong>search_cards_by_app_bundle</strong>(bundle)  &#x21d2; <tt>Array&lt;<span class='object_link'><a href="Card.html" title="Virgil::SDK::Client::Card (class)">Card</a></span>&gt;</tt> 
   
 
   
@@ -2376,19 +3237,67 @@ validation_token: is an identity token.</code></pre>
     
 <p>Search cards by specified app bundle.</p>
 
-<p>Args:</p>
-
-<pre class="code ruby"><code class="ruby">bundle: application bundle for search.</code></pre>
-
-<p>Returns:</p>
-
-<pre class="code ruby"><code class="ruby">Found cards from server response.</code></pre>
-
 
   </div>
 </div>
 <div class="tags">
+  <p class="tag_title">Parameters:</p>
+<ul class="param">
   
+    <li>
+      
+        <span class='name'>bundle</span>
+      
+      
+        <span class='type'>(<tt>String</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'>
+<p>application bundle for search.</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+<p class="tag_title">Returns:</p>
+<ul class="return">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt>Array&lt;<span class='object_link'><a href="Card.html" title="Virgil::SDK::Client::Card (class)">Card</a></span>&gt;</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'>
+<p>Found cards from server response.</p>
+</div>
+      
+    </li>
+  
+</ul>
+<p class="tag_title">Raises:</p>
+<ul class="raise">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt><span class='object_link'><a href="" title="Virgil::SDK::Client::VirgilClient (class)">VirgilClient</a></span>.<span class='object_link'><a href="VirgilClient/InvalidCardException.html" title="Virgil::SDK::Client::VirgilClient::InvalidCardException (class)">InvalidCardException</a></span></tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'>
+<p>if client has validator and cards are not valid.</p>
+</div>
+      
+    </li>
+  
+</ul>
 
 </div><table class="source_code">
   <tr>
@@ -2396,14 +3305,14 @@ validation_token: is an identity token.</code></pre>
       <pre class="lines">
 
 
-429
-430
-431
-432
-433</pre>
+368
+369
+370
+371
+372</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/virgil/sdk/client/virgil_client.rb', line 429</span>
+      <pre class="code"><span class="info file"># File 'lib/virgil/sdk/client/virgil_client.rb', line 368</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_search_cards_by_app_bundle'>search_cards_by_app_bundle</span><span class='lparen'>(</span><span class='id identifier rubyid_bundle'>bundle</span><span class='rparen'>)</span>
   <span class='kw'>return</span> <span class='kw'>self</span><span class='period'>.</span><span class='id identifier rubyid_search_cards_by_criteria'>search_cards_by_criteria</span><span class='lparen'>(</span>
@@ -2418,7 +3327,7 @@ validation_token: is an identity token.</code></pre>
       <div class="method_details ">
   <h3 class="signature " id="search_cards_by_criteria-instance_method">
   
-    #<strong>search_cards_by_criteria</strong>(search_criteria)  &#x21d2; <tt>Object</tt> 
+    #<strong>search_cards_by_criteria</strong>(search_criteria)  &#x21d2; <tt>Array&lt;<span class='object_link'><a href="Card.html" title="Virgil::SDK::Client::Card (class)">Card</a></span>&gt;</tt> 
   
 
   
@@ -2429,24 +3338,67 @@ validation_token: is an identity token.</code></pre>
     
 <p>Search cards by specified search criteria.</p>
 
-<p>Args:</p>
-
-<pre class="code ruby"><code class="ruby">search_criteria: constructed search criteria.</code></pre>
-
-<p>Returns:</p>
-
-<pre class="code ruby"><code class="ruby">Found cards from server response.</code></pre>
-
-<p>Raises:</p>
-
-<pre class="code ruby"><code class="ruby">VirgilClient.InvalidCardException if client has validator
-and cards are not valid.</code></pre>
-
 
   </div>
 </div>
 <div class="tags">
+  <p class="tag_title">Parameters:</p>
+<ul class="param">
   
+    <li>
+      
+        <span class='name'>search_criteria</span>
+      
+      
+        <span class='type'>(<tt><span class='object_link'><a href="SearchCriteria.html" title="Virgil::SDK::Client::SearchCriteria (class)">SearchCriteria</a></span></tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'>
+<p>constructed search criteria.</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+<p class="tag_title">Returns:</p>
+<ul class="return">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt>Array&lt;<span class='object_link'><a href="Card.html" title="Virgil::SDK::Client::Card (class)">Card</a></span>&gt;</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'>
+<p>Found cards from server response.</p>
+</div>
+      
+    </li>
+  
+</ul>
+<p class="tag_title">Raises:</p>
+<ul class="raise">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt><span class='object_link'><a href="" title="Virgil::SDK::Client::VirgilClient (class)">VirgilClient</a></span>.<span class='object_link'><a href="VirgilClient/InvalidCardException.html" title="Virgil::SDK::Client::VirgilClient::InvalidCardException (class)">InvalidCardException</a></span></tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'>
+<p>if client has validator and cards are not valid.</p>
+</div>
+      
+    </li>
+  
+</ul>
 
 </div><table class="source_code">
   <tr>
@@ -2454,27 +3406,27 @@ and cards are not valid.</code></pre>
       <pre class="lines">
 
 
-447
-448
-449
-450
-451
-452
-453
-454
-455
-456
-457
-458
-459
-460
-461
-462
-463
-464</pre>
+380
+381
+382
+383
+384
+385
+386
+387
+388
+389
+390
+391
+392
+393
+394
+395
+396
+397</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/virgil/sdk/client/virgil_client.rb', line 447</span>
+      <pre class="code"><span class="info file"># File 'lib/virgil/sdk/client/virgil_client.rb', line 380</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_search_cards_by_criteria'>search_cards_by_criteria</span><span class='lparen'>(</span><span class='id identifier rubyid_search_criteria'>search_criteria</span><span class='rparen'>)</span>
   <span class='id identifier rubyid_body'>body</span> <span class='op'>=</span> <span class='lbrace'>{</span><span class='label'>identities:</span> <span class='id identifier rubyid_search_criteria'>search_criteria</span><span class='period'>.</span><span class='id identifier rubyid_identities'>identities</span><span class='rbrace'>}</span>
@@ -2502,7 +3454,7 @@ and cards are not valid.</code></pre>
       <div class="method_details ">
   <h3 class="signature " id="search_cards_by_identities-instance_method">
   
-    #<strong>search_cards_by_identities</strong>(*identities)  &#x21d2; <tt>Object</tt> 
+    #<strong>search_cards_by_identities</strong>(*identities)  &#x21d2; <tt>Array&lt;<span class='object_link'><a href="Card.html" title="Virgil::SDK::Client::Card (class)">Card</a></span>&gt;</tt> 
   
 
   
@@ -2513,19 +3465,49 @@ and cards are not valid.</code></pre>
     
 <p>Search cards by specified identities.</p>
 
-<p>Args:</p>
-
-<pre class="code ruby"><code class="ruby">identities: identity values for search.</code></pre>
-
-<p>Returns:</p>
-
-<pre class="code ruby"><code class="ruby">Found cards from server response.</code></pre>
-
 
   </div>
 </div>
 <div class="tags">
+  <p class="tag_title">Parameters:</p>
+<ul class="param">
   
+    <li>
+      
+        <span class='name'>identities</span>
+      
+      
+        <span class='type'>(<tt>Array&lt;String&gt;</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'>
+<p>identity values for search.</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+<p class="tag_title">Returns:</p>
+<ul class="return">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt>Array&lt;<span class='object_link'><a href="Card.html" title="Virgil::SDK::Client::Card (class)">Card</a></span>&gt;</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'>
+<p>Found cards from server response.</p>
+</div>
+      
+    </li>
+  
+</ul>
 
 </div><table class="source_code">
   <tr>
@@ -2533,14 +3515,14 @@ and cards are not valid.</code></pre>
       <pre class="lines">
 
 
-415
-416
-417
-418
-419</pre>
+356
+357
+358
+359
+360</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/virgil/sdk/client/virgil_client.rb', line 415</span>
+      <pre class="code"><span class="info file"># File 'lib/virgil/sdk/client/virgil_client.rb', line 356</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_search_cards_by_identities'>search_cards_by_identities</span><span class='lparen'>(</span><span class='op'>*</span><span class='id identifier rubyid_identities'>identities</span><span class='rparen'>)</span>
   <span class='kw'>return</span> <span class='kw'>self</span><span class='period'>.</span><span class='id identifier rubyid_search_cards_by_criteria'>search_cards_by_criteria</span><span class='lparen'>(</span>
@@ -2555,7 +3537,7 @@ and cards are not valid.</code></pre>
       <div class="method_details ">
   <h3 class="signature " id="sign_and_publish_card-instance_method">
   
-    #<strong>sign_and_publish_card</strong>(card, app_id, app_key)  &#x21d2; <tt>Object</tt> 
+    #<strong>sign_and_publish_card</strong>(card, app_id, app_key)  &#x21d2; <tt><span class='object_link'><a href="Card.html" title="Virgil::SDK::Client::Card (class)">Card</a></span></tt> 
   
 
   
@@ -2566,22 +3548,81 @@ and cards are not valid.</code></pre>
     
 <p>Signs and publishes card in Virgil cards service.</p>
 
-<p>Args:</p>
-
-<pre class="code ruby"><code class="ruby">card: Created card. It is an instance of Card class.
-app_id: Application identity for authority sign.
-app_key: Application key for authority sign.</code></pre>
-
-<p>Returns:</p>
-
-<pre class="code ruby"><code class="ruby"><span class='const'><span class='object_link'><a href="Card.html" title="Virgil::SDK::Client::Card (class)">Card</a></span></span> <span class='id identifier rubyid_that'>that</span> <span class='id identifier rubyid_is'>is</span> <span class='id identifier rubyid_published'>published</span> <span class='id identifier rubyid_to'>to</span> <span class='const'><span class='object_link'><a href="../../../Virgil.html" title="Virgil (module)">Virgil</a></span></span> <span class='const'>Security</span> <span class='id identifier rubyid_services'>services</span>
-</code></pre>
-
 
   </div>
 </div>
 <div class="tags">
+  <p class="tag_title">Parameters:</p>
+<ul class="param">
   
+    <li>
+      
+        <span class='name'>card</span>
+      
+      
+        <span class='type'>(<tt><span class='object_link'><a href="Card.html" title="Virgil::SDK::Client::Card (class)">Card</a></span></tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'>
+<p>created card.</p>
+</div>
+      
+    </li>
+  
+    <li>
+      
+        <span class='name'>app_id</span>
+      
+      
+        <span class='type'>(<tt>String</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'>
+<p>Application identity for authority sign.</p>
+</div>
+      
+    </li>
+  
+    <li>
+      
+        <span class='name'>app_key</span>
+      
+      
+        <span class='type'>(<tt><span class='object_link'><a href="../Cryptography/Keys/PrivateKey.html" title="Virgil::SDK::Cryptography::Keys::PrivateKey (class)">Cryptography::Keys::PrivateKey</a></span></tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'>
+<p>Application key for authority sign.</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+<p class="tag_title">Returns:</p>
+<ul class="return">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt><span class='object_link'><a href="Card.html" title="Virgil::SDK::Client::Card (class)">Card</a></span></tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'>
+<p>Card that is published to Virgil Security services</p>
+</div>
+      
+    </li>
+  
+</ul>
 
 </div><table class="source_code">
   <tr>
@@ -2589,19 +3630,19 @@ app_key: Application key for authority sign.</code></pre>
       <pre class="lines">
 
 
-175
-176
-177
-178
-179
-180
-181
-182
-183
-184</pre>
+163
+164
+165
+166
+167
+168
+169
+170
+171
+172</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/virgil/sdk/client/virgil_client.rb', line 175</span>
+      <pre class="code"><span class="info file"># File 'lib/virgil/sdk/client/virgil_client.rb', line 163</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_sign_and_publish_card'>sign_and_publish_card</span><span class='lparen'>(</span><span class='id identifier rubyid_card'>card</span><span class='comma'>,</span> <span class='id identifier rubyid_app_id'>app_id</span><span class='comma'>,</span> <span class='id identifier rubyid_app_key'>app_key</span><span class='rparen'>)</span>
   <span class='id identifier rubyid_request'>request</span> <span class='op'>=</span> <span class='id identifier rubyid_card'>card</span><span class='period'>.</span><span class='id identifier rubyid_to_request'>to_request</span>
@@ -2630,19 +3671,51 @@ app_key: Application key for authority sign.</code></pre>
 </h3><div class="docstring">
   <div class="discussion">
     
-<p>Validate cards signatures. Args:</p>
-
-<pre class="code ruby"><code class="ruby">cards: list of cards to validate.</code></pre>
-
-<p>Raises:</p>
-
-<pre class="code ruby"><code class="ruby">VirgilClient::InvalidCardException if some cards are not valid.</code></pre>
+<p>Validate cards signatures.</p>
 
 
   </div>
 </div>
 <div class="tags">
+  <p class="tag_title">Parameters:</p>
+<ul class="param">
   
+    <li>
+      
+        <span class='name'>cards</span>
+      
+      
+        <span class='type'>(<tt>Array&lt;<span class='object_link'><a href="Card.html" title="Virgil::SDK::Client::Card (class)">Card</a></span>&gt;</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'>
+<p>list of cards to validate.</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+<p class="tag_title">Raises:</p>
+<ul class="raise">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt><span class='object_link'><a href="VirgilClient/InvalidCardException.html" title="Virgil::SDK::Client::VirgilClient::InvalidCardException (class)">VirgilClient::InvalidCardException</a></span></tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'>
+<p>if some cards are not valid.</p>
+</div>
+      
+    </li>
+  
+</ul>
 
 </div><table class="source_code">
   <tr>
@@ -2650,15 +3723,15 @@ app_key: Application key for authority sign.</code></pre>
       <pre class="lines">
 
 
-473
-474
-475
-476
-477
-478</pre>
+403
+404
+405
+406
+407
+408</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/virgil/sdk/client/virgil_client.rb', line 473</span>
+      <pre class="code"><span class="info file"># File 'lib/virgil/sdk/client/virgil_client.rb', line 403</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_validate_cards'>validate_cards</span><span class='lparen'>(</span><span class='id identifier rubyid_cards'>cards</span><span class='rparen'>)</span>
   <span class='id identifier rubyid_invalid_cards'>invalid_cards</span> <span class='op'>=</span> <span class='id identifier rubyid_cards'>cards</span><span class='period'>.</span><span class='id identifier rubyid_select'>select</span> <span class='lbrace'>{</span> <span class='op'>|</span><span class='id identifier rubyid_card'>card</span><span class='op'>|</span> <span class='op'>!</span><span class='id identifier rubyid_card_validator'>card_validator</span><span class='period'>.</span><span class='id identifier rubyid_is_valid?'>is_valid?</span><span class='lparen'>(</span><span class='id identifier rubyid_card'>card</span><span class='rparen'>)</span> <span class='rbrace'>}</span>
@@ -2674,7 +3747,7 @@ app_key: Application key for authority sign.</code></pre>
       <div class="method_details ">
   <h3 class="signature " id="verify_identity-instance_method">
   
-    #<strong>verify_identity</strong>(identity, identity_type)  &#x21d2; <tt>Object</tt> 
+    #<strong>verify_identity</strong>(identity, identity_type)  &#x21d2; <tt>String</tt> 
   
 
   
@@ -2683,25 +3756,76 @@ app_key: Application key for authority sign.</code></pre>
 </h3><div class="docstring">
   <div class="discussion">
     
+  <div class="note notetag">
+    <strong>Note:</strong>
+    <div class='inline'>
+<p>use method confirm_identity to confirm and get the identity token.</p>
+</div>
+  </div>
+
+
 <p>Sends the request for identity verification, that&#39;s will be processed
 depending of specified type.</p>
-
-<p>Args:</p>
-
-<pre class="code ruby"><code class="ruby">identity: An unique string that represents identity.
-identity_type: The type of identity.</code></pre>
-
-<p>Returns:</p>
-
-<pre class="code ruby"><code class="ruby">The action identifier that is required for confirmation the identity.</code></pre>
-
-<p>Notice: use method confirm_identity to confirm and get the identity token.</p>
 
 
   </div>
 </div>
 <div class="tags">
+  <p class="tag_title">Parameters:</p>
+<ul class="param">
   
+    <li>
+      
+        <span class='name'>identity</span>
+      
+      
+        <span class='type'>(<tt>String</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'>
+<p>An unique string that represents identity.</p>
+</div>
+      
+    </li>
+  
+    <li>
+      
+        <span class='name'>identity_type</span>
+      
+      
+        <span class='type'>(<tt>String</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'>
+<p>The type of identity.</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+<p class="tag_title">Returns:</p>
+<ul class="return">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt>String</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'>
+<p>The action identifier that is required for confirmation the identity.</p>
+</div>
+      
+    </li>
+  
+</ul>
 
 </div><table class="source_code">
   <tr>
@@ -2709,19 +3833,19 @@ identity_type: The type of identity.</code></pre>
       <pre class="lines">
 
 
-350
-351
-352
-353
-354
-355
-356
-357
-358
-359</pre>
+306
+307
+308
+309
+310
+311
+312
+313
+314
+315</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/virgil/sdk/client/virgil_client.rb', line 350</span>
+      <pre class="code"><span class="info file"># File 'lib/virgil/sdk/client/virgil_client.rb', line 306</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_verify_identity'>verify_identity</span><span class='lparen'>(</span><span class='id identifier rubyid_identity'>identity</span><span class='comma'>,</span> <span class='id identifier rubyid_identity_type'>identity_type</span><span class='rparen'>)</span>
   <span class='id identifier rubyid_verify_identity_request'>verify_identity_request</span> <span class='op'>=</span> <span class='const'><span class='object_link'><a href="Requests.html" title="Virgil::SDK::Client::Requests (module)">Requests</a></span></span><span class='op'>::</span><span class='const'><span class='object_link'><a href="Requests/VerifyIdentityRequest.html" title="Virgil::SDK::Client::Requests::VerifyIdentityRequest (class)">VerifyIdentityRequest</a></span></span><span class='period'>.</span><span class='id identifier rubyid_new'><span class='object_link'><a href="Requests/VerifyIdentityRequest.html#initialize-instance_method" title="Virgil::SDK::Client::Requests::VerifyIdentityRequest#initialize (method)">new</a></span></span><span class='lparen'>(</span><span class='id identifier rubyid_identity'>identity</span><span class='comma'>,</span> <span class='id identifier rubyid_identity_type'>identity_type</span><span class='rparen'>)</span>
@@ -2743,7 +3867,7 @@ identity_type: The type of identity.</code></pre>
 </div>
 
       <div id="footer">
-  Generated on Tue Apr 11 12:15:34 2017 by
+  Generated on Fri Apr 14 15:24:55 2017 by
   <a href="http://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
   0.9.8 (ruby-2.4.0).
 </div>

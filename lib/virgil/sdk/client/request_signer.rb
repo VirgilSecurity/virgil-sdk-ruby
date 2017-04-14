@@ -45,10 +45,8 @@ module Virgil
         end
 
         # Sign passed request with private key.
-        #
-        # Args:
-        #     signable_request: request for signing.
-        #     private_key: private key to sign with.
+        # @param signable_request [Requests::SignableRequest] request for signing.
+        # @param private_key [Cryptography::Keys::PrivateKey] private key to sign with.
         def self_sign(signable_request, private_key)
           fingerprint = self.crypto.calculate_fingerprint(
             signable_request.snapshot
@@ -65,11 +63,9 @@ module Virgil
         end
 
         # Sign passed request with authority private key.
-        #
-        # Args:
-        #     signable_request: request for signing.
-        #     signer_id: authority id.
-        #     private_key: authority private key to sign with.
+        # @param signable_request [Requests::SignableRequest] request for signing.
+        # @param signer_id [String] authority id.
+        # @param private_key [Cryptography::Keys::PrivateKey] authority private key to sign with.
         def authority_sign(signable_request, signer_id, private_key)
           fingerprint = self.crypto.calculate_fingerprint(
             signable_request.snapshot

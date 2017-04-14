@@ -121,7 +121,7 @@ Public key and Card Id.</p>
       <li class="public ">
   <span class="summary_signature">
     
-      <a href="#card_id-instance_method" title="#card_id (instance method)">#<strong>card_id</strong>  &#x21d2; Object </a>
+      <a href="#card_id-instance_method" title="#card_id (instance method)">#<strong>card_id</strong>  &#x21d2; String </a>
     
 
     
@@ -148,7 +148,7 @@ Public key and Card Id.</p>
       <li class="public ">
   <span class="summary_signature">
     
-      <a href="#public_key_value-instance_method" title="#public_key_value (instance method)">#<strong>public_key_value</strong>  &#x21d2; Object </a>
+      <a href="#public_key_value-instance_method" title="#public_key_value (instance method)">#<strong>public_key_value</strong>  &#x21d2; VirgilBuffer </a>
     
 
     
@@ -166,8 +166,8 @@ Public key and Card Id.</p>
 
   
     <span class="summary_desc"><div class='inline'>
-<p>Public key value wrapped by an instance of the <span class='object_link'><a href="VirgilBuffer.html" title="Virgil::SDK::HighLevel::VirgilBuffer (class)">VirgilBuffer</a></span> class used
-for signature verification.</p>
+<p>Public key value wrapped by an instance of the <span class='object_link'><a href="VirgilBuffer.html" title="Virgil::SDK::HighLevel::VirgilBuffer (class)">VirgilBuffer</a></span> used for
+signature verification.</p>
 </div></span>
   
 </li>
@@ -236,7 +236,33 @@ for signature verification.</p>
   </div>
 </div>
 <div class="tags">
+  <p class="tag_title">Parameters:</p>
+<ul class="param">
   
+    <li>
+      
+        <span class='name'>card_id</span>
+      
+      
+        <span class='type'>(<tt>String</tt>)</span>
+      
+      
+      
+    </li>
+  
+    <li>
+      
+        <span class='name'>public_key_value</span>
+      
+      
+        <span class='type'>(<tt><span class='object_link'><a href="VirgilBuffer.html" title="Virgil::SDK::HighLevel::VirgilBuffer (class)">VirgilBuffer</a></span></tt>)</span>
+      
+      
+      
+    </li>
+  
+</ul>
+
 
 </div><table class="source_code">
   <tr>
@@ -244,13 +270,13 @@ for signature verification.</p>
       <pre class="lines">
 
 
-53
-54
-55
-56</pre>
+57
+58
+59
+60</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/virgil/sdk/high_level/virgil_card_verifier_info.rb', line 53</span>
+      <pre class="code"><span class="info file"># File 'lib/virgil/sdk/high_level/virgil_card_verifier_info.rb', line 57</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_initialize'>initialize</span><span class='lparen'>(</span><span class='id identifier rubyid_card_id'>card_id</span><span class='comma'>,</span> <span class='id identifier rubyid_public_key_value'>public_key_value</span><span class='rparen'>)</span>
    <span class='ivar'>@card_id</span> <span class='op'>=</span> <span class='id identifier rubyid_card_id'>card_id</span>
@@ -271,7 +297,7 @@ for signature verification.</p>
       <div class="method_details first">
   <h3 class="signature first" id="card_id-instance_method">
   
-    #<strong>card_id</strong>  &#x21d2; <tt>Object</tt> 
+    #<strong>card_id</strong>  &#x21d2; <tt>String</tt> 
   
 
   
@@ -287,6 +313,19 @@ for signature verification.</p>
 </div>
 <div class="tags">
   
+<p class="tag_title">Returns:</p>
+<ul class="return">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt>String</tt>)</span>
+      
+      
+      
+    </li>
+  
+</ul>
 
 </div><table class="source_code">
   <tr>
@@ -294,12 +333,12 @@ for signature verification.</p>
       <pre class="lines">
 
 
-46
 47
-48</pre>
+48
+49</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/virgil/sdk/high_level/virgil_card_verifier_info.rb', line 46</span>
+      <pre class="code"><span class="info file"># File 'lib/virgil/sdk/high_level/virgil_card_verifier_info.rb', line 47</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_card_id'>card_id</span>
   <span class='ivar'>@card_id</span>
@@ -314,7 +353,7 @@ for signature verification.</p>
       <div class="method_details ">
   <h3 class="signature " id="public_key_value-instance_method">
   
-    #<strong>public_key_value</strong>  &#x21d2; <tt>Object</tt> 
+    #<strong>public_key_value</strong>  &#x21d2; <tt><span class='object_link'><a href="VirgilBuffer.html" title="Virgil::SDK::HighLevel::VirgilBuffer (class)">VirgilBuffer</a></span></tt> 
   
 
   
@@ -323,14 +362,27 @@ for signature verification.</p>
 </h3><div class="docstring">
   <div class="discussion">
     
-<p>Public key value wrapped by an instance of the <span class='object_link'><a href="VirgilBuffer.html" title="Virgil::SDK::HighLevel::VirgilBuffer (class)">Virgil::SDK::HighLevel::VirgilBuffer</a></span> class used
-for signature verification.</p>
+<p>Public key value wrapped by an instance of the <span class='object_link'><a href="VirgilBuffer.html" title="Virgil::SDK::HighLevel::VirgilBuffer (class)">Virgil::SDK::HighLevel::VirgilBuffer</a></span> used for
+signature verification.</p>
 
 
   </div>
 </div>
 <div class="tags">
   
+<p class="tag_title">Returns:</p>
+<ul class="return">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt><span class='object_link'><a href="VirgilBuffer.html" title="Virgil::SDK::HighLevel::VirgilBuffer (class)">VirgilBuffer</a></span></tt>)</span>
+      
+      
+      
+    </li>
+  
+</ul>
 
 </div><table class="source_code">
   <tr>
@@ -338,12 +390,12 @@ for signature verification.</p>
       <pre class="lines">
 
 
-49
-50
-51</pre>
+51
+52
+53</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/virgil/sdk/high_level/virgil_card_verifier_info.rb', line 49</span>
+      <pre class="code"><span class="info file"># File 'lib/virgil/sdk/high_level/virgil_card_verifier_info.rb', line 51</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_public_key_value'>public_key_value</span>
   <span class='ivar'>@public_key_value</span>
@@ -359,7 +411,7 @@ for signature verification.</p>
 </div>
 
       <div id="footer">
-  Generated on Tue Apr 11 12:15:36 2017 by
+  Generated on Fri Apr 14 15:24:58 2017 by
   <a href="http://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
   0.9.8 (ruby-2.4.0).
 </div>

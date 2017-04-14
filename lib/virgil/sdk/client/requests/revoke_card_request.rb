@@ -48,7 +48,7 @@ module Virgil
 
           attr_accessor :card_id, :reason
 
-          # Constructs new {CreateCardRequest} object
+          # Constructs new {CreateCardRequest} object.
           def initialize(attributes)
             super()
             self.card_id = attributes[:card_id]
@@ -56,9 +56,7 @@ module Virgil
           end
 
           # Restores request from snapshot model.
-          #
-          # Args:
-          #   snapshot_model: snapshot model dict
+          # @param snapshot_model [Hash] snapshot model.
           def restore_from_snapshot_model(snapshot_model)
             self.card_id = snapshot_model['card_id']
             self.reason = snapshot_model['revocation_reason']
@@ -68,10 +66,9 @@ module Virgil
             @validation_token = validation_token
           end
 
+
           # Constructs snapshot model for exporting and signing.
-          #
-          # Returns:
-          #   Dict containing snapshot data model used for card revocation request.
+          # @return [Hash] Dict containing snapshot data model used for card creation request.
           def snapshot_model
             return {
               'card_id': self.card_id,

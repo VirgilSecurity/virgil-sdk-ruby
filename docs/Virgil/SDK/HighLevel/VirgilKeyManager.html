@@ -121,7 +121,7 @@ them storage in secure place.</p>
       <li class="public ">
   <span class="summary_signature">
     
-      <a href="#context-instance_method" title="#context (instance method)">#<strong>context</strong>  &#x21d2; Object </a>
+      <a href="#context-instance_method" title="#context (instance method)">#<strong>context</strong>  &#x21d2; VirgilContext </a>
     
 
     
@@ -141,8 +141,7 @@ them storage in secure place.</p>
 
   
     <span class="summary_desc"><div class='inline'>
-<p>An instance of the <span class='object_link'><a href="VirgilContext.html" title="Virgil::SDK::HighLevel::VirgilContext (class)">VirgilContext</a></span> class that manages the VirgilApi
-dependencies during run time.</p>
+<p>manages the VirgilApi dependencies during run time.</p>
 </div></span>
   
 </li>
@@ -188,7 +187,7 @@ dependencies during run time.</p>
         <li class="public ">
   <span class="summary_signature">
     
-      <a href="#generate-instance_method" title="#generate (instance method)">#<strong>generate</strong>  &#x21d2; Object </a>
+      <a href="#generate-instance_method" title="#generate (instance method)">#<strong>generate</strong>  &#x21d2; VirgilKey </a>
     
 
     
@@ -212,7 +211,7 @@ dependencies during run time.</p>
         <li class="public ">
   <span class="summary_signature">
     
-      <a href="#import-instance_method" title="#import (instance method)">#<strong>import</strong>(buffer, password = nil)  &#x21d2; Object </a>
+      <a href="#import-instance_method" title="#import (instance method)">#<strong>import</strong>(buffer, password = nil)  &#x21d2; VirgilKey </a>
     
 
     
@@ -262,7 +261,7 @@ dependencies during run time.</p>
         <li class="public ">
   <span class="summary_signature">
     
-      <a href="#load-instance_method" title="#load (instance method)">#<strong>load</strong>(key_name, key_password = nil)  &#x21d2; Object </a>
+      <a href="#load-instance_method" title="#load (instance method)">#<strong>load</strong>(key_name, key_password = nil)  &#x21d2; VirgilKey </a>
     
 
     
@@ -315,12 +314,12 @@ dependencies during run time.</p>
       <pre class="lines">
 
 
-45
 46
-47</pre>
+47
+48</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/virgil/sdk/high_level/virgil_key_manager.rb', line 45</span>
+      <pre class="code"><span class="info file"># File 'lib/virgil/sdk/high_level/virgil_key_manager.rb', line 46</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_initialize'>initialize</span><span class='lparen'>(</span><span class='id identifier rubyid_context'>context</span><span class='rparen'>)</span>
   <span class='ivar'>@context</span> <span class='op'>=</span> <span class='id identifier rubyid_context'>context</span>
@@ -340,7 +339,7 @@ dependencies during run time.</p>
       <div class="method_details first">
   <h3 class="signature first" id="context-instance_method">
   
-    #<strong>context</strong>  &#x21d2; <tt>Object</tt>  <span class="extras">(readonly)</span>
+    #<strong>context</strong>  &#x21d2; <tt><span class='object_link'><a href="VirgilContext.html" title="Virgil::SDK::HighLevel::VirgilContext (class)">VirgilContext</a></span></tt>  <span class="extras">(readonly)</span>
   
 
   
@@ -349,14 +348,26 @@ dependencies during run time.</p>
 </h3><div class="docstring">
   <div class="discussion">
     
-<p>An instance of the <span class='object_link'><a href="VirgilContext.html" title="Virgil::SDK::HighLevel::VirgilContext (class)">Virgil::SDK::HighLevel::VirgilContext</a></span> class that manages the VirgilApi
-dependencies during run time.</p>
+<p>manages the VirgilApi dependencies during run time.</p>
 
 
   </div>
 </div>
 <div class="tags">
   
+<p class="tag_title">Returns:</p>
+<ul class="return">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt><span class='object_link'><a href="VirgilContext.html" title="Virgil::SDK::HighLevel::VirgilContext (class)">VirgilContext</a></span></tt>)</span>
+      
+      
+      
+    </li>
+  
+</ul>
 
 </div><table class="source_code">
   <tr>
@@ -364,12 +375,12 @@ dependencies during run time.</p>
       <pre class="lines">
 
 
-42
 43
-44</pre>
+44
+45</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/virgil/sdk/high_level/virgil_key_manager.rb', line 42</span>
+      <pre class="code"><span class="info file"># File 'lib/virgil/sdk/high_level/virgil_key_manager.rb', line 43</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_context'>context</span>
   <span class='ivar'>@context</span>
@@ -400,23 +411,47 @@ dependencies during run time.</p>
     
 <p>Remove the <span class='object_link'><a href="VirgilKey.html" title="Virgil::SDK::HighLevel::VirgilKey (class)">Virgil::SDK::HighLevel::VirgilKey</a></span> from current storage by specified key name.</p>
 
-<p>Args:</p>
-
-<pre class="code ruby"><code class="ruby">key_name: The name of the key.</code></pre>
-
-<p>Raises:</p>
-
-<pre class="code ruby"><code class="ruby">KeyEntryNotFoundException: if key storage doesn&#39;t have item with such name
-ArgumentError: key_name is not valid if key_name is nil
-KeyStorageException: Destination folder doesn&#39;t exist or you don&#39;t have permission to write there</code></pre>
-
 
   </div>
 </div>
 <div class="tags">
+  <p class="tag_title">Parameters:</p>
+<ul class="param">
   
+    <li>
+      
+        <span class='name'>key_name</span>
+      
+      
+        <span class='type'>(<tt>String</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'>
+<p>The name of the key.</p>
+</div>
+      
+    </li>
+  
+</ul>
+
 <p class="tag_title">Raises:</p>
 <ul class="raise">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt>KeyEntryNotFoundException</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'>
+<p>if key storage doesn&#39;t have item with such name</p>
+</div>
+      
+    </li>
   
     <li>
       
@@ -424,6 +459,26 @@ KeyStorageException: Destination folder doesn&#39;t exist or you don&#39;t have 
         <span class='type'>(<tt>ArgumentError</tt>)</span>
       
       
+      
+        &mdash;
+        <div class='inline'>
+<p>if key_name is nil</p>
+</div>
+      
+    </li>
+  
+    <li>
+      
+      
+        <span class='type'>(<tt>KeyStorageException</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'>
+<p>if destination folder doesn&#39;t exist or you don&#39;t have permission to
+write there</p>
+</div>
       
     </li>
   
@@ -435,15 +490,15 @@ KeyStorageException: Destination folder doesn&#39;t exist or you don&#39;t have 
       <pre class="lines">
 
 
-106
-107
-108
-109
-110
-111</pre>
+91
+92
+93
+94
+95
+96</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/virgil/sdk/high_level/virgil_key_manager.rb', line 106</span>
+      <pre class="code"><span class="info file"># File 'lib/virgil/sdk/high_level/virgil_key_manager.rb', line 91</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_delete'>delete</span><span class='lparen'>(</span><span class='id identifier rubyid_key_name'>key_name</span><span class='rparen'>)</span>
 
@@ -459,7 +514,7 @@ KeyStorageException: Destination folder doesn&#39;t exist or you don&#39;t have 
       <div class="method_details ">
   <h3 class="signature " id="generate-instance_method">
   
-    #<strong>generate</strong>  &#x21d2; <tt>Object</tt> 
+    #<strong>generate</strong>  &#x21d2; <tt><span class='object_link'><a href="VirgilKey.html" title="Virgil::SDK::HighLevel::VirgilKey (class)">VirgilKey</a></span></tt> 
   
 
   
@@ -470,133 +525,18 @@ KeyStorageException: Destination folder doesn&#39;t exist or you don&#39;t have 
     
 <p>Generates a new <span class='object_link'><a href="VirgilKey.html" title="Virgil::SDK::HighLevel::VirgilKey (class)">Virgil::SDK::HighLevel::VirgilKey</a></span> with default parameters.</p>
 
-<p>Returns:</p>
-
-<pre class="code ruby"><code class="ruby">An instance of {VirgilKey} class</code></pre>
-
 
   </div>
 </div>
 <div class="tags">
   
-
-</div><table class="source_code">
-  <tr>
-    <td>
-      <pre class="lines">
-
-
-54
-55
-56
-57</pre>
-    </td>
-    <td>
-      <pre class="code"><span class="info file"># File 'lib/virgil/sdk/high_level/virgil_key_manager.rb', line 54</span>
-
-<span class='kw'>def</span> <span class='id identifier rubyid_generate'>generate</span>
-  <span class='id identifier rubyid_key_pair'>key_pair</span> <span class='op'>=</span> <span class='id identifier rubyid_context'>context</span><span class='period'>.</span><span class='id identifier rubyid_crypto'>crypto</span><span class='period'>.</span><span class='id identifier rubyid_generate_keys'>generate_keys</span><span class='lparen'>(</span><span class='rparen'>)</span>
-  <span class='const'><span class='object_link'><a href="VirgilKey.html" title="Virgil::SDK::HighLevel::VirgilKey (class)">VirgilKey</a></span></span><span class='period'>.</span><span class='id identifier rubyid_new'><span class='object_link'><a href="VirgilKey.html#initialize-instance_method" title="Virgil::SDK::HighLevel::VirgilKey#initialize (method)">new</a></span></span><span class='lparen'>(</span><span class='id identifier rubyid_context'>context</span><span class='comma'>,</span> <span class='id identifier rubyid_key_pair'>key_pair</span><span class='period'>.</span><span class='id identifier rubyid_private_key'>private_key</span><span class='rparen'>)</span>
-<span class='kw'>end</span></pre>
-    </td>
-  </tr>
-</table>
-</div>
-    
-      <div class="method_details ">
-  <h3 class="signature " id="import-instance_method">
-  
-    #<strong>import</strong>(buffer, password = nil)  &#x21d2; <tt>Object</tt> 
-  
-
-  
-
-  
-</h3><div class="docstring">
-  <div class="discussion">
-    
-<p>Imports the <span class='object_link'><a href="VirgilKey.html" title="Virgil::SDK::HighLevel::VirgilKey (class)">Virgil::SDK::HighLevel::VirgilKey</a></span> from buffer.</p>
-
-<p>Args:</p>
-
-<pre class="code ruby"><code class="ruby">buffer: The buffer with Key
-password: The Key password</code></pre>
-
-<p>Returns:</p>
-
-<pre class="code ruby"><code class="ruby"><span class='id identifier rubyid_new'>new</span> <span class='const'><span class='object_link'><a href="VirgilKey.html" title="Virgil::SDK::HighLevel::VirgilKey (class)">VirgilKey</a></span></span>
-</code></pre>
-
-
-  </div>
-</div>
-<div class="tags">
-  
-
-</div><table class="source_code">
-  <tr>
-    <td>
-      <pre class="lines">
-
-
-91
-92
-93
-94</pre>
-    </td>
-    <td>
-      <pre class="code"><span class="info file"># File 'lib/virgil/sdk/high_level/virgil_key_manager.rb', line 91</span>
-
-<span class='kw'>def</span> <span class='id identifier rubyid_import'>import</span><span class='lparen'>(</span><span class='id identifier rubyid_buffer'>buffer</span><span class='comma'>,</span> <span class='id identifier rubyid_password'>password</span><span class='op'>=</span><span class='kw'>nil</span><span class='rparen'>)</span>
-  <span class='id identifier rubyid_private_key'>private_key</span> <span class='op'>=</span> <span class='id identifier rubyid_context'>context</span><span class='period'>.</span><span class='id identifier rubyid_crypto'>crypto</span><span class='period'>.</span><span class='id identifier rubyid_import_private_key'>import_private_key</span><span class='lparen'>(</span><span class='id identifier rubyid_buffer'>buffer</span><span class='period'>.</span><span class='id identifier rubyid_bytes'>bytes</span><span class='comma'>,</span> <span class='id identifier rubyid_password'>password</span><span class='rparen'>)</span>
-  <span class='const'><span class='object_link'><a href="VirgilKey.html" title="Virgil::SDK::HighLevel::VirgilKey (class)">VirgilKey</a></span></span><span class='period'>.</span><span class='id identifier rubyid_new'><span class='object_link'><a href="VirgilKey.html#initialize-instance_method" title="Virgil::SDK::HighLevel::VirgilKey#initialize (method)">new</a></span></span><span class='lparen'>(</span><span class='id identifier rubyid_context'>context</span><span class='comma'>,</span> <span class='id identifier rubyid_private_key'>private_key</span><span class='rparen'>)</span>
-<span class='kw'>end</span></pre>
-    </td>
-  </tr>
-</table>
-</div>
-    
-      <div class="method_details ">
-  <h3 class="signature " id="load-instance_method">
-  
-    #<strong>load</strong>(key_name, key_password = nil)  &#x21d2; <tt>Object</tt> 
-  
-
-  
-
-  
-</h3><div class="docstring">
-  <div class="discussion">
-    
-<p>Loads the VirgilKey from current storage by specified key name.</p>
-
-<p>Args:</p>
-
-<pre class="code ruby"><code class="ruby">key_name: The name of the key.
-key_password: The key password.</code></pre>
-
-<p>Returns:</p>
-
-<pre class="code ruby"><code class="ruby">An instance of VirgilKey class</code></pre>
-
-<p>Raises:</p>
-
-<pre class="code ruby"><code class="ruby">KeyEntryNotFoundException: if key storage doesn&#39;t have item with such name
-ArgumentError: key_name is not valid if key_name is nil
-KeyStorageException: Destination folder doesn&#39;t exist or you don&#39;t have permission to write there</code></pre>
-
-
-  </div>
-</div>
-<div class="tags">
-  
-<p class="tag_title">Raises:</p>
-<ul class="raise">
+<p class="tag_title">Returns:</p>
+<ul class="return">
   
     <li>
       
       
-        <span class='type'>(<tt>ArgumentError</tt>)</span>
+        <span class='type'>(<tt><span class='object_link'><a href="VirgilKey.html" title="Virgil::SDK::HighLevel::VirgilKey (class)">VirgilKey</a></span></tt>)</span>
       
       
       
@@ -610,18 +550,248 @@ KeyStorageException: Destination folder doesn&#39;t exist or you don&#39;t have 
       <pre class="lines">
 
 
-73
-74
-75
-76
-77
-78
-79
-80
-81</pre>
+53
+54
+55
+56</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/virgil/sdk/high_level/virgil_key_manager.rb', line 73</span>
+      <pre class="code"><span class="info file"># File 'lib/virgil/sdk/high_level/virgil_key_manager.rb', line 53</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_generate'>generate</span>
+  <span class='id identifier rubyid_key_pair'>key_pair</span> <span class='op'>=</span> <span class='id identifier rubyid_context'>context</span><span class='period'>.</span><span class='id identifier rubyid_crypto'>crypto</span><span class='period'>.</span><span class='id identifier rubyid_generate_keys'>generate_keys</span><span class='lparen'>(</span><span class='rparen'>)</span>
+  <span class='const'><span class='object_link'><a href="VirgilKey.html" title="Virgil::SDK::HighLevel::VirgilKey (class)">VirgilKey</a></span></span><span class='period'>.</span><span class='id identifier rubyid_new'><span class='object_link'><a href="VirgilKey.html#initialize-instance_method" title="Virgil::SDK::HighLevel::VirgilKey#initialize (method)">new</a></span></span><span class='lparen'>(</span><span class='id identifier rubyid_context'>context</span><span class='comma'>,</span> <span class='id identifier rubyid_key_pair'>key_pair</span><span class='period'>.</span><span class='id identifier rubyid_private_key'>private_key</span><span class='rparen'>)</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="import-instance_method">
+  
+    #<strong>import</strong>(buffer, password = nil)  &#x21d2; <tt><span class='object_link'><a href="VirgilKey.html" title="Virgil::SDK::HighLevel::VirgilKey (class)">VirgilKey</a></span></tt> 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    
+<p>Imports the <span class='object_link'><a href="VirgilKey.html" title="Virgil::SDK::HighLevel::VirgilKey (class)">Virgil::SDK::HighLevel::VirgilKey</a></span> from buffer.</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  <p class="tag_title">Parameters:</p>
+<ul class="param">
+  
+    <li>
+      
+        <span class='name'>buffer</span>
+      
+      
+        <span class='type'>(<tt><span class='object_link'><a href="VirgilBuffer.html" title="Virgil::SDK::HighLevel::VirgilBuffer (class)">VirgilBuffer</a></span></tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'>
+<p>The buffer with Key</p>
+</div>
+      
+    </li>
+  
+    <li>
+      
+        <span class='name'>password</span>
+      
+      
+        <span class='type'>(<tt>String</tt>)</span>
+      
+      
+        <em class="default">(defaults to: <tt>nil</tt>)</em>
+      
+      
+        &mdash;
+        <div class='inline'>
+<p>The Key password</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+<p class="tag_title">Returns:</p>
+<ul class="return">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt><span class='object_link'><a href="VirgilKey.html" title="Virgil::SDK::HighLevel::VirgilKey (class)">VirgilKey</a></span></tt>)</span>
+      
+      
+      
+    </li>
+  
+</ul>
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+80
+81
+82
+83</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/virgil/sdk/high_level/virgil_key_manager.rb', line 80</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_import'>import</span><span class='lparen'>(</span><span class='id identifier rubyid_buffer'>buffer</span><span class='comma'>,</span> <span class='id identifier rubyid_password'>password</span><span class='op'>=</span><span class='kw'>nil</span><span class='rparen'>)</span>
+  <span class='id identifier rubyid_private_key'>private_key</span> <span class='op'>=</span> <span class='id identifier rubyid_context'>context</span><span class='period'>.</span><span class='id identifier rubyid_crypto'>crypto</span><span class='period'>.</span><span class='id identifier rubyid_import_private_key'>import_private_key</span><span class='lparen'>(</span><span class='id identifier rubyid_buffer'>buffer</span><span class='period'>.</span><span class='id identifier rubyid_bytes'>bytes</span><span class='comma'>,</span> <span class='id identifier rubyid_password'>password</span><span class='rparen'>)</span>
+  <span class='const'><span class='object_link'><a href="VirgilKey.html" title="Virgil::SDK::HighLevel::VirgilKey (class)">VirgilKey</a></span></span><span class='period'>.</span><span class='id identifier rubyid_new'><span class='object_link'><a href="VirgilKey.html#initialize-instance_method" title="Virgil::SDK::HighLevel::VirgilKey#initialize (method)">new</a></span></span><span class='lparen'>(</span><span class='id identifier rubyid_context'>context</span><span class='comma'>,</span> <span class='id identifier rubyid_private_key'>private_key</span><span class='rparen'>)</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="load-instance_method">
+  
+    #<strong>load</strong>(key_name, key_password = nil)  &#x21d2; <tt><span class='object_link'><a href="VirgilKey.html" title="Virgil::SDK::HighLevel::VirgilKey (class)">VirgilKey</a></span></tt> 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    
+<p>Loads the VirgilKey from current storage by specified key name.</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  <p class="tag_title">Parameters:</p>
+<ul class="param">
+  
+    <li>
+      
+        <span class='name'>key_name</span>
+      
+      
+        <span class='type'>(<tt>String</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'>
+<p>The name of the key.</p>
+</div>
+      
+    </li>
+  
+    <li>
+      
+        <span class='name'>key_password</span>
+      
+      
+        <span class='type'>(<tt>String</tt>)</span>
+      
+      
+        <em class="default">(defaults to: <tt>nil</tt>)</em>
+      
+      
+    </li>
+  
+</ul>
+
+<p class="tag_title">Returns:</p>
+<ul class="return">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt><span class='object_link'><a href="VirgilKey.html" title="Virgil::SDK::HighLevel::VirgilKey (class)">VirgilKey</a></span></tt>)</span>
+      
+      
+      
+    </li>
+  
+</ul>
+<p class="tag_title">Raises:</p>
+<ul class="raise">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt>KeyEntryNotFoundException</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'>
+<p>if key storage doesn&#39;t have item with such name</p>
+</div>
+      
+    </li>
+  
+    <li>
+      
+      
+        <span class='type'>(<tt>ArgumentError</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'>
+<p>if key_name is nil</p>
+</div>
+      
+    </li>
+  
+    <li>
+      
+      
+        <span class='type'>(<tt>KeyStorageException</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'>
+<p>if destination folder doesn&#39;t exist or you don&#39;t have permission to
+write there</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+66
+67
+68
+69
+70
+71
+72
+73
+74</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/virgil/sdk/high_level/virgil_key_manager.rb', line 66</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_load'>load</span><span class='lparen'>(</span><span class='id identifier rubyid_key_name'>key_name</span><span class='comma'>,</span> <span class='id identifier rubyid_key_password'>key_password</span><span class='op'>=</span><span class='kw'>nil</span><span class='rparen'>)</span>
 
@@ -642,7 +812,7 @@ KeyStorageException: Destination folder doesn&#39;t exist or you don&#39;t have 
 </div>
 
       <div id="footer">
-  Generated on Tue Apr 11 12:15:35 2017 by
+  Generated on Fri Apr 14 15:24:57 2017 by
   <a href="http://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
   0.9.8 (ruby-2.4.0).
 </div>

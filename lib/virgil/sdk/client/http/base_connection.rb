@@ -54,16 +54,11 @@ module Virgil
             self.base_url = base_url
           end
 
+
           # Sends http request to the endpoint.
-          #
-          # Args:
-          #   request: HTTP::Request object containing sending request data.
-          #
-          # Returns:
-          #   Deserialized ruby object from the json response.
-          #
-          # Raises:
-          #   HTTPError with error message decoded from errors dictionary.
+          # @param request [HTTP::Request] object containing sending request data.
+          # @return [Hash] Deserialized ruby object from the json response.
+          # @raise [ApiError] with error message decoded from errors dictionary.
           def send_request(request)
             response = faraday_connection.run_request(
                 request.method,
@@ -101,7 +96,6 @@ module Virgil
                   (error_body['error'] && error_body['error']['code'])
               error_message = self.class::ERRORS[error_code] || error_code
             end
-            # token = attempt.confirm(emailConfirmation)
             error_message = "Error code is #{response.status}" unless error_message
             error_message
           end

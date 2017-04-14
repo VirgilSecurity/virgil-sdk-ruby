@@ -68,21 +68,16 @@ module Virgil
             SHA512: Crypto::Native::VirgilHash::Algorithm_SHA512,
           }
 
+
           # Converts algorithm enum value to native value
-          #
-          # Args:
-          #   algorithm: algorithm for conversion.
-
-          # Returns:
-          #   Native library algorithm id.
-
-          # Raises:
-          #   UnknownAlgorithmException: if algorithm is not supported.
+          # @param algorithm [HashAlgorithm] algorithm for conversion.
+          # @return [Integer] Native library algorithm id.
+          # @raise [UnknownAlgorithmException] if algorithm is not supported.
           def self.convert_to_native(algorithm)
             if ALGORITHMS_TO_NATIVE.has_key?(algorithm)
               return ALGORITHMS_TO_NATIVE[algorithm]
             end
-            raise cls.UnknownAlgorithmException(algorithm)
+            raise UnknownAlgorithmException(algorithm)
           end
         end
       end

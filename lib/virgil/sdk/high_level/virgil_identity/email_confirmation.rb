@@ -41,18 +41,15 @@ module Virgil
           attr_reader :confirmation_code
 
           # Initializes a new instance of the {EmailConfirmation} class
+          # @param confirmation_code [String]
           def initialize(confirmation_code)
             @confirmation_code = confirmation_code
           end
 
           # Confirms the identity using confirmation code, that has been generated to confirm an identity.
-          #
-          # Args:
-          #   verification_attempt: an instance of the VerificationAttempt class.
-          #   client: an instance of the Client::VirgilClient class.
-          #
-          # Returns:
-          #   A string that represent an identity validation token.
+          # @param verification_attempt [VerificationAttempt].
+          # @param client [Client::VirgilClient].
+          # @return [String] a value of identity validation token.
           def confirm_and_grab_validation_token(verification_attempt, client)
             token = client.confirm_identity(verification_attempt.action_id,
                                             confirmation_code,

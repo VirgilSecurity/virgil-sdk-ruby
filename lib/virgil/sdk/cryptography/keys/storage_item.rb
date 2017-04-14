@@ -39,9 +39,9 @@ module Virgil
     module Cryptography
       module Keys
         # StorageItem class represents a key pair storage entry.
-        # name: Gets or sets the name.
-        # data: key pair in bytes
-        # meta: the meta data associated with key pair.
+        # @attr [String] name Gets or sets the name.
+        # @attr [Crypto::Bytes] data key pair in bytes
+        # @attr [Hash] meta the meta data associated with key pair.
         StorageItem = Struct.new(:name, :data, :meta) do
 
           def to_json
@@ -51,6 +51,7 @@ module Virgil
             }
             model.to_json
           end
+
 
           def self.restore_from_json(name, str_json)
             model = JSON.parse(str_json)

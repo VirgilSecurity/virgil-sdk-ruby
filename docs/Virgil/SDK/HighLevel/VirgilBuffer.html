@@ -121,7 +121,7 @@ of bytes.</p>
       <li class="public ">
   <span class="summary_signature">
     
-      <a href="#bytes-instance_method" title="#bytes (instance method)">#<strong>bytes</strong>  &#x21d2; Object </a>
+      <a href="#bytes-instance_method" title="#bytes (instance method)">#<strong>bytes</strong>  &#x21d2; Crypto::Bytes </a>
     
 
     
@@ -418,7 +418,7 @@ representation in utf8.</p>
         <li class="public ">
   <span class="summary_signature">
     
-      <a href="#to_string-instance_method" title="#to_string (instance method)">#<strong>to_string</strong>(encoding = VirgilStringEncoding::UTF8)  &#x21d2; Object </a>
+      <a href="#to_string-instance_method" title="#to_string (instance method)">#<strong>to_string</strong>(encoding = VirgilStringEncoding::UTF8)  &#x21d2; String </a>
     
 
     
@@ -488,7 +488,22 @@ representation that is encoded with selected encoding.</p>
   </div>
 </div>
 <div class="tags">
+  <p class="tag_title">Parameters:</p>
+<ul class="param">
   
+    <li>
+      
+        <span class='name'>bytes</span>
+      
+      
+        <span class='type'>(<tt>Crypto::Bytes</tt>)</span>
+      
+      
+      
+    </li>
+  
+</ul>
+
 
 </div><table class="source_code">
   <tr>
@@ -496,14 +511,14 @@ representation that is encoded with selected encoding.</p>
       <pre class="lines">
 
 
-49
 50
 51
 52
-53</pre>
+53
+54</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/virgil/sdk/high_level/virgil_buffer.rb', line 49</span>
+      <pre class="code"><span class="info file"># File 'lib/virgil/sdk/high_level/virgil_buffer.rb', line 50</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_initialize'>initialize</span><span class='lparen'>(</span><span class='id identifier rubyid_bytes'>bytes</span><span class='rparen'>)</span>
 
@@ -525,7 +540,7 @@ representation that is encoded with selected encoding.</p>
       <div class="method_details first">
   <h3 class="signature first" id="bytes-instance_method">
   
-    #<strong>bytes</strong>  &#x21d2; <tt>Object</tt> 
+    #<strong>bytes</strong>  &#x21d2; <tt>Crypto::Bytes</tt> 
   
 
   
@@ -534,13 +549,31 @@ representation that is encoded with selected encoding.</p>
 </h3><div class="docstring">
   <div class="discussion">
     
-<p>The array of raw bytes</p>
+<p>Returns The array of raw bytes</p>
 
 
   </div>
 </div>
 <div class="tags">
   
+<p class="tag_title">Returns:</p>
+<ul class="return">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt>Crypto::Bytes</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'>
+<p>The array of raw bytes</p>
+</div>
+      
+    </li>
+  
+</ul>
 
 </div><table class="source_code">
   <tr>
@@ -597,12 +630,12 @@ as base-64 digits.</p>
       <pre class="lines">
 
 
+121
 122
-123
-124</pre>
+123</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/virgil/sdk/high_level/virgil_buffer.rb', line 122</span>
+      <pre class="code"><span class="info file"># File 'lib/virgil/sdk/high_level/virgil_buffer.rb', line 121</span>
 
 <span class='kw'>def</span> <span class='kw'>self</span><span class='period'>.</span><span class='id identifier rubyid_from_base64'>from_base64</span><span class='lparen'>(</span><span class='id identifier rubyid_str'>str</span><span class='rparen'>)</span>
   <span class='id identifier rubyid_new'>new</span><span class='lparen'>(</span><span class='const'>Base64</span><span class='period'>.</span><span class='id identifier rubyid_decode64'>decode64</span><span class='lparen'>(</span><span class='id identifier rubyid_str'>str</span><span class='rparen'>)</span><span class='period'>.</span><span class='id identifier rubyid_bytes'>bytes</span><span class='rparen'>)</span>
@@ -630,7 +663,22 @@ as base-64 digits.</p>
   </div>
 </div>
 <div class="tags">
+  <p class="tag_title">Parameters:</p>
+<ul class="param">
   
+    <li>
+      
+        <span class='name'>bytes</span>
+      
+      
+        <span class='type'>(<tt>Crypto::Bytes</tt>)</span>
+      
+      
+      
+    </li>
+  
+</ul>
+
 
 </div><table class="source_code">
   <tr>
@@ -638,16 +686,16 @@ as base-64 digits.</p>
       <pre class="lines">
 
 
-57
-58
 59
 60
 61
 62
-63</pre>
+63
+64
+65</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/virgil/sdk/high_level/virgil_buffer.rb', line 57</span>
+      <pre class="code"><span class="info file"># File 'lib/virgil/sdk/high_level/virgil_buffer.rb', line 59</span>
 
 <span class='kw'>def</span> <span class='kw'>self</span><span class='period'>.</span><span class='id identifier rubyid_from_bytes'>from_bytes</span><span class='lparen'>(</span><span class='id identifier rubyid_bytes'>bytes</span><span class='rparen'>)</span>
 
@@ -700,14 +748,14 @@ as base-64 digits.</p>
       <pre class="lines">
 
 
+113
 114
 115
 116
-117
-118</pre>
+117</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/virgil/sdk/high_level/virgil_buffer.rb', line 114</span>
+      <pre class="code"><span class="info file"># File 'lib/virgil/sdk/high_level/virgil_buffer.rb', line 113</span>
 
 <span class='kw'>def</span> <span class='kw'>self</span><span class='period'>.</span><span class='id identifier rubyid_from_file'>from_file</span><span class='lparen'>(</span><span class='id identifier rubyid_key_file_path'>key_file_path</span><span class='rparen'>)</span>
   <span class='id identifier rubyid_raise'>raise</span> <span class='const'>ArgumentError</span><span class='period'>.</span><span class='id identifier rubyid_new'>new</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>file_path is not valide</span><span class='tstring_end'>&quot;</span></span><span class='rparen'>)</span> <span class='kw'>unless</span> <span class='lparen'>(</span><span class='const'>File</span><span class='period'>.</span><span class='id identifier rubyid_exist?'>exist?</span><span class='lparen'>(</span><span class='id identifier rubyid_key_file_path'>key_file_path</span><span class='rparen'>)</span> <span class='op'>&amp;&amp;</span> <span class='const'>File</span><span class='period'>.</span><span class='id identifier rubyid_readable?'>readable?</span><span class='lparen'>(</span><span class='id identifier rubyid_key_file_path'>key_file_path</span><span class='rparen'>)</span><span class='rparen'>)</span>
@@ -746,12 +794,12 @@ as hexadecimal digits.</p>
       <pre class="lines">
 
 
+133
 134
-135
-136</pre>
+135</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/virgil/sdk/high_level/virgil_buffer.rb', line 134</span>
+      <pre class="code"><span class="info file"># File 'lib/virgil/sdk/high_level/virgil_buffer.rb', line 133</span>
 
 <span class='kw'>def</span> <span class='kw'>self</span><span class='period'>.</span><span class='id identifier rubyid_from_hex'>from_hex</span><span class='lparen'>(</span><span class='id identifier rubyid_str'>str</span><span class='rparen'>)</span>
   <span class='id identifier rubyid_new'>new</span><span class='lparen'>(</span><span class='id identifier rubyid_str'>str</span><span class='period'>.</span><span class='id identifier rubyid_scan'>scan</span><span class='lparen'>(</span><span class='tstring'><span class='regexp_beg'>/</span><span class='tstring_content'>..</span><span class='regexp_end'>/</span></span><span class='rparen'>)</span><span class='period'>.</span><span class='id identifier rubyid_map'>map</span> <span class='lbrace'>{</span> <span class='op'>|</span><span class='id identifier rubyid_x'>x</span><span class='op'>|</span> <span class='id identifier rubyid_x'>x</span><span class='period'>.</span><span class='id identifier rubyid_hex'>hex</span> <span class='rbrace'>}</span><span class='rparen'>)</span>
@@ -775,16 +823,67 @@ as hexadecimal digits.</p>
     
 <p>Initializes a new buffer from specified string, which encodes binary data.</p>
 
-<p>Args:</p>
-
-<pre class="code ruby"><code class="ruby">str: String to decode.
-encoding: The character encoding of string.</code></pre>
-
 
   </div>
 </div>
 <div class="tags">
+  <p class="tag_title">Parameters:</p>
+<ul class="param">
   
+    <li>
+      
+        <span class='name'>str</span>
+      
+      
+        <span class='type'>(<tt>String</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'>
+<p>String to decode.</p>
+</div>
+      
+    </li>
+  
+    <li>
+      
+        <span class='name'>encoding</span>
+      
+      
+        <span class='type'>(<tt><span class='object_link'><a href="VirgilStringEncoding.html" title="Virgil::SDK::HighLevel::VirgilStringEncoding (module)">VirgilStringEncoding</a></span></tt>)</span>
+      
+      
+        <em class="default">(defaults to: <tt>VirgilStringEncoding::UTF8</tt>)</em>
+      
+      
+        &mdash;
+        <div class='inline'>
+<p>The character encoding of string.</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+<p class="tag_title">Raises:</p>
+<ul class="raise">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt>ArgumentError</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'>
+<p>if encoding is undefined</p>
+</div>
+      
+    </li>
+  
+</ul>
 
 </div><table class="source_code">
   <tr>
@@ -792,7 +891,6 @@ encoding: The character encoding of string.</code></pre>
       <pre class="lines">
 
 
-70
 71
 72
 73
@@ -805,10 +903,11 @@ encoding: The character encoding of string.</code></pre>
 80
 81
 82
-83</pre>
+83
+84</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/virgil/sdk/high_level/virgil_buffer.rb', line 70</span>
+      <pre class="code"><span class="info file"># File 'lib/virgil/sdk/high_level/virgil_buffer.rb', line 71</span>
 
 <span class='kw'>def</span> <span class='kw'>self</span><span class='period'>.</span><span class='id identifier rubyid_from_string'>from_string</span><span class='lparen'>(</span><span class='id identifier rubyid_str'>str</span><span class='comma'>,</span> <span class='id identifier rubyid_encoding'>encoding</span><span class='op'>=</span><span class='const'>VirgilStringEncoding</span><span class='op'>::</span><span class='const'>UTF8</span><span class='rparen'>)</span>
 
@@ -856,12 +955,12 @@ as utf8.</p>
       <pre class="lines">
 
 
+127
 128
-129
-130</pre>
+129</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/virgil/sdk/high_level/virgil_buffer.rb', line 128</span>
+      <pre class="code"><span class="info file"># File 'lib/virgil/sdk/high_level/virgil_buffer.rb', line 127</span>
 
 <span class='kw'>def</span> <span class='kw'>self</span><span class='period'>.</span><span class='id identifier rubyid_from_utf8'>from_utf8</span><span class='lparen'>(</span><span class='id identifier rubyid_str'>str</span><span class='rparen'>)</span>
   <span class='id identifier rubyid_new'>new</span><span class='lparen'>(</span><span class='id identifier rubyid_str'>str</span><span class='period'>.</span><span class='id identifier rubyid_bytes'>bytes</span><span class='rparen'>)</span>
@@ -904,12 +1003,12 @@ representation that is encoded with base-64 digits.</p>
       <pre class="lines">
 
 
+140
 141
-142
-143</pre>
+142</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/virgil/sdk/high_level/virgil_buffer.rb', line 141</span>
+      <pre class="code"><span class="info file"># File 'lib/virgil/sdk/high_level/virgil_buffer.rb', line 140</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_to_base64'>to_base64</span>
   <span class='const'>Base64</span><span class='period'>.</span><span class='id identifier rubyid_strict_encode64'>strict_encode64</span><span class='lparen'>(</span><span class='id identifier rubyid_to_s'>to_s</span><span class='rparen'>)</span>
@@ -946,12 +1045,12 @@ equivalent hexadecimal string representation.</p>
       <pre class="lines">
 
 
+153
 154
-155
-156</pre>
+155</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/virgil/sdk/high_level/virgil_buffer.rb', line 154</span>
+      <pre class="code"><span class="info file"># File 'lib/virgil/sdk/high_level/virgil_buffer.rb', line 153</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_to_hex'>to_hex</span>
   <span class='id identifier rubyid_to_s'>to_s</span><span class='period'>.</span><span class='id identifier rubyid_each_byte'>each_byte</span><span class='period'>.</span><span class='id identifier rubyid_map'>map</span> <span class='lbrace'>{</span> <span class='op'>|</span><span class='id identifier rubyid_b'>b</span><span class='op'>|</span> <span class='id identifier rubyid_b'>b</span><span class='period'>.</span><span class='id identifier rubyid_to_s'>to_s</span><span class='lparen'>(</span><span class='int'>16</span><span class='rparen'>)</span> <span class='rbrace'>}</span><span class='period'>.</span><span class='id identifier rubyid_join'>join</span>
@@ -988,12 +1087,12 @@ representation in utf8.</p>
       <pre class="lines">
 
 
+108
 109
-110
-111</pre>
+110</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/virgil/sdk/high_level/virgil_buffer.rb', line 109</span>
+      <pre class="code"><span class="info file"># File 'lib/virgil/sdk/high_level/virgil_buffer.rb', line 108</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_to_s'>to_s</span>
   <span class='id identifier rubyid_bytes'>bytes</span><span class='period'>.</span><span class='id identifier rubyid_pack'>pack</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>c*</span><span class='tstring_end'>&#39;</span></span><span class='rparen'>)</span>
@@ -1006,7 +1105,7 @@ representation in utf8.</p>
       <div class="method_details ">
   <h3 class="signature " id="to_string-instance_method">
   
-    #<strong>to_string</strong>(encoding = VirgilStringEncoding::UTF8)  &#x21d2; <tt>Object</tt> 
+    #<strong>to_string</strong>(encoding = VirgilStringEncoding::UTF8)  &#x21d2; <tt>String</tt> 
   
 
   
@@ -1018,19 +1117,65 @@ representation in utf8.</p>
 <p>Converts all the bytes in current buffer to its equivalent string
 representation that is encoded with selected encoding.</p>
 
-<p>Args:</p>
-
-<pre class="code ruby"><code class="ruby">encoding: The character encoding to encode to.</code></pre>
-
-<p>Returns:</p>
-
-<pre class="code ruby"><code class="ruby">equivalent string representation if raw bytes in selected encoding.</code></pre>
-
 
   </div>
 </div>
 <div class="tags">
+  <p class="tag_title">Parameters:</p>
+<ul class="param">
   
+    <li>
+      
+        <span class='name'>encoding</span>
+      
+      
+        <span class='type'>(<tt><span class='object_link'><a href="VirgilStringEncoding.html" title="Virgil::SDK::HighLevel::VirgilStringEncoding (module)">VirgilStringEncoding</a></span></tt>)</span>
+      
+      
+        <em class="default">(defaults to: <tt>VirgilStringEncoding::UTF8</tt>)</em>
+      
+      
+        &mdash;
+        <div class='inline'>
+<p>The character encoding to encode to. equivalent string representation if
+raw bytes in selected encoding.</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+<p class="tag_title">Returns:</p>
+<ul class="return">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt>String</tt>)</span>
+      
+      
+      
+    </li>
+  
+</ul>
+<p class="tag_title">Raises:</p>
+<ul class="raise">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt>ArgumentError</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'>
+<p>if encoding is undefined</p>
+</div>
+      
+    </li>
+  
+</ul>
 
 </div><table class="source_code">
   <tr>
@@ -1038,6 +1183,7 @@ representation that is encoded with selected encoding.</p>
       <pre class="lines">
 
 
+93
 94
 95
 96
@@ -1048,11 +1194,10 @@ representation that is encoded with selected encoding.</p>
 101
 102
 103
-104
-105</pre>
+104</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/virgil/sdk/high_level/virgil_buffer.rb', line 94</span>
+      <pre class="code"><span class="info file"># File 'lib/virgil/sdk/high_level/virgil_buffer.rb', line 93</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_to_string'>to_string</span><span class='lparen'>(</span><span class='id identifier rubyid_encoding'>encoding</span><span class='op'>=</span><span class='const'>VirgilStringEncoding</span><span class='op'>::</span><span class='const'>UTF8</span><span class='rparen'>)</span>
   <span class='kw'>case</span> <span class='id identifier rubyid_encoding'>encoding</span>
@@ -1097,12 +1242,12 @@ representation that is encoded with selected encoding.</p>
       <pre class="lines">
 
 
+146
 147
-148
-149</pre>
+148</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/virgil/sdk/high_level/virgil_buffer.rb', line 147</span>
+      <pre class="code"><span class="info file"># File 'lib/virgil/sdk/high_level/virgil_buffer.rb', line 146</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_to_utf8'>to_utf8</span>
   <span class='id identifier rubyid_to_s'>to_s</span>
@@ -1117,7 +1262,7 @@ representation that is encoded with selected encoding.</p>
 </div>
 
       <div id="footer">
-  Generated on Tue Apr 11 12:15:35 2017 by
+  Generated on Fri Apr 14 15:24:56 2017 by
   <a href="http://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
   0.9.8 (ruby-2.4.0).
 </div>

@@ -239,7 +239,7 @@
         <li class="public ">
   <span class="summary_signature">
     
-      <a href="#convert_to_native-class_method" title="convert_to_native (class method)">.<strong>convert_to_native</strong>(key_pair_type)  &#x21d2; Object </a>
+      <a href="#convert_to_native-class_method" title="convert_to_native (class method)">.<strong>convert_to_native</strong>(key_pair_type)  &#x21d2; Integer </a>
     
 
     
@@ -272,7 +272,7 @@
       <div class="method_details first">
   <h3 class="signature first" id="convert_to_native-class_method">
   
-    .<strong>convert_to_native</strong>(key_pair_type)  &#x21d2; <tt>Object</tt> 
+    .<strong>convert_to_native</strong>(key_pair_type)  &#x21d2; <tt>Integer</tt> 
   
 
   
@@ -283,23 +283,49 @@
     
 <p>Converts type enum value to native value</p>
 
-<p>Args:</p>
-
-<pre class="code ruby"><code class="ruby">key_pair_type: type id for conversion.</code></pre>
-
-<p>Returns:</p>
-
-<pre class="code ruby"><code class="ruby">Native library key pair type id.</code></pre>
-
-<p>Raises:</p>
-
-<pre class="code ruby"><code class="ruby">UnknownTypeException: if type is not supported.</code></pre>
-
 
   </div>
 </div>
 <div class="tags">
+  <p class="tag_title">Parameters:</p>
+<ul class="param">
   
+    <li>
+      
+        <span class='name'>key_pair_type</span>
+      
+      
+        <span class='type'>(<tt>Symbol</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'>
+<p>type id for conversion.</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+<p class="tag_title">Returns:</p>
+<ul class="return">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt>Integer</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'>
+<p>Native library key pair type id.</p>
+</div>
+      
+    </li>
+  
+</ul>
 <p class="tag_title">Raises:</p>
 <ul class="raise">
   
@@ -309,6 +335,11 @@
         <span class='type'>(<tt><span class='object_link'><a href="KeyPairType/UnknownTypeException.html" title="Virgil::SDK::Cryptography::Keys::KeyPairType::UnknownTypeException (class)">UnknownTypeException</a></span></tt>)</span>
       
       
+      
+        &mdash;
+        <div class='inline'>
+<p>if type is not supported.</p>
+</div>
       
     </li>
   
@@ -320,15 +351,15 @@
       <pre class="lines">
 
 
-98
-99
-100
-101
-102
-103</pre>
+92
+93
+94
+95
+96
+97</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/virgil/sdk/cryptography/keys/key_pair_type.rb', line 98</span>
+      <pre class="code"><span class="info file"># File 'lib/virgil/sdk/cryptography/keys/key_pair_type.rb', line 92</span>
 
 <span class='kw'>def</span> <span class='kw'>self</span><span class='period'>.</span><span class='id identifier rubyid_convert_to_native'>convert_to_native</span><span class='lparen'>(</span><span class='id identifier rubyid_key_pair_type'>key_pair_type</span><span class='rparen'>)</span>
   <span class='kw'>if</span> <span class='const'><span class='object_link'><a href="#TYPES_TO_NATIVE-constant" title="Virgil::SDK::Cryptography::Keys::KeyPairType::TYPES_TO_NATIVE (constant)">TYPES_TO_NATIVE</a></span></span><span class='period'>.</span><span class='id identifier rubyid_has_key?'>has_key?</span><span class='lparen'>(</span><span class='id identifier rubyid_key_pair_type'>key_pair_type</span><span class='rparen'>)</span>
@@ -346,7 +377,7 @@
 </div>
 
       <div id="footer">
-  Generated on Tue Apr 11 12:15:36 2017 by
+  Generated on Fri Apr 14 15:24:57 2017 by
   <a href="http://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
   0.9.8 (ruby-2.4.0).
 </div>

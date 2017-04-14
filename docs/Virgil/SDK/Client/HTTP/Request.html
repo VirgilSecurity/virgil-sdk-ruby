@@ -106,13 +106,6 @@
     
 <p>Http request wrapper.</p>
 
-<p>Attributes:</p>
-
-<pre class="code ruby"><code class="ruby">endpoint: request endpoint
-body: request body
-headers: dict of request additional headers
-method: http request method</code></pre>
-
 
   </div>
 </div>
@@ -154,7 +147,7 @@ method: http request method</code></pre>
       <li class="public ">
   <span class="summary_signature">
     
-      <a href="#body-instance_method" title="#body (instance method)">#<strong>body</strong>  &#x21d2; Object </a>
+      <a href="#body-instance_method" title="#body (instance method)">#<strong>body</strong>  &#x21d2; Hash </a>
     
 
     
@@ -172,7 +165,7 @@ method: http request method</code></pre>
 
   
     <span class="summary_desc"><div class='inline'>
-<p>Returns the value of attribute body.</p>
+<p>request body.</p>
 </div></span>
   
 </li>
@@ -181,7 +174,7 @@ method: http request method</code></pre>
       <li class="public ">
   <span class="summary_signature">
     
-      <a href="#endpoint-instance_method" title="#endpoint (instance method)">#<strong>endpoint</strong>  &#x21d2; Object </a>
+      <a href="#endpoint-instance_method" title="#endpoint (instance method)">#<strong>endpoint</strong>  &#x21d2; String </a>
     
 
     
@@ -199,7 +192,7 @@ method: http request method</code></pre>
 
   
     <span class="summary_desc"><div class='inline'>
-<p>Returns the value of attribute endpoint.</p>
+<p>request endpoint.</p>
 </div></span>
   
 </li>
@@ -208,7 +201,7 @@ method: http request method</code></pre>
       <li class="public ">
   <span class="summary_signature">
     
-      <a href="#headers-instance_method" title="#headers (instance method)">#<strong>headers</strong>  &#x21d2; Object </a>
+      <a href="#headers-instance_method" title="#headers (instance method)">#<strong>headers</strong>  &#x21d2; Hash </a>
     
 
     
@@ -226,7 +219,7 @@ method: http request method</code></pre>
 
   
     <span class="summary_desc"><div class='inline'>
-<p>Returns the value of attribute headers.</p>
+<p>dict of request additional unencoded HTTP headers(key/value pairs).</p>
 </div></span>
   
 </li>
@@ -235,7 +228,7 @@ method: http request method</code></pre>
       <li class="public ">
   <span class="summary_signature">
     
-      <a href="#method-instance_method" title="#method (instance method)">#<strong>method</strong>  &#x21d2; Object </a>
+      <a href="#method-instance_method" title="#method (instance method)">#<strong>method</strong>  &#x21d2; String </a>
     
 
     
@@ -253,7 +246,7 @@ method: http request method</code></pre>
 
   
     <span class="summary_desc"><div class='inline'>
-<p>Returns the value of attribute method.</p>
+<p>http request method.</p>
 </div></span>
   
 </li>
@@ -274,7 +267,7 @@ method: http request method</code></pre>
       <div class="method_details first">
   <h3 class="signature first" id="body-instance_method">
   
-    #<strong>body</strong>  &#x21d2; <tt>Object</tt> 
+    #<strong>body</strong>  &#x21d2; <tt>Hash</tt> 
   
 
   
@@ -283,7 +276,7 @@ method: http request method</code></pre>
 </h3><div class="docstring">
   <div class="discussion">
     
-<p>Returns the value of attribute body</p>
+<p>request body</p>
 
 
   </div>
@@ -296,7 +289,7 @@ method: http request method</code></pre>
     <li>
       
       
-        <span class='type'>(<tt>Object</tt>)</span>
+        <span class='type'>(<tt>Hash</tt>)</span>
       
       
       
@@ -315,12 +308,12 @@ method: http request method</code></pre>
       <pre class="lines">
 
 
-46
-47
-48</pre>
+44
+45
+46</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/virgil/sdk/client/http/request.rb', line 46</span>
+      <pre class="code"><span class="info file"># File 'lib/virgil/sdk/client/http/request.rb', line 44</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_body'>body</span>
   <span class='ivar'>@body</span>
@@ -335,7 +328,7 @@ method: http request method</code></pre>
       <div class="method_details ">
   <h3 class="signature " id="endpoint-instance_method">
   
-    #<strong>endpoint</strong>  &#x21d2; <tt>Object</tt> 
+    #<strong>endpoint</strong>  &#x21d2; <tt>String</tt> 
   
 
   
@@ -344,7 +337,7 @@ method: http request method</code></pre>
 </h3><div class="docstring">
   <div class="discussion">
     
-<p>Returns the value of attribute endpoint</p>
+<p>request endpoint</p>
 
 
   </div>
@@ -357,7 +350,7 @@ method: http request method</code></pre>
     <li>
       
       
-        <span class='type'>(<tt>Object</tt>)</span>
+        <span class='type'>(<tt>String</tt>)</span>
       
       
       
@@ -376,12 +369,12 @@ method: http request method</code></pre>
       <pre class="lines">
 
 
-46
-47
-48</pre>
+44
+45
+46</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/virgil/sdk/client/http/request.rb', line 46</span>
+      <pre class="code"><span class="info file"># File 'lib/virgil/sdk/client/http/request.rb', line 44</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_endpoint'>endpoint</span>
   <span class='ivar'>@endpoint</span>
@@ -396,7 +389,7 @@ method: http request method</code></pre>
       <div class="method_details ">
   <h3 class="signature " id="headers-instance_method">
   
-    #<strong>headers</strong>  &#x21d2; <tt>Object</tt> 
+    #<strong>headers</strong>  &#x21d2; <tt>Hash</tt> 
   
 
   
@@ -405,7 +398,7 @@ method: http request method</code></pre>
 </h3><div class="docstring">
   <div class="discussion">
     
-<p>Returns the value of attribute headers</p>
+<p>dict of request additional unencoded HTTP headers(key/value pairs)</p>
 
 
   </div>
@@ -418,7 +411,7 @@ method: http request method</code></pre>
     <li>
       
       
-        <span class='type'>(<tt>Object</tt>)</span>
+        <span class='type'>(<tt>Hash</tt>)</span>
       
       
       
@@ -437,12 +430,12 @@ method: http request method</code></pre>
       <pre class="lines">
 
 
-46
-47
-48</pre>
+44
+45
+46</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/virgil/sdk/client/http/request.rb', line 46</span>
+      <pre class="code"><span class="info file"># File 'lib/virgil/sdk/client/http/request.rb', line 44</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_headers'>headers</span>
   <span class='ivar'>@headers</span>
@@ -457,7 +450,7 @@ method: http request method</code></pre>
       <div class="method_details ">
   <h3 class="signature " id="method-instance_method">
   
-    #<strong>method</strong>  &#x21d2; <tt>Object</tt> 
+    #<strong>method</strong>  &#x21d2; <tt>String</tt> 
   
 
   
@@ -466,7 +459,7 @@ method: http request method</code></pre>
 </h3><div class="docstring">
   <div class="discussion">
     
-<p>Returns the value of attribute method</p>
+<p>http request method</p>
 
 
   </div>
@@ -479,7 +472,7 @@ method: http request method</code></pre>
     <li>
       
       
-        <span class='type'>(<tt>Object</tt>)</span>
+        <span class='type'>(<tt>String</tt>)</span>
       
       
       
@@ -498,12 +491,12 @@ method: http request method</code></pre>
       <pre class="lines">
 
 
-46
-47
-48</pre>
+44
+45
+46</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/virgil/sdk/client/http/request.rb', line 46</span>
+      <pre class="code"><span class="info file"># File 'lib/virgil/sdk/client/http/request.rb', line 44</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_method'>method</span>
   <span class='ivar'>@method</span>
@@ -519,7 +512,7 @@ method: http request method</code></pre>
 </div>
 
       <div id="footer">
-  Generated on Tue Apr 11 12:15:34 2017 by
+  Generated on Fri Apr 14 15:24:55 2017 by
   <a href="http://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
   0.9.8 (ruby-2.4.0).
 </div>

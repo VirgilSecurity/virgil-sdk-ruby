@@ -134,7 +134,7 @@ entity that represents user&#39;s identity and a Public key.</p>
       <li class="public ">
   <span class="summary_signature">
     
-      <a href="#cards-instance_method" title="#cards (instance method)">#<strong>cards</strong>  &#x21d2; Object </a>
+      <a href="#cards-instance_method" title="#cards (instance method)">#<strong>cards</strong>  &#x21d2; VirgilCardManager </a>
     
 
     
@@ -152,8 +152,7 @@ entity that represents user&#39;s identity and a Public key.</p>
 
   
     <span class="summary_desc"><div class='inline'>
-<p>an instance of the <span class='object_link'><a href="VirgilCardManager.html" title="Virgil::SDK::HighLevel::VirgilCardManager (class)">VirgilCardManager</a></span> class that provides a work with
-VirgilCard entities.</p>
+<p>Virgil Card Manager that provides a work with VirgilCard entities.</p>
 </div></span>
   
 </li>
@@ -162,7 +161,7 @@ VirgilCard entities.</p>
       <li class="public ">
   <span class="summary_signature">
     
-      <a href="#context-instance_method" title="#context (instance method)">#<strong>context</strong>  &#x21d2; Object </a>
+      <a href="#context-instance_method" title="#context (instance method)">#<strong>context</strong>  &#x21d2; VirgilContext </a>
     
 
     
@@ -180,8 +179,7 @@ VirgilCard entities.</p>
 
   
     <span class="summary_desc"><div class='inline'>
-<p>an instance of the <span class='object_link'><a href="VirgilContext.html" title="Virgil::SDK::HighLevel::VirgilContext (class)">VirgilContext</a></span> class that manages the VirgilApi
-dependencies during run time.</p>
+<p>Virgil Context that manages the VirgilApi dependencies during run time.</p>
 </div></span>
   
 </li>
@@ -190,7 +188,7 @@ dependencies during run time.</p>
       <li class="public ">
   <span class="summary_signature">
     
-      <a href="#keys-instance_method" title="#keys (instance method)">#<strong>keys</strong>  &#x21d2; Object </a>
+      <a href="#keys-instance_method" title="#keys (instance method)">#<strong>keys</strong>  &#x21d2; VirgilKeyManager </a>
     
 
     
@@ -208,8 +206,7 @@ dependencies during run time.</p>
 
   
     <span class="summary_desc"><div class='inline'>
-<p>an instance of the <span class='object_link'><a href="VirgilKeyManager.html" title="Virgil::SDK::HighLevel::VirgilKeyManager (class)">VirgilKeyManager</a></span> class that provides a work with
-VirgilKey entities.</p>
+<p>Virgil Key Manager that provides a work with VirgilKey entities.</p>
 </div></span>
   
 </li>
@@ -272,27 +269,71 @@ VirgilKey entities.</p>
 </h3><div class="docstring">
   <div class="discussion">
     
+  <div class="note notetag">
+    <strong>Note:</strong>
+    <div class='inline'>
+<p>The both of the arguments(access_token and context) are not required for
+actions with Global cards.</p>
+</div>
+  </div>
+
+
 <p>Initializes a new instance of the <span class='object_link'><a href="" title="Virgil::SDK::HighLevel::VirgilApi (class)">Virgil::SDK::HighLevel::VirgilApi</a></span> class.</p>
-
-<p>Args:</p>
-
-<pre class="code ruby"><code class="ruby">access_token:  Retrieved string value from development deshboard that provides an authenticated secure access to the
-                Virgil Security services. The access token also allows the API to associate
-                your app requests with your Virgil Security developer’s account.
-                It&#39;s not required if context with own access token has been set.
-                It&#39;s required(only if context with own access token hasn&#39;t been set)
-                  for the following actions: get card, find card.
-context:       An instance of the class VirgilContext that manages the VirgilApi dependencies during run time.
-              It&#39;s required with defined Application credentials and own access_token for publishing and revoking card.</code></pre>
-
-<p>Notice:        The both of the arguments(access_token and context) are not
-required for actions with Global cards.</p>
 
 
   </div>
 </div>
 <div class="tags">
+  <p class="tag_title">Parameters:</p>
+<ul class="param">
   
+    <li>
+      
+        <span class='name'>access_token:</span>
+      
+      
+        <span class='type'>(<tt>String</tt>)</span>
+      
+      
+        <em class="default">(defaults to: <tt>nil</tt>)</em>
+      
+      
+        &mdash;
+        <div class='inline'>
+<p>Retrieved string value from development deshboard that provides an
+authenticated secure access to the Virgil Security services. The access
+token also allows the API to associate your app requests with your Virgil
+Security developer’s account. It&#39;s not required if context with own
+access token has been set. It&#39;s required(only if context with own
+access token hasn&#39;t been set)</p>
+
+<pre class="code ruby"><code class="ruby">for the following actions: get card, find card.</code></pre>
+</div>
+      
+    </li>
+  
+    <li>
+      
+        <span class='name'>context:</span>
+      
+      
+        <span class='type'>(<tt><span class='object_link'><a href="VirgilContext.html" title="Virgil::SDK::HighLevel::VirgilContext (class)">VirgilContext</a></span></tt>)</span>
+      
+      
+        <em class="default">(defaults to: <tt>nil</tt>)</em>
+      
+      
+        &mdash;
+        <div class='inline'>
+<p>Virgil Context that manages the VirgilApi dependencies during run time.
+It&#39;s required with defined Application credentials and own access_token
+for publishing and revoking card.</p>
+</div>
+      
+    </li>
+  
+</ul>
+
 
 </div><table class="source_code">
   <tr>
@@ -300,7 +341,6 @@ required for actions with Global cards.</p>
       <pre class="lines">
 
 
-80
 81
 82
 83
@@ -315,10 +355,11 @@ required for actions with Global cards.</p>
 92
 93
 94
-95</pre>
+95
+96</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/virgil/sdk/high_level/virgil_api.rb', line 80</span>
+      <pre class="code"><span class="info file"># File 'lib/virgil/sdk/high_level/virgil_api.rb', line 81</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_initialize'>initialize</span><span class='lparen'>(</span><span class='label'>access_token:</span> <span class='kw'>nil</span><span class='comma'>,</span> <span class='label'>context:</span> <span class='kw'>nil</span><span class='rparen'>)</span>
 
@@ -351,7 +392,7 @@ required for actions with Global cards.</p>
       <div class="method_details first">
   <h3 class="signature first" id="cards-instance_method">
   
-    #<strong>cards</strong>  &#x21d2; <tt>Object</tt> 
+    #<strong>cards</strong>  &#x21d2; <tt><span class='object_link'><a href="VirgilCardManager.html" title="Virgil::SDK::HighLevel::VirgilCardManager (class)">VirgilCardManager</a></span></tt> 
   
 
   
@@ -360,14 +401,26 @@ required for actions with Global cards.</p>
 </h3><div class="docstring">
   <div class="discussion">
     
-<p>an instance of the <span class='object_link'><a href="VirgilCardManager.html" title="Virgil::SDK::HighLevel::VirgilCardManager (class)">Virgil::SDK::HighLevel::VirgilCardManager</a></span> class that provides a work with
-VirgilCard entities.</p>
+<p>Virgil Card Manager that provides a work with VirgilCard entities.</p>
 
 
   </div>
 </div>
 <div class="tags">
   
+<p class="tag_title">Returns:</p>
+<ul class="return">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt><span class='object_link'><a href="VirgilCardManager.html" title="Virgil::SDK::HighLevel::VirgilCardManager (class)">VirgilCardManager</a></span></tt>)</span>
+      
+      
+      
+    </li>
+  
+</ul>
 
 </div><table class="source_code">
   <tr>
@@ -375,12 +428,12 @@ VirgilCard entities.</p>
       <pre class="lines">
 
 
-52
-53
-54</pre>
+55
+56
+57</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/virgil/sdk/high_level/virgil_api.rb', line 52</span>
+      <pre class="code"><span class="info file"># File 'lib/virgil/sdk/high_level/virgil_api.rb', line 55</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_cards'>cards</span>
   <span class='ivar'>@cards</span>
@@ -395,7 +448,7 @@ VirgilCard entities.</p>
       <div class="method_details ">
   <h3 class="signature " id="context-instance_method">
   
-    #<strong>context</strong>  &#x21d2; <tt>Object</tt> 
+    #<strong>context</strong>  &#x21d2; <tt><span class='object_link'><a href="VirgilContext.html" title="Virgil::SDK::HighLevel::VirgilContext (class)">VirgilContext</a></span></tt> 
   
 
   
@@ -404,14 +457,26 @@ VirgilCard entities.</p>
 </h3><div class="docstring">
   <div class="discussion">
     
-<p>an instance of the <span class='object_link'><a href="VirgilContext.html" title="Virgil::SDK::HighLevel::VirgilContext (class)">Virgil::SDK::HighLevel::VirgilContext</a></span> class that manages the VirgilApi
-dependencies during run time.</p>
+<p>Virgil Context that manages the VirgilApi dependencies during run time.</p>
 
 
   </div>
 </div>
 <div class="tags">
   
+<p class="tag_title">Returns:</p>
+<ul class="return">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt><span class='object_link'><a href="VirgilContext.html" title="Virgil::SDK::HighLevel::VirgilContext (class)">VirgilContext</a></span></tt>)</span>
+      
+      
+      
+    </li>
+  
+</ul>
 
 </div><table class="source_code">
   <tr>
@@ -419,12 +484,12 @@ dependencies during run time.</p>
       <pre class="lines">
 
 
-46
 47
-48</pre>
+48
+49</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/virgil/sdk/high_level/virgil_api.rb', line 46</span>
+      <pre class="code"><span class="info file"># File 'lib/virgil/sdk/high_level/virgil_api.rb', line 47</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_context'>context</span>
   <span class='ivar'>@context</span>
@@ -439,7 +504,7 @@ dependencies during run time.</p>
       <div class="method_details ">
   <h3 class="signature " id="keys-instance_method">
   
-    #<strong>keys</strong>  &#x21d2; <tt>Object</tt> 
+    #<strong>keys</strong>  &#x21d2; <tt><span class='object_link'><a href="VirgilKeyManager.html" title="Virgil::SDK::HighLevel::VirgilKeyManager (class)">VirgilKeyManager</a></span></tt> 
   
 
   
@@ -448,14 +513,26 @@ dependencies during run time.</p>
 </h3><div class="docstring">
   <div class="discussion">
     
-<p>an instance of the <span class='object_link'><a href="VirgilKeyManager.html" title="Virgil::SDK::HighLevel::VirgilKeyManager (class)">Virgil::SDK::HighLevel::VirgilKeyManager</a></span> class that provides a work with
-VirgilKey entities.</p>
+<p>Virgil Key Manager that provides a work with VirgilKey entities.</p>
 
 
   </div>
 </div>
 <div class="tags">
   
+<p class="tag_title">Returns:</p>
+<ul class="return">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt><span class='object_link'><a href="VirgilKeyManager.html" title="Virgil::SDK::HighLevel::VirgilKeyManager (class)">VirgilKeyManager</a></span></tt>)</span>
+      
+      
+      
+    </li>
+  
+</ul>
 
 </div><table class="source_code">
   <tr>
@@ -463,12 +540,12 @@ VirgilKey entities.</p>
       <pre class="lines">
 
 
-49
-50
-51</pre>
+51
+52
+53</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/virgil/sdk/high_level/virgil_api.rb', line 49</span>
+      <pre class="code"><span class="info file"># File 'lib/virgil/sdk/high_level/virgil_api.rb', line 51</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_keys'>keys</span>
   <span class='ivar'>@keys</span>
@@ -484,7 +561,7 @@ VirgilKey entities.</p>
 </div>
 
       <div id="footer">
-  Generated on Tue Apr 11 12:15:34 2017 by
+  Generated on Fri Apr 14 15:24:56 2017 by
   <a href="http://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
   0.9.8 (ruby-2.4.0).
 </div>

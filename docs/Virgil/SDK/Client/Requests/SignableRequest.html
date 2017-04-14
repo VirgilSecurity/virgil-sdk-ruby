@@ -253,7 +253,7 @@
         <li class="public ">
   <span class="summary_signature">
     
-      <a href="#export-instance_method" title="#export (instance method)">#<strong>export</strong>  &#x21d2; Object </a>
+      <a href="#export-instance_method" title="#export (instance method)">#<strong>export</strong>  &#x21d2; String </a>
     
 
     
@@ -294,7 +294,7 @@
 
   
     <span class="summary_desc"><div class='inline'>
-<p>Constructs new SignableRequest object.</p>
+<p>Constructs new <span class='object_link'><a href="" title="Virgil::SDK::Client::Requests::SignableRequest (class)">SignableRequest</a></span> object.</p>
 </div></span>
   
 </li>
@@ -327,7 +327,7 @@
         <li class="public ">
   <span class="summary_signature">
     
-      <a href="#restore-instance_method" title="#restore (instance method)">#<strong>restore</strong>(snapshot, signatures, validation_token = nil, relations = nil)  &#x21d2; Object </a>
+      <a href="#restore-instance_method" title="#restore (instance method)">#<strong>restore</strong>(snapshot, signatures, validation_token = nil, relations = nil)  &#x21d2; SignableRequest </a>
     
 
     
@@ -390,7 +390,7 @@
 
   
     <span class="summary_desc"><div class='inline'>
-<p>Adds signature to request.“”“.</p>
+<p>Adds signature to request.</p>
 </div></span>
   
 </li>
@@ -462,7 +462,7 @@
 </h3><div class="docstring">
   <div class="discussion">
     
-<p>Constructs new SignableRequest object</p>
+<p>Constructs new <span class='object_link'><a href="" title="Virgil::SDK::Client::Requests::SignableRequest (class)">Virgil::SDK::Client::Requests::SignableRequest</a></span> object</p>
 
 
   </div>
@@ -610,12 +610,12 @@
       <pre class="lines">
 
 
-114
-115
-116</pre>
+103
+104
+105</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/virgil/sdk/client/requests/signable_request.rb', line 114</span>
+      <pre class="code"><span class="info file"># File 'lib/virgil/sdk/client/requests/signable_request.rb', line 103</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_snapshot'>snapshot</span>
   <span class='ivar'>@snapshot</span>
@@ -678,7 +678,7 @@
       <div class="method_details first">
   <h3 class="signature first" id="export-instance_method">
   
-    #<strong>export</strong>  &#x21d2; <tt>Object</tt> 
+    #<strong>export</strong>  &#x21d2; <tt>String</tt> 
   
 
   
@@ -689,15 +689,29 @@
     
 <p>Exports request snapshot.</p>
 
-<p>Returns:</p>
-
-<pre class="code ruby"><code class="ruby">base64-encoded json representation of the request model.</code></pre>
-
 
   </div>
 </div>
 <div class="tags">
   
+<p class="tag_title">Returns:</p>
+<ul class="return">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt>String</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'>
+<p>base64-encoded json representation of the request model.</p>
+</div>
+      
+    </li>
+  
+</ul>
 
 </div><table class="source_code">
   <tr>
@@ -705,13 +719,13 @@
       <pre class="lines">
 
 
-107
-108
-109
-110</pre>
+96
+97
+98
+99</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/virgil/sdk/client/requests/signable_request.rb', line 107</span>
+      <pre class="code"><span class="info file"># File 'lib/virgil/sdk/client/requests/signable_request.rb', line 96</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_export'>export</span>
   <span class='id identifier rubyid_json_string'>json_string</span> <span class='op'>=</span> <span class='kw'>self</span><span class='period'>.</span><span class='id identifier rubyid_request_model'>request_model</span><span class='period'>.</span><span class='id identifier rubyid_to_json'>to_json</span>
@@ -748,26 +762,26 @@
       <pre class="lines">
 
 
+113
+114
+115
+116
+117
+118
+119
+120
+121
+122
+123
 124
 125
 126
 127
 128
-129
-130
-131
-132
-133
-134
-135
-136
-137
-138
-139
-140</pre>
+129</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/virgil/sdk/client/requests/signable_request.rb', line 124</span>
+      <pre class="code"><span class="info file"># File 'lib/virgil/sdk/client/requests/signable_request.rb', line 113</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_request_model'>request_model</span>
   <span class='id identifier rubyid_model'>model</span> <span class='op'>=</span> <span class='lbrace'>{</span>
@@ -794,7 +808,7 @@
       <div class="method_details ">
   <h3 class="signature " id="restore-instance_method">
   
-    #<strong>restore</strong>(snapshot, signatures, validation_token = nil, relations = nil)  &#x21d2; <tt>Object</tt> 
+    #<strong>restore</strong>(snapshot, signatures, validation_token = nil, relations = nil)  &#x21d2; <tt><span class='object_link'><a href="" title="Virgil::SDK::Client::Requests::SignableRequest (class)">SignableRequest</a></span></tt> 
   
 
   
@@ -805,17 +819,101 @@
     
 <p>Restores request from snapshot.</p>
 
-<pre class="code ruby"><code class="ruby">Args:
-  snapshot: Json-encoded snapshot request will be restored from.
-  signatures: Request signatures.
-  validation_token: validation token gotten from Virgil Identity Service
-  relations: relations</code></pre>
-
 
   </div>
 </div>
 <div class="tags">
+  <p class="tag_title">Parameters:</p>
+<ul class="param">
   
+    <li>
+      
+        <span class='name'>snapshot</span>
+      
+      
+        <span class='type'>(<tt>Crypto::Bytes</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'>
+<p>Json-encoded snapshot request will be restored from.</p>
+</div>
+      
+    </li>
+  
+    <li>
+      
+        <span class='name'>signatures</span>
+      
+      
+        <span class='type'>(<tt>Hash</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'>
+<p>Request signatures.</p>
+</div>
+      
+    </li>
+  
+    <li>
+      
+        <span class='name'>validation_token</span>
+      
+      
+        <span class='type'>(<tt>String</tt>)</span>
+      
+      
+        <em class="default">(defaults to: <tt>nil</tt>)</em>
+      
+      
+        &mdash;
+        <div class='inline'>
+<p>validation token gotten from Virgil Identity Service.</p>
+</div>
+      
+    </li>
+  
+    <li>
+      
+        <span class='name'>relations</span>
+      
+      
+        <span class='type'>(<tt>Hash</tt>)</span>
+      
+      
+        <em class="default">(defaults to: <tt>nil</tt>)</em>
+      
+      
+        &mdash;
+        <div class='inline'>
+<p>relations.</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+<p class="tag_title">Returns:</p>
+<ul class="return">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt><span class='object_link'><a href="" title="Virgil::SDK::Client::Requests::SignableRequest (class)">SignableRequest</a></span></tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'>
+<p>restored request.</p>
+</div>
+      
+    </li>
+  
+</ul>
 
 </div><table class="source_code">
   <tr>
@@ -823,17 +921,17 @@
       <pre class="lines">
 
 
-83
-84
-85
-86
-87
-88
-89
-90</pre>
+76
+77
+78
+79
+80
+81
+82
+83</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/virgil/sdk/client/requests/signable_request.rb', line 83</span>
+      <pre class="code"><span class="info file"># File 'lib/virgil/sdk/client/requests/signable_request.rb', line 76</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_restore'>restore</span><span class='lparen'>(</span><span class='id identifier rubyid_snapshot'>snapshot</span><span class='comma'>,</span> <span class='id identifier rubyid_signatures'>signatures</span><span class='comma'>,</span> <span class='id identifier rubyid_validation_token'>validation_token</span> <span class='op'>=</span> <span class='kw'>nil</span><span class='comma'>,</span> <span class='id identifier rubyid_relations'>relations</span> <span class='op'>=</span> <span class='kw'>nil</span><span class='rparen'>)</span>
   <span class='ivar'>@snapshot</span> <span class='op'>=</span> <span class='id identifier rubyid_snapshot'>snapshot</span>
@@ -862,22 +960,33 @@
     
 <p>Restores request from snapshot model.</p>
 
-<p>Should be implemented in the derived classes.</p>
-
-<p>Args:</p>
-
-<pre class="code ruby"><code class="ruby">snapshot: snapshot model dict</code></pre>
-
-<p>Raises:</p>
-
-<pre class="code ruby"><code class="ruby"><span class='const'>NotImplementedError</span>
-</code></pre>
+<pre class="code ruby"><code class="ruby">Should be implemented in the derived classes.</code></pre>
 
 
   </div>
 </div>
 <div class="tags">
+  <p class="tag_title">Parameters:</p>
+<ul class="param">
   
+    <li>
+      
+        <span class='name'>snapshot</span>
+      
+      
+        <span class='type'>(<tt>Hash</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'>
+<p>snapshot model</p>
+</div>
+      
+    </li>
+  
+</ul>
+
 <p class="tag_title">Raises:</p>
 <ul class="raise">
   
@@ -898,12 +1007,12 @@
       <pre class="lines">
 
 
-71
-72
-73</pre>
+65
+66
+67</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/virgil/sdk/client/requests/signable_request.rb', line 71</span>
+      <pre class="code"><span class="info file"># File 'lib/virgil/sdk/client/requests/signable_request.rb', line 65</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_restore_from_snapshot_model'>restore_from_snapshot_model</span><span class='lparen'>(</span><span class='id identifier rubyid_snapshot'>snapshot</span><span class='rparen'>)</span>
   <span class='id identifier rubyid_raise'>raise</span> <span class='const'>NotImplementedError</span><span class='period'>.</span><span class='id identifier rubyid_new'>new</span>
@@ -925,7 +1034,7 @@
 </h3><div class="docstring">
   <div class="discussion">
     
-<p>Adds signature to request.“”“</p>
+<p>Adds signature to request.</p>
 
 
   </div>
@@ -939,12 +1048,12 @@
       <pre class="lines">
 
 
-119
-120
-121</pre>
+108
+109
+110</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/virgil/sdk/client/requests/signable_request.rb', line 119</span>
+      <pre class="code"><span class="info file"># File 'lib/virgil/sdk/client/requests/signable_request.rb', line 108</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_sign_with'>sign_with</span><span class='lparen'>(</span><span class='id identifier rubyid_fingerprint_id'>fingerprint_id</span><span class='comma'>,</span> <span class='id identifier rubyid_signature'>signature</span><span class='rparen'>)</span>
   <span class='ivar'>@signatures</span><span class='lbracket'>[</span><span class='id identifier rubyid_fingerprint_id'>fingerprint_id</span><span class='rbracket'>]</span> <span class='op'>=</span> <span class='id identifier rubyid_signature'>signature</span>
@@ -968,12 +1077,7 @@
     
 <p>Constructs snapshot model for exporting and signing.</p>
 
-<p>Should be implemented in the derived classes.</p>
-
-<p>Raises:</p>
-
-<pre class="code ruby"><code class="ruby"><span class='const'>NotImplementedError</span>
-</code></pre>
+<pre class="code ruby"><code class="ruby">Should be implemented in the derived classes.</code></pre>
 
 
   </div>
@@ -1000,12 +1104,12 @@
       <pre class="lines">
 
 
-58
-59
-60</pre>
+56
+57
+58</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/virgil/sdk/client/requests/signable_request.rb', line 58</span>
+      <pre class="code"><span class="info file"># File 'lib/virgil/sdk/client/requests/signable_request.rb', line 56</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_snapshot_model'>snapshot_model</span>
   <span class='id identifier rubyid_raise'>raise</span> <span class='const'>NotImplementedError</span><span class='period'>.</span><span class='id identifier rubyid_new'>new</span>
@@ -1029,8 +1133,6 @@
     
 <p>Takes request data snapshot.</p>
 
-<p>Returns:</p>
-
 <pre class="code ruby"><code class="ruby">Request snapshot bytes.</code></pre>
 
 
@@ -1045,13 +1147,13 @@
       <pre class="lines">
 
 
-97
-98
-99
-100</pre>
+88
+89
+90
+91</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/virgil/sdk/client/requests/signable_request.rb', line 97</span>
+      <pre class="code"><span class="info file"># File 'lib/virgil/sdk/client/requests/signable_request.rb', line 88</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_take_snapshot'>take_snapshot</span>
   <span class='id identifier rubyid_json_string'>json_string</span> <span class='op'>=</span> <span class='kw'>self</span><span class='period'>.</span><span class='id identifier rubyid_snapshot_model'>snapshot_model</span><span class='period'>.</span><span class='id identifier rubyid_to_json'>to_json</span>
@@ -1067,7 +1169,7 @@
 </div>
 
       <div id="footer">
-  Generated on Tue Apr 11 12:15:36 2017 by
+  Generated on Fri Apr 14 15:24:57 2017 by
   <a href="http://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
   0.9.8 (ruby-2.4.0).
 </div>

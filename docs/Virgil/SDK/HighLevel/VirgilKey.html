@@ -122,7 +122,7 @@ operations like Decrypt, Sign etc.</p>
       <li class="public ">
   <span class="summary_signature">
     
-      <a href="#context-instance_method" title="#context (instance method)">#<strong>context</strong>  &#x21d2; Object </a>
+      <a href="#context-instance_method" title="#context (instance method)">#<strong>context</strong>  &#x21d2; VirgilContext </a>
     
 
     
@@ -142,8 +142,7 @@ operations like Decrypt, Sign etc.</p>
 
   
     <span class="summary_desc"><div class='inline'>
-<p>An instance of the <span class='object_link'><a href="VirgilContext.html" title="Virgil::SDK::HighLevel::VirgilContext (class)">VirgilContext</a></span> class that manages the VirgilApi
-dependencies during run time.</p>
+<p>manages the VirgilApi dependencies during run time.</p>
 </div></span>
   
 </li>
@@ -152,7 +151,7 @@ dependencies during run time.</p>
       <li class="public ">
   <span class="summary_signature">
     
-      <a href="#private_key-instance_method" title="#private_key (instance method)">#<strong>private_key</strong>  &#x21d2; Object </a>
+      <a href="#private_key-instance_method" title="#private_key (instance method)">#<strong>private_key</strong>  &#x21d2; Cryptography::Keys::PrivateKey </a>
     
 
     
@@ -172,7 +171,7 @@ dependencies during run time.</p>
 
   
     <span class="summary_desc"><div class='inline'>
-<p>An instance of the <span class='object_link'><a href="../Cryptography/Keys/PrivateKey.html" title="Virgil::SDK::Cryptography::Keys::PrivateKey (class)">Cryptography::Keys::PrivateKey</a></span> class.</p>
+<p>private key.</p>
 </div></span>
   
 </li>
@@ -194,7 +193,7 @@ dependencies during run time.</p>
         <li class="public ">
   <span class="summary_signature">
     
-      <a href="#decrypt-instance_method" title="#decrypt (instance method)">#<strong>decrypt</strong>(cipher_buffer)  &#x21d2; Object </a>
+      <a href="#decrypt-instance_method" title="#decrypt (instance method)">#<strong>decrypt</strong>(cipher_buffer)  &#x21d2; VirgilBuffer </a>
     
 
     
@@ -218,7 +217,7 @@ dependencies during run time.</p>
         <li class="public ">
   <span class="summary_signature">
     
-      <a href="#decrypt_then_verify-instance_method" title="#decrypt_then_verify (instance method)">#<strong>decrypt_then_verify</strong>(cipher_buffer, *cards)  &#x21d2; Object </a>
+      <a href="#decrypt_then_verify-instance_method" title="#decrypt_then_verify (instance method)">#<strong>decrypt_then_verify</strong>(cipher_buffer, *cards)  &#x21d2; VirgilBuffer </a>
     
 
     
@@ -242,7 +241,7 @@ dependencies during run time.</p>
         <li class="public ">
   <span class="summary_signature">
     
-      <a href="#export-instance_method" title="#export (instance method)">#<strong>export</strong>(password = nil)  &#x21d2; Object </a>
+      <a href="#export-instance_method" title="#export (instance method)">#<strong>export</strong>(password = nil)  &#x21d2; VirgilBuffer </a>
     
 
     
@@ -266,7 +265,7 @@ dependencies during run time.</p>
         <li class="public ">
   <span class="summary_signature">
     
-      <a href="#export_public_key-instance_method" title="#export_public_key (instance method)">#<strong>export_public_key</strong>  &#x21d2; Object </a>
+      <a href="#export_public_key-instance_method" title="#export_public_key (instance method)">#<strong>export_public_key</strong>  &#x21d2; VirgilBuffer </a>
     
 
     
@@ -316,7 +315,7 @@ dependencies during run time.</p>
         <li class="public ">
   <span class="summary_signature">
     
-      <a href="#save-instance_method" title="#save (instance method)">#<strong>save</strong>(key_name, key_password = nil)  &#x21d2; Object </a>
+      <a href="#save-instance_method" title="#save (instance method)">#<strong>save</strong>(key_name, key_password = nil)  &#x21d2; VirgilKey </a>
     
 
     
@@ -340,7 +339,7 @@ dependencies during run time.</p>
         <li class="public ">
   <span class="summary_signature">
     
-      <a href="#sign-instance_method" title="#sign (instance method)">#<strong>sign</strong>(buffer)  &#x21d2; Object </a>
+      <a href="#sign-instance_method" title="#sign (instance method)">#<strong>sign</strong>(buffer)  &#x21d2; VirgilBuffer </a>
     
 
     
@@ -364,7 +363,7 @@ dependencies during run time.</p>
         <li class="public ">
   <span class="summary_signature">
     
-      <a href="#sign_then_encrypt-instance_method" title="#sign_then_encrypt (instance method)">#<strong>sign_then_encrypt</strong>(buffer, recipients)  &#x21d2; Object </a>
+      <a href="#sign_then_encrypt-instance_method" title="#sign_then_encrypt (instance method)">#<strong>sign_then_encrypt</strong>(buffer, recipients)  &#x21d2; VirgilBuffer </a>
     
 
     
@@ -379,9 +378,7 @@ dependencies during run time.</p>
 
   
     <span class="summary_desc"><div class='inline'>
-<p>Raises:   ArgumentError: Buffer has unsupported type if buffer doesn&#39;t
-have type VirgilBuffer, String or Array of bytes   ArgumentError:
-recipients is not valid if recipients doesn&#39;t have type Array or empty.</p>
+<p>Encrypts and signs the data.</p>
 </div></span>
   
 </li>
@@ -419,13 +416,13 @@ recipients is not valid if recipients doesn&#39;t have type Array or empty.</p>
       <pre class="lines">
 
 
-49
-50
 51
-52</pre>
+52
+53
+54</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/virgil/sdk/high_level/virgil_key.rb', line 49</span>
+      <pre class="code"><span class="info file"># File 'lib/virgil/sdk/high_level/virgil_key.rb', line 51</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_initialize'>initialize</span><span class='lparen'>(</span><span class='id identifier rubyid_context'>context</span><span class='comma'>,</span> <span class='id identifier rubyid_private_key'>private_key</span><span class='rparen'>)</span>
   <span class='ivar'>@context</span> <span class='op'>=</span> <span class='id identifier rubyid_context'>context</span>
@@ -446,7 +443,7 @@ recipients is not valid if recipients doesn&#39;t have type Array or empty.</p>
       <div class="method_details first">
   <h3 class="signature first" id="context-instance_method">
   
-    #<strong>context</strong>  &#x21d2; <tt>Object</tt>  <span class="extras">(readonly)</span>
+    #<strong>context</strong>  &#x21d2; <tt><span class='object_link'><a href="VirgilContext.html" title="Virgil::SDK::HighLevel::VirgilContext (class)">VirgilContext</a></span></tt>  <span class="extras">(readonly)</span>
   
 
   
@@ -455,14 +452,26 @@ recipients is not valid if recipients doesn&#39;t have type Array or empty.</p>
 </h3><div class="docstring">
   <div class="discussion">
     
-<p>An instance of the <span class='object_link'><a href="VirgilContext.html" title="Virgil::SDK::HighLevel::VirgilContext (class)">Virgil::SDK::HighLevel::VirgilContext</a></span> class that manages the VirgilApi
-dependencies during run time.</p>
+<p>manages the VirgilApi dependencies during run time.</p>
 
 
   </div>
 </div>
 <div class="tags">
   
+<p class="tag_title">Returns:</p>
+<ul class="return">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt><span class='object_link'><a href="VirgilContext.html" title="Virgil::SDK::HighLevel::VirgilContext (class)">VirgilContext</a></span></tt>)</span>
+      
+      
+      
+    </li>
+  
+</ul>
 
 </div><table class="source_code">
   <tr>
@@ -470,12 +479,12 @@ dependencies during run time.</p>
       <pre class="lines">
 
 
-43
 44
-45</pre>
+45
+46</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/virgil/sdk/high_level/virgil_key.rb', line 43</span>
+      <pre class="code"><span class="info file"># File 'lib/virgil/sdk/high_level/virgil_key.rb', line 44</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_context'>context</span>
   <span class='ivar'>@context</span>
@@ -490,7 +499,7 @@ dependencies during run time.</p>
       <div class="method_details ">
   <h3 class="signature " id="private_key-instance_method">
   
-    #<strong>private_key</strong>  &#x21d2; <tt>Object</tt>  <span class="extras">(readonly)</span>
+    #<strong>private_key</strong>  &#x21d2; <tt><span class='object_link'><a href="../Cryptography/Keys/PrivateKey.html" title="Virgil::SDK::Cryptography::Keys::PrivateKey (class)">Cryptography::Keys::PrivateKey</a></span></tt>  <span class="extras">(readonly)</span>
   
 
   
@@ -499,13 +508,26 @@ dependencies during run time.</p>
 </h3><div class="docstring">
   <div class="discussion">
     
-<p>An instance of the <span class='object_link'><a href="../Cryptography/Keys/PrivateKey.html" title="Virgil::SDK::Cryptography::Keys::PrivateKey (class)">Cryptography::Keys::PrivateKey</a></span> class.</p>
+<p>private key</p>
 
 
   </div>
 </div>
 <div class="tags">
   
+<p class="tag_title">Returns:</p>
+<ul class="return">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt><span class='object_link'><a href="../Cryptography/Keys/PrivateKey.html" title="Virgil::SDK::Cryptography::Keys::PrivateKey (class)">Cryptography::Keys::PrivateKey</a></span></tt>)</span>
+      
+      
+      
+    </li>
+  
+</ul>
 
 </div><table class="source_code">
   <tr>
@@ -513,12 +535,12 @@ dependencies during run time.</p>
       <pre class="lines">
 
 
-46
-47
-48</pre>
+48
+49
+50</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/virgil/sdk/high_level/virgil_key.rb', line 46</span>
+      <pre class="code"><span class="info file"># File 'lib/virgil/sdk/high_level/virgil_key.rb', line 48</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_private_key'>private_key</span>
   <span class='ivar'>@private_key</span>
@@ -538,7 +560,7 @@ dependencies during run time.</p>
       <div class="method_details first">
   <h3 class="signature first" id="decrypt-instance_method">
   
-    #<strong>decrypt</strong>(cipher_buffer)  &#x21d2; <tt>Object</tt> 
+    #<strong>decrypt</strong>(cipher_buffer)  &#x21d2; <tt><span class='object_link'><a href="VirgilBuffer.html" title="Virgil::SDK::HighLevel::VirgilBuffer (class)">VirgilBuffer</a></span></tt> 
   
 
   
@@ -549,27 +571,70 @@ dependencies during run time.</p>
     
 <p>Decrypts the specified cipher data using Virgil key.</p>
 
-<p>Args:</p>
-
-<pre class="code ruby"><code class="ruby">cipher_buffer: The encrypted data wrapped by VirgilBuffer or
-               encrypted data in base64-encoded String
-               or Array of bytes of encrypted data</code></pre>
-
-<p>Returns:</p>
-
-<pre class="code ruby"><code class="ruby">A byte array containing the result from performing the action wrapped by VirgilBuffer.</code></pre>
-
-<p>Raises:</p>
-
-<pre class="code ruby"><code class="ruby">ArgumentError: buffer is not valid if buffer doesn&#39;t have type VirgilBuffer, base64-encoded String or Array of bytes
-Recipient with given identifier is not found  if user tries to decrypt cipher data by private key,
-  though its public key was not used for encryption</code></pre>
-
 
   </div>
 </div>
 <div class="tags">
+  <p class="tag_title">Parameters:</p>
+<ul class="param">
   
+    <li>
+      
+        <span class='name'>cipher_buffer</span>
+      
+      
+        <span class='type'>(<tt><span class='object_link'><a href="VirgilBuffer.html" title="Virgil::SDK::HighLevel::VirgilBuffer (class)">VirgilBuffer</a></span></tt>, <tt>String</tt>, <tt>Crypto::Bytes</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'>
+<p>The encrypted data wrapped by VirgilBuffer or encrypted data in
+base64-encoded String or Array of bytes of encrypted data</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+<p class="tag_title">Returns:</p>
+<ul class="return">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt><span class='object_link'><a href="VirgilBuffer.html" title="Virgil::SDK::HighLevel::VirgilBuffer (class)">VirgilBuffer</a></span></tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'>
+<p>A byte array containing the result from performing the action wrapped by
+VirgilBuffer.</p>
+</div>
+      
+    </li>
+  
+</ul>
+<p class="tag_title">Raises:</p>
+<ul class="raise">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt>ArgumentError</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'>
+<p>if buffer doesn&#39;t have type VirgilBuffer, base64-encoded String or
+Array of bytes</p>
+</div>
+      
+    </li>
+  
+</ul>
 
 </div><table class="source_code">
   <tr>
@@ -577,6 +642,12 @@ Recipient with given identifier is not found  if user tries to decrypt cipher da
       <pre class="lines">
 
 
+63
+64
+65
+66
+67
+68
 69
 70
 71
@@ -586,16 +657,10 @@ Recipient with given identifier is not found  if user tries to decrypt cipher da
 75
 76
 77
-78
-79
-80
-81
-82
-83
-84</pre>
+78</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/virgil/sdk/high_level/virgil_key.rb', line 69</span>
+      <pre class="code"><span class="info file"># File 'lib/virgil/sdk/high_level/virgil_key.rb', line 63</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_decrypt'>decrypt</span><span class='lparen'>(</span><span class='id identifier rubyid_cipher_buffer'>cipher_buffer</span><span class='rparen'>)</span>
 
@@ -621,7 +686,7 @@ Recipient with given identifier is not found  if user tries to decrypt cipher da
       <div class="method_details ">
   <h3 class="signature " id="decrypt_then_verify-instance_method">
   
-    #<strong>decrypt_then_verify</strong>(cipher_buffer, *cards)  &#x21d2; <tt>Object</tt> 
+    #<strong>decrypt_then_verify</strong>(cipher_buffer, *cards)  &#x21d2; <tt><span class='object_link'><a href="VirgilBuffer.html" title="Virgil::SDK::HighLevel::VirgilBuffer (class)">VirgilBuffer</a></span></tt> 
   
 
   
@@ -632,28 +697,69 @@ Recipient with given identifier is not found  if user tries to decrypt cipher da
     
 <p>Decrypts and verifies the data.</p>
 
-<p>Args:</p>
-
-<pre class="code ruby"><code class="ruby">cipher_buffer: The data to be decrypted and verified:
-               The encrypted data wrapped by VirgilBuffer or
-               encrypted data in base64-encoded String
-               or Array of bytes of encrypted data
-cards:  The list of trusted Virgil Cards, which can contains the signer&#39;s VirgilCard</code></pre>
-
-<p>Returns:</p>
-
-<pre class="code ruby"><code class="ruby">The decrypted data, which is the original plain text before encryption The decrypted data, wrapped by VirgilBuffer</code></pre>
-
-<p>Raises:</p>
-
-<pre class="code ruby"><code class="ruby">ArgumentError: buffer is not valid if buffer doesn&#39;t have type VirgilBuffer, String or Array of bytes
-ArgumentError: recipients is not valid if recipients doesn&#39;t have type Array or empty</code></pre>
-
 
   </div>
 </div>
 <div class="tags">
+  <p class="tag_title">Parameters:</p>
+<ul class="param">
   
+    <li>
+      
+        <span class='name'>cipher_buffer</span>
+      
+      
+        <span class='type'>(<tt><span class='object_link'><a href="VirgilBuffer.html" title="Virgil::SDK::HighLevel::VirgilBuffer (class)">VirgilBuffer</a></span></tt>, <tt>String</tt>, <tt>Crypto::Bytes</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'>
+<p>The data to be decrypted and verified: The encrypted data wrapped by
+VirgilBuffer or encrypted data in base64-encoded String or Array of bytes
+of encrypted data</p>
+</div>
+      
+    </li>
+  
+    <li>
+      
+        <span class='name'>*cards</span>
+      
+      
+        <span class='type'>(<tt>Array&lt;<span class='object_link'><a href="VirgilCard.html" title="Virgil::SDK::HighLevel::VirgilCard (class)">VirgilCard</a></span>&gt;</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'>
+<p>The list of trusted Virgil Cards, which can contains the signer&#39;s
+VirgilCard</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+<p class="tag_title">Returns:</p>
+<ul class="return">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt><span class='object_link'><a href="VirgilBuffer.html" title="Virgil::SDK::HighLevel::VirgilBuffer (class)">VirgilBuffer</a></span></tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'>
+<p>The decrypted data, which is the original plain text before encryption the
+decrypted data, wrapped by VirgilBuffer</p>
+</div>
+      
+    </li>
+  
+</ul>
 <p class="tag_title">Raises:</p>
 <ul class="raise">
   
@@ -663,6 +769,25 @@ ArgumentError: recipients is not valid if recipients doesn&#39;t have type Array
         <span class='type'>(<tt>ArgumentError</tt>)</span>
       
       
+      
+        &mdash;
+        <div class='inline'>
+<p>if buffer doesn&#39;t have type VirgilBuffer, String or Array of bytes</p>
+</div>
+      
+    </li>
+  
+    <li>
+      
+      
+        <span class='type'>(<tt>ArgumentError</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'>
+<p>if recipients doesn&#39;t have type Array or empty</p>
+</div>
       
     </li>
   
@@ -674,28 +799,28 @@ ArgumentError: recipients is not valid if recipients doesn&#39;t have type Array
       <pre class="lines">
 
 
-163
-164
-165
-166
-167
-168
-169
-170
-171
-172
-173
-174
-175
-176
-177
-178
-179
-180
-181</pre>
+139
+140
+141
+142
+143
+144
+145
+146
+147
+148
+149
+150
+151
+152
+153
+154
+155
+156
+157</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/virgil/sdk/high_level/virgil_key.rb', line 163</span>
+      <pre class="code"><span class="info file"># File 'lib/virgil/sdk/high_level/virgil_key.rb', line 139</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_decrypt_then_verify'>decrypt_then_verify</span><span class='lparen'>(</span><span class='id identifier rubyid_cipher_buffer'>cipher_buffer</span><span class='comma'>,</span> <span class='op'>*</span><span class='id identifier rubyid_cards'>cards</span><span class='rparen'>)</span>
 
@@ -724,7 +849,7 @@ ArgumentError: recipients is not valid if recipients doesn&#39;t have type Array
       <div class="method_details ">
   <h3 class="signature " id="export-instance_method">
   
-    #<strong>export</strong>(password = nil)  &#x21d2; <tt>Object</tt> 
+    #<strong>export</strong>(password = nil)  &#x21d2; <tt><span class='object_link'><a href="VirgilBuffer.html" title="Virgil::SDK::HighLevel::VirgilBuffer (class)">VirgilBuffer</a></span></tt> 
   
 
   
@@ -735,16 +860,29 @@ ArgumentError: recipients is not valid if recipients doesn&#39;t have type Array
     
 <p>Exports the VirgilKey to default format, specified in Crypto API.</p>
 
-<p>Returns:</p>
-
-<pre class="code ruby"><code class="ruby"><span class='const'>Key</span> <span class='id identifier rubyid_material'>material</span> <span class='id identifier rubyid_representation'>representation</span> <span class='id identifier rubyid_bytes'>bytes</span> <span class='id identifier rubyid_wrapped'>wrapped</span> <span class='id identifier rubyid_by'>by</span> <span class='const'><span class='object_link'><a href="VirgilBuffer.html" title="Virgil::SDK::HighLevel::VirgilBuffer (class)">VirgilBuffer</a></span></span>
-</code></pre>
-
 
   </div>
 </div>
 <div class="tags">
   
+<p class="tag_title">Returns:</p>
+<ul class="return">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt><span class='object_link'><a href="VirgilBuffer.html" title="Virgil::SDK::HighLevel::VirgilBuffer (class)">VirgilBuffer</a></span></tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'>
+<p>Key material representation bytes wrapped by VirgilBuffer</p>
+</div>
+      
+    </li>
+  
+</ul>
 
 </div><table class="source_code">
   <tr>
@@ -752,12 +890,12 @@ ArgumentError: recipients is not valid if recipients doesn&#39;t have type Array
       <pre class="lines">
 
 
-213
-214
-215</pre>
+181
+182
+183</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/virgil/sdk/high_level/virgil_key.rb', line 213</span>
+      <pre class="code"><span class="info file"># File 'lib/virgil/sdk/high_level/virgil_key.rb', line 181</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_export'>export</span><span class='lparen'>(</span><span class='id identifier rubyid_password'>password</span><span class='op'>=</span><span class='kw'>nil</span><span class='rparen'>)</span>
   <span class='const'><span class='object_link'><a href="VirgilBuffer.html" title="Virgil::SDK::HighLevel::VirgilBuffer (class)">VirgilBuffer</a></span></span><span class='period'>.</span><span class='id identifier rubyid_from_bytes'><span class='object_link'><a href="VirgilBuffer.html#from_bytes-class_method" title="Virgil::SDK::HighLevel::VirgilBuffer.from_bytes (method)">from_bytes</a></span></span><span class='lparen'>(</span><span class='id identifier rubyid_context'>context</span><span class='period'>.</span><span class='id identifier rubyid_crypto'>crypto</span><span class='period'>.</span><span class='id identifier rubyid_export_private_key'>export_private_key</span><span class='lparen'>(</span><span class='id identifier rubyid_private_key'>private_key</span><span class='comma'>,</span> <span class='id identifier rubyid_password'>password</span><span class='rparen'>)</span><span class='rparen'>)</span>
@@ -770,7 +908,7 @@ ArgumentError: recipients is not valid if recipients doesn&#39;t have type Array
       <div class="method_details ">
   <h3 class="signature " id="export_public_key-instance_method">
   
-    #<strong>export_public_key</strong>  &#x21d2; <tt>Object</tt> 
+    #<strong>export_public_key</strong>  &#x21d2; <tt><span class='object_link'><a href="VirgilBuffer.html" title="Virgil::SDK::HighLevel::VirgilBuffer (class)">VirgilBuffer</a></span></tt> 
   
 
   
@@ -781,15 +919,29 @@ ArgumentError: recipients is not valid if recipients doesn&#39;t have type Array
     
 <p>Exports the Public key value from current VirgilKey.</p>
 
-<p>Returns:</p>
-
-<pre class="code ruby"><code class="ruby">A new VirgilBuffer that contains Public Key value.</code></pre>
-
 
   </div>
 </div>
 <div class="tags">
   
+<p class="tag_title">Returns:</p>
+<ul class="return">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt><span class='object_link'><a href="VirgilBuffer.html" title="Virgil::SDK::HighLevel::VirgilBuffer (class)">VirgilBuffer</a></span></tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'>
+<p>A new VirgilBuffer that contains Public Key value.</p>
+</div>
+      
+    </li>
+  
+</ul>
 
 </div><table class="source_code">
   <tr>
@@ -797,13 +949,13 @@ ArgumentError: recipients is not valid if recipients doesn&#39;t have type Array
       <pre class="lines">
 
 
-222
-223
-224
-225</pre>
+188
+189
+190
+191</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/virgil/sdk/high_level/virgil_key.rb', line 222</span>
+      <pre class="code"><span class="info file"># File 'lib/virgil/sdk/high_level/virgil_key.rb', line 188</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_export_public_key'>export_public_key</span>
   <span class='id identifier rubyid_public_key'>public_key</span> <span class='op'>=</span> <span class='id identifier rubyid_context'>context</span><span class='period'>.</span><span class='id identifier rubyid_crypto'>crypto</span><span class='period'>.</span><span class='id identifier rubyid_extract_public_key'>extract_public_key</span><span class='lparen'>(</span><span class='id identifier rubyid_private_key'>private_key</span><span class='rparen'>)</span>
@@ -817,7 +969,7 @@ ArgumentError: recipients is not valid if recipients doesn&#39;t have type Array
       <div class="method_details ">
   <h3 class="signature " id="save-instance_method">
   
-    #<strong>save</strong>(key_name, key_password = nil)  &#x21d2; <tt>Object</tt> 
+    #<strong>save</strong>(key_name, key_password = nil)  &#x21d2; <tt><span class='object_link'><a href="" title="Virgil::SDK::HighLevel::VirgilKey (class)">VirgilKey</a></span></tt> 
   
 
   
@@ -828,28 +980,78 @@ ArgumentError: recipients is not valid if recipients doesn&#39;t have type Array
     
 <p>Saves a current VirgilKey in secure storage.</p>
 
-<p>Args:</p>
-
-<pre class="code ruby"><code class="ruby">key_name: The name of the key.
-key_password: The key password.</code></pre>
-
-<p>Returns:</p>
-
-<pre class="code ruby"><code class="ruby">An instance of VirgilKey class</code></pre>
-
-<p>Raises:</p>
-
-<pre class="code ruby"><code class="ruby"> KeyEntryAlreadyExistsException: if key storage already has item with such name
-ArgumentError: key_name is not valid if key_name is nil
-KeyStorageException: Destination folder doesn&#39;t exist or you don&#39;t have permission to write there</code></pre>
-
 
   </div>
 </div>
 <div class="tags">
+  <p class="tag_title">Parameters:</p>
+<ul class="param">
   
+    <li>
+      
+        <span class='name'>key_name</span>
+      
+      
+        <span class='type'>(<tt>String</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'>
+<p>The name of the key.</p>
+</div>
+      
+    </li>
+  
+    <li>
+      
+        <span class='name'>key_password</span>
+      
+      
+        <span class='type'>(<tt>String</tt>)</span>
+      
+      
+        <em class="default">(defaults to: <tt>nil</tt>)</em>
+      
+      
+        &mdash;
+        <div class='inline'>
+<p>The key password.</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+<p class="tag_title">Returns:</p>
+<ul class="return">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt><span class='object_link'><a href="" title="Virgil::SDK::HighLevel::VirgilKey (class)">VirgilKey</a></span></tt>)</span>
+      
+      
+      
+    </li>
+  
+</ul>
 <p class="tag_title">Raises:</p>
 <ul class="raise">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt>KeyEntryAlreadyExistsException</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'>
+<p>if key storage already has item with such name</p>
+</div>
+      
+    </li>
   
     <li>
       
@@ -857,6 +1059,26 @@ KeyStorageException: Destination folder doesn&#39;t exist or you don&#39;t have 
         <span class='type'>(<tt>ArgumentError</tt>)</span>
       
       
+      
+        &mdash;
+        <div class='inline'>
+<p>key_name is not valid if key_name is nil</p>
+</div>
+      
+    </li>
+  
+    <li>
+      
+      
+        <span class='type'>(<tt>KeyStorageException</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'>
+<p>if destination folder doesn&#39;t exist or you don&#39;t have permission to
+write there</p>
+</div>
       
     </li>
   
@@ -868,19 +1090,19 @@ KeyStorageException: Destination folder doesn&#39;t exist or you don&#39;t have 
       <pre class="lines">
 
 
-197
-198
-199
-200
-201
-202
-203
-204
-205
-206</pre>
+167
+168
+169
+170
+171
+172
+173
+174
+175
+176</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/virgil/sdk/high_level/virgil_key.rb', line 197</span>
+      <pre class="code"><span class="info file"># File 'lib/virgil/sdk/high_level/virgil_key.rb', line 167</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_save'>save</span><span class='lparen'>(</span><span class='id identifier rubyid_key_name'>key_name</span><span class='comma'>,</span> <span class='id identifier rubyid_key_password'>key_password</span><span class='op'>=</span><span class='kw'>nil</span><span class='rparen'>)</span>
 
@@ -900,7 +1122,7 @@ KeyStorageException: Destination folder doesn&#39;t exist or you don&#39;t have 
       <div class="method_details ">
   <h3 class="signature " id="sign-instance_method">
   
-    #<strong>sign</strong>(buffer)  &#x21d2; <tt>Object</tt> 
+    #<strong>sign</strong>(buffer)  &#x21d2; <tt><span class='object_link'><a href="VirgilBuffer.html" title="Virgil::SDK::HighLevel::VirgilBuffer (class)">VirgilBuffer</a></span></tt> 
   
 
   
@@ -911,24 +1133,68 @@ KeyStorageException: Destination folder doesn&#39;t exist or you don&#39;t have 
     
 <p>Generates a digital signature for specified data using current Virgil key.</p>
 
-<p>Args:</p>
-
-<pre class="code ruby"><code class="ruby">buffer: The data for which the digital signature will be generated.
-        buffer can be VirgilBuffer, utf8-encoded String or Array of bytes</code></pre>
-
-<p>Returns:</p>
-
-<pre class="code ruby"><code class="ruby">A new buffer that containing the result from performing the action.</code></pre>
-
-<p>Raises:</p>
-
-<pre class="code ruby"><code class="ruby">ArgumentError: Buffer has unsupported type if buffer doesn&#39;t have type VirgilBuffer, String or Array of bytes</code></pre>
-
 
   </div>
 </div>
 <div class="tags">
+  <p class="tag_title">Parameters:</p>
+<ul class="param">
   
+    <li>
+      
+        <span class='name'>buffer</span>
+      
+      
+        <span class='type'>(<tt><span class='object_link'><a href="VirgilBuffer.html" title="Virgil::SDK::HighLevel::VirgilBuffer (class)">VirgilBuffer</a></span></tt>, <tt>String</tt>, <tt>Crypto::Bytes</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'>
+<p>The data for which the digital signature will be generated. buffer can be
+VirgilBuffer, utf8-encoded String or Array of bytes</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+<p class="tag_title">Returns:</p>
+<ul class="return">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt><span class='object_link'><a href="VirgilBuffer.html" title="Virgil::SDK::HighLevel::VirgilBuffer (class)">VirgilBuffer</a></span></tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'>
+<p>A new buffer that containing the result from performing the action.</p>
+</div>
+      
+    </li>
+  
+</ul>
+<p class="tag_title">Raises:</p>
+<ul class="raise">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt>ArgumentError</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'>
+<p>if buffer doesn&#39;t have type VirgilBuffer, String or Array of bytes</p>
+</div>
+      
+    </li>
+  
+</ul>
 
 </div><table class="source_code">
   <tr>
@@ -936,23 +1202,23 @@ KeyStorageException: Destination folder doesn&#39;t exist or you don&#39;t have 
       <pre class="lines">
 
 
+86
+87
+88
+89
+90
+91
+92
+93
+94
+95
+96
+97
 98
-99
-100
-101
-102
-103
-104
-105
-106
-107
-108
-109
-110
-111</pre>
+99</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/virgil/sdk/high_level/virgil_key.rb', line 98</span>
+      <pre class="code"><span class="info file"># File 'lib/virgil/sdk/high_level/virgil_key.rb', line 86</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_sign'>sign</span><span class='lparen'>(</span><span class='id identifier rubyid_buffer'>buffer</span><span class='rparen'>)</span>
   <span class='id identifier rubyid_buffer_to_sign'>buffer_to_sign</span> <span class='op'>=</span> <span class='kw'>case</span> <span class='id identifier rubyid_buffer'>buffer</span><span class='period'>.</span><span class='id identifier rubyid_class'>class</span><span class='period'>.</span><span class='id identifier rubyid_name'>name</span><span class='period'>.</span><span class='id identifier rubyid_split'>split</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>::</span><span class='tstring_end'>&quot;</span></span><span class='rparen'>)</span><span class='period'>.</span><span class='id identifier rubyid_last'>last</span>
@@ -976,7 +1242,7 @@ KeyStorageException: Destination folder doesn&#39;t exist or you don&#39;t have 
       <div class="method_details ">
   <h3 class="signature " id="sign_then_encrypt-instance_method">
   
-    #<strong>sign_then_encrypt</strong>(buffer, recipients)  &#x21d2; <tt>Object</tt> 
+    #<strong>sign_then_encrypt</strong>(buffer, recipients)  &#x21d2; <tt><span class='object_link'><a href="VirgilBuffer.html" title="Virgil::SDK::HighLevel::VirgilBuffer (class)">VirgilBuffer</a></span></tt> 
   
 
   
@@ -985,16 +1251,68 @@ KeyStorageException: Destination folder doesn&#39;t exist or you don&#39;t have 
 </h3><div class="docstring">
   <div class="discussion">
     
-<p>Raises:</p>
-
-<pre class="code ruby"><code class="ruby">ArgumentError: Buffer has unsupported type if buffer doesn&#39;t have type VirgilBuffer, String or Array of bytes
-ArgumentError: recipients is not valid if recipients doesn&#39;t have type Array or empty</code></pre>
+<p>Encrypts and signs the data.</p>
 
 
   </div>
 </div>
 <div class="tags">
+  <p class="tag_title">Parameters:</p>
+<ul class="param">
   
+    <li>
+      
+        <span class='name'>buffer</span>
+      
+      
+        <span class='type'>(<tt><span class='object_link'><a href="VirgilBuffer.html" title="Virgil::SDK::HighLevel::VirgilBuffer (class)">VirgilBuffer</a></span></tt>, <tt>String</tt>, <tt>Crypto::Bytes</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'>
+<p>The data wrapped by VirgilBuffer to be encrypted and signed buffer can be
+VirgilBuffer, utf8-encoded String or Array of bytes</p>
+</div>
+      
+    </li>
+  
+    <li>
+      
+        <span class='name'>recipients</span>
+      
+      
+        <span class='type'>(<tt>Array&lt;<span class='object_link'><a href="VirgilCard.html" title="Virgil::SDK::HighLevel::VirgilCard (class)">VirgilCard</a></span>&gt;</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'>
+<p>The list of VirgilCard recipients.</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+<p class="tag_title">Returns:</p>
+<ul class="return">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt><span class='object_link'><a href="VirgilBuffer.html" title="Virgil::SDK::HighLevel::VirgilBuffer (class)">VirgilBuffer</a></span></tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'>
+<p>A new buffer that containing the encrypted and signed data</p>
+</div>
+      
+    </li>
+  
+</ul>
 <p class="tag_title">Raises:</p>
 <ul class="raise">
   
@@ -1004,6 +1322,25 @@ ArgumentError: recipients is not valid if recipients doesn&#39;t have type Array
         <span class='type'>(<tt>ArgumentError</tt>)</span>
       
       
+      
+        &mdash;
+        <div class='inline'>
+<p>if buffer doesn&#39;t have type VirgilBuffer, String or Array of bytes</p>
+</div>
+      
+    </li>
+  
+    <li>
+      
+      
+        <span class='type'>(<tt>ArgumentError</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'>
+<p>if recipients doesn&#39;t have type Array or empty</p>
+</div>
       
     </li>
   
@@ -1015,27 +1352,27 @@ ArgumentError: recipients is not valid if recipients doesn&#39;t have type Array
       <pre class="lines">
 
 
-128
-129
-130
-131
-132
-133
-134
-135
-136
-137
-138
-139
-140
-141
-142
-143
-144
-145</pre>
+109
+110
+111
+112
+113
+114
+115
+116
+117
+118
+119
+120
+121
+122
+123
+124
+125
+126</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/virgil/sdk/high_level/virgil_key.rb', line 128</span>
+      <pre class="code"><span class="info file"># File 'lib/virgil/sdk/high_level/virgil_key.rb', line 109</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_sign_then_encrypt'>sign_then_encrypt</span><span class='lparen'>(</span><span class='id identifier rubyid_buffer'>buffer</span><span class='comma'>,</span> <span class='id identifier rubyid_recipients'>recipients</span><span class='rparen'>)</span>
 
@@ -1065,7 +1402,7 @@ ArgumentError: recipients is not valid if recipients doesn&#39;t have type Array
 </div>
 
       <div id="footer">
-  Generated on Tue Apr 11 12:15:35 2017 by
+  Generated on Fri Apr 14 15:24:56 2017 by
   <a href="http://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
   0.9.8 (ruby-2.4.0).
 </div>

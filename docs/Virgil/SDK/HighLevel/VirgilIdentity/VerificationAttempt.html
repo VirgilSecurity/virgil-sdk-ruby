@@ -278,7 +278,7 @@
         <li class="public ">
   <span class="summary_signature">
     
-      <a href="#confirm-instance_method" title="#confirm (instance method)">#<strong>confirm</strong>(confirmation)  &#x21d2; Object </a>
+      <a href="#confirm-instance_method" title="#confirm (instance method)">#<strong>confirm</strong>(confirmation)  &#x21d2; ValidationToken </a>
     
 
     
@@ -294,7 +294,7 @@
   
     <span class="summary_desc"><div class='inline'>
 <p>Confirms an identity and generates a validation token that can be used to
-perform operations like  Publish and Revoke global Cards.</p>
+perform operations like Publish and Revoke global Cards.</p>
 </div></span>
   
 </li>
@@ -611,7 +611,7 @@ perform operations like  Publish and Revoke global Cards.</p>
       <div class="method_details first">
   <h3 class="signature first" id="confirm-instance_method">
   
-    #<strong>confirm</strong>(confirmation)  &#x21d2; <tt>Object</tt> 
+    #<strong>confirm</strong>(confirmation)  &#x21d2; <tt><span class='object_link'><a href="ValidationToken.html" title="Virgil::SDK::HighLevel::VirgilIdentity::ValidationToken (class)">ValidationToken</a></span></tt> 
   
 
   
@@ -621,23 +621,52 @@ perform operations like  Publish and Revoke global Cards.</p>
   <div class="discussion">
     
 <p>Confirms an identity and generates a validation token that can be used to
-perform operations like</p>
-
-<pre class="code ruby"><code class="ruby">Publish and Revoke global Cards.</code></pre>
-
-<p>Args:</p>
-
-<pre class="code ruby"><code class="ruby">confirmation: an instance of EmailConfirmation class with defined own confirmation code that was received on email box.</code></pre>
-
-<p>Returns:</p>
-
-<pre class="code ruby"><code class="ruby">a new instance of ValidationToken class.</code></pre>
+perform operations like Publish and Revoke global Cards.</p>
 
 
   </div>
 </div>
 <div class="tags">
+  <p class="tag_title">Parameters:</p>
+<ul class="param">
   
+    <li>
+      
+        <span class='name'>confirmation</span>
+      
+      
+        <span class='type'>(<tt><span class='object_link'><a href="EmailConfirmation.html" title="Virgil::SDK::HighLevel::VirgilIdentity::EmailConfirmation (class)">EmailConfirmation</a></span></tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'>
+<p>confirmation with defined own confirmation code that was received on email
+box.</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+<p class="tag_title">Returns:</p>
+<ul class="return">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt><span class='object_link'><a href="ValidationToken.html" title="Virgil::SDK::HighLevel::VirgilIdentity::ValidationToken (class)">ValidationToken</a></span></tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'>
+<p>.</p>
+</div>
+      
+    </li>
+  
+</ul>
 <p class="tag_title">Raises:</p>
 <ul class="raise">
   
@@ -658,15 +687,15 @@ perform operations like</p>
       <pre class="lines">
 
 
+58
+59
+60
 61
 62
-63
-64
-65
-66</pre>
+63</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/virgil/sdk/high_level/virgil_identity/verification_attempt.rb', line 61</span>
+      <pre class="code"><span class="info file"># File 'lib/virgil/sdk/high_level/virgil_identity/verification_attempt.rb', line 58</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_confirm'>confirm</span><span class='lparen'>(</span><span class='id identifier rubyid_confirmation'>confirmation</span><span class='rparen'>)</span>
   <span class='id identifier rubyid_raise'>raise</span> <span class='const'><span class='object_link'><a href="ConfirmationIsNotValid.html" title="Virgil::SDK::HighLevel::VirgilIdentity::ConfirmationIsNotValid (class)">ConfirmationIsNotValid</a></span></span> <span class='kw'>unless</span> <span class='id identifier rubyid_confirmation'>confirmation</span>
@@ -684,7 +713,7 @@ perform operations like</p>
 </div>
 
       <div id="footer">
-  Generated on Tue Apr 11 12:15:36 2017 by
+  Generated on Fri Apr 14 15:24:58 2017 by
   <a href="http://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
   0.9.8 (ruby-2.4.0).
 </div>

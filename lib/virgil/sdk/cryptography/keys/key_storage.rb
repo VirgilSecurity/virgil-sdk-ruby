@@ -79,12 +79,8 @@ module Virgil
 
 
           # Stores the key to the given alias.
-          #
-          # Args:
-          #   storage_item: The storage item to be kept
-          #
-          # Raises:
-          #   KeyEntryAlreadyExistsException: if key storage already has item with such name
+          # @param storage_item [StorageItem] The storage item to be kept
+          # @raise [KeyEntryAlreadyExistsException] if key storage already has item with such name
           def store(storage_item)
 
             validate_storage_folder
@@ -101,16 +97,9 @@ module Virgil
 
 
           # Loads the key associated with the given alias.
-          #
-          # Args:
-          #   item_name: The alias name.
-          #
-          # Returns:
-          #   The requested key, or null if the given alias does not exist or does
-          #    not identify a key-related entry.
-          #
-          # Raises:
-          #   KeyEntryNotFoundException: if key storage doesn't have item with such name
+          # @param item_name [String] The alias name.
+          # @return [StorageItem] The requested key
+          # @raise [KeyEntryNotFoundException] if key storage doesn't have item with such name
           def load(item_name)
 
             validate_storage_folder
@@ -125,13 +114,9 @@ module Virgil
 
 
           # Checks if the given alias exists in this keystore.
-          #
-          # Args:
-          #   item_name: The alias name.
-          #
-          # Returns:
-          #   true if the given alias exists in this keystore.
-          #   false if the given alias doesn't exist in this keystore.
+          # @param item_name [String] The alias name.
+          # @return [Boolean]  true if the given alias exists in this keystore
+          #   and false if the given alias doesn't exist in this keystore.
           def exists?(item_name)
 
             File.exist?(item_file_path(item_name))
@@ -140,12 +125,8 @@ module Virgil
 
 
           # Delete the key associated with the given alias.
-          #
-          # Args:
-          #   item_name: The alias name.
-          #
-          # Raises:
-          #   KeyEntryNotFoundException: if key storage doesn't have item with such name
+          # @param item_name [String] The alias name.
+          # @raise [KeyEntryNotFoundException] if key storage doesn't have item with such name
           def delete(item_name)
 
             validate_storage_folder

@@ -37,12 +37,10 @@ module Virgil
     module Client
       module HTTP
         # Http request wrapper.
-        #
-        # Attributes:
-        #   endpoint: request endpoint
-        #   body: request body
-        #   headers: dict of request additional headers
-        #   method: http request method
+        # @attr [String] endpoint request endpoint
+        # @attr [Hash] body request body
+        # @attr [Hash] headers dict of request additional unencoded HTTP headers(key/value pairs)
+        # @attr [String] method http request method
         Request = Struct.new(:endpoint, :body, :headers, :method) do
           # Constructs new Request object.
           def initialize(attributes)

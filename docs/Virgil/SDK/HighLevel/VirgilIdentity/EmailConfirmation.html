@@ -162,7 +162,7 @@
         <li class="public ">
   <span class="summary_signature">
     
-      <a href="#confirm_and_grab_validation_token-instance_method" title="#confirm_and_grab_validation_token (instance method)">#<strong>confirm_and_grab_validation_token</strong>(verification_attempt, client)  &#x21d2; Object </a>
+      <a href="#confirm_and_grab_validation_token-instance_method" title="#confirm_and_grab_validation_token (instance method)">#<strong>confirm_and_grab_validation_token</strong>(verification_attempt, client)  &#x21d2; String </a>
     
 
     
@@ -234,7 +234,22 @@ confirm an identity.</p>
   </div>
 </div>
 <div class="tags">
+  <p class="tag_title">Parameters:</p>
+<ul class="param">
   
+    <li>
+      
+        <span class='name'>confirmation_code</span>
+      
+      
+        <span class='type'>(<tt>String</tt>)</span>
+      
+      
+      
+    </li>
+  
+</ul>
+
 
 </div><table class="source_code">
   <tr>
@@ -242,12 +257,12 @@ confirm an identity.</p>
       <pre class="lines">
 
 
-44
 45
-46</pre>
+46
+47</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/virgil/sdk/high_level/virgil_identity/email_confirmation.rb', line 44</span>
+      <pre class="code"><span class="info file"># File 'lib/virgil/sdk/high_level/virgil_identity/email_confirmation.rb', line 45</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_initialize'>initialize</span><span class='lparen'>(</span><span class='id identifier rubyid_confirmation_code'>confirmation_code</span><span class='rparen'>)</span>
   <span class='ivar'>@confirmation_code</span> <span class='op'>=</span> <span class='id identifier rubyid_confirmation_code'>confirmation_code</span>
@@ -315,7 +330,7 @@ confirm an identity.</p>
       <div class="method_details first">
   <h3 class="signature first" id="confirm_and_grab_validation_token-instance_method">
   
-    #<strong>confirm_and_grab_validation_token</strong>(verification_attempt, client)  &#x21d2; <tt>Object</tt> 
+    #<strong>confirm_and_grab_validation_token</strong>(verification_attempt, client)  &#x21d2; <tt>String</tt> 
   
 
   
@@ -327,20 +342,65 @@ confirm an identity.</p>
 <p>Confirms the identity using confirmation code, that has been generated to
 confirm an identity.</p>
 
-<p>Args:</p>
-
-<pre class="code ruby"><code class="ruby">verification_attempt: an instance of the VerificationAttempt class.
-client: an instance of the Client::VirgilClient class.</code></pre>
-
-<p>Returns:</p>
-
-<pre class="code ruby"><code class="ruby">A string that represent an identity validation token.</code></pre>
-
 
   </div>
 </div>
 <div class="tags">
+  <p class="tag_title">Parameters:</p>
+<ul class="param">
   
+    <li>
+      
+        <span class='name'>verification_attempt</span>
+      
+      
+        <span class='type'>(<tt><span class='object_link'><a href="VerificationAttempt.html" title="Virgil::SDK::HighLevel::VirgilIdentity::VerificationAttempt (class)">VerificationAttempt</a></span></tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'>
+<p>.</p>
+</div>
+      
+    </li>
+  
+    <li>
+      
+        <span class='name'>client</span>
+      
+      
+        <span class='type'>(<tt><span class='object_link'><a href="../../Client/VirgilClient.html" title="Virgil::SDK::Client::VirgilClient (class)">Client::VirgilClient</a></span></tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'>
+<p>.</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+<p class="tag_title">Returns:</p>
+<ul class="return">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt>String</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'>
+<p>a value of identity validation token.</p>
+</div>
+      
+    </li>
+  
+</ul>
 
 </div><table class="source_code">
   <tr>
@@ -348,18 +408,18 @@ client: an instance of the Client::VirgilClient class.</code></pre>
       <pre class="lines">
 
 
+53
+54
+55
 56
 57
 58
 59
 60
-61
-62
-63
-64</pre>
+61</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/virgil/sdk/high_level/virgil_identity/email_confirmation.rb', line 56</span>
+      <pre class="code"><span class="info file"># File 'lib/virgil/sdk/high_level/virgil_identity/email_confirmation.rb', line 53</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_confirm_and_grab_validation_token'>confirm_and_grab_validation_token</span><span class='lparen'>(</span><span class='id identifier rubyid_verification_attempt'>verification_attempt</span><span class='comma'>,</span> <span class='id identifier rubyid_client'>client</span><span class='rparen'>)</span>
   <span class='id identifier rubyid_token'>token</span> <span class='op'>=</span> <span class='id identifier rubyid_client'>client</span><span class='period'>.</span><span class='id identifier rubyid_confirm_identity'>confirm_identity</span><span class='lparen'>(</span><span class='id identifier rubyid_verification_attempt'>verification_attempt</span><span class='period'>.</span><span class='id identifier rubyid_action_id'>action_id</span><span class='comma'>,</span>
@@ -380,7 +440,7 @@ client: an instance of the Client::VirgilClient class.</code></pre>
 </div>
 
       <div id="footer">
-  Generated on Tue Apr 11 12:15:36 2017 by
+  Generated on Fri Apr 14 15:24:58 2017 by
   <a href="http://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
   0.9.8 (ruby-2.4.0).
 </div>

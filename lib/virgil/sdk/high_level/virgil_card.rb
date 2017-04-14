@@ -42,9 +42,12 @@ module Virgil
         # An instance of the class VirgilContext that manages the VirgilApi dependencies during run time.
         attr_reader :context
 
-        # An instance of the class Card representing cards information.
+        # representing card information.
+        # @return [Client::Card]
         attr_reader :card
 
+        # manages the VirgilApi dependencies during run time.
+        # @return [VirgilContext]
         protected :context, :card
 
         # Initializes a new instance of the {VirgilCard} class.
@@ -63,19 +66,22 @@ module Virgil
         end
 
 
-        # returns unique identifier for the Virgil Card.
+        # unique identifier for the Virgil Card.
+        # @return [String]
         def id
           card.id
         end
 
 
-        # returns the value of current Virgil Card identity.
+        # the value of current Virgil Card identity.
+        # @return [String]
         def identity
           card.identity
         end
 
 
-        # returns the identityType of current Virgil Card identity.
+        # the identityType of current Virgil Card identity.
+        # @return [String]
         def identity_type
           card.identity_type
         end
@@ -107,21 +113,17 @@ module Virgil
 
 
         # Exports card's snapshot.
-        #
-        # Returns:
-        #   base64-encoded json representation of card's content_snapshot and meta.
+        # @return [String] base64-encoded json representation of card's content_snapshot and meta.
         def export
           card.export
         end
 
 
         # Publish synchronously the card into application Virgil Services scope
-        #
-        # Raises:
-        #   Virgil::SDK::Client::HTTP::BaseConnection::ApiError if access_token is invalid or
-        #    Virgil Card with the same fingerprint already exists in Virgil Security services
-        #   AppCredentialsException:  For this action we need app_id and app_key
-        #    if application credentials are missing
+        # @raise [Virgil::SDK::Client::HTTP::BaseConnection::ApiError] if access_token is invalid or
+        #   Virgil Card with the same fingerprint already exists in Virgil Security services
+        # @raise [AppCredentialsException] if application credentials' app_id and app_key are missing
+        # @raise [NotImplementedError] if the card is Global
         def publish
 
           raise NotImplementedError.new("Current card isn't local!") unless @card.scope == Client::Card::APPLICATION
@@ -135,9 +137,9 @@ module Virgil
 
 
         # Publish synchronously the global card into application Virgil Services scope
-        #
-        # Raises:
-        # Virgil Card with the same fingerprint already exists in Virgil Security services
+        # @raise [Virgil::SDK::Client::HTTP::BaseConnection::ApiError] if
+        #   Virgil Card with the same fingerprint already exists in Virgil Security services
+        # @raise [NotImplementedError] if the card is Local
         def publish_as_global(validation_token)
 
           raise NotImplementedError.new("Current card isn't global!") unless @card.scope == Client::Card::GLOBAL
@@ -149,15 +151,10 @@ module Virgil
 
 
         # Encrypts the specified data for current Virgil card recipient
-        #
-        # Args:
-        #   buffer: The data to be encrypted. It can be VirgilBuffer, utf8-String or Array of bytes
-        #
-        # Returns:
-        #   Encrypted data for current Virgil card recipient
-        #
-        # Raises:
-        #   ArgumentError: Buffer has unsupported type if buffer doesn't have type VirgilBuffer, String or Array of bytes
+        # @param buffer [VirgilBuffer, Crypto::Bytes, String] The data to be encrypted.
+        #   It can be VirgilBuffer, utf8-String or Array of bytes
+        # @return [VirgilBuffer] Encrypted data for current Virgil card recipient
+        # @raise [ArgumentError] if buffer doesn't have type VirgilBuffer, String or Array of bytes
         def encrypt(buffer)
 
           buffer_to_encrypt = case buffer.class.name.split("::").last
@@ -177,13 +174,9 @@ module Virgil
 
 
         # Initiates an identity verification process for current Card identity type. It is only working for
-        #  Global identity types like Email.
-        #
-        # Args:
-        #   identity_options: The data to be encrypted.
-        #
-        # Returns:
-        #   An instance of VirgilIdentity::VerificationAttempt that contains
+        # Global identity types like Email.
+        # @param identity_options [VirgilIdentity::VerificationOptions] The data to be encrypted.
+        # @return [VirgilIdentity::VerificationAttempt] that contains
         #   information about action and etc
         def check_identity(identity_options = nil)
           action_id = context.client.verify_identity(identity, identity_type)
@@ -193,18 +186,14 @@ module Virgil
         end
 
 
-        #  Verifies the specified buffer and signature with current VirgilCard recipient
-        #
-        # Args:
-        #   buffer: The data to be verified. It can be VirgilBuffer, utf8-encoded String or Array of bytes
-        #   signature: The signature used to verify the data integrity. It can be VirgilBuffer, base64-encoded String or Array of bytes
-        #
-        # Returns:
-        #    true if signature is valid, false otherwise.
-        #
-        # Raises:
-        #   ArgumentError: Buffer has unsupported type if buffer doesn't have type VirgilBuffer, Array of bytes or utf8-encoded String
-        #   ArgumentError: Signature has unsupported type if signature doesn't have type VirgilBuffer, base64-encoded String or Array of bytes
+        # Verifies the specified buffer and signature with current VirgilCard recipient
+        # @param buffer [VirgilBuffer, Crypto::Bytes, String] The data to be verified.
+        #   It can be VirgilBuffer, utf8-encoded String or Array of bytes
+        # @param signature [VirgilBuffer, Crypto::Bytes, String] The signature used to verify the data integrity.
+        #   It can be VirgilBuffer, base64-encoded String or Array of bytes
+        # @return [Boolean] true if signature is valid, false otherwise.
+        # @raise [ArgumentError] if buffer doesn't have type VirgilBuffer, Array of bytes or utf8-encoded String
+        # @raise [ArgumentError] if signature doesn't have type VirgilBuffer, base64-encoded String or Array of bytes
         def verify(buffer, signature)
 
           buffer_to_verify = case buffer.class.name.split("::").last

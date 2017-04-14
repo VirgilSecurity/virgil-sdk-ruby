@@ -43,13 +43,17 @@ module Virgil
       class VirgilCardVerifierInfo
 
         # Card identifier
+        # @return [String]
         attr_accessor :card_id
 
-        # Public key value wrapped by an instance of the {VirgilBuffer} class used for signature verification.
+        # Public key value wrapped by an instance of the {VirgilBuffer} used for signature verification.
+        # @return [VirgilBuffer]
         attr_accessor :public_key_value
 
 
         # Initializes a new instance of the {VirgilCardVerifierInfo} class.
+        # @param card_id [String]
+        # @param public_key_value [VirgilBuffer]
         def initialize(card_id, public_key_value)
            @card_id = card_id
           @public_key_value = public_key_value

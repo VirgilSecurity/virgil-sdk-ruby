@@ -185,7 +185,7 @@
         <li class="public ">
   <span class="summary_signature">
     
-      <a href="#convert_to_native-class_method" title="convert_to_native (class method)">.<strong>convert_to_native</strong>(algorithm)  &#x21d2; Object </a>
+      <a href="#convert_to_native-class_method" title="convert_to_native (class method)">.<strong>convert_to_native</strong>(algorithm)  &#x21d2; Integer </a>
     
 
     
@@ -200,7 +200,7 @@
 
   
     <span class="summary_desc"><div class='inline'>
-<p>Raises:   UnknownAlgorithmException: if algorithm is not supported.</p>
+<p>Converts algorithm enum value to native value.</p>
 </div></span>
   
 </li>
@@ -218,7 +218,7 @@
       <div class="method_details first">
   <h3 class="signature first" id="convert_to_native-class_method">
   
-    .<strong>convert_to_native</strong>(algorithm)  &#x21d2; <tt>Object</tt> 
+    .<strong>convert_to_native</strong>(algorithm)  &#x21d2; <tt>Integer</tt> 
   
 
   
@@ -227,15 +227,69 @@
 </h3><div class="docstring">
   <div class="discussion">
     
-<p>Raises:</p>
-
-<pre class="code ruby"><code class="ruby">UnknownAlgorithmException: if algorithm is not supported.</code></pre>
+<p>Converts algorithm enum value to native value</p>
 
 
   </div>
 </div>
 <div class="tags">
+  <p class="tag_title">Parameters:</p>
+<ul class="param">
   
+    <li>
+      
+        <span class='name'>algorithm</span>
+      
+      
+        <span class='type'>(<tt><span class='object_link'><a href="" title="Virgil::SDK::Cryptography::Hashes::HashAlgorithm (class)">HashAlgorithm</a></span></tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'>
+<p>algorithm for conversion.</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+<p class="tag_title">Returns:</p>
+<ul class="return">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt>Integer</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'>
+<p>Native library algorithm id.</p>
+</div>
+      
+    </li>
+  
+</ul>
+<p class="tag_title">Raises:</p>
+<ul class="raise">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt><span class='object_link'><a href="HashAlgorithm/UnknownAlgorithmException.html" title="Virgil::SDK::Cryptography::Hashes::HashAlgorithm::UnknownAlgorithmException (class)">UnknownAlgorithmException</a></span></tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'>
+<p>if algorithm is not supported.</p>
+</div>
+      
+    </li>
+  
+</ul>
 
 </div><table class="source_code">
   <tr>
@@ -243,21 +297,21 @@
       <pre class="lines">
 
 
-81
-82
-83
-84
-85
-86</pre>
+76
+77
+78
+79
+80
+81</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/virgil/sdk/cryptography/hashes/hash_algorithm.rb', line 81</span>
+      <pre class="code"><span class="info file"># File 'lib/virgil/sdk/cryptography/hashes/hash_algorithm.rb', line 76</span>
 
 <span class='kw'>def</span> <span class='kw'>self</span><span class='period'>.</span><span class='id identifier rubyid_convert_to_native'>convert_to_native</span><span class='lparen'>(</span><span class='id identifier rubyid_algorithm'>algorithm</span><span class='rparen'>)</span>
   <span class='kw'>if</span> <span class='const'><span class='object_link'><a href="#ALGORITHMS_TO_NATIVE-constant" title="Virgil::SDK::Cryptography::Hashes::HashAlgorithm::ALGORITHMS_TO_NATIVE (constant)">ALGORITHMS_TO_NATIVE</a></span></span><span class='period'>.</span><span class='id identifier rubyid_has_key?'>has_key?</span><span class='lparen'>(</span><span class='id identifier rubyid_algorithm'>algorithm</span><span class='rparen'>)</span>
     <span class='kw'>return</span> <span class='const'><span class='object_link'><a href="#ALGORITHMS_TO_NATIVE-constant" title="Virgil::SDK::Cryptography::Hashes::HashAlgorithm::ALGORITHMS_TO_NATIVE (constant)">ALGORITHMS_TO_NATIVE</a></span></span><span class='lbracket'>[</span><span class='id identifier rubyid_algorithm'>algorithm</span><span class='rbracket'>]</span>
   <span class='kw'>end</span>
-  <span class='id identifier rubyid_raise'>raise</span> <span class='id identifier rubyid_cls'>cls</span><span class='period'>.</span><span class='const'>UnknownAlgorithmException</span><span class='lparen'>(</span><span class='id identifier rubyid_algorithm'>algorithm</span><span class='rparen'>)</span>
+  <span class='id identifier rubyid_raise'>raise</span> <span class='const'><span class='object_link'><a href="HashAlgorithm/UnknownAlgorithmException.html" title="Virgil::SDK::Cryptography::Hashes::HashAlgorithm::UnknownAlgorithmException (class)">UnknownAlgorithmException</a></span></span><span class='lparen'>(</span><span class='id identifier rubyid_algorithm'>algorithm</span><span class='rparen'>)</span>
 <span class='kw'>end</span></pre>
     </td>
   </tr>
@@ -269,7 +323,7 @@
 </div>
 
       <div id="footer">
-  Generated on Tue Apr 11 12:15:36 2017 by
+  Generated on Fri Apr 14 15:24:57 2017 by
   <a href="http://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
   0.9.8 (ruby-2.4.0).
 </div>

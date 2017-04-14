@@ -266,7 +266,7 @@
         <li class="public ">
   <span class="summary_signature">
     
-      <a href="#load-instance_method" title="#load (instance method)">#<strong>load</strong>(item_name)  &#x21d2; Object </a>
+      <a href="#load-instance_method" title="#load (instance method)">#<strong>load</strong>(item_name)  &#x21d2; StorageItem </a>
     
 
     
@@ -490,19 +490,31 @@
     
 <p>Delete the key associated with the given alias.</p>
 
-<p>Args:</p>
-
-<pre class="code ruby"><code class="ruby">item_name: The alias name.</code></pre>
-
-<p>Raises:</p>
-
-<pre class="code ruby"><code class="ruby">KeyEntryNotFoundException: if key storage doesn&#39;t have item with such name</code></pre>
-
 
   </div>
 </div>
 <div class="tags">
+  <p class="tag_title">Parameters:</p>
+<ul class="param">
   
+    <li>
+      
+        <span class='name'>item_name</span>
+      
+      
+        <span class='type'>(<tt>String</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'>
+<p>The alias name.</p>
+</div>
+      
+    </li>
+  
+</ul>
+
 <p class="tag_title">Raises:</p>
 <ul class="raise">
   
@@ -512,6 +524,11 @@
         <span class='type'>(<tt><span class='object_link'><a href="KeyStorage/KeyEntryNotFoundException.html" title="Virgil::SDK::Cryptography::Keys::KeyStorage::KeyEntryNotFoundException (class)">KeyEntryNotFoundException</a></span></tt>)</span>
       
       
+      
+        &mdash;
+        <div class='inline'>
+<p>if key storage doesn&#39;t have item with such name</p>
+</div>
       
     </li>
   
@@ -523,17 +540,17 @@
       <pre class="lines">
 
 
-149
-150
-151
-152
-153
-154
-155
-156</pre>
+130
+131
+132
+133
+134
+135
+136
+137</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/virgil/sdk/cryptography/keys/key_storage.rb', line 149</span>
+      <pre class="code"><span class="info file"># File 'lib/virgil/sdk/cryptography/keys/key_storage.rb', line 130</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_delete'>delete</span><span class='lparen'>(</span><span class='id identifier rubyid_item_name'>item_name</span><span class='rparen'>)</span>
 
@@ -562,20 +579,31 @@
     
 <p>Checks if the given alias exists in this keystore.</p>
 
-<p>Args:</p>
-
-<pre class="code ruby"><code class="ruby">item_name: The alias name.</code></pre>
-
-<p>Returns:</p>
-
-<pre class="code ruby"><code class="ruby">true if the given alias exists in this keystore.
-false if the given alias doesn&#39;t exist in this keystore.</code></pre>
-
 
   </div>
 </div>
 <div class="tags">
+  <p class="tag_title">Parameters:</p>
+<ul class="param">
   
+    <li>
+      
+        <span class='name'>item_name</span>
+      
+      
+        <span class='type'>(<tt>String</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'>
+<p>The alias name.</p>
+</div>
+      
+    </li>
+  
+</ul>
+
 <p class="tag_title">Returns:</p>
 <ul class="return">
   
@@ -585,6 +613,12 @@ false if the given alias doesn&#39;t exist in this keystore.</code></pre>
         <span class='type'>(<tt>Boolean</tt>)</span>
       
       
+      
+        &mdash;
+        <div class='inline'>
+<p>true if the given alias exists in this keystore and false if the given
+alias doesn&#39;t exist in this keystore.</p>
+</div>
       
     </li>
   
@@ -596,14 +630,14 @@ false if the given alias doesn&#39;t exist in this keystore.</code></pre>
       <pre class="lines">
 
 
-135
-136
-137
-138
-139</pre>
+120
+121
+122
+123
+124</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/virgil/sdk/cryptography/keys/key_storage.rb', line 135</span>
+      <pre class="code"><span class="info file"># File 'lib/virgil/sdk/cryptography/keys/key_storage.rb', line 120</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_exists?'>exists?</span><span class='lparen'>(</span><span class='id identifier rubyid_item_name'>item_name</span><span class='rparen'>)</span>
 
@@ -618,7 +652,7 @@ false if the given alias doesn&#39;t exist in this keystore.</code></pre>
       <div class="method_details ">
   <h3 class="signature " id="load-instance_method">
   
-    #<strong>load</strong>(item_name)  &#x21d2; <tt>Object</tt> 
+    #<strong>load</strong>(item_name)  &#x21d2; <tt><span class='object_link'><a href="StorageItem.html" title="Virgil::SDK::Cryptography::Keys::StorageItem (class)">StorageItem</a></span></tt> 
   
 
   
@@ -629,24 +663,49 @@ false if the given alias doesn&#39;t exist in this keystore.</code></pre>
     
 <p>Loads the key associated with the given alias.</p>
 
-<p>Args:</p>
-
-<pre class="code ruby"><code class="ruby">item_name: The alias name.</code></pre>
-
-<p>Returns:</p>
-
-<pre class="code ruby"><code class="ruby">The requested key, or null if the given alias does not exist or does
- not identify a key-related entry.</code></pre>
-
-<p>Raises:</p>
-
-<pre class="code ruby"><code class="ruby">KeyEntryNotFoundException: if key storage doesn&#39;t have item with such name</code></pre>
-
 
   </div>
 </div>
 <div class="tags">
+  <p class="tag_title">Parameters:</p>
+<ul class="param">
   
+    <li>
+      
+        <span class='name'>item_name</span>
+      
+      
+        <span class='type'>(<tt>String</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'>
+<p>The alias name.</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+<p class="tag_title">Returns:</p>
+<ul class="return">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt><span class='object_link'><a href="StorageItem.html" title="Virgil::SDK::Cryptography::Keys::StorageItem (class)">StorageItem</a></span></tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'>
+<p>The requested key</p>
+</div>
+      
+    </li>
+  
+</ul>
 <p class="tag_title">Raises:</p>
 <ul class="raise">
   
@@ -656,6 +715,11 @@ false if the given alias doesn&#39;t exist in this keystore.</code></pre>
         <span class='type'>(<tt><span class='object_link'><a href="KeyStorage/KeyEntryNotFoundException.html" title="Virgil::SDK::Cryptography::Keys::KeyStorage::KeyEntryNotFoundException (class)">KeyEntryNotFoundException</a></span></tt>)</span>
       
       
+      
+        &mdash;
+        <div class='inline'>
+<p>if key storage doesn&#39;t have item with such name</p>
+</div>
       
     </li>
   
@@ -667,20 +731,20 @@ false if the given alias doesn&#39;t exist in this keystore.</code></pre>
       <pre class="lines">
 
 
-114
-115
-116
-117
-118
-119
-120
-121
-122
-123
-124</pre>
+103
+104
+105
+106
+107
+108
+109
+110
+111
+112
+113</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/virgil/sdk/cryptography/keys/key_storage.rb', line 114</span>
+      <pre class="code"><span class="info file"># File 'lib/virgil/sdk/cryptography/keys/key_storage.rb', line 103</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_load'>load</span><span class='lparen'>(</span><span class='id identifier rubyid_item_name'>item_name</span><span class='rparen'>)</span>
 
@@ -712,19 +776,49 @@ false if the given alias doesn&#39;t exist in this keystore.</code></pre>
     
 <p>Stores the key to the given alias.</p>
 
-<p>Args:</p>
-
-<pre class="code ruby"><code class="ruby">storage_item: The storage item to be kept</code></pre>
-
-<p>Raises:</p>
-
-<pre class="code ruby"><code class="ruby">KeyEntryAlreadyExistsException: if key storage already has item with such name</code></pre>
-
 
   </div>
 </div>
 <div class="tags">
+  <p class="tag_title">Parameters:</p>
+<ul class="param">
   
+    <li>
+      
+        <span class='name'>storage_item</span>
+      
+      
+        <span class='type'>(<tt><span class='object_link'><a href="StorageItem.html" title="Virgil::SDK::Cryptography::Keys::StorageItem (class)">StorageItem</a></span></tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'>
+<p>The storage item to be kept</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+<p class="tag_title">Raises:</p>
+<ul class="raise">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt><span class='object_link'><a href="KeyStorage/KeyEntryAlreadyExistsException.html" title="Virgil::SDK::Cryptography::Keys::KeyStorage::KeyEntryAlreadyExistsException (class)">KeyEntryAlreadyExistsException</a></span></tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'>
+<p>if key storage already has item with such name</p>
+</div>
+      
+    </li>
+  
+</ul>
 
 </div><table class="source_code">
   <tr>
@@ -732,6 +826,10 @@ false if the given alias doesn&#39;t exist in this keystore.</code></pre>
       <pre class="lines">
 
 
+84
+85
+86
+87
 88
 89
 90
@@ -740,14 +838,10 @@ false if the given alias doesn&#39;t exist in this keystore.</code></pre>
 93
 94
 95
-96
-97
-98
-99
-100</pre>
+96</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/virgil/sdk/cryptography/keys/key_storage.rb', line 88</span>
+      <pre class="code"><span class="info file"># File 'lib/virgil/sdk/cryptography/keys/key_storage.rb', line 84</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_store'>store</span><span class='lparen'>(</span><span class='id identifier rubyid_storage_item'>storage_item</span><span class='rparen'>)</span>
 
@@ -772,7 +866,7 @@ false if the given alias doesn&#39;t exist in this keystore.</code></pre>
 </div>
 
       <div id="footer">
-  Generated on Tue Apr 11 12:15:35 2017 by
+  Generated on Fri Apr 14 15:24:57 2017 by
   <a href="http://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
   0.9.8 (ruby-2.4.0).
 </div>

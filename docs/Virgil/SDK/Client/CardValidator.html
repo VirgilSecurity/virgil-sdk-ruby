@@ -462,7 +462,7 @@
 </h3><div class="docstring">
   <div class="discussion">
     
-<p>Add default service verifier to validator</p>
+<p>Add default service verifier to validator.</p>
 
 
   </div>
@@ -509,16 +509,47 @@
     
 <p>Add signature verifier.</p>
 
-<p>Args:</p>
-
-<pre class="code ruby"><code class="ruby">card_id: Card identifier
-public_key: Public key used for signature verification.</code></pre>
-
 
   </div>
 </div>
 <div class="tags">
+  <p class="tag_title">Parameters:</p>
+<ul class="param">
   
+    <li>
+      
+        <span class='name'>card_id</span>
+      
+      
+        <span class='type'>(<tt>String</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'>
+<p>Card identifier.</p>
+</div>
+      
+    </li>
+  
+    <li>
+      
+        <span class='name'>public_key</span>
+      
+      
+        <span class='type'>(<tt><span class='object_link'><a href="../Cryptography/Keys/PublicKey.html" title="Virgil::SDK::Cryptography::Keys::PublicKey (class)">Cryptography::Keys::PublicKey</a></span></tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'>
+<p>Public key used for signature verification.</p>
+</div>
+      
+    </li>
+  
+</ul>
+
 
 </div><table class="source_code">
   <tr>
@@ -526,12 +557,12 @@ public_key: Public key used for signature verification.</code></pre>
       <pre class="lines">
 
 
+66
 67
-68
-69</pre>
+68</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/virgil/sdk/client/card_validator.rb', line 67</span>
+      <pre class="code"><span class="info file"># File 'lib/virgil/sdk/client/card_validator.rb', line 66</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_add_verifier'>add_verifier</span><span class='lparen'>(</span><span class='id identifier rubyid_card_id'>card_id</span><span class='comma'>,</span> <span class='id identifier rubyid_public_key'>public_key</span><span class='rparen'>)</span>
   <span class='ivar'>@verifiers</span><span class='lbracket'>[</span><span class='id identifier rubyid_card_id'>card_id</span><span class='rbracket'>]</span> <span class='op'>=</span> <span class='id identifier rubyid_public_key'>public_key</span>
@@ -555,19 +586,31 @@ public_key: Public key used for signature verification.</code></pre>
     
 <p>Validates Card using verifiers.</p>
 
-<p>Args:</p>
-
-<pre class="code ruby"><code class="ruby">card: an instance of the {Card} class for validation.</code></pre>
-
-<p>Returns:</p>
-
-<pre class="code ruby"><code class="ruby">True if card signatures are valid, false otherwise.</code></pre>
-
 
   </div>
 </div>
 <div class="tags">
+  <p class="tag_title">Parameters:</p>
+<ul class="param">
   
+    <li>
+      
+        <span class='name'>card</span>
+      
+      
+        <span class='type'>(<tt><span class='object_link'><a href="Card.html" title="Virgil::SDK::Client::Card (class)">Card</a></span></tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'>
+<p>a card for validation.</p>
+</div>
+      
+    </li>
+  
+</ul>
+
 <p class="tag_title">Returns:</p>
 <ul class="return">
   
@@ -577,6 +620,11 @@ public_key: Public key used for signature verification.</code></pre>
         <span class='type'>(<tt>Boolean</tt>)</span>
       
       
+      
+        &mdash;
+        <div class='inline'>
+<p>True if card signatures are valid, false otherwise.</p>
+</div>
       
     </li>
   
@@ -588,6 +636,11 @@ public_key: Public key used for signature verification.</code></pre>
       <pre class="lines">
 
 
+73
+74
+75
+76
+77
 78
 79
 80
@@ -614,15 +667,10 @@ public_key: Public key used for signature verification.</code></pre>
 101
 102
 103
-104
-105
-106
-107
-108
-109</pre>
+104</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/virgil/sdk/client/card_validator.rb', line 78</span>
+      <pre class="code"><span class="info file"># File 'lib/virgil/sdk/client/card_validator.rb', line 73</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_is_valid?'>is_valid?</span><span class='lparen'>(</span><span class='id identifier rubyid_card'>card</span><span class='rparen'>)</span>
 
@@ -666,7 +714,7 @@ public_key: Public key used for signature verification.</code></pre>
 </div>
 
       <div id="footer">
-  Generated on Tue Apr 11 12:15:34 2017 by
+  Generated on Fri Apr 14 15:24:56 2017 by
   <a href="http://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
   0.9.8 (ruby-2.4.0).
 </div>
