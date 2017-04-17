@@ -1,6 +1,6 @@
 # Virgil Security Ruby SDK 
 
-[Installation](#installation) | [Encryption Example](#encryption-example) | [Initialization](#initialization) | [Documentation](#documentation) | [Support](#support)
+[Installation](#installation) | [Encryption Example](#encryption-example) | [Initialization](#initialization) | [Documentation](#documentation) | [Reference API](#_reference_api) | [Support](#support)
 
 [Virgil Security](https://virgilsecurity.com) provides a set of APIs for adding security to any application. In a few simple steps you can encrypt communication, securely store data, provide passwordless login, and ensure data integrity.
 
@@ -109,6 +109,7 @@ Virgil Security has a powerful set of APIs, and the documentation is there to ge
 * [Guides][_guides]
   * [Virgil Cards][_guide_virgil_cards]
   * [Virgil Keys][_guide_virgil_keys]
+* [Reference API][_reference_api] 
 
 ## License
 
@@ -131,3 +132,4 @@ Our developer support team is here to help you. You can find us on [Twitter](htt
 [_guide_virgil_keys]: https://virgilsecurity.com/docs/sdk/ruby/features#virgil-keys
 [_guide_encryption]: https://virgilsecurity.com/docs/sdk/ruby/features#encryption
 [_initialize_root]: https://virgilsecurity.com/docs/sdk/ruby/programming-guide#initializing
+[_reference_api]: https://virgilsecurity.github.io/virgil-sdk-ruby
