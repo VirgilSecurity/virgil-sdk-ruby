@@ -7,6 +7,7 @@
 /spec/reports/
 /tmp/
 lib/virgil/sdk/virgil_crypto_ruby.so
+/docs/
 key_storage
 test/support/env.yml
 *.virgilkey

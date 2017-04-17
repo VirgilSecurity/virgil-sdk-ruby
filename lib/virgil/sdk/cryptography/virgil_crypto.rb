@@ -246,12 +246,7 @@ module Virgil
           signer_public_key = public_keys.first
           if public_keys.count > 1
             signer_id = cipher.custom_params.get_data(CUSTOM_PARAM_KEY_SIGNER_ID)
-            public_keys.each do |public_key|
-              if public_key.receiver_id == signer_id
-                signer_public_key = public_key
-                break
-              end
-            end
+            signer_public_key = public_keys.find{|public_key| public_key.receiver_id == signer_id}
           end
 
           is_valid = self.verify(decrypted_bytes, signature, signer_public_key)
