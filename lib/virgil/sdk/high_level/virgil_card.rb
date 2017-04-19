@@ -137,6 +137,7 @@ module Virgil
 
 
         # Publish synchronously the global card into application Virgil Services scope
+        # @param validation_token [VirgilIdentity::ValidationToken]
         # @raise [Virgil::SDK::Client::HTTP::BaseConnection::ApiError] if
         #   Virgil Card with the same fingerprint already exists in Virgil Security services
         # @raise [NotImplementedError] if the card is Local

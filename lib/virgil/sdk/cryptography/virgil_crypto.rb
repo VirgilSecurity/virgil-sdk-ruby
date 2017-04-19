@@ -67,6 +67,9 @@ module Virgil
         # @param keys_type [Symbol] type of the generated keys.
         #   The possible values can be found in KeyPairType enum.
         # @return [Keys::KeyPair] Generated key pair.
+        # @example
+        #   crypto = Virgil::SDK::Cryptography::VirgilCrypto.new
+        #   alice_keys = crypto.generate_keys
         def generate_keys(keys_type=@key_pair_type)
           native_type = Keys::KeyPairType.convert_to_native(keys_type)
           native_key_pair = Crypto::Native::VirgilKeyPair.generate(native_type)
@@ -94,6 +97,9 @@ module Virgil
         # @param key_bytes [Crypto::Bytes] private key material representation bytes.
         # @param password [String] private key password, nil by default.
         # @return [Keys::PrivateKey] Imported private key.
+        # @example
+        #   private_key = crypto.import_private_key(exported_private_key)
+        # @see #export_private_key How to get exported_private_key
         def import_private_key(key_bytes, password=nil)
           decrypted_private_key = if !password
                                     Crypto::Native::VirgilKeyPair.private_key_to_der(key_bytes)
@@ -117,6 +123,9 @@ module Virgil
         # Imports the Public key from material representation.
         # @param key_bytes [Crypto::Bytes] public key material representation bytes.
         # @return [Keys::PublicKey] Imported public key.
+        # @example
+        #   public_key = crypto.import_public_key(exported_public_key)
+        # @see #export_public_key How to get exported_public_key
         def import_public_key(key_bytes)
           key_pair_id = self.compute_public_key_hash(key_bytes)
           public_key_bytes =
@@ -128,6 +137,10 @@ module Virgil
         # @param private_key [Keys::PrivateKey] private key for export.
         # @param password [String] private key password, nil by default.
         # @return [Crypto::Bytes] Private key material representation bytes.
+        # @example
+        #   crypto = Virgil::SDK::Cryptography::VirgilCrypto.new
+        #   alice_keys = crypto.generate_keys
+        #   exported_private_key = crypto.export_private_key(alice_keys.private_key)
         def export_private_key(private_key, password=nil)
           unless password
             return Crypto::Native::VirgilKeyPair.private_key_to_der(
@@ -151,6 +164,10 @@ module Virgil
         # Exports the Public key into material representation.
         # @param public_key [Keys::PublicKey] public key for export.
         # @return [Crypto::Bytes] Key material representation bytes.
+        # @example
+        #   crypto = Virgil::SDK::Cryptography::VirgilCrypto.new
+        #   alice_keys = crypto.generate_keys
+        #   exported_private_key = crypto.export_private_key(alice_keys.private_key)
         def export_public_key(public_key)
           wrap_bytes(
               Crypto::Native::VirgilKeyPair.public_key_to_der(public_key.value)
@@ -177,6 +194,14 @@ module Virgil
         # @param bytes [Virgil::Crypto::Bytes] raw data bytes for encryption.
         # @param *recipients [Array<Keys::PublicKey>] list of recipients' public keys.
         # @return [Crypto::Bytes] Encrypted bytes.
+        # @example
+        #   # Data encryption using ECIES scheme with AES-GCM.
+        #   # There can be more than one recipient.
+        #   crypto = Virgil::SDK::Cryptography::VirgilCrypto.new
+        #   alice_keys = crypto.generate_keys
+        #   plain_data = Virgil::Crypto::Bytes.from_string("Hello Bob!")
+        #   cipher_data = crypto.encrypt(plain_data, alice_keys.public_key)
+        # @see #generate_keys
         def encrypt(bytes, *recipients)
           cipher = Crypto::Native::VirgilCipher.new
           recipients.each do |public_key|
@@ -189,6 +214,13 @@ module Virgil
         # @param cipher_bytes [Crypto::Bytes] encrypted bytes bytes for decryption.
         # @param private_key [Keys::PrivateKey] private key for decryption.
         # @return [Crypto::Bytes] Decrypted bytes bytes.
+        # @example
+        #   # You can decrypt data using your private key
+        #   crypto = Virgil::SDK::Cryptography::VirgilCrypto.new
+        #   alice_keys = crypto.generate_keys
+        #   plain_data = crypto.decrypt(cipher_data, alice_keys.private_key)
+        # @see #generate_keys
+        # @see #encrypt How to get cipher_data
         def decrypt(cipher_bytes, private_key)
           cipher = Crypto::Native::VirgilCipher.new
           decrypted_bytes = cipher.decrypt_with_key(
@@ -261,6 +293,13 @@ module Virgil
         # @param bytes [Crypto::Bytes] raw data bytes for signing.
         # @param private_key [Keys::PrivateKey] private key for signing.
         # @return [Crypto::Bytes] Signature data.
+        # @example Sign the SHA-384 fingerprint of bytes using your private key.
+        #   crypto = Virgil::SDK::Cryptography::VirgilCrypto.new
+        #   alice_keys = crypto.generate_keys()
+        #   # The data to be signed with alice's Private key
+        #   data = Virgil::Crypto::Bytes.from_string("Hello Bob, How are you?")
+        #   signature = crypto.sign(data, alice.private_key)
+        # @see #generate_keys
         def sign(bytes, private_key)
           signer = Crypto::Native::VirgilSigner.new
           wrap_bytes(signer.sign(bytes, private_key.value))
@@ -272,6 +311,12 @@ module Virgil
         # @param signature [Crypto::Bytes] signature bytes for verification.
         # @param signer_public_key [Keys::PublicKey] signer public key for verification.
         # @return [Boolean] True if signature is valid, False otherwise.
+        # @example Verify the signature of the SHA-384 fingerprint of bytes using Public key.
+        #   crypto = Virgil::SDK::Cryptography::VirgilCrypto.new
+        #   alice_keys = crypto.generate_keys()
+        #   data = Virgil::Crypto::Bytes.from_string("Hello Bob, How are you?")
+        #   is_valid = crypto.verify(data, signature, alice.public_key)
+        # @see #sign How to get signature
         def verify(bytes, signature, signer_public_key)
           signer = Crypto::Native::VirgilSigner.new
           signer.verify(bytes, signature, signer_public_key.value)
