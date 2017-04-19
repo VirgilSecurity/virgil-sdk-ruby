@@ -68,7 +68,7 @@ module Virgil
         #   The possible values can be found in KeyPairType enum.
         # @return [Keys::KeyPair] Generated key pair.
         # @example
-        #   crypto = Virgil::SDK::Cryptography::VirgilCrypto.new
+        #   crypto = Cryptography::VirgilCrypto.new
         #   alice_keys = crypto.generate_keys
         def generate_keys(keys_type=@key_pair_type)
           native_type = Keys::KeyPairType.convert_to_native(keys_type)
@@ -138,7 +138,7 @@ module Virgil
         # @param password [String] private key password, nil by default.
         # @return [Crypto::Bytes] Private key material representation bytes.
         # @example
-        #   crypto = Virgil::SDK::Cryptography::VirgilCrypto.new
+        #   crypto = Cryptography::VirgilCrypto.new
         #   alice_keys = crypto.generate_keys
         #   exported_private_key = crypto.export_private_key(alice_keys.private_key)
         def export_private_key(private_key, password=nil)
@@ -165,7 +165,7 @@ module Virgil
         # @param public_key [Keys::PublicKey] public key for export.
         # @return [Crypto::Bytes] Key material representation bytes.
         # @example
-        #   crypto = Virgil::SDK::Cryptography::VirgilCrypto.new
+        #   crypto = Cryptography::VirgilCrypto.new
         #   alice_keys = crypto.generate_keys
         #   exported_private_key = crypto.export_private_key(alice_keys.private_key)
         def export_public_key(public_key)
@@ -197,7 +197,7 @@ module Virgil
         # @example
         #   # Data encryption using ECIES scheme with AES-GCM.
         #   # There can be more than one recipient.
-        #   crypto = Virgil::SDK::Cryptography::VirgilCrypto.new
+        #   crypto = Cryptography::VirgilCrypto.new
         #   alice_keys = crypto.generate_keys
         #   plain_data = Virgil::Crypto::Bytes.from_string("Hello Bob!")
         #   cipher_data = crypto.encrypt(plain_data, alice_keys.public_key)
@@ -216,7 +216,7 @@ module Virgil
         # @return [Crypto::Bytes] Decrypted bytes bytes.
         # @example
         #   # You can decrypt data using your private key
-        #   crypto = Virgil::SDK::Cryptography::VirgilCrypto.new
+        #   crypto = Cryptography::VirgilCrypto.new
         #   alice_keys = crypto.generate_keys
         #   plain_data = crypto.decrypt(cipher_data, alice_keys.private_key)
         # @see #generate_keys
@@ -237,6 +237,19 @@ module Virgil
         # @param *recipients [Array<Keys::PublicKey>] list of recipients' public keys
         #   used for data encryption.
         # @return [Crypto::Bytes] Signed and encrypted data bytes.
+        # @example
+        #   crypto = Cryptography::VirgilCrypto.new
+        #
+        #   alice = crypto.generate_keys
+        #   bob = crypto.generate_keys
+        #
+        #   # The data to be signed with alice's Private key
+        #   data = Virgil::Crypto::Bytes.from_string("Hello Bob, How are you?")
+        #   cipher_data = crypto.sign_then_encrypt(
+        #     data,
+        #     alice.private_key,
+        #     bob.public_key
+        #   )
         def sign_then_encrypt(bytes, private_key, *recipients)
           signer = Crypto::Native::VirgilSigner.new
           signature = signer.sign(bytes, private_key.value)
@@ -266,6 +279,18 @@ module Virgil
         #   which can contain signer's public key.
         # @return [Crypto::Bytes] Decrypted data bytes.
         # @raise [SignatureIsNotValid] if signature is not verified.
+        # @example
+        #   crypto = Cryptography::VirgilCrypto.new
+        #
+        #   alice = crypto.generate_keys
+        #   bob = crypto.generate_keys
+        #
+        #   decrypted_data = crypto.decrypt_then_verify(
+        #     cipher_data,
+        #     bob.private_key,
+        #     alice.public_key
+        #   )
+        # @see #sign_then_encrypt How to get cipher_data
         def decrypt_then_verify(bytes, private_key, *public_keys)
           cipher = Crypto::Native::VirgilCipher.new
           decrypted_bytes = cipher.decrypt_with_key(
@@ -294,7 +319,7 @@ module Virgil
         # @param private_key [Keys::PrivateKey] private key for signing.
         # @return [Crypto::Bytes] Signature data.
         # @example Sign the SHA-384 fingerprint of bytes using your private key.
-        #   crypto = Virgil::SDK::Cryptography::VirgilCrypto.new
+        #   crypto = Cryptography::VirgilCrypto.new
         #   alice_keys = crypto.generate_keys()
         #   # The data to be signed with alice's Private key
         #   data = Virgil::Crypto::Bytes.from_string("Hello Bob, How are you?")
@@ -312,7 +337,7 @@ module Virgil
         # @param signer_public_key [Keys::PublicKey] signer public key for verification.
         # @return [Boolean] True if signature is valid, False otherwise.
         # @example Verify the signature of the SHA-384 fingerprint of bytes using Public key.
-        #   crypto = Virgil::SDK::Cryptography::VirgilCrypto.new
+        #   crypto = Cryptography::VirgilCrypto.new
         #   alice_keys = crypto.generate_keys()
         #   data = Virgil::Crypto::Bytes.from_string("Hello Bob, How are you?")
         #   is_valid = crypto.verify(data, signature, alice.public_key)
@@ -378,6 +403,10 @@ module Virgil
         # Calculates the fingerprint.
         # @param bytes [Crypto::Bytes] data bytes for fingerprint calculation.
         # @return [Hashes::Fingerprint] Fingerprint of the source data.
+        # @example
+        #   # The default Fingerprint algorithm is SHA-256.
+        #   crypto = Cryptography::VirgilCrypto.new
+        #   fingerprint = crypto.calculate_fingerprint(content_bytes)
         def calculate_fingerprint(bytes)
           hash_bytes = self.compute_hash(bytes, Hashes::HashAlgorithm::SHA256)
           Hashes::Fingerprint.new(hash_bytes)
