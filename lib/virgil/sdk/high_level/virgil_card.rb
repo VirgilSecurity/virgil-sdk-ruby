@@ -114,6 +114,12 @@ module Virgil
 
         # Exports card's snapshot.
         # @return [String] base64-encoded json representation of card's content_snapshot and meta.
+        # @example
+        #   exported_alice_card = alice_card.export
+        # @see VirgilCardManager#create How to create alice_card
+        #   # AFTER EXPORT DEVELOPERS HAVE TO TRANSMIT THE VIRGIL CARD TO THE APP'S SERVER SIDE WHERE IT WILL
+        #   # BE SIGNED, VALIDATED AND THEN PUBLISHED ON VIRGIL SERVICES (THIS IS NECESSARY FOR
+        #   # FURTHER OPERATIONS WITH THE VIRGIL CARD).
         def export
           card.export
         end
@@ -124,6 +130,9 @@ module Virgil
         #   Virgil Card with the same fingerprint already exists in Virgil Security services
         # @raise [AppCredentialsException] if application credentials' app_id and app_key are missing
         # @raise [NotImplementedError] if the card is Global
+        # @example
+        #   alice_card.publish
+        # @see VirgilCardManager.import how to get alice_card
         def publish
 
           raise NotImplementedError.new("Current card isn't local!") unless @card.scope == Client::Card::APPLICATION

@@ -407,11 +407,6 @@ cipher_data = crypto.sign_then_encrypt(
 
 ### Decrypt then Verify
 ```ruby
-crypto = Virgil::SDK::Cryptography::VirgilCrypto.new
-
-alice = crypto.generate_keys
-bob = crypto.generate_keys
-
 decrypted_data = crypto.decrypt_then_verify(
   cipher_data,
   bob.private_key,
@@ -424,7 +419,6 @@ decrypted_data = crypto.decrypt_then_verify(
 The default Fingerprint algorithm is SHA-256.
 
 ```ruby
-# The default Fingerprint algorithm is SHA-256.
 crypto = Virgil::SDK::Cryptography::VirgilCrypto.new
 fingerprint = crypto.calculate_fingerprint(content_bytes)
 ```

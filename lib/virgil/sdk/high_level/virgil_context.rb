@@ -68,6 +68,14 @@ module Virgil
 
 
         # Initializes a new instance of the {VirgilContext} class.
+        # @example Initializes a new instance with disabled built in verifiers
+        #   VirgilContext.new(
+        #       credentials: VirgilAppCredentials.new(
+        #           access_token: "[YOUR_ACCESS_TOKEN_HERE]",
+        #           app_id: "[YOUR_APP_ID_HERE]",
+        #           app_key_data: VirgilBuffer.from_file("[YOUR_APP_KEY_PATH_HERE]"),
+        #           app_key_password: "[YOUR_APP_KEY_PASSWORD_HERE]"),
+        #           use_built_in_verifiers: false
         def initialize(access_token: nil, credentials: nil, key_storage_path: Cryptography::Keys::KeyStorage.default_folder,
                        cards_service_url: Client::Card::SERVICE_URL,
                        cards_read_only_service_url: Client::Card::READ_ONLY_SERVICE_URL,

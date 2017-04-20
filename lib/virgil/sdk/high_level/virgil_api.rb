@@ -78,6 +78,19 @@ module Virgil
         #                 It's required with defined Application credentials and own access_token for publishing and revoking card.
         #
         # @note The both of the arguments(access_token and context) are not required for actions with Global cards.
+        #
+        # @example  Initializes a new instance for actions: get card, find card.
+        #   virgil = VirgilApi.new(access_token: "[YOUR_ACCESS_TOKEN_HERE]")
+        # @example  Initializes a new instance for actions: publish card, revoke card.
+        #   virgil = VirgilApi.new(context: VirgilContext.new(
+        #       credentials: VirgilAppCredentials.new(
+        #           access_token: "[YOUR_ACCESS_TOKEN_HERE]",
+        #           app_id: "[YOUR_APP_ID_HERE]",
+        #           app_key_data: VirgilBuffer.from_file("[YOUR_APP_KEY_PATH_HERE]"),
+        #           app_key_password: "[YOUR_APP_KEY_PASSWORD_HERE]"))
+        #   )
+        # @example  Initializes a new instance for actions with global cards.
+        #   virgil = VirgilApi.new()
         def initialize(access_token: nil, context: nil)
 
           if (access_token && context)
