@@ -60,6 +60,15 @@ module Virgil
         #                  or Array of bytes of encrypted data
         # @return [VirgilBuffer] A byte array containing the result from performing the action wrapped by VirgilBuffer.
         # @raise [ArgumentError] if buffer doesn't have type VirgilBuffer, base64-encoded String or Array of bytes
+        # @example
+        #   virgil = VirgilApi.new
+        #   # load a Virgil Key from device storage
+        #   alice_key = virgil.keys.load("[KEY_NAME]", "[OPTIONAL_KEY_PASSWORD]")
+        #
+        #   # decrypt a buffer using loaded Virgil Key
+        #   original_file_buf = alice_key.decrypt(cipher_file_buf)
+        # @see VirgilCard#encrypt How to get cipher_file_buf
+        # @see VirgilKeyManager#load Load Virgil Key
         def decrypt(cipher_buffer)
 
           buffer_to_decrypt = case cipher_buffer.class.name.split("::").last
@@ -83,6 +92,17 @@ module Virgil
         #           buffer can be VirgilBuffer, utf8-encoded String or Array of bytes
         # @return [VirgilBuffer] A new buffer that containing the result from performing the action.
         # @raise [ArgumentError] if buffer doesn't have type VirgilBuffer, String or Array of bytes
+        # @example
+        #   virgil = VirgilApi.new
+        #   # load Alice's Key from protected storage
+        #   alice_key = virgil.keys.load("[KEY_NAME]", "[KEY_PASSWORD]")
+        #
+        #   message = "Hi Bob, hope you are doing well."
+        #
+        #   # generate signature of message using alice's key pair
+        #   signature = alice_key.sign(message)
+        # @see VirgilKeyManager#load Load the VirgilKey from current storage by specified key name.
+        # @see VirgilCard#verify Verifies the specified buffer and signature with current VirgilCard recipient
         def sign(buffer)
           buffer_to_sign = case buffer.class.name.split("::").last
                              when 'VirgilBuffer'
@@ -106,6 +126,21 @@ module Virgil
         # @return [VirgilBuffer] A new buffer that containing the encrypted and signed data
         # @raise [ArgumentError] if buffer doesn't have type VirgilBuffer, String or Array of bytes
         # @raise [ArgumentError] if recipients doesn't have type Array or empty
+        # @example Alice signs the message and encrypt it for Bob
+        #   virgil = VirgilApi.new(access_token: "[YOUR_ACCESS_TOKEN_HERE]")
+        #   # load a Virgil Key from device storage
+        #   alice_key = virgil.keys.load("[KEY_NAME]", "[OPTIONAL_KEY_PASSWORD]")
+        #
+        #   # search for Virgil Cards
+        #   bob_cards = await virgil.cards.find("bob")
+        #
+        #   # prepare the message
+        #   message = "Hey Bob, how's it going?"
+        #
+        #   # sign then encrypt the message
+        #   ciphertext = alice_key.sign_then_encrypt(message, bob_cards).to_base64
+        # @see VirgilKeyManager#load Load key from the key storage
+        # @see VirgilCardManager#find Find card
         def sign_then_encrypt(buffer, recipients)
 
           raise ArgumentError.new("recipients is not valid") if (!recipients.is_a?(Array) || recipients.empty?)
@@ -136,6 +171,16 @@ module Virgil
         #   the decrypted data, wrapped by VirgilBuffer
         # @raise [ArgumentError] if buffer doesn't have type VirgilBuffer, String or Array of bytes
         # @raise [ArgumentError] if recipients doesn't have type Array or empty
+        # @example
+        #   virgil = VirgilApi.new(access_token: "[YOUR_ACCESS_TOKEN_HERE]")
+        #   # load a Virgil Key from device storage
+        #   bob_key = virgil.keys.load("[KEY_NAME]", "[OPTIONAL_KEY_PASSWORD]")
+        #
+        #   # get a sender's Virgil Card
+        #   alice_card = virgil.cards.get("[ALICE_CARD_ID]")
+        #
+        #   # decrypt the message
+        #   original_message = bob_key.decrypt_then_verify(ciphertext, alice_card).to_s
         def decrypt_then_verify(cipher_buffer, *cards)
 
           raise ArgumentError.new("card is not valid") unless cards.all? { |el| el.is_a? VirgilCard }
@@ -164,6 +209,10 @@ module Virgil
         # @raise [KeyEntryAlreadyExistsException] if key storage already has item with such name
         # @raise [ArgumentError] key_name is not valid if key_name is nil
         # @raise [KeyStorageException] if destination folder doesn't exist or you don't have permission to write there
+        # @example
+        #   virgil = VirgilApi.new
+        #   alice_key = virgil.keys.generate.save("[KEY_NAME]", "[OPTIONAL_KEY_PASSWORD]")
+        # @see VirgilKeyManager#generate How to generate key
         def save(key_name, key_password=nil)
 
           raise ArgumentError.new("key_name is not valid") if key_name.nil?
@@ -177,7 +226,16 @@ module Virgil
 
 
         # Exports the VirgilKey to default format, specified in Crypto API.
-        # @return [VirgilBuffer] Key material representation bytes wrapped by VirgilBuffer
+        # @return [VirgilBuffer] Private Key material representation bytes wrapped by VirgilBuffer
+        #
+        # @example Export the Virgil Key to Base64 encoded string.
+        #   virgil = VirgilApi.new
+        #   # generate a new Virgil Key
+        #   alice_key = virgil.keys.generate
+        #
+        #   # export the Virgil Key to Base64 encoded string
+        #   BASE64_ENCODED_VIRGIL_KEY = alice_key.export("[OPTIONAL_KEY_PASSWORD]”).to_base64
+        # @see VirgilKeyManager#generate How to generate key
         def export(password=nil)
           VirgilBuffer.from_bytes(context.crypto.export_private_key(private_key, password))
         end

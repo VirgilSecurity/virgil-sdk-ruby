@@ -165,6 +165,16 @@ module Virgil
         #   It can be VirgilBuffer, utf8-String or Array of bytes
         # @return [VirgilBuffer] Encrypted data for current Virgil card recipient
         # @raise [ArgumentError] if buffer doesn't have type VirgilBuffer, String or Array of bytes
+        # @example
+        #   virgil = VirgilApi.new( access_token: "[YOUR_ACCESS_TOKEN_HERE]")
+        #   alice_card = virgil.cards.get("[USER_CARD_ID_HERE]")
+        #
+        #   file_buf = VirgilBuffer.from_file("[FILE_NAME_HERE]")
+        #
+        #   # encrypt the buffer using found Virgil Cards
+        #   cipher_file_buf = alice_card.encrypt(file_buf)
+        # @see VirgilBuffer.from_file Initializes a new buffer from file.
+        # @see VirgilCardManager#get Get a card from Virgil Security services by specified Card ID.
         def encrypt(buffer)
 
           buffer_to_encrypt = case buffer.class.name.split("::").last
@@ -204,6 +214,16 @@ module Virgil
         # @return [Boolean] true if signature is valid, false otherwise.
         # @raise [ArgumentError] if buffer doesn't have type VirgilBuffer, Array of bytes or utf8-encoded String
         # @raise [ArgumentError] if signature doesn't have type VirgilBuffer, base64-encoded String or Array of bytes
+        # @example
+        #   virgil = VirgilApi.new(access_token: "[YOUR_ACCESS_TOKEN_HERE]")
+        #   # search for Alice's Card
+        #   alice_card = virgil.cards.get("[ALICE_CARD_ID]")
+        #
+        #   unless alice_card.verify(message, signature)
+        #       raise "Alice it's not you."
+        #   end
+        # @see VirgilKey#sign How to get signature
+        # @see VirgilCardManager#get Get Virgil Card
         def verify(buffer, signature)
 
           buffer_to_verify = case buffer.class.name.split("::").last

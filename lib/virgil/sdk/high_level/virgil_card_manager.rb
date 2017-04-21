@@ -84,6 +84,16 @@ module Virgil
           #   It can be {VirgilBuffer}, utf8 String or Array of bytes.
           # @return [VirgilBuffer] Encrypted data for current recipients Public keys.
           # @raise [ArgumentError] if buffer doesn't have type VirgilBuffer, String or Array of bytes.
+          # @example
+          #   virgil = VirgilApi.new( access_token: "[YOUR_ACCESS_TOKEN_HERE]")
+          #   # search for Cards
+          #   bob_cards = virgil.cards.find("bob")
+          #
+          #   # message for encryption
+          #   message = "Hey Bob, how's it going?"
+          #
+          #   # encrypt the message
+          #   ciphertext = bob_cards.encrypt(message).to_base64
           def encrypt(buffer)
             all_public_keys = self.map(&:public_key)
             buffer_to_encrypt = case buffer.class.name.split("::").last
@@ -169,8 +179,8 @@ module Virgil
         # @raise [AppCredentialsException]: if application credentials(app_key and app_id) are missing.
         # @example
         #   virgil = VirgilApi.new(context: VirgilContext.new(
+        #       access_token: "[YOUR_ACCESS_TOKEN_HERE]",
         #       credentials: VirgilAppCredentials.new(
-        #           access_token: "[YOUR_ACCESS_TOKEN_HERE]",
         #           app_id: "[YOUR_APP_ID_HERE]",
         #           app_key_data: VirgilBuffer.from_file("[YOUR_APP_KEY_PATH_HERE]"),
         #           app_key_password: "[YOUR_APP_KEY_PASSWORD_HERE]"))
@@ -211,6 +221,9 @@ module Virgil
         # @return [VirgilCard] Found card from server response.
         # @raise [VirgilClient::InvalidCardException] if client has validator
         #   and retrieved card signatures are not valid.
+        # @example
+        #   virgil = VirgilApi.new(access_token: "[YOUR_ACCESS_TOKEN_HERE]")
+        #   alice_card = virgil.cards.get("[USER_CARD_ID_HERE]")
         def get(card_id)
           VirgilCard.new(context: context, card: context.client.get_card(card_id))
         end
@@ -269,8 +282,8 @@ module Virgil
         #   or application credentials are not valid.
         # @raise [AppCredentialsException] if application credentials are missing.
         #   virgil = VirgilApi.new(context: VirgilContext.new(
+        #       access_token: "[YOUR_ACCESS_TOKEN_HERE]",
         #       credentials: VirgilAppCredentials.new(
-        #           access_token: "[YOUR_ACCESS_TOKEN_HERE]",
         #           app_id: "[YOUR_APP_ID_HERE]",
         #           app_key_data: VirgilBuffer.from_file("[YOUR_APP_KEY_PATH_HERE]"),
         #           app_key_password: "[YOUR_APP_KEY_PASSWORD_HERE]"))
@@ -329,8 +342,8 @@ module Virgil
         # @return [VirgilCard] Virgil Card restored from snapshot.
         # @example
         #   virgil = VirgilApi.new(context: VirgilContext.new(
+        #       access_token: "[YOUR_ACCESS_TOKEN_HERE]",
         #       credentials: VirgilAppCredentials.new(
-        #           access_token: "[YOUR_ACCESS_TOKEN_HERE]",
         #           app_id: "[YOUR_APP_ID_HERE]",
         #           app_key_data: VirgilBuffer.from_file("[YOUR_APP_KEY_PATH_HERE]"),
         #           app_key_password: "[YOUR_APP_KEY_PASSWORD_HERE]"))
