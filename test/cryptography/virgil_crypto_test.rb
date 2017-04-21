@@ -116,30 +116,30 @@ class VirgilCryptoTest < Minitest::Test
     )
   end
 
-  #def test_encrypt_and_decrypt_stream
-  #  data = Virgil::Crypto::Bytes.new([1, 2, 3])
-  #  key_pair = @crypto.generate_keys()
-  #  encrypt_input_stream = io.BytesIO(data)
-  #  encrypt_output_stream = io.BytesIO()
-  #  @crypto.encrypt_stream(
-  #    encrypt_input_stream,
-  #    encrypt_output_stream,
-  #    key_pair.public_key
-  #  )
-  #  encrypt_stream_result = encrypt_output_stream.getvalue()
-  #  decrypt_input_stream = io.BytesIO(encrypt_stream_result)
-  #  decrypt_output_stream = io.BytesIO()
-  #  @crypto.decrypt_stream(
-  #    decrypt_input_stream,
-  #    decrypt_output_stream,
-  #    key_pair.private_key
-  #  )
-  #  decrypt_stream_result = decrypt_output_stream.getvalue()
-  #  assert_equal(
-  #    data,
-  #    decrypt_stream_result
-  #  )
-  #end
+  def test_encrypt_and_decrypt_stream
+   data = Virgil::Crypto::Bytes.new([1, 2, 3])
+   key_pair = @crypto.generate_keys()
+   encrypt_input_stream = BytesIO(data)
+   encrypt_output_stream = io.BytesIO()
+   @crypto.encrypt_stream(
+     encrypt_input_stream,
+     encrypt_output_stream,
+     key_pair.public_key
+   )
+   encrypt_stream_result = encrypt_output_stream.getvalue()
+   decrypt_input_stream = io.BytesIO(encrypt_stream_result)
+   decrypt_output_stream = io.BytesIO()
+   @crypto.decrypt_stream(
+     decrypt_input_stream,
+     decrypt_output_stream,
+     key_pair.private_key
+   )
+   decrypt_stream_result = decrypt_output_stream.getvalue()
+   assert_equal(
+     data,
+     decrypt_stream_result
+   )
+  end
 
   def test_sign_and_verify_values
     data = [1, 2, 3]
