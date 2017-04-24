@@ -19,5 +19,18 @@ module TestData
         JSON.parse(raw_data)
       end
     end
+
+    def original_data_file_path
+      @original_data_file_path ||= File.join(DATA_DIR, 'input.txt')
+    end
+
+    def encrypted_data_file_path
+      @encrypted_data_file_path ||= File.join(DATA_DIR, 'encrypted.txt')
+    end
+
+    def decrypted_data_file_path
+      @decrypted_data_file_path ||= File.join(DATA_DIR, 'output.txt')
+    end
+
   end
 end

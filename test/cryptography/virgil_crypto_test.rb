@@ -117,28 +117,27 @@ class VirgilCryptoTest < Minitest::Test
   end
 
   def test_encrypt_and_decrypt_stream
-   data = Virgil::Crypto::Bytes.new([1, 2, 3])
-   key_pair = @crypto.generate_keys()
-   encrypt_input_stream = BytesIO(data)
-   encrypt_output_stream = io.BytesIO()
-   @crypto.encrypt_stream(
-     encrypt_input_stream,
-     encrypt_output_stream,
-     key_pair.public_key
-   )
-   encrypt_stream_result = encrypt_output_stream.getvalue()
-   decrypt_input_stream = io.BytesIO(encrypt_stream_result)
-   decrypt_output_stream = io.BytesIO()
-   @crypto.decrypt_stream(
-     decrypt_input_stream,
-     decrypt_output_stream,
-     key_pair.private_key
-   )
-   decrypt_stream_result = decrypt_output_stream.getvalue()
-   assert_equal(
-     data,
-     decrypt_stream_result
-   )
+   crypto = Virgil::SDK::Cryptography::VirgilCrypto.new
+   alice_keys = crypto.generate_keys
+
+   File.open(TestData.original_data_file_path, "r") do |input_stream|
+     File.open(TestData.encrypted_data_file_path, "w") do |cipher_stream|
+       crypto.encrypt_stream(input_stream, cipher_stream, alice_keys.public_key)
+     end
+   end
+
+   File.open(TestData.encrypted_data_file_path, "r") do |cipher_stream|
+     File.open(TestData.decrypted_data_file_path, "w") do |output_stream|
+       crypto.decrypt_stream(cipher_stream, output_stream, alice_keys.private_key)
+     end
+   end
+
+   File.open(TestData.original_data_file_path, "r") do |origin_file|
+     File.open(TestData.decrypted_data_file_path, "r") do |decrypted_file|
+       assert_equal(origin_file.read, decrypted_file.read)
+     end
+   end
+
   end
 
   def test_sign_and_verify_values

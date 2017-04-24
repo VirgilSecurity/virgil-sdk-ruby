@@ -355,11 +355,11 @@ module Virgil
         # @example
         #   crypto = Virgil::SDK::Cryptography::VirgilCrypto.new
         #   alice_keys = crypto.generate_keys()
-        #   input_stream = IO.new(IO.sysopen("[YOUR_FILE_PATH_HERE]"))
-        #   cipher_stream = IO.new(IO.sysopen("[YOUR_CIPHER_FILE_PATH_HERE]", "a"))
-        #   crypto.encrypt_stream(input_stream, cipher_stream, alice_keys.public_key)
-        #   input_stream.close
-        #   cipher_stream.close
+        #   File.open("[YOUR_FILE_PATH_HERE]", "r") do |input_stream|
+        #     File.open("[YOUR_CIPHER_FILE_PATH_HERE]", "w") do |cipher_stream|
+        #       crypto.encrypt_stream(input_stream, cipher_stream, alice_keys.public_key)
+        #     end
+        #   end
         def encrypt_stream(input_stream, output_stream, *recipients)
           cipher = Crypto::Native::VirgilChunkCipher.new
           recipients.each do |public_key|
@@ -377,12 +377,12 @@ module Virgil
         # @return [Crypto::Bytes] Decrypted data bytes.
         # @example
         #   crypto = Virgil::SDK::Cryptography::VirgilCrypto.new
-        #   cipher_stream = IO.new(IO.sysopen("[YOUR_CIPHER_FILE_PATH_HERE]"))
-        #   output_stream = IO.new(IO.sysopen("[YOUR_FILE_PATH_HERE]", "a"))
-        #   alice_private_key = crypto.import_private_key(exported_private_key)
-        #   crypto.decrypt_stream(cipher_stream, output_stream, alice_private_key)
-        #   cipher_stream.close
-        #   output_stream.close
+        #   File.open("[YOUR_CIPHER_FILE_PATH_HERE]", "r") do |cipher_stream|
+        #     File.open("[YOUR_DECRYPTED_FILE_PATH_HERE]", "w") do |decrypted_stream|
+        #       alice_private_key = crypto.import_private_key(exported_private_key)
+        #       crypto.decrypt_stream(cipher_stream, decrypted_stream, alice_private_key)
+        #     end
+        #   end
         # @see #encrypt_stream How to get cipher_stream
         # @see #export_private_key How to get exported_private_key
         def decrypt_stream(input_stream, output_stream, private_key)
