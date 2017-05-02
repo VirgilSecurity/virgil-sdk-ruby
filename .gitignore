@@ -16,3 +16,4 @@ travis_rsa
 *.gem
 .idea
 *sample.rb
+.DS_Store
