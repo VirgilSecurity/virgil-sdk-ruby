@@ -45,29 +45,21 @@ module Virgil
           end
 
           # Creates new Fingerprint from hex.
-          #
-          # Args:
-          #   fingerprint_hex: hex string of the fingerprint.
-          #
-          # Returns:
-          #   Imported Fingerprint.
+          # @param fingerprint_hex [String] hex string of the fingerprint.
+          # @return [FingerPrint] Imported Fingerprint.
           def self.from_hex(fingerprint_hex)
             data = Crypto::Native::VirgilByteArrayUtils.hex_to_bytes(fingerprint_hex)
             return self.new(data)
           end
 
           # Raw fingerprint value.
-          #
-          # Returns:
-          #    Fingerprint bytes.
+          # @return [Crypto::Bytes] Fingerprint bytes.
           def value
             @fingerprint_bytes
           end
 
           # Fingerprint data in hexadecimal.
-          #
-          # Returns:
-          #   Hexademical fingerprint representation.
+          # @return [String] Hexademical fingerprint representation.
           def to_hex
             hex_data = Crypto::Native::VirgilByteArrayUtils.bytes_to_hex(value)
             return hex_data

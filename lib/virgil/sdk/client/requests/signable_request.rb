@@ -44,42 +44,35 @@ module Virgil
           attr_reader :signatures, :snapshot, :validation_token, :relations
 
 
-          # Constructs new SignableRequest object
+          # Constructs new {SignableRequest} object
           def initialize
             @signatures = {}
           end
 
+
           # Constructs snapshot model for exporting and signing.
-          #
-          # Should be implemented in the derived classes.
-          #
-          # Raises:
-          #   NotImplementedError
+          #   Should be implemented in the derived classes.
+          # @raise [NotImplementedError]
           def snapshot_model
             raise NotImplementedError.new
           end
 
+
           # Restores request from snapshot model.
-          #
-          # Should be implemented in the derived classes.
-          #
-          # Args:
-          #   snapshot: snapshot model dict
-          #
-          # Raises:
-          #   NotImplementedError
+          #   Should be implemented in the derived classes.
+          # @param snapshot [Hash] snapshot model
+          # @raise [NotImplementedError]
           def restore_from_snapshot_model(snapshot)
             raise NotImplementedError.new
           end
 
 
           # Restores request from snapshot.
-          #
-          #  Args:
-          #    snapshot: Json-encoded snapshot request will be restored from.
-          #    signatures: Request signatures.
-          #    validation_token: validation token gotten from Virgil Identity Service
-          #    relations: relations
+          # @param snapshot [Crypto::Bytes] Json-encoded snapshot request will be restored from.
+          # @param signatures [Hash] Request signatures.
+          # @param validation_token [String] validation token gotten from Virgil Identity Service.
+          # @param relations [Hash] relations.
+          # @return [SignableRequest] restored request.
           def restore(snapshot, signatures, validation_token = nil, relations = nil)
             @snapshot = snapshot
             @signatures = signatures
@@ -91,8 +84,6 @@ module Virgil
 
 
           # Takes request data snapshot.
-          #
-          # Returns:
           #   Request snapshot bytes.
           def take_snapshot
             json_string = self.snapshot_model.to_json
@@ -101,9 +92,7 @@ module Virgil
 
 
           # Exports request snapshot.
-          #
-          # Returns:
-          #   base64-encoded json representation of the request model.
+          # @return [String] base64-encoded json representation of the request model.
           def export
             json_string = self.request_model.to_json
             Base64.strict_encode64(json_string)
@@ -115,7 +104,7 @@ module Virgil
             @snapshot ||= self.take_snapshot
           end
 
-          # Adds signature to request."""
+          # Adds signature to request.
           def sign_with(fingerprint_id, signature)
             @signatures[fingerprint_id] = signature
           end

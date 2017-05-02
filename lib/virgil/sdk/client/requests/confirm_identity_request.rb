@@ -40,7 +40,7 @@ module Virgil
         class ConfirmIdentityRequest
           attr_reader :confirmation_code, :action_id, :time_to_live, :count_to_live
 
-          #
+
           def initialize(confirmation_code, action_id, time_to_live, count_to_live)
             @confirmation_code = confirmation_code
             @action_id = action_id
@@ -49,7 +49,8 @@ module Virgil
           end
 
 
-          # # Request model used for json representation.
+          # request model used for json representation.
+          # @return [Hash]
           def request_model
             return {
                 'confirmation_code': confirmation_code,

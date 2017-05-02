@@ -40,7 +40,8 @@ module Virgil
         class CreateCardRequest < SignableRequest
           attr_accessor :identity, :identity_type, :public_key, :data, :info, :scope
 
-          # Initializes a new instance of the {CreateCardRequest} class.
+          # Initializes a new instance of the class.
+          # @param attributes [Hash] object containing required data for future card.
           def initialize(attributes)
             super()
             self.identity = attributes[:identity]
@@ -51,10 +52,9 @@ module Virgil
             self.info = attributes[:info]
           end
 
+
           # Restores request from snapshot model.
-          #
-          # Args:
-          #   snapshot_model: snapshot model dict
+          # @param snapshot_model [Hash] snapshot model
           def restore_from_snapshot_model(snapshot_model)
             self.identity = snapshot_model['identity']
             self.identity_type = snapshot_model['identity_type']
@@ -84,10 +84,9 @@ module Virgil
             request
           end
 
+
           # Constructs snapshot model for exporting and signing.
-          #
-          # Returns:
-          #   Dict containing snapshot data model used for card creation request.
+          # @return [Hash] Dict containing snapshot data model used for card creation request.
           def snapshot_model
             model = {
                 'identity': identity,

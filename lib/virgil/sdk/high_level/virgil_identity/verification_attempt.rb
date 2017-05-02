@@ -51,13 +51,10 @@ module Virgil
 
 
            # Confirms an identity and generates a validation token that can be used to perform operations like
-           #  Publish and Revoke global Cards.
-           #
-           # Args:
-           #   confirmation: an instance of EmailConfirmation class with defined own confirmation code that was received on email box.
-           #
-           # Returns:
-           #   a new instance of ValidationToken class.
+           # Publish and Revoke global Cards.
+           # @param confirmation [EmailConfirmation] confirmation with defined own confirmation code
+           #   that was received on email box.
+           # @return [ValidationToken].
           def confirm(confirmation)
             raise ConfirmationIsNotValid unless confirmation
             token = confirmation.confirm_and_grab_validation_token(self, self.context.client)

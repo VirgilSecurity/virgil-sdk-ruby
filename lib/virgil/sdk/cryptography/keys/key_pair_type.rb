@@ -86,15 +86,9 @@ module Virgil
           }
 
           # Converts type enum value to native value
-          #
-          # Args:
-          #   key_pair_type: type id for conversion.
-          #
-          # Returns:
-          #   Native library key pair type id.
-          #
-          # Raises:
-          #   UnknownTypeException: if type is not supported.
+          # @param key_pair_type [Symbol] type id for conversion.
+          # @return [Integer] Native library key pair type id.
+          # @raise [UnknownTypeException] if type is not supported.
           def self.convert_to_native(key_pair_type)
             if TYPES_TO_NATIVE.has_key?(key_pair_type)
               return TYPES_TO_NATIVE[key_pair_type]

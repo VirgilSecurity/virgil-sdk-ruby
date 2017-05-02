@@ -41,11 +41,13 @@ module Virgil
       # This class provides a list of methods that simplify the work with an array of bytes.
       class VirgilBuffer
 
-        # The array of raw bytes
+
+        # @return [Crypto::Bytes] The array of raw bytes
         attr_accessor :bytes
 
 
         # Initializes a new instance of the {VirgilBuffer} class.
+        # @param bytes [Crypto::Bytes]
         def initialize(bytes)
 
           self.class.validate_bytes_param(bytes)
@@ -54,6 +56,7 @@ module Virgil
 
 
         # Initializes a new buffer from array of bytes
+        # @param bytes [Crypto::Bytes]
         def self.from_bytes(bytes)
 
           self.validate_bytes_param(bytes)
@@ -63,10 +66,9 @@ module Virgil
         end
 
         # Initializes a new buffer from specified string, which encodes binary data.
-        #
-        # Args:
-        #   str: String to decode.
-        #   encoding: The character encoding of string.
+        # @param str [String] String to decode.
+        # @param encoding [VirgilStringEncoding] The character encoding of string.
+        # @raise [ArgumentError] if encoding is undefined
         def self.from_string(str, encoding=VirgilStringEncoding::UTF8)
 
           case encoding
@@ -85,12 +87,10 @@ module Virgil
 
         # Converts all the bytes in current buffer to its equivalent string representation that
         # is encoded with selected encoding.
-        #
-        # Args:
-        #   encoding: The character encoding to encode to.
-        #
-        # Returns:
+        # @param encoding [VirgilStringEncoding] The character encoding to encode to.
         #    equivalent string representation if raw bytes in selected encoding.
+        # @return [String]
+        # @raise [ArgumentError] if encoding is undefined
         def to_string(encoding=VirgilStringEncoding::UTF8)
           case encoding
             when VirgilStringEncoding::BASE64

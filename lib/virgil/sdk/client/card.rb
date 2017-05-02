@@ -36,11 +36,24 @@ require 'json'
 module Virgil
   module SDK
     module Client
-      # Model representing cards information.
-      Card = Struct.new(:id, :snapshot, :identity,
+    # Model representing cards information.
+    # @attr [String] id
+    # @attr [Hash] snapshot
+    # @attr [String] identity
+    # @attr [String] identity_type
+    # @attr [Crypto::Bytes] public_key
+    # @attr [String] scope
+    # @attr [Hash] data
+    # @attr [String] device
+    # @attr [String] device_name
+    # @attr [String] version
+    # @attr [Hash] signatures
+    # @attr [HighLevel::VirgilIdentity::ValidationToken] validation_token
+    # @attr [Hash] relations
+    class Card < Struct.new(:id, :snapshot, :identity,
                         :identity_type, :public_key, :scope,
                         :data, :device, :device_name, :version,
-                        :signatures, :validation_token, :relations) do
+                        :signatures, :validation_token, :relations)
 
 
         # Initializes a new instance of the {Card} class.
@@ -59,11 +72,10 @@ module Virgil
           self.relations = options[:relations] || {}
         end
 
+
         # Create new {Card} from response containing json-encoded snapshot.
-        # Args:
-        #     response: Cards service response containing base64 encoded content_snapshot.
-        # Returns:
-        #     Card model restored from snapshot.
+        # @param response [Hash] Cards service response containing base64 encoded content_snapshot.
+        # @return [Card] Card model restored from snapshot.
         def self.from_response(response)
           snapshot = Base64.decode64(response["content_snapshot"])
           snapshot_model = JSON.parse(snapshot)
@@ -89,7 +101,8 @@ module Virgil
 
 
 
-        # Restores request from card's data.
+       
+        # @return [Requests::CreateCardRequest]
         def to_request
           request = Virgil::SDK::Client::Requests::CreateCardRequest.new({})
           request.restore(Crypto::Bytes.from_string(snapshot), signatures, validation_token, relations)
@@ -97,22 +110,17 @@ module Virgil
         end
 
 
-        # Exports card's snapshot.
-        #
-        # Returns:
-        #   base64-encoded json representation of card's content_snapshot and meta.
+        # @return [String] base64-encoded json representation of card's content_snapshot and meta.
+        # @example export a card to string
+        #   exported_card = alice_card.export
+        # @see VirgilClient#new_card How to create unpublished alice_card
         def export
           self.to_request.export
         end
 
 
-        # To initialize a card from request model.
-        #
-        # Args:
-        #   request_model: request model from instance of CreateCardRequest class.
-        #
-        # Returns:
-        #   new card.
+        # @param request_model [Hash] request model from instance of CreateCardRequest class.
+        # @return [Card] new card.
         def self.from_request_model(request_model)
           snapshot = Base64.decode64(request_model[:content_snapshot])
           snapshot_model = JSON.parse(snapshot)
@@ -140,9 +148,6 @@ module Virgil
       Card::APPLICATION = "application"
       Card::GLOBAL = "global"
 
-
-
-
       Card::SERVICE_URL = "https://cards.virgilsecurity.com"
       Card::READ_ONLY_SERVICE_URL = "https://cards-ro.virgilsecurity.com"
       Card::RA_SERVICE_URL = "https://ra.virgilsecurity.com"
@@ -150,4 +155,4 @@ module Virgil
       Card::VC_VERSION = "v4" # version of service, which gets, searchs card
     end
   end
-end
+  end

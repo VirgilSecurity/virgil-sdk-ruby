@@ -42,26 +42,41 @@ module Virgil
         # Provides an authenticated secure access to the
         # Virgil Security services. The access token also allows the API to associate
         # your app requests with your Virgil Security developer’s account.
+        # @return [String]
         attr_reader :access_token
 
-        # Virgil Security services client. It's an instance of the {Client::VirgilClient} class.
+        # Virgil Security services client.
+        # @return [Client::VirgilClient]
         attr_reader :client
 
         # crypto API that represents a set of methods for dealing with low-level cryptographic primitives and
-        # algorithms. It's an instance of the {VirgilCrypto} class.
+        # algorithms.
+        # @return [VirgilCrypto]
         attr_reader :crypto
 
-        # Application authentication credentials. It's an instance of the {VirgilAppCredentials} class.
+        # Application authentication credentials.
+        # @return [VirgilAppCredentials]
         attr_reader :credentials
 
-        # Cryptographic keys storage. It's an instance of the {Cryptography::Keys::KeyStorage} class.
+        # Cryptographic keys storage.
+        # @return [Cryptography::Keys::KeyStorage]
         attr_reader :key_storage
 
         # indicates whether the Cards be verified with built in verifiers or not.
+        # @return [Boolean]
         attr_reader :use_built_in_verifiers
 
 
         # Initializes a new instance of the {VirgilContext} class.
+        # @example Initializes a new instance with disabled built in verifiers
+        #   VirgilContext.new(
+        #       access_token: "[YOUR_ACCESS_TOKEN_HERE]",
+        #       credentials: VirgilAppCredentials.new(
+        #           app_id: "[YOUR_APP_ID_HERE]",
+        #           app_key_data: VirgilBuffer.from_file("[YOUR_APP_KEY_PATH_HERE]"),
+        #           app_key_password: "[YOUR_APP_KEY_PASSWORD_HERE]"),
+        #           use_built_in_verifiers: false
+        #   )
         def initialize(access_token: nil, credentials: nil, key_storage_path: Cryptography::Keys::KeyStorage.default_folder,
                        cards_service_url: Client::Card::SERVICE_URL,
                        cards_read_only_service_url: Client::Card::READ_ONLY_SERVICE_URL,

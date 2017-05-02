@@ -39,7 +39,7 @@ module ClientTestConfig
     end
 
     def raw_app_private_key
-      @_raw_app_private_key ||= File.read(app_key_path)
+      @_raw_app_private_key ||= ENV["VIRGIL_RAW_APP_PRIVATE_KEY"] || File.read(app_key_path)
     end
 
   end

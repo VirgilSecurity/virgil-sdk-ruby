@@ -41,12 +41,15 @@ module Virgil
 
         # uniquely identifies your application in Virgil services, and it is also used to identify the
         # Virgil Card/Public key generated in a pair with application key.
+        # @return [String]
         attr_reader :app_id
 
         # Application Private key value wrapped by an instance of the {VirgilBuffer} class.
+        # @return [VirgilBuffer]
         attr_reader :app_key_data
 
         # Application key password is used to protect the application key.
+        # @return [String]
         attr_reader :app_key_password
 
         # Initializes a new instance of the {VirgilAppCredentials} class
@@ -56,9 +59,11 @@ module Virgil
           @app_key_password = app_key_password
         end
 
-        # Application key is representing a Private key that is used to perform creation and revocation of Virgil Cards
-        # (Public key) in Virgil services. Also the application key can be used for cryptographic operations to take part
+
+        # Application key is representing a Private key that is used to perform creation and revocation
+        # of Virgil Cards (Public key) in Virgil services. Also the application key can be used for cryptographic operations to take part
         # in application logic.
+        # @return [Keys::PrivateKey]
         def app_key(crypto)
           crypto.import_private_key(app_key_data.bytes, app_key_password)
         end

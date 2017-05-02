@@ -42,34 +42,22 @@ module Virgil
         end
 
         # Create new search criteria for searching cards by identity.
-        #
-        # Args:
-        #     identity: VirgilIdentity value.
-        #
-        # Returns:
-        #     Search criteria with provided identity.
+        # @param identity [String] VirgilIdentity value.
+        # @return [SearchCriteria] Search criteria with provided identity.
         def self.by_identity(identity)
           return self.by_identities([identity])
         end
 
         # Create new search criteria for searching cards by identities.
-        #
-        # Args:
-        #     identities: Identities value.
-        #
-        # Returns:
-        #     Search criteria with provided identities.
+        # @param identities [Array<String>] Identities value.
+        # @return [SearchCriteria] Search criteria with provided identities.
         def self.by_identities(identities)
           return new(identities, nil, Card::APPLICATION)
         end
 
         # Create new search criteria for searching cards by application bundle.
-        #
-        # Args:
-        #     bundle: Application bundle.
-        #
-        # Returns:
-        #     Search criteria for searching by bundle.
+        # @param bundle [String] Application bundle.
+        # @return [SearchCriteria] Search criteria for searching by bundle.
         def self.by_app_bundle(bundle)
           return new([bundle], 'application', Card::GLOBAL)
         end

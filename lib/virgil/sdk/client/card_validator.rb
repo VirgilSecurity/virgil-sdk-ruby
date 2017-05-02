@@ -52,29 +52,24 @@ module Virgil
         end
 
 
-        # Add default service verifier to validator
+        # Add default service verifier to validator.
         def add_default_verifiers
           public_key_bytes = Crypto::Bytes.from_base64(SERVICE_PUBLIC_KEY)
           public_key = crypto.import_public_key(public_key_bytes)
           @verifiers[SERVICE_CARD_ID] = public_key
         end
 
+
         # Add signature verifier.
-        #
-        # Args:
-        #      card_id: Card identifier
-        #      public_key: Public key used for signature verification.
+        # @param card_id [String] Card identifier.
+        # @param public_key [Cryptography::Keys::PublicKey] Public key used for signature verification.
         def add_verifier(card_id, public_key)
           @verifiers[card_id] = public_key
         end
 
         # Validates Card using verifiers.
-        #
-        # Args:
-        #     card: an instance of the {Card} class for validation.
-        #
-        # Returns:
-        #     True if card signatures are valid, false otherwise.
+        # @param card [Card] a card for validation.
+        # @return [Boolean] True if card signatures are valid, false otherwise.
         def is_valid?(card)
 
           return true if (card.version == '3.0' && card.scope == Client::Card::GLOBAL)

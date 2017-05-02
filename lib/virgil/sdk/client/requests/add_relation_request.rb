@@ -41,7 +41,8 @@ module Virgil
         # Create request using trusted card's snapshot
         class AddRelationRequest < SignableRequest
 
-          # Initializes a new instance of the {AddRelationRequest} class using trusted card
+          # Initializes a new instance of the class using trusted card
+          # @param relation_card [Client::Card] the trusted card.
           def initialize(relation_card)
             super()
             @snapshot = relation_card.to_request.snapshot

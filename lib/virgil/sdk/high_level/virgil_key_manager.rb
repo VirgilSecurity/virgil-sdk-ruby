@@ -38,7 +38,8 @@ module Virgil
       # and further them storage in secure place.
       class VirgilKeyManager
 
-        # An instance of the {VirgilContext} class that manages the VirgilApi dependencies during run time.
+        # manages the VirgilApi dependencies during run time.
+        # @return [VirgilContext]
         attr_reader :context
 
         # Initializes a new instance of the {VirgilKeyManager} class.
@@ -48,9 +49,24 @@ module Virgil
 
 
         # Generates a new {VirgilKey} with default parameters.
+        # @return [VirgilKey]
+        # @example Generate Virgil Key
+        #   virgil = VirgilApi.new
+        #   alice_key = virgil.keys.generate
+        #   # After generation you can save the key to key storage
         #
-        # Returns:
-        #   An instance of {VirgilKey} class
+        # @example GENERATE A VIRGIL KEY WITH A SPECIFIC TYPE
+        #   initialize Crypto with specific key pair type
+        #   crypto = VirgilCrypto.new(KeyPairType::EC_BP512R1)
+        #
+        #   context = VirgilContext.new(crypto: crypto)
+        #
+        #   # initialize Virgil SDK using context
+        #   virgil = VirgilApi.new(context: context)
+        #
+        #   # generate a new Virgil Key
+        #   alice_key = virgil.keys.generate()
+        # @see VirgilKey#save  Save a current VirgilKey in secure storage.
         def generate
           key_pair = context.crypto.generate_keys()
           VirgilKey.new(context, key_pair.private_key)
@@ -58,18 +74,16 @@ module Virgil
 
 
         # Loads the VirgilKey from current storage by specified key name.
-        #
-        # Args:
-        #   key_name: The name of the key.
-        #   key_password: The key password.
-        #
-        # Returns:
-        #   An instance of VirgilKey class
-        #
-        # Raises:
-        #   KeyEntryNotFoundException: if key storage doesn't have item with such name
-        #   ArgumentError: key_name is not valid if key_name is nil
-        #   KeyStorageException: Destination folder doesn't exist or you don't have permission to write there
+        # @param key_name [String] The name of the key.
+        # @param key_password [String]
+        # @return [VirgilKey]
+        # @raise [KeyEntryNotFoundException] if key storage doesn't have item with such name
+        # @raise [ArgumentError] if key_name is nil
+        # @raise [KeyStorageException] if destination folder doesn't exist or you don't have permission to write there
+        # @example
+        #   virgil = VirgilApi.new()
+        #   # load a Virgil Key from storage
+        #   alice_key = virgil.keys.load("[KEY_NAME]", "[OPTIONAL_KEY_PASSWORD]")
         def load(key_name, key_password=nil)
 
           raise ArgumentError.new("key_name is not valid") if key_name.nil?
@@ -81,13 +95,17 @@ module Virgil
         end
 
         # Imports the {VirgilKey} from buffer.
+        # @param buffer [VirgilBuffer] The buffer with Key
+        # @param password [String] The Key password
+        # @return [VirgilKey]
+        # @example
+        #   virgil = VirgilApi.new
+        #   # initialize a buffer from base64 encoded string
+        #   alice_key_buffer = VirgilBuffer.from_base64("[BASE64_ENCODED_VIRGIL_KEY]")
         #
-        # Args:
-        #   buffer: The buffer with Key
-        #   password: The Key password
-        #
-        # Returns:
-        #   new VirgilKey
+        #   # import Virgil Key from buffer
+        #   alice_key = virgil.keys.import(alice_key_buffer, "[OPTIONAL_KEY_PASSWORD]")
+        # @see VirgilKey.export How to get BASE64_ENCODED_VIRGIL_KEY
         def import(buffer, password=nil)
           private_key = context.crypto.import_private_key(buffer.bytes, password)
           VirgilKey.new(context, private_key)
@@ -95,14 +113,13 @@ module Virgil
 
 
         # Remove the {VirgilKey} from current storage by specified key name.
-        #
-        # Args:
-        #   key_name: The name of the key.
-        #
-        # Raises:
-        #   KeyEntryNotFoundException: if key storage doesn't have item with such name
-        #   ArgumentError: key_name is not valid if key_name is nil
-        #   KeyStorageException: Destination folder doesn't exist or you don't have permission to write there
+        # @param key_name [String] The name of the key.
+        # @raise [KeyEntryNotFoundException] if key storage doesn't have item with such name
+        # @raise [ArgumentError] if key_name is nil
+        # @raise [KeyStorageException] if destination folder doesn't exist or you don't have permission to write there
+        # @example Remove key from the storage by name
+        #   virgil = VirgilApi.new
+        #   virgil.keys.delete("[KEY_NAME]")
         def delete(key_name)
 
           raise ArgumentError.new("key_name is not valid") if key_name.nil?
