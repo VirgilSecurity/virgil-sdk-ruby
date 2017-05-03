@@ -190,7 +190,7 @@ module Virgil
         # @param app_key [Cryptography::Keys::PrivateKey] Application key for authority sign.
         # @return [Card] Card that is published to Virgil Security services
         # @example Sign and publish local card
-        #
+        #   client = Client::VirgilClient.new("[YOUR_ACCESS_TOKEN_HERE]")
         #   client.sign_and_publish_card(alice_card, app_id, app_key)
         def sign_and_publish_card(card, app_id, app_key)
           request = card.to_request
@@ -227,6 +227,11 @@ module Virgil
         #   request_signer = Client::RequestSigner.new(crypto)
         #
         #   request_signer.self_sign(create_card_request, alice_keys.private_key)
+        #
+        #   app_id = "[YOUR_APP_ID_HERE]"
+        #   app_key_data = Virgil::Crypto::Bytes.from_string(File.read("[YOUR_APP_KEY_PATH_HERE]"))
+        #   app_key = crypto.import_private_key(app_key_data, app_key_password)
+        #
         #   request_signer.authority_sign(create_card_request, app_id, app_key)
         #
         #   alice_card = client.create_card_from_signed_request(create_card_request)
@@ -252,6 +257,7 @@ module Virgil
         # @raise [Client::HTTP::BaseConnection::ApiError] if some error has occurred on the server.
         # @return [Card]  Updated card from server response.
         # @example Add bob_card as a relation to alice_card
+        #   client = Client::VirgilClient.new("[YOUR_ACCESS_TOKEN_HERE]")
         #   alice_card = client.create_card(
         #       "alice",
         #       "unknown",
@@ -296,6 +302,7 @@ module Virgil
         # @raise [ArgumentError] if request doesn't have trusted card's snapshot or doesn't have exactly 1 signature.
         # @raise [Client::HTTP::BaseConnection::ApiError] if some error has occurred on the server.
         # @example delete bob_card from alice_card's relations
+        #   client = Client::VirgilClient.new("[YOUR_ACCESS_TOKEN_HERE]")
         #   delete_relation_request = Client::Requests::DeleteRelationRequest.new({card_id: bob_card.id})
         #   request_signer = Client::RequestSigner.new(crypto)
         #   request_signer.authority_sign(delete_relation_request, alice_card.id, alice_keys.private_key)
