@@ -211,9 +211,9 @@ module Virgil
         end
 
         # Decrypts the specified bytes using Private key.
-        # @param cipher_bytes [Crypto::Bytes] encrypted bytes bytes for decryption.
+        # @param cipher_bytes [Crypto::Bytes] encrypted data bytes for decryption.
         # @param private_key [Keys::PrivateKey] private key for decryption.
-        # @return [Crypto::Bytes] Decrypted bytes bytes.
+        # @return [Crypto::Bytes] Decrypted data bytes.
         # @example
         #   # You can decrypt data using your private key
         #   crypto = Virgil::SDK::Cryptography::VirgilCrypto.new
@@ -373,10 +373,9 @@ module Virgil
         end
 
         # Decrypts the specified stream using Private key.
-        # @param input_stream [IO] readable stream containing input data.
+        # @param input_stream [IO] readable stream containing encrypted data.
         # @param output_stream [IO] writable stream for output.
         # @param private_key [Keys::PrivateKey] private key for decryption.
-        # @return [Crypto::Bytes] Decrypted data bytes.
         # @example
         #   crypto = Virgil::SDK::Cryptography::VirgilCrypto.new
         #   File.open("[YOUR_CIPHER_FILE_PATH_HERE]", "r") do |cipher_stream|
