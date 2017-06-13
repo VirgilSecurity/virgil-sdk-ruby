@@ -78,7 +78,7 @@ virgil = VirgilApi.new(access_token: "[YOUR_ACCESS_TOKEN_HERE]")
 
 > __Note:__ this client will have limited capabilities. For example, it will be able to generate new __Cards__ but it will need a server-side client to transmit these to Virgil.
 
-To initialize the SDK on the server side we will need the __access token__, __app id__ and the __App Key__ you created on the [Developer Dashboard](https://developer.virgilsecurity.com/).
+To initialize the SDK on the server side we will need the __access token__, __app id__ and the __App Key__ you created on the [Developer Dashboard](https://developer.virgilsecurity.com/account/dashboard).
 
 ```ruby
  # initialize Virgil SDK high-level instance.
