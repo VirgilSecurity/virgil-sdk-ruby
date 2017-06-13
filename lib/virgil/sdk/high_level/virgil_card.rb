@@ -200,7 +200,9 @@ module Virgil
         # @return [VirgilIdentity::VerificationAttempt] that contains
         #   information about action and etc
         def check_identity(identity_options = nil)
-          action_id = context.client.verify_identity(identity, identity_type)
+
+          extra_fields = identity_options ? identity_options.extra_fields : {}
+          action_id = context.client.verify_identity(identity, identity_type, extra_fields)
           VirgilIdentity::VerificationAttempt.new(context: context, action_id: action_id,
                                                   identity: identity, identity_type: identity_type,
                                                   additional_options: identity_options)

@@ -38,20 +38,21 @@ module Virgil
     module Client
       module Requests
         class VerifyIdentityRequest
-          attr_accessor :identity, :identity_type
-          private :identity_type=, :identity=
+          attr_reader :identity, :identity_type, :extra_fields
 
           # Initializes a new instance of the {VerifyIdentityRequest} class.
-          def initialize(identity, identity_type)
-            self.identity_type = identity_type
-            self.identity = identity
+          def initialize(identity, identity_type, extra_fields = {})
+            @identity_type = identity_type
+            @identity = identity
+            @extra_fields = extra_fields
           end
 
           # Request model used for json representation.
           def request_model
             return {
                 'type': identity_type,
-                'value': identity
+                'value': identity,
+                'extra_fields': extra_fields
             }
           end
         end

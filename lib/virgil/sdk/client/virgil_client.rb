@@ -419,10 +419,11 @@ module Virgil
         # Sends the request for identity verification, that's will be processed depending of specified type.
         # @param identity [String] An unique string that represents identity.
         # @param identity_type [String] The type of identity.
+        # @param extra_fields [HASH] A parameter for additional information.
         # @return [String] The action identifier that is required for confirmation the identity.
         # @note use method confirm_identity to confirm and get the identity token.
-        def verify_identity(identity, identity_type)
-          verify_identity_request = Requests::VerifyIdentityRequest.new(identity, identity_type)
+        def verify_identity(identity, identity_type, extra_fields = {})
+          verify_identity_request = Requests::VerifyIdentityRequest.new(identity, identity_type, extra_fields)
           http_request = Client::HTTP::Request.new(
               method: HTTP::Request::POST,
               endpoint: "/#{Card::VRA_VERSION}/verify",

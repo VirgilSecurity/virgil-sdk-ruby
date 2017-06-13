@@ -45,10 +45,13 @@ module Virgil
           # usages (maximum value is 100).
           attr_reader :count_to_live
 
+          attr_reader :extra_fields
+
           # Initializes a new instance of the {VerificationOptions} class
           def initialize(options = {})
             @time_to_live = options[:time_to_live] || 3600
             @count_to_live = options[:count_to_live] || 12
+            @extra_fields = options[:extra_fields] || {}
           end
 
         end
