@@ -113,8 +113,8 @@ module Virgil
         # Initializes a new buffer from file.
         def self.from_file(key_file_path)
           raise ArgumentError.new("file_path is not valide") unless (File.exist?(key_file_path) && File.readable?(key_file_path))
-          str = File.read(key_file_path)
-          from_string(str)
+          str = File.binread(key_file_path)
+          new(str.bytes)
         end
 
 
