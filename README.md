@@ -120,16 +120,16 @@ This library is released under the [3-clause BSD License](LICENSE).
 Our developer support team is here to help you. You can find us on [Twitter](https://twitter.com/virgilsecurity) and [email](support).
 
 [support]: mailto:support@virgilsecurity.com
-[_getstarted_root]: https://developer.virgilsecurity.com/docs/ruby/get-started
-[_getstarted]: https://developer.virgilsecurity.com/docs/ruby/guides
-[_getstarted_encryption]: https://developer.virgilsecurity.com/docs/ruby/get-started/encrypted-communication
-[_getstarted_storage]: https://developer.virgilsecurity.com/docs/ruby/get-started/encrypted-storage
-[_getstarted_data_integrity]: https://developer.virgilsecurity.com/docs/ruby/get-started/data-integrity
-[_getstarted_passwordless_login]: https://developer.virgilsecurity.com/docs/ruby/get-started/passwordless-authentication
-[_guides]: https://developer.virgilsecurity.com/docs/ruby/guides
-[_guide_initialization]: https://developer.virgilsecurity.com/docs/ruby/guides/settings/install-sdk
-[_guide_virgil_cards]: https://developer.virgilsecurity.com/docs/ruby/guides/virgil-card/creating
-[_guide_virgil_keys]: https://developer.virgilsecurity.com/docs/ruby/guides/virgil-key/generating
-[_guide_encryption]: https://developer.virgilsecurity.com/docs/ruby/guides/encryption/encrypting
-[_initialize_root]: https://developer.virgilsecurity.com/docs/ruby/guides/settings/initialize-sdk-on-client
+[_getstarted_root]: https://developer.virgilsecurity.com/doc/ruby/get-started
+[_getstarted]: https://developer.virgilsecurity.com/doc/ruby/guides
+[_getstarted_encryption]: https://developer.virgilsecurity.com/doc/ruby/get-started/encrypted-communication
+[_getstarted_storage]: https://developer.virgilsecurity.com/doc/ruby/get-started/encrypted-storage
+[_getstarted_data_integrity]: https://developer.virgilsecurity.com/doc/ruby/get-started/data-integrity
+[_getstarted_passwordless_login]: https://developer.virgilsecurity.com/doc/ruby/get-started/passwordless-authentication
+[_guides]: https://developer.virgilsecurity.com/doc/ruby/guides
+[_guide_initialization]: https://developer.virgilsecurity.com/doc/ruby/guides/settings/install-sdk
+[_guide_virgil_cards]: https://developer.virgilsecurity.com/doc/ruby/guides/virgil-card/creating
+[_guide_virgil_keys]: https://developer.virgilsecurity.com/doc/ruby/guides/virgil-key/generating
+[_guide_encryption]: https://developer.virgilsecurity.com/doc/ruby/guides/encryption/encrypting
+[_initialize_root]: https://developer.virgilsecurity.com/doc/ruby/guides/settings/initialize-sdk-on-client
 [_reference_api]: http://www.rubydoc.info/gems/virgil-sdk
