@@ -528,9 +528,17 @@ module Virgil
               endpoint: "/#{Card::VC_VERSION}/card/actions/search",
               body: body,
           )
-          response = self.read_cards_connection.send_request(http_request)
-          cards = response.map { |card| Card.from_response(card) }
-          self.validate_cards(cards) if self.card_validator
+          response = nil
+          begin
+            response = self.read_cards_connection.send_request(http_request)
+          rescue
+          end
+          cards = []
+          if response
+            cards = response.map { |card| Card.from_response(card) }
+            self.validate_cards(cards) if self.card_validator
+          end
+
           return cards
         end
 

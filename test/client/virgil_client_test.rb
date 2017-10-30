@@ -147,6 +147,75 @@ class VirgilClientTest < Minitest::Test
     self.cleanup_cards(*cards)
   end
 
+  def test_search_non_existent_cards_by_search_criteria()
+    criteria = Virgil::SDK::Client::SearchCriteria.new(["some_non existent_card_identity"],
+                                                       "some_non existent_card_identity_type",
+                                                       "application")
+    cards = @client.search_cards_by_criteria(criteria)
+    assert_equal(cards, [])
+  end
+
+
+  def test_search_cards_by_search_criteria()
+    alice_keys1 = @crypto.generate_keys
+    alice_card1 = @client.create_card(
+        "alice_card",
+        "unknown",
+        alice_keys1,
+        ClientTestConfig.app_id,
+        @app_private_key
+    )
+    criteria = Virgil::SDK::Client::SearchCriteria.new(["alice_card"],
+                                                       "unknown",
+                                                       "application")
+    cards = @client.search_cards_by_criteria(criteria)
+    assert_includes(cards, alice_card1)
+    self.cleanup_cards(*cards)
+  end
+
+
+  def test_add_remove_relations
+
+    alice_keys = @crypto.generate_keys
+    alice_card = @client.create_card(
+        "alice_card",
+        "unknown",
+        alice_keys,
+        ClientTestConfig.app_id,
+        @app_private_key
+    )
+
+    bob_keys = @crypto.generate_keys
+    bob_card = @client.create_card(
+        "bob",
+        "unknown",
+        bob_keys,
+        ClientTestConfig.app_id,
+        @app_private_key
+    )
+
+    add_relation_request = Virgil::SDK::Client::Requests::AddRelationRequest.new(
+        bob_card
+    )
+    request_signer = Virgil::SDK::Client::RequestSigner.new(@crypto)
+
+    request_signer.authority_sign(add_relation_request, alice_card.id, alice_keys.private_key)
+
+    updated_alice_card = @client.add_relation(add_relation_request)
+
+    assert_equal(updated_alice_card.relations.count, 1)
+    assert_equal(updated_alice_card.relations.keys[0], bob_card.id)
+    delete_relation_request = Virgil::SDK::Client::Requests::DeleteRelationRequest.new({card_id: bob_card.id})
+    request_signer = Virgil::SDK::Client::RequestSigner.new(@crypto)
+
+    request_signer.authority_sign(delete_relation_request, alice_card.id, alice_keys.private_key)
+    updated_alice_card = @client.delete_relation(delete_relation_request)
+    assert_equal(updated_alice_card.relations.count, 0)
+    self.cleanup_cards(alice_card, bob_card)
+
+  end
+
+
   def test_search_card_by_multiple_identities
     alice_keys = @crypto.generate_keys
     alice_card = @client.create_card(
