@@ -8,11 +8,11 @@ Virgil Security gives developers open source API with the full cycle of data sec
 
 
 ## <a name="head1"></a> Set Up Server
-Your server should be able to authorize your users, store Application's Virgil Key and use **Virgil SDK** for cryptographic operations or for some requests to Virgil Services. You can configure your server using the [Setup Guide](/docs/guides/configuration/server-configuration.md).
+Your server should be able to authorize your users, store Application's Virgil Key and use **Virgil SDK** for cryptographic operations or for some requests to Virgil Services. You can configure your server using the [Setup Guide](/docs/guides/configuration/server.md).
 
 
 ## <a name="head2"></a> Set Up Clients
-Set up the client side. After users register at your Application Server, provide them with an access token that authenticates users for further operations and transmit their **Virgil Cards** to the server. Configure the client side using the [Setup Guide](/docs/guides/configuration/client-configuration.md).
+Set up the client side. After users register at your Application Server, provide them with an access token that authenticates users for further operations and transmit their **Virgil Cards** to the server. Configure the client side using the [Setup Guide](/docs/guides/configuration/client.md).
 
 
 ## <a name="head3"></a> Register Users
@@ -60,7 +60,7 @@ exported_card = alice_card.export
 transmit_to_server(exported_card);
 ```
 
-Use the [approve & publish users guide](/docs/guides/configuration/server-configuration.md) to publish user's Virgil Card on Virgil Services.
+Use the [approve & publish users guide](/docs/guides/configuration/server.md) to publish user's Virgil Card on Virgil Services.
 
 
 ## <a name="head4"></a> Encrypt Data
