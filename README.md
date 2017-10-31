@@ -43,11 +43,11 @@ To initialize the SDK at the __Server Side__ you need the application credential
  # initialize Virgil SDK high-level instance.
 context = VirgilContext.new(
     access_token: "[YOUR_ACCESS_TOKEN_HERE]",
-    # Credentials are required only in case of publish and revoke local Virgil Cards.
-    credentials: VirgilAppCredentials.new(app_id: "[YOUR_APP_ID_HERE]",
-                                        app_key_data: VirgilBuffer.from_file("[YOUR_APP_KEY_PATH_HERE]"),
-                                        app_key_password: "[YOUR_APP_KEY_PASSWORD_HERE]")
-                                        )
+    # Credentials are required only to publish and revoke Virgil Cards.
+    credentials: VirgilAppCredentials.new(
+        app_id: "[YOUR_APP_ID_HERE]",
+        app_key_data: VirgilBuffer.from_file("[YOUR_APP_KEY_PATH_HERE]"),
+        app_key_password: "[YOUR_APP_KEY_PASSWORD_HERE]"))
 
 virgil = VirgilApi.new(context: context)
 
