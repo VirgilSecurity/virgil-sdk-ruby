@@ -8,13 +8,9 @@ To initialize and use Virgil SDK, you need to have [Developer Account](https://d
 
 ## Installation
 
-The Virgil SDK is provided as a gem named *virgil-sdk*. The package is distributed via *bundler* package manager.
+The Virgil SDK is provided as a gem named *virgil-sdk* and available for Ruby 2.1 and newer. The package is distributed via *bundler* package manager.
 
-The gem is available for Ruby 2.1 and newer.
-
-Installing the gem
-
-To install package use the command below:
+To install the package use the command below:
 
 ```
 gem install virgil-sdk
