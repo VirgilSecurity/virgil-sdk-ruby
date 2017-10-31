@@ -65,10 +65,10 @@ include Virgil::SDK::HighLevel
 # initialize Virgil SDK
 virgil = VirgilApi.new(access_token: "[YOUR_ACCESS_TOKEN_HERE]")
 
-# find Alice's card(s) at Virgil Services
+# find Alice's Virgil Card(s) at Virgil Services
 alice_cards = virgil.cards.find("alice")
 
-# encrypt the message using Alice's Virgil cards
+# encrypt the message using Alice's Virgil Cards
 message = "Hello Alice!"
 encrypted_message = alice_cards.encrypt(message)
 
@@ -80,10 +80,10 @@ Alice uses her Virgil Private Key to decrypt the encrypted message.
 
 
 ```ruby
-# load Alice's Key from local storage.
+# load Alice's Private Virgil Key from her local storage.
 alice_key = virgil.keys.load("alice_key_1", "mypassword")
 
-# decrypt the message using the key
+# decrypt the message using Alice's Private Virgil Key
 original_message = alice_key.decrypt(transfer_data).to_s
 ```
 
