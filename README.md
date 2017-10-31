@@ -52,7 +52,7 @@ virgil = VirgilApi.new(context: context)
 
 ## Encryption / Decryption Example
 
-Virgil Security makes it super easy to add encryption to any application. With our SDK you create a public [__Virgil Card__][_guide_virgil_cards] for every one of your users and devices. With these in place you can easily encrypt any data in the client.
+Virgil Security makes it super easy to add encryption to any application. With our SDK you create a public __Virgil Card__ for every one of your users and devices. With these in place you can easily encrypt any data in the client.
 
 ```ruby
 require "virgil/sdk"
