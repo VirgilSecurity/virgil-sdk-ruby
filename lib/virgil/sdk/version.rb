@@ -1,5 +1,5 @@
 module Virgil
   module SDK
-    VERSION = "4.3.4"
+    VERSION = "4.4.0"
   end
 end

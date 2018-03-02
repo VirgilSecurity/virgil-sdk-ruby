@@ -47,7 +47,7 @@ gem install virgil-sdk --pre
 or add the following line to your Gemfile:
 
 ```
-gem 'virgil-sdk', '~> 4.0.0b'
+gem 'virgil-sdk', '~> 4.4.0'
 ```
 
 ## User and App Credentials

@@ -19,7 +19,7 @@ gem install virgil-sdk
 or add the following line to your Gemfile:
 
 ```
-gem 'virgil-sdk', '~> 4.3'
+gem 'virgil-sdk', '~> 4.4'
 ```
 
 
