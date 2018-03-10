@@ -1,10 +1,16 @@
 # Virgil Security Ruby SDK
 
-[Installation](#installation) | [Initialization](#initialization) | [Encryption / Decryption Example](#encryption-example) |  [Documentation](#documentation) | [Support](#support)
+[SDK Features](#sdk-features) | [Installation](#installation) | [Initialization](#initialization) | [Usage Examples](#usage-examples) | [Docs](#docs) | [Support](#support)
 
-[Virgil Security](https://virgilsecurity.com) provides a set of APIs for adding security to any application. In a few steps, you can encrypt communication, securely store data, provide passwordless authentication, and ensure data integrity.
+<img width="230px" src="logo.png" align="left" hspace="10" vspace="6"> [Virgil Security](https://virgilsecurity.com) provides a set of APIs for adding security to any application. In a few simple steps you can encrypt communication, securely store data, provide passwordless login, and ensure data integrity.
 
-To initialize and use Virgil SDK, you need to have [Developer Account](https://developer.virgilsecurity.com/account/signin).
+The Virgil SDK allows developers to get up and running with Virgil API quickly and add full end-to-end security to their existing digital solutions to become HIPAA and GDPR compliant and more.
+
+## SDK Features
+- communicate with [Virgil Cards Service][_cards_service]
+- manage users' Public Keys
+- store private keys in secure local storage
+- use Virgil [Crypto library][_virgil_crypto]
 
 ## Installation
 
@@ -27,13 +33,13 @@ gem 'virgil-sdk', '~> 4.4'
 
 Be sure that you have already registered at the [Dev Portal](https://developer.virgilsecurity.com/account/signin) and created your application.
 
-To initialize the SDK at the __Client Side__ you need only the __Access Token__ created for a client at [Dev Portal](https://developer.virgilsecurity.com/account/signin). The Access Token helps to authenticate client's requests.
+To initialize the SDK at the __Client Side__ you need only the __Access Token__ created for a client at Dev Portal. The Access Token helps to authenticate client's requests.
 
 ```ruby
 virgil = VirgilApi.new(access_token: "[YOUR_ACCESS_TOKEN_HERE]")
 ```
 
-To initialize the SDK at the __Server Side__ you need the application credentials (__Access Token__, __App ID__, __App Key__ and __App Key Password__) you got during Application registration at the [Dev Portal](https://developer.virgilsecurity.com/account/signin).
+To initialize the SDK at the __Server Side__ you need the application credentials (__Access Token__, __App ID__, __App Key__ and __App Key Password__) you got during Application registration at the Dev Portal.
 
 ```ruby
  # initialize Virgil SDK high-level instance.
@@ -50,65 +56,107 @@ virgil = VirgilApi.new(context: context)
 ```
 
 
-## Encryption / Decryption Example
+## Usage Examples
 
-Virgil Security makes it super easy to add encryption to any application. With our SDK you create a public __Virgil Card__ for every one of your users and devices. With these in place you can easily encrypt any data in the client.
+#### Generate and publish user's Cards with Public Keys inside on Cards Service
+Use the following lines of code to create and publish a user's Card with Public Key inside on Virgil Cards Service:
 
-```ruby
-require "virgil/sdk"
-include Virgil::SDK::HighLevel
+```Ruby
+# generate a new Virgil Key
+alice_key = virgil.keys.generate()
 
-# initialize Virgil SDK
-virgil = VirgilApi.new(access_token: "[YOUR_ACCESS_TOKEN_HERE]")
+# save the Virgil Key into a storage
+alice_key.save("[KEY_NAME]", "[KEY_PASSWORD]")
 
-# find Alice's Virgil Card(s) at Virgil Services
-alice_cards = virgil.cards.find("alice")
+# create a Virgil Card
+alice_card = virgil.cards.create("alice", alice_key)
 
-# encrypt the message using Alice's Virgil Cards
-message = "Hello Alice!"
-encrypted_message = alice_cards.encrypt(message)
+# export the Virgil Card to a string
+exported_alice_card = alice_card.export
 
-# transmit the message with your preferred technology to Alice
- transmit_message(encrypted_message.to_base64)
+# transmit the Card to your App Server
+# import the Virgil Card from the string
+alice_card = virgil.cards.import(exported_alice_card)
+
+# publish the Virgil Card on the Virgil Cards Service
+virgil.cards.publish(alice_card)
 ```
 
-Alice uses her Virgil Private Key to decrypt the encrypted message.
+#### Sign then encrypt data
 
+Virgil SDK lets you use a user's Private key and his or her Cards to sign, then encrypt any kind of data.
+
+In the following example, we load a Private Key from a customized Key Storage and get recipient's Card from the Virgil Cards Services. Recipient's Card contains a Public Key on which we will encrypt the data and verify a signature.
 
 ```ruby
-# load Alice's Private Virgil Key from her local storage.
-alice_key = virgil.keys.load("alice_key_1", "mypassword")
+# load a Virgil Key from a device storage
+alice_key = virgil.keys.load("[KEY_NAME]", "[OPTIONAL_KEY_PASSWORD]")
 
-# decrypt the message using Alice's Private Virgil Key
-original_message = alice_key.decrypt(transfer_data).to_s
+# search for Virgil Cards
+bob_cards = await virgil.cards.find("bob")
+
+# prepare a message
+message = "Hey Bob, how's it going?"
+
+# sign then encrypt the message
+ciphertext = alice_key.sign_then_encrypt(message, bob_cards).to_base64
 ```
 
-__Next:__ On the page below you can find configuration documentation and the list of our guides and use cases where you can see appliance of Virgil Ruby SDK.
+#### Decrypt then verify data
+Once the Users receive the signed and encrypted message, they can decrypt it with their own Private Key and verify signature with a Sender's Card:
 
+```Ruby
+# load a Virgil Key from a device storage
+bob_key = virgil.keys.load("[KEY_NAME]", "[OPTIONAL_KEY_PASSWORD]")
 
-## Documentation
+# get a sender's Virgil Card
+alice_card = virgil.cards.get("[ALICE_CARD_ID]")
 
-Virgil Security has a powerful set of APIs and the documentation to help you get started:
+# decrypt the message
+original_message = bob_key.decrypt_then_verify(ciphertext, alice_card).to_s
+```
 
-* [Get Started](/docs/get-started) documentation
-  * [Encrypted storage](/docs/get-started/encrypted-storage.md)
-  * [Encrypted communication](/docs/get-started/encrypted-communication.md)
-  * [Data integrity](/docs/get-started/data-integrity.md)
-* [Guides](/docs/guides)
-  * [Virgil Cards](/docs/guides/virgil-card)
-  * [Virgil Keys](/docs/guides/virgil-key)
-  * [Encryption](/docs/guides/encryption)
-  * [Signature](/docs/guides/signature)
-* [Configuration](/docs/guides/configuration)
-  * [Set Up Client Side](/docs/guides/configuration/client.md)
-  * [Set Up Server Side](/docs/guides/configuration/server.md)
+## Docs
+Virgil Security has a powerful set of APIs, and the documentation below can get you started today.
+
+In order to use the Virgil SDK with your application, you will need to first configure your application. By default, the SDK will attempt to look for Virgil-specific settings in your application but you can change it during SDK configuration.
+
+* [Configure the SDK][_configure_sdk] documentation
+  * [Setup authentication][_setup_authentication] to make API calls to Virgil Services
+  * [Setup Card Manager][_card_manager] to manage user's Public Keys
+  * [Setup Card Verifier][_card_verifier] to verify signatures inside of user's Card
+  * [Setup Key storage][_key_storage] to store Private Keys
+* [More usage examples][_more_examples]
+  * [Create & publish a Card][_create_card] that has a Public Key on Virgil Cards Service
+  * [Search user's Card by user's identity][_search_card]
+  * [Get user's Card by its ID][_get_card]
+  * [Use Card for crypto operations][_use_card]
+* [Reference API][_reference_api]
 
 ## License
 
-This library is released under the [3-clause BSD License](LICENSE).
+This library is released under the [3-clause BSD License](LICENSE.md).
 
 ## Support
 
-Our developer support team is here to help you. You can find us on [Twitter](https://twitter.com/virgilsecurity) and [email][support].
+Our developer support team is here to help you.
 
-[support]: mailto:support@virgilsecurity.com
+You can find us on [Twitter](https://twitter.com/VirgilSecurity) or send us email support@VirgilSecurity.com.
+
+Also, get extra help from our support team on [Slack](https://join.slack.com/t/VirgilSecurity/shared_invite/enQtMjg4MDE4ODM3ODA4LTc2OWQwOTQ3YjNhNTQ0ZjJiZDc2NjkzYjYxNTI0YzhmNTY2ZDliMGJjYWQ5YmZiOGU5ZWEzNmJiMWZhYWVmYTM).
+
+
+[_virgil_crypto]: https://github.com/VirgilSecurity/virgil-crypto
+[_cards_service]: https://developer.virgilsecurity.com/docs/api-reference/card-service/v4
+[_use_card]: https://developer.virgilsecurity.com/docs/ruby/how-to/public-key-management/v4/use-card-for-crypto-operation
+[_get_card]: https://developer.virgilsecurity.com/docs/ruby/how-to/public-key-management/v4/get-card
+[_search_card]: https://developer.virgilsecurity.com/docs/ruby/how-to/public-key-management/v4/search-card
+[_create_card]: https://developer.virgilsecurity.com/docs/ruby/how-to/public-key-management/v4/create-card
+[_key_storage]: https://developer.virgilsecurity.com/docs/ruby/how-to/setup/v4/setup-key-storage
+[_card_verifier]: https://developer.virgilsecurity.com/docs/ruby/how-to/setup/v4/setup-card-verifier
+[_card_manager]: https://developer.virgilsecurity.com/docs/ruby/how-to/setup/v4/setup-card-manager
+[_setup_authentication]: https://developer.virgilsecurity.com/docs/ruby/how-to/setup/v4/setup-authentication
+[_services_reference_api]: https://developer.virgilsecurity.com/docs/api-reference
+[_configure_sdk]: https://developer.virgilsecurity.com/docs/how-to#sdk-configuration
+[_more_examples]: https://developer.virgilsecurity.com/docs/how-to#public-key-management
+[_reference_api]: https://developer.virgilsecurity.com/docs/api-reference
