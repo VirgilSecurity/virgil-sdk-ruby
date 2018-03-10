@@ -1,5 +1,8 @@
 # Virgil Security Ruby SDK
 
+[![Nuget package](https://img.shields.io/gem/v/virgil-sdk.svg)](https://github.com/VirgilSecurity/virgil-sdk-ruby)
+[![GitHub license](https://img.shields.io/badge/license-BSD%203--Clause-blue.svg)](https://github.com/VirgilSecurity/virgil/blob/master/LICENSE)
+
 [SDK Features](#sdk-features) | [Installation](#installation) | [Initialization](#initialization) | [Usage Examples](#usage-examples) | [Docs](#docs) | [Support](#support)
 
 <img width="230px" src="logo.png" align="left" hspace="10" vspace="6"> [Virgil Security](https://virgilsecurity.com) provides a set of APIs for adding security to any application. In a few simple steps you can encrypt communication, securely store data, provide passwordless login, and ensure data integrity.
