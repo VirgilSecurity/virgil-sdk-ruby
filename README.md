@@ -1,7 +1,8 @@
 # Virgil Security Ruby SDK
-
-[![Nuget package](https://img.shields.io/gem/v/virgil-sdk.svg)](https://github.com/VirgilSecurity/virgil-sdk-ruby)
+[![Build Status](https://travis-ci.org/VirgilSecurity/virgil-sdk-ruby.svg?branch=master)](https://travis-ci.org/VirgilSecurity/virgil-sdk-ruby)
+[![Gem](https://img.shields.io/gem/v/virgil-sdk.svg)](https://github.com/VirgilSecurity/virgil-sdk-ruby)
 [![GitHub license](https://img.shields.io/badge/license-BSD%203--Clause-blue.svg)](https://github.com/VirgilSecurity/virgil/blob/master/LICENSE)
+[![Documentation YARD](https://img.shields.io/badge/docs-yard-blue.svg)](https://virgilsecurity.github.io/virgil-sdk-ruby)
 
 [SDK Features](#sdk-features) | [Installation](#installation) | [Initialization](#initialization) | [Usage Examples](#usage-examples) | [Docs](#docs) | [Support](#support)
 
