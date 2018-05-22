@@ -1,6 +1,6 @@
 # Virgil Security Ruby SDK
 [![Build Status](https://travis-ci.org/VirgilSecurity/virgil-sdk-ruby.svg?branch=master)](https://travis-ci.org/VirgilSecurity/virgil-sdk-ruby)
-[![Gem](https://img.shields.io/gem/v/virgil-sdk.svg)](https://github.com/VirgilSecurity/virgil-sdk-ruby)
+[![Gem](https://img.shields.io/gem/v/virgil-sdk.svg)](https://rubygems.org/gems/virgil-sdk)
 [![GitHub license](https://img.shields.io/badge/license-BSD%203--Clause-blue.svg)](https://github.com/VirgilSecurity/virgil/blob/master/LICENSE)
 [![Documentation YARD](https://img.shields.io/badge/docs-yard-blue.svg)](https://virgilsecurity.github.io/virgil-sdk-ruby)
 
@@ -18,7 +18,7 @@ The Virgil SDK allows developers to get up and running with Virgil API quickly a
 
 ## Installation
 
-The Virgil SDK is provided as a gem named *virgil-sdk* and available for Ruby 2.1 and newer. The package is distributed via *bundler* package manager.
+The Virgil SDK is provided as a [gem](https://rubygems.org/) named [*virgil-sdk*](https://rubygems.org/gems/virgil-sdk) and available for Ruby 2.1 and newer. The package is distributed via *bundler* package manager.
 
 To install the package use the command below:
 
