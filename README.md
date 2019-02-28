@@ -1,6 +1,6 @@
 # Virgil Security Ruby SDK
 [![Build Status](https://travis-ci.org/VirgilSecurity/virgil-sdk-ruby.svg?branch=master)](https://travis-ci.org/VirgilSecurity/virgil-sdk-ruby)
-[![Gem](https://img.shields.io/gem/v/virgil-sdk.svg)](https://github.com/VirgilSecurity/virgil-sdk-ruby)
+[![Gem](https://img.shields.io/gem/v/virgil-sdk.svg)](https://rubygems.org/gems/virgil-sdk)
 [![GitHub license](https://img.shields.io/badge/license-BSD%203--Clause-blue.svg)](https://github.com/VirgilSecurity/virgil/blob/master/LICENSE)
 [![Documentation YARD](https://img.shields.io/badge/docs-yard-blue.svg)](https://virgilsecurity.github.io/virgil-sdk-ruby)
 
@@ -20,7 +20,7 @@ The Virgil SDK allows developers to get up and running with Virgil API quickly a
 
 ## Installation
 
-The Virgil SDK is provided as a gem named *virgil-sdk* and available for Ruby 2.1 and newer. The package is distributed via *bundler* package manager.
+The Virgil SDK is provided as a [gem](https://rubygems.org/) named [*virgil-sdk*](https://rubygems.org/gems/virgil-sdk) and available for Ruby 2.1 and newer. The package is distributed via *bundler* package manager.
 
 To install the package use the command below:
 
@@ -63,11 +63,10 @@ virgil = VirgilApi.new(context: context)
 
 
 ## Usage Examples
-
 Before start practicing with the usage examples be sure that the SDK is configured. Check out our [SDK configuration guides][_configure_sdk] for more information.
 
 #### Generate and publish user's Cards with Public Keys inside on Cards Service
-Use the following lines of code to create and publish a user's Card with Public Key inside on Virgil Cards Service:
+Use the following code to create and publish user's Card with Public Key inside on Virgil Cards Service:
 
 ```Ruby
 # generate a new Virgil Key
@@ -92,9 +91,9 @@ virgil.cards.publish(alice_card)
 
 #### Sign then encrypt data
 
-Virgil SDK lets you use a user's Private key and his or her Cards to sign, then encrypt any kind of data.
+Virgil SDK allows you to use a user's Private key and his or her Cards to sign, then encrypt any kind of data.
 
-In the following example, we load a Private Key from a customized Key Storage and get recipient's Card from the Virgil Cards Services. Recipient's Card contains a Public Key on which we will encrypt the data and verify a signature.
+In the following example, we load a Private Key from a customized Key Storage and get recipient's Card from the Virgil Cards Services. Recipient's Card contains a Public Key which we will encrypt the data and verify a signature with.
 
 ```ruby
 # load a Virgil Key from a device storage
@@ -111,7 +110,7 @@ ciphertext = alice_key.sign_then_encrypt(message, bob_cards).to_base64
 ```
 
 #### Decrypt then verify data
-Once the Users receive the signed and encrypted message, they can decrypt it with their own Private Key and verify signature with a Sender's Card:
+Once the Users have received the signed and encrypted message, they can decrypt it with their own Private Key and verify the signature with Sender's Card:
 
 ```Ruby
 # load a Virgil Key from a device storage
@@ -127,7 +126,9 @@ original_message = bob_key.decrypt_then_verify(ciphertext, alice_card).to_s
 ## Docs
 Virgil Security has a powerful set of APIs, and the documentation below can get you started today.
 
-In order to use the Virgil SDK with your application, you will need to first configure your application. By default, the SDK will attempt to look for Virgil-specific settings in your application but you can change it during SDK configuration.
+In order to use the Virgil SDK with your application, you will need to configure your application first. By default, 
+the SDK will attempt to look for Virgil-specific settings in your application but you can change it during SDK 
+configuration.
 
 * [Configure the SDK][_configure_sdk] documentation
   * [Setup authentication][_setup_authentication] to make API calls to Virgil Services
@@ -152,7 +153,6 @@ Our developer support team is here to help you. Find out more information on our
 You can find us on [Twitter](https://twitter.com/VirgilSecurity) or send us email support@VirgilSecurity.com.
 
 Also, get extra help from our support team on [Slack](https://virgilsecurity.slack.com/join/shared_invite/enQtMjg4MDE4ODM3ODA4LTc2OWQwOTQ3YjNhNTQ0ZjJiZDc2NjkzYjYxNTI0YzhmNTY2ZDliMGJjYWQ5YmZiOGU5ZWEzNmJiMWZhYWVmYTM).
-
 
 [_virgil_crypto]: https://github.com/VirgilSecurity/virgil-crypto
 [_cards_service]: https://developer.virgilsecurity.com/docs/api-reference/card-service/v4
