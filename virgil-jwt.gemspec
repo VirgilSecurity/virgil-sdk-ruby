@@ -11,7 +11,7 @@ Gem::Specification.new do |spec|
 
   spec.summary       = %q{Virgil JWT}
   spec.description   = %q{Virgil JSON Web Token to make call to Virgil Services}
-  spec.homepage      = "http://github.com/VirgilSecurity/virgil-sdk-ruby"
+  spec.homepage      = "https://github.com/VirgilSecurity/virgil-sdk-ruby/tree/jwt-v5"
   spec.license       = "BSD-3-Clause"
 
   spec.files         = `git ls-files -z`.split("\x0").reject do |f|
