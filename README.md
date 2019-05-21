@@ -4,9 +4,11 @@
 [![GitHub license](https://img.shields.io/badge/license-BSD%203--Clause-blue.svg)](https://github.com/VirgilSecurity/virgil/blob/master/LICENSE)
 [![Documentation YARD](https://img.shields.io/badge/docs-yard-blue.svg)](https://virgilsecurity.github.io/virgil-sdk-ruby)
 
-[SDK Features](#sdk-features) | [Installation](#installation) | [Initialization](#initialization) | [Usage Examples](#usage-examples) | [Docs](#docs) | [Support](#support)
+[Introduction](#introduction) | [SDK Features](#sdk-features) | [Installation](#installation) | [Initialization](#initialization) | [Usage Examples](#usage-examples) | [Docs](#docs) | [Support](#support)
 
-<img width="230px" src="logo.png" align="left" hspace="10" vspace="6"> [Virgil Security](https://virgilsecurity.com) provides a set of APIs for adding security to any application. In a few simple steps you can encrypt communication, securely store data, provide passwordless login, and ensure data integrity.
+## Introduction
+
+<a href="https://developer.virgilsecurity.com/docs"><img width="230px" src="https://cdn.virgilsecurity.com/assets/images/github/logos/virgil-logo-red.png" align="left" hspace="10" vspace="6"></a> [Virgil Security](https://virgilsecurity.com) provides a set of APIs for adding security to any application. In a few simple steps you can encrypt communication, securely store data, provide passwordless login, and ensure data integrity.
 
 The Virgil SDK allows developers to get up and running with Virgil API quickly and add full end-to-end security to their existing digital solutions to become HIPAA and GDPR compliant and more.
 
@@ -61,8 +63,7 @@ virgil = VirgilApi.new(context: context)
 
 
 ## Usage Examples
-
-Before starting practicing with the usage examples, make sure that the SDK is configured. Check out our [SDK configuration guides][_configure_sdk] for more information.
+Before start practicing with the usage examples be sure that the SDK is configured. Check out our [SDK configuration guides][_configure_sdk] for more information.
 
 #### Generate and publish user's Cards with Public Keys inside on Cards Service
 Use the following code to create and publish user's Card with Public Key inside on Virgil Cards Service:
@@ -151,8 +152,7 @@ Our developer support team is here to help you. Find out more information on our
 
 You can find us on [Twitter](https://twitter.com/VirgilSecurity) or send us email support@VirgilSecurity.com.
 
-Also, get extra help from our support team on [Slack](https://virgilsecurity.com/join-community).
-
+Also, get extra help from our support team on [Slack](https://virgilsecurity.slack.com/join/shared_invite/enQtMjg4MDE4ODM3ODA4LTc2OWQwOTQ3YjNhNTQ0ZjJiZDc2NjkzYjYxNTI0YzhmNTY2ZDliMGJjYWQ5YmZiOGU5ZWEzNmJiMWZhYWVmYTM).
 
 [_virgil_crypto]: https://github.com/VirgilSecurity/virgil-crypto
 [_cards_service]: https://developer.virgilsecurity.com/docs/api-reference/card-service/v4
