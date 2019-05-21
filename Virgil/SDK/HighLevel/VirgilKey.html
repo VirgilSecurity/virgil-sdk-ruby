@@ -1,0 +1,1546 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>
+  Class: Virgil::SDK::HighLevel::VirgilKey
+  
+    &mdash; Documentation by YARD 0.9.19
+  
+</title>
+
+  <link rel="stylesheet" href="../../../css/style.css" type="text/css" charset="utf-8" />
+
+  <link rel="stylesheet" href="../../../css/common.css" type="text/css" charset="utf-8" />
+
+<script type="text/javascript" charset="utf-8">
+  pathId = "Virgil::SDK::HighLevel::VirgilKey";
+  relpath = '../../../';
+</script>
+
+
+  <script type="text/javascript" charset="utf-8" src="../../../js/jquery.js"></script>
+
+  <script type="text/javascript" charset="utf-8" src="../../../js/app.js"></script>
+
+
+  </head>
+  <body>
+    <div class="nav_wrap">
+      <iframe id="nav" src="../../../class_list.html?1"></iframe>
+      <div id="resizer"></div>
+    </div>
+
+    <div id="main" tabindex="-1">
+      <div id="header">
+        <div id="menu">
+  
+    <a href="../../../_index.html">Index (V)</a> &raquo;
+    <span class='title'><span class='object_link'><a href="../../../Virgil.html" title="Virgil (module)">Virgil</a></span></span> &raquo; <span class='title'><span class='object_link'><a href="../../SDK.html" title="Virgil::SDK (module)">SDK</a></span></span> &raquo; <span class='title'><span class='object_link'><a href="../HighLevel.html" title="Virgil::SDK::HighLevel (module)">HighLevel</a></span></span>
+     &raquo; 
+    <span class="title">VirgilKey</span>
+  
+</div>
+
+        <div id="search">
+  
+    <a class="full_list_link" id="class_list_link"
+        href="../../../class_list.html">
+
+        <svg width="24" height="24">
+          <rect x="0" y="4" width="24" height="4" rx="1" ry="1"></rect>
+          <rect x="0" y="12" width="24" height="4" rx="1" ry="1"></rect>
+          <rect x="0" y="20" width="24" height="4" rx="1" ry="1"></rect>
+        </svg>
+    </a>
+  
+</div>
+        <div class="clear"></div>
+      </div>
+
+      <div id="content"><h1>Class: Virgil::SDK::HighLevel::VirgilKey
+  
+  
+  
+</h1>
+<div class="box_info">
+  
+  <dl>
+    <dt>Inherits:</dt>
+    <dd>
+      <span class="inheritName">Object</span>
+      
+        <ul class="fullTree">
+          <li>Object</li>
+          
+            <li class="next">Virgil::SDK::HighLevel::VirgilKey</li>
+          
+        </ul>
+        <a href="#" class="inheritanceTree">show all</a>
+      
+    </dd>
+  </dl>
+  
+
+  
+  
+  
+  
+  
+
+  
+
+  
+  <dl>
+    <dt>Defined in:</dt>
+    <dd>lib/virgil/sdk/high_level/virgil_key.rb</dd>
+  </dl>
+  
+</div>
+
+<h2>Overview</h2><div class="docstring">
+  <div class="discussion">
+    
+<p>This class represents a user&#39;s high-level Private key which provides a
+list of methods that allows to store the key and perform cryptographic
+operations like Decrypt, Sign etc.</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+
+</div>
+
+
+
+  <h2>Instance Attribute Summary <small><a href="#" class="summary_toggle">collapse</a></small></h2>
+  <ul class="summary">
+    
+      <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#context-instance_method" title="#context (instance method)">#<strong>context</strong>  &#x21d2; VirgilContext </a>
+    
+
+    
+  </span>
+  
+  
+  
+    
+      <span class="note title readonly">readonly</span>
+    
+    
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'>
+<p>manages the VirgilApi dependencies during run time.</p>
+</div></span>
+  
+</li>
+
+    
+      <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#private_key-instance_method" title="#private_key (instance method)">#<strong>private_key</strong>  &#x21d2; Cryptography::Keys::PrivateKey </a>
+    
+
+    
+  </span>
+  
+  
+  
+    
+      <span class="note title readonly">readonly</span>
+    
+    
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'>
+<p>private key.</p>
+</div></span>
+  
+</li>
+
+    
+  </ul>
+
+
+
+
+  
+    <h2>
+      Instance Method Summary
+      <small><a href="#" class="summary_toggle">collapse</a></small>
+    </h2>
+
+    <ul class="summary">
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#decrypt-instance_method" title="#decrypt (instance method)">#<strong>decrypt</strong>(cipher_buffer)  &#x21d2; VirgilBuffer </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'>
+<p>Decrypts the specified cipher data using Virgil key.</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#decrypt_then_verify-instance_method" title="#decrypt_then_verify (instance method)">#<strong>decrypt_then_verify</strong>(cipher_buffer, *cards)  &#x21d2; VirgilBuffer </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'>
+<p>Decrypts and verifies the data.</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#export-instance_method" title="#export (instance method)">#<strong>export</strong>(password = nil)  &#x21d2; VirgilBuffer </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'>
+<p>Exports the VirgilKey to default format, specified in Crypto API.</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#export_public_key-instance_method" title="#export_public_key (instance method)">#<strong>export_public_key</strong>  &#x21d2; VirgilBuffer </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'>
+<p>Exports the Public key value from current VirgilKey.</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#initialize-instance_method" title="#initialize (instance method)">#<strong>initialize</strong>(context, private_key)  &#x21d2; VirgilKey </a>
+    
+
+    
+  </span>
+  
+  
+    <span class="note title constructor">constructor</span>
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'>
+<p>Initializes a new instance of the <span class='object_link'><a href="" title="Virgil::SDK::HighLevel::VirgilKey (class)">VirgilKey</a></span> class.</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#save-instance_method" title="#save (instance method)">#<strong>save</strong>(key_name, key_password = nil)  &#x21d2; VirgilKey </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'>
+<p>Saves a current VirgilKey in secure storage.</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#sign-instance_method" title="#sign (instance method)">#<strong>sign</strong>(buffer)  &#x21d2; VirgilBuffer </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'>
+<p>Generates a digital signature for specified data using current Virgil key.</p>
+</div></span>
+  
+</li>
+
+      
+        <li class="public ">
+  <span class="summary_signature">
+    
+      <a href="#sign_then_encrypt-instance_method" title="#sign_then_encrypt (instance method)">#<strong>sign_then_encrypt</strong>(buffer, recipients)  &#x21d2; VirgilBuffer </a>
+    
+
+    
+  </span>
+  
+  
+  
+  
+  
+  
+  
+
+  
+    <span class="summary_desc"><div class='inline'>
+<p>Encrypts and signs the data.</p>
+</div></span>
+  
+</li>
+
+      
+    </ul>
+  
+
+<div id="constructor_details" class="method_details_list">
+  <h2>Constructor Details</h2>
+  
+    <div class="method_details first">
+  <h3 class="signature first" id="initialize-instance_method">
+  
+    #<strong>initialize</strong>(context, private_key)  &#x21d2; <tt><span class='object_link'><a href="" title="Virgil::SDK::HighLevel::VirgilKey (class)">VirgilKey</a></span></tt> 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    
+<p>Initializes a new instance of the <span class='object_link'><a href="" title="Virgil::SDK::HighLevel::VirgilKey (class)">Virgil::SDK::HighLevel::VirgilKey</a></span> class.</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+52
+53
+54
+55</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/virgil/sdk/high_level/virgil_key.rb', line 52</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_initialize'>initialize</span><span class='lparen'>(</span><span class='id identifier rubyid_context'>context</span><span class='comma'>,</span> <span class='id identifier rubyid_private_key'>private_key</span><span class='rparen'>)</span>
+  <span class='ivar'>@context</span> <span class='op'>=</span> <span class='id identifier rubyid_context'>context</span>
+  <span class='ivar'>@private_key</span> <span class='op'>=</span> <span class='id identifier rubyid_private_key'>private_key</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+  
+</div>
+
+  <div id="instance_attr_details" class="attr_details">
+    <h2>Instance Attribute Details</h2>
+    
+      
+      <span id=""></span>
+      <div class="method_details first">
+  <h3 class="signature first" id="context-instance_method">
+  
+    #<strong>context</strong>  &#x21d2; <tt><span class='object_link'><a href="VirgilContext.html" title="Virgil::SDK::HighLevel::VirgilContext (class)">VirgilContext</a></span></tt>  <span class="extras">(readonly)</span>
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    
+<p>manages the VirgilApi dependencies during run time.</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+<p class="tag_title">Returns:</p>
+<ul class="return">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt><span class='object_link'><a href="VirgilContext.html" title="Virgil::SDK::HighLevel::VirgilContext (class)">VirgilContext</a></span></tt>)</span>
+      
+      
+      
+    </li>
+  
+</ul>
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+45
+46
+47</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/virgil/sdk/high_level/virgil_key.rb', line 45</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_context'>context</span>
+  <span class='ivar'>@context</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      
+      <span id=""></span>
+      <div class="method_details ">
+  <h3 class="signature " id="private_key-instance_method">
+  
+    #<strong>private_key</strong>  &#x21d2; <tt><span class='object_link'><a href="../Cryptography/Keys/PrivateKey.html" title="Virgil::SDK::Cryptography::Keys::PrivateKey (class)">Cryptography::Keys::PrivateKey</a></span></tt>  <span class="extras">(readonly)</span>
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    
+<p>private key</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+<p class="tag_title">Returns:</p>
+<ul class="return">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt><span class='object_link'><a href="../Cryptography/Keys/PrivateKey.html" title="Virgil::SDK::Cryptography::Keys::PrivateKey (class)">Cryptography::Keys::PrivateKey</a></span></tt>)</span>
+      
+      
+      
+    </li>
+  
+</ul>
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+49
+50
+51</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/virgil/sdk/high_level/virgil_key.rb', line 49</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_private_key'>private_key</span>
+  <span class='ivar'>@private_key</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+  </div>
+
+
+  <div id="instance_method_details" class="method_details_list">
+    <h2>Instance Method Details</h2>
+
+    
+      <div class="method_details first">
+  <h3 class="signature first" id="decrypt-instance_method">
+  
+    #<strong>decrypt</strong>(cipher_buffer)  &#x21d2; <tt><span class='object_link'><a href="VirgilBuffer.html" title="Virgil::SDK::HighLevel::VirgilBuffer (class)">VirgilBuffer</a></span></tt> 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    
+<p>Decrypts the specified cipher data using Virgil key.</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+  <div class="examples">
+    <p class="tag_title">Examples:</p>
+    
+      
+      <pre class="example code"><code><span class='id identifier rubyid_virgil'>virgil</span> <span class='op'>=</span> <span class='const'><span class='object_link'><a href="VirgilApi.html" title="Virgil::SDK::HighLevel::VirgilApi (class)">VirgilApi</a></span></span><span class='period'>.</span><span class='id identifier rubyid_new'><span class='object_link'><a href="VirgilApi.html#initialize-instance_method" title="Virgil::SDK::HighLevel::VirgilApi#initialize (method)">new</a></span></span>
+<span class='comment'># load a Virgil Key from device storage
+</span><span class='id identifier rubyid_alice_key'>alice_key</span> <span class='op'>=</span> <span class='id identifier rubyid_virgil'>virgil</span><span class='period'>.</span><span class='id identifier rubyid_keys'>keys</span><span class='period'>.</span><span class='id identifier rubyid_load'>load</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>[KEY_NAME]</span><span class='tstring_end'>&quot;</span></span><span class='comma'>,</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>[OPTIONAL_KEY_PASSWORD]</span><span class='tstring_end'>&quot;</span></span><span class='rparen'>)</span>
+
+<span class='comment'># decrypt a buffer using loaded Virgil Key
+</span><span class='id identifier rubyid_original_file_buf'>original_file_buf</span> <span class='op'>=</span> <span class='id identifier rubyid_alice_key'>alice_key</span><span class='period'>.</span><span class='id identifier rubyid_decrypt'>decrypt</span><span class='lparen'>(</span><span class='id identifier rubyid_cipher_file_buf'>cipher_file_buf</span><span class='rparen'>)</span></code></pre>
+    
+  </div>
+<p class="tag_title">Parameters:</p>
+<ul class="param">
+  
+    <li>
+      
+        <span class='name'>cipher_buffer</span>
+      
+      
+        <span class='type'>(<tt><span class='object_link'><a href="VirgilBuffer.html" title="Virgil::SDK::HighLevel::VirgilBuffer (class)">VirgilBuffer</a></span></tt>, <tt>String</tt>, <tt>Crypto::Bytes</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'>
+<p>The encrypted data wrapped by VirgilBuffer or encrypted data in
+base64-encoded String or Array of bytes of encrypted data</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+<p class="tag_title">Returns:</p>
+<ul class="return">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt><span class='object_link'><a href="VirgilBuffer.html" title="Virgil::SDK::HighLevel::VirgilBuffer (class)">VirgilBuffer</a></span></tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'>
+<p>A byte array containing the result from performing the action wrapped by
+VirgilBuffer.</p>
+</div>
+      
+    </li>
+  
+</ul>
+<p class="tag_title">Raises:</p>
+<ul class="raise">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt>ArgumentError</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'>
+<p>if buffer doesn&#39;t have type VirgilBuffer, base64-encoded String or
+Array of bytes</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+  <p class="tag_title">See Also:</p>
+  <ul class="see">
+    
+      <li><span class='object_link'><a href="VirgilCard.html#encrypt-instance_method" title="Virgil::SDK::HighLevel::VirgilCard#encrypt (method)">How to get cipher_file_buf</a></span></li>
+    
+      <li><span class='object_link'><a href="VirgilKeyManager.html#load-instance_method" title="Virgil::SDK::HighLevel::VirgilKeyManager#load (method)">Load Virgil Key</a></span></li>
+    
+  </ul>
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+73
+74
+75
+76
+77
+78
+79
+80
+81
+82
+83
+84
+85
+86
+87
+88</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/virgil/sdk/high_level/virgil_key.rb', line 73</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_decrypt'>decrypt</span><span class='lparen'>(</span><span class='id identifier rubyid_cipher_buffer'>cipher_buffer</span><span class='rparen'>)</span>
+
+  <span class='id identifier rubyid_buffer_to_decrypt'>buffer_to_decrypt</span> <span class='op'>=</span> <span class='kw'>case</span> <span class='id identifier rubyid_cipher_buffer'>cipher_buffer</span><span class='period'>.</span><span class='id identifier rubyid_class'>class</span><span class='period'>.</span><span class='id identifier rubyid_name'>name</span><span class='period'>.</span><span class='id identifier rubyid_split'>split</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>::</span><span class='tstring_end'>&quot;</span></span><span class='rparen'>)</span><span class='period'>.</span><span class='id identifier rubyid_last'>last</span>
+                        <span class='kw'>when</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>VirgilBuffer</span><span class='tstring_end'>&#39;</span></span>
+                          <span class='id identifier rubyid_cipher_buffer'>cipher_buffer</span>
+                        <span class='kw'>when</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>String</span><span class='tstring_end'>&#39;</span></span>
+                          <span class='const'><span class='object_link'><a href="VirgilBuffer.html" title="Virgil::SDK::HighLevel::VirgilBuffer (class)">VirgilBuffer</a></span></span><span class='period'>.</span><span class='id identifier rubyid_from_base64'><span class='object_link'><a href="VirgilBuffer.html#from_base64-class_method" title="Virgil::SDK::HighLevel::VirgilBuffer.from_base64 (method)">from_base64</a></span></span><span class='lparen'>(</span><span class='id identifier rubyid_cipher_buffer'>cipher_buffer</span><span class='rparen'>)</span>
+                        <span class='kw'>when</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>Array</span><span class='tstring_end'>&#39;</span></span>
+                          <span class='const'><span class='object_link'><a href="VirgilBuffer.html" title="Virgil::SDK::HighLevel::VirgilBuffer (class)">VirgilBuffer</a></span></span><span class='period'>.</span><span class='id identifier rubyid_from_bytes'><span class='object_link'><a href="VirgilBuffer.html#from_bytes-class_method" title="Virgil::SDK::HighLevel::VirgilBuffer.from_bytes (method)">from_bytes</a></span></span><span class='lparen'>(</span><span class='id identifier rubyid_cipher_buffer'>cipher_buffer</span><span class='rparen'>)</span>
+                        <span class='kw'>else</span>
+                          <span class='id identifier rubyid_raise'>raise</span> <span class='const'>ArgumentError</span><span class='period'>.</span><span class='id identifier rubyid_new'>new</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>Buffer has unsupported type</span><span class='tstring_end'>&quot;</span></span><span class='rparen'>)</span>
+                      <span class='kw'>end</span>
+
+  <span class='id identifier rubyid_bytes'>bytes</span> <span class='op'>=</span> <span class='id identifier rubyid_context'>context</span><span class='period'>.</span><span class='id identifier rubyid_crypto'>crypto</span><span class='period'>.</span><span class='id identifier rubyid_decrypt'>decrypt</span><span class='lparen'>(</span><span class='id identifier rubyid_buffer_to_decrypt'>buffer_to_decrypt</span><span class='period'>.</span><span class='id identifier rubyid_bytes'>bytes</span><span class='comma'>,</span> <span class='id identifier rubyid_private_key'>private_key</span><span class='rparen'>)</span>
+  <span class='const'><span class='object_link'><a href="VirgilBuffer.html" title="Virgil::SDK::HighLevel::VirgilBuffer (class)">VirgilBuffer</a></span></span><span class='period'>.</span><span class='id identifier rubyid_new'><span class='object_link'><a href="VirgilBuffer.html#initialize-instance_method" title="Virgil::SDK::HighLevel::VirgilBuffer#initialize (method)">new</a></span></span><span class='lparen'>(</span><span class='id identifier rubyid_bytes'>bytes</span><span class='rparen'>)</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="decrypt_then_verify-instance_method">
+  
+    #<strong>decrypt_then_verify</strong>(cipher_buffer, *cards)  &#x21d2; <tt><span class='object_link'><a href="VirgilBuffer.html" title="Virgil::SDK::HighLevel::VirgilBuffer (class)">VirgilBuffer</a></span></tt> 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    
+<p>Decrypts and verifies the data.</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+  <div class="examples">
+    <p class="tag_title">Examples:</p>
+    
+      
+      <pre class="example code"><code><span class='id identifier rubyid_virgil'>virgil</span> <span class='op'>=</span> <span class='const'><span class='object_link'><a href="VirgilApi.html" title="Virgil::SDK::HighLevel::VirgilApi (class)">VirgilApi</a></span></span><span class='period'>.</span><span class='id identifier rubyid_new'><span class='object_link'><a href="VirgilApi.html#initialize-instance_method" title="Virgil::SDK::HighLevel::VirgilApi#initialize (method)">new</a></span></span><span class='lparen'>(</span><span class='label'>access_token:</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>[YOUR_ACCESS_TOKEN_HERE]</span><span class='tstring_end'>&quot;</span></span><span class='rparen'>)</span>
+<span class='comment'># load a Virgil Key from device storage
+</span><span class='id identifier rubyid_bob_key'>bob_key</span> <span class='op'>=</span> <span class='id identifier rubyid_virgil'>virgil</span><span class='period'>.</span><span class='id identifier rubyid_keys'>keys</span><span class='period'>.</span><span class='id identifier rubyid_load'>load</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>[KEY_NAME]</span><span class='tstring_end'>&quot;</span></span><span class='comma'>,</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>[OPTIONAL_KEY_PASSWORD]</span><span class='tstring_end'>&quot;</span></span><span class='rparen'>)</span>
+
+<span class='comment'># get a sender&#39;s Virgil Card
+</span><span class='id identifier rubyid_alice_card'>alice_card</span> <span class='op'>=</span> <span class='id identifier rubyid_virgil'>virgil</span><span class='period'>.</span><span class='id identifier rubyid_cards'>cards</span><span class='period'>.</span><span class='id identifier rubyid_get'>get</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>[ALICE_CARD_ID]</span><span class='tstring_end'>&quot;</span></span><span class='rparen'>)</span>
+
+<span class='comment'># decrypt the message
+</span><span class='id identifier rubyid_original_message'>original_message</span> <span class='op'>=</span> <span class='id identifier rubyid_bob_key'>bob_key</span><span class='period'>.</span><span class='id identifier rubyid_decrypt_then_verify'>decrypt_then_verify</span><span class='lparen'>(</span><span class='id identifier rubyid_ciphertext'>ciphertext</span><span class='comma'>,</span> <span class='id identifier rubyid_alice_card'>alice_card</span><span class='rparen'>)</span><span class='period'>.</span><span class='id identifier rubyid_to_s'>to_s</span></code></pre>
+    
+  </div>
+<p class="tag_title">Parameters:</p>
+<ul class="param">
+  
+    <li>
+      
+        <span class='name'>cipher_buffer</span>
+      
+      
+        <span class='type'>(<tt><span class='object_link'><a href="VirgilBuffer.html" title="Virgil::SDK::HighLevel::VirgilBuffer (class)">VirgilBuffer</a></span></tt>, <tt>String</tt>, <tt>Crypto::Bytes</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'>
+<p>The data to be decrypted and verified: The encrypted data wrapped by
+VirgilBuffer or encrypted data in base64-encoded String or Array of bytes
+of encrypted data</p>
+</div>
+      
+    </li>
+  
+    <li>
+      
+        <span class='name'>*cards</span>
+      
+      
+        <span class='type'>(<tt>Array&lt;<span class='object_link'><a href="VirgilCard.html" title="Virgil::SDK::HighLevel::VirgilCard (class)">VirgilCard</a></span>&gt;</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'>
+<p>The list of trusted Virgil Cards, which can contains the signer&#39;s
+VirgilCard</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+<p class="tag_title">Returns:</p>
+<ul class="return">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt><span class='object_link'><a href="VirgilBuffer.html" title="Virgil::SDK::HighLevel::VirgilBuffer (class)">VirgilBuffer</a></span></tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'>
+<p>The decrypted data, which is the original plain text before encryption the
+decrypted data, wrapped by VirgilBuffer</p>
+</div>
+      
+    </li>
+  
+</ul>
+<p class="tag_title">Raises:</p>
+<ul class="raise">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt>ArgumentError</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'>
+<p>if buffer doesn&#39;t have type VirgilBuffer, String or Array of bytes</p>
+</div>
+      
+    </li>
+  
+    <li>
+      
+      
+        <span class='type'>(<tt>ArgumentError</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'>
+<p>if recipients doesn&#39;t have type Array or empty</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+185
+186
+187
+188
+189
+190
+191
+192
+193
+194
+195
+196
+197
+198
+199
+200
+201
+202
+203</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/virgil/sdk/high_level/virgil_key.rb', line 185</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_decrypt_then_verify'>decrypt_then_verify</span><span class='lparen'>(</span><span class='id identifier rubyid_cipher_buffer'>cipher_buffer</span><span class='comma'>,</span> <span class='op'>*</span><span class='id identifier rubyid_cards'>cards</span><span class='rparen'>)</span>
+
+  <span class='id identifier rubyid_raise'>raise</span> <span class='const'>ArgumentError</span><span class='period'>.</span><span class='id identifier rubyid_new'>new</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>card is not valid</span><span class='tstring_end'>&quot;</span></span><span class='rparen'>)</span> <span class='kw'>unless</span> <span class='id identifier rubyid_cards'>cards</span><span class='period'>.</span><span class='id identifier rubyid_all?'>all?</span> <span class='lbrace'>{</span> <span class='op'>|</span><span class='id identifier rubyid_el'>el</span><span class='op'>|</span> <span class='id identifier rubyid_el'>el</span><span class='period'>.</span><span class='id identifier rubyid_is_a?'>is_a?</span> <span class='const'><span class='object_link'><a href="VirgilCard.html" title="Virgil::SDK::HighLevel::VirgilCard (class)">VirgilCard</a></span></span> <span class='rbrace'>}</span>
+
+  <span class='id identifier rubyid_buffer_to_decrypt'>buffer_to_decrypt</span> <span class='op'>=</span> <span class='kw'>case</span> <span class='id identifier rubyid_cipher_buffer'>cipher_buffer</span><span class='period'>.</span><span class='id identifier rubyid_class'>class</span><span class='period'>.</span><span class='id identifier rubyid_name'>name</span><span class='period'>.</span><span class='id identifier rubyid_split'>split</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>::</span><span class='tstring_end'>&quot;</span></span><span class='rparen'>)</span><span class='period'>.</span><span class='id identifier rubyid_last'>last</span>
+                        <span class='kw'>when</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>VirgilBuffer</span><span class='tstring_end'>&#39;</span></span>
+                          <span class='id identifier rubyid_cipher_buffer'>cipher_buffer</span>
+                        <span class='kw'>when</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>String</span><span class='tstring_end'>&#39;</span></span>
+                          <span class='const'><span class='object_link'><a href="VirgilBuffer.html" title="Virgil::SDK::HighLevel::VirgilBuffer (class)">VirgilBuffer</a></span></span><span class='period'>.</span><span class='id identifier rubyid_from_base64'><span class='object_link'><a href="VirgilBuffer.html#from_base64-class_method" title="Virgil::SDK::HighLevel::VirgilBuffer.from_base64 (method)">from_base64</a></span></span><span class='lparen'>(</span><span class='id identifier rubyid_cipher_buffer'>cipher_buffer</span><span class='rparen'>)</span>
+                        <span class='kw'>when</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>Array</span><span class='tstring_end'>&#39;</span></span>
+                          <span class='const'><span class='object_link'><a href="VirgilBuffer.html" title="Virgil::SDK::HighLevel::VirgilBuffer (class)">VirgilBuffer</a></span></span><span class='period'>.</span><span class='id identifier rubyid_from_bytes'><span class='object_link'><a href="VirgilBuffer.html#from_bytes-class_method" title="Virgil::SDK::HighLevel::VirgilBuffer.from_bytes (method)">from_bytes</a></span></span><span class='lparen'>(</span><span class='id identifier rubyid_cipher_buffer'>cipher_buffer</span><span class='rparen'>)</span>
+                        <span class='kw'>else</span>
+                          <span class='id identifier rubyid_raise'>raise</span> <span class='const'>ArgumentError</span><span class='period'>.</span><span class='id identifier rubyid_new'>new</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>Buffer has unsupported type</span><span class='tstring_end'>&quot;</span></span><span class='rparen'>)</span>
+                      <span class='kw'>end</span>
+
+  <span class='id identifier rubyid_public_keys'>public_keys</span> <span class='op'>=</span> <span class='id identifier rubyid_cards'>cards</span><span class='period'>.</span><span class='id identifier rubyid_map'>map</span><span class='lparen'>(</span><span class='op'>&amp;</span><span class='symbol'>:public_key</span><span class='rparen'>)</span>
+  <span class='id identifier rubyid_bytes'>bytes</span> <span class='op'>=</span> <span class='id identifier rubyid_context'>context</span><span class='period'>.</span><span class='id identifier rubyid_crypto'>crypto</span><span class='period'>.</span><span class='id identifier rubyid_decrypt_then_verify'>decrypt_then_verify</span><span class='lparen'>(</span><span class='id identifier rubyid_buffer_to_decrypt'>buffer_to_decrypt</span><span class='period'>.</span><span class='id identifier rubyid_bytes'>bytes</span><span class='comma'>,</span> <span class='id identifier rubyid_private_key'>private_key</span><span class='comma'>,</span> <span class='op'>*</span><span class='id identifier rubyid_public_keys'>public_keys</span><span class='rparen'>)</span>
+  <span class='const'><span class='object_link'><a href="VirgilBuffer.html" title="Virgil::SDK::HighLevel::VirgilBuffer (class)">VirgilBuffer</a></span></span><span class='period'>.</span><span class='id identifier rubyid_new'><span class='object_link'><a href="VirgilBuffer.html#initialize-instance_method" title="Virgil::SDK::HighLevel::VirgilBuffer#initialize (method)">new</a></span></span><span class='lparen'>(</span><span class='id identifier rubyid_bytes'>bytes</span><span class='rparen'>)</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="export-instance_method">
+  
+    #<strong>export</strong>(password = nil)  &#x21d2; <tt><span class='object_link'><a href="VirgilBuffer.html" title="Virgil::SDK::HighLevel::VirgilBuffer (class)">VirgilBuffer</a></span></tt> 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    
+<p>Exports the VirgilKey to default format, specified in Crypto API.</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+  <div class="examples">
+    <p class="tag_title">Examples:</p>
+    
+      
+        <p class="example_title"><div class='inline'>
+<p>Export the Virgil Key to Base64 encoded string.</p>
+</div></p>
+      
+      <pre class="example code"><code>virgil = VirgilApi.new
+# generate a new Virgil Key
+alice_key = virgil.keys.generate
+
+# export the Virgil Key to Base64 encoded string
+BASE64_ENCODED_VIRGIL_KEY = alice_key.export(&quot;[OPTIONAL_KEY_PASSWORD]”).to_base64</code></pre>
+    
+  </div>
+
+<p class="tag_title">Returns:</p>
+<ul class="return">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt><span class='object_link'><a href="VirgilBuffer.html" title="Virgil::SDK::HighLevel::VirgilBuffer (class)">VirgilBuffer</a></span></tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'>
+<p>Private Key material representation bytes wrapped by VirgilBuffer</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+  <p class="tag_title">See Also:</p>
+  <ul class="see">
+    
+      <li><span class='object_link'><a href="VirgilKeyManager.html#generate-instance_method" title="Virgil::SDK::HighLevel::VirgilKeyManager#generate (method)">How to generate key</a></span></li>
+    
+  </ul>
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+240
+241
+242</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/virgil/sdk/high_level/virgil_key.rb', line 240</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_export'>export</span><span class='lparen'>(</span><span class='id identifier rubyid_password'>password</span><span class='op'>=</span><span class='kw'>nil</span><span class='rparen'>)</span>
+  <span class='const'><span class='object_link'><a href="VirgilBuffer.html" title="Virgil::SDK::HighLevel::VirgilBuffer (class)">VirgilBuffer</a></span></span><span class='period'>.</span><span class='id identifier rubyid_from_bytes'><span class='object_link'><a href="VirgilBuffer.html#from_bytes-class_method" title="Virgil::SDK::HighLevel::VirgilBuffer.from_bytes (method)">from_bytes</a></span></span><span class='lparen'>(</span><span class='id identifier rubyid_context'>context</span><span class='period'>.</span><span class='id identifier rubyid_crypto'>crypto</span><span class='period'>.</span><span class='id identifier rubyid_export_private_key'>export_private_key</span><span class='lparen'>(</span><span class='id identifier rubyid_private_key'>private_key</span><span class='comma'>,</span> <span class='id identifier rubyid_password'>password</span><span class='rparen'>)</span><span class='rparen'>)</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="export_public_key-instance_method">
+  
+    #<strong>export_public_key</strong>  &#x21d2; <tt><span class='object_link'><a href="VirgilBuffer.html" title="Virgil::SDK::HighLevel::VirgilBuffer (class)">VirgilBuffer</a></span></tt> 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    
+<p>Exports the Public key value from current VirgilKey.</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+<p class="tag_title">Returns:</p>
+<ul class="return">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt><span class='object_link'><a href="VirgilBuffer.html" title="Virgil::SDK::HighLevel::VirgilBuffer (class)">VirgilBuffer</a></span></tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'>
+<p>A new VirgilBuffer that contains Public Key value.</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+247
+248
+249
+250</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/virgil/sdk/high_level/virgil_key.rb', line 247</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_export_public_key'>export_public_key</span>
+  <span class='id identifier rubyid_public_key'>public_key</span> <span class='op'>=</span> <span class='id identifier rubyid_context'>context</span><span class='period'>.</span><span class='id identifier rubyid_crypto'>crypto</span><span class='period'>.</span><span class='id identifier rubyid_extract_public_key'>extract_public_key</span><span class='lparen'>(</span><span class='id identifier rubyid_private_key'>private_key</span><span class='rparen'>)</span>
+  <span class='const'><span class='object_link'><a href="VirgilBuffer.html" title="Virgil::SDK::HighLevel::VirgilBuffer (class)">VirgilBuffer</a></span></span><span class='period'>.</span><span class='id identifier rubyid_from_bytes'><span class='object_link'><a href="VirgilBuffer.html#from_bytes-class_method" title="Virgil::SDK::HighLevel::VirgilBuffer.from_bytes (method)">from_bytes</a></span></span><span class='lparen'>(</span><span class='id identifier rubyid_context'>context</span><span class='period'>.</span><span class='id identifier rubyid_crypto'>crypto</span><span class='period'>.</span><span class='id identifier rubyid_export_public_key'>export_public_key</span><span class='lparen'>(</span><span class='id identifier rubyid_public_key'>public_key</span><span class='rparen'>)</span><span class='rparen'>)</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="save-instance_method">
+  
+    #<strong>save</strong>(key_name, key_password = nil)  &#x21d2; <tt><span class='object_link'><a href="" title="Virgil::SDK::HighLevel::VirgilKey (class)">VirgilKey</a></span></tt> 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    
+<p>Saves a current VirgilKey in secure storage.</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+  <div class="examples">
+    <p class="tag_title">Examples:</p>
+    
+      
+      <pre class="example code"><code><span class='id identifier rubyid_virgil'>virgil</span> <span class='op'>=</span> <span class='const'><span class='object_link'><a href="VirgilApi.html" title="Virgil::SDK::HighLevel::VirgilApi (class)">VirgilApi</a></span></span><span class='period'>.</span><span class='id identifier rubyid_new'><span class='object_link'><a href="VirgilApi.html#initialize-instance_method" title="Virgil::SDK::HighLevel::VirgilApi#initialize (method)">new</a></span></span>
+<span class='id identifier rubyid_alice_key'>alice_key</span> <span class='op'>=</span> <span class='id identifier rubyid_virgil'>virgil</span><span class='period'>.</span><span class='id identifier rubyid_keys'>keys</span><span class='period'>.</span><span class='id identifier rubyid_generate'>generate</span><span class='period'>.</span><span class='id identifier rubyid_save'>save</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>[KEY_NAME]</span><span class='tstring_end'>&quot;</span></span><span class='comma'>,</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>[OPTIONAL_KEY_PASSWORD]</span><span class='tstring_end'>&quot;</span></span><span class='rparen'>)</span></code></pre>
+    
+  </div>
+<p class="tag_title">Parameters:</p>
+<ul class="param">
+  
+    <li>
+      
+        <span class='name'>key_name</span>
+      
+      
+        <span class='type'>(<tt>String</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'>
+<p>The name of the key.</p>
+</div>
+      
+    </li>
+  
+    <li>
+      
+        <span class='name'>key_password</span>
+      
+      
+        <span class='type'>(<tt>String</tt>)</span>
+      
+      
+        <em class="default">(defaults to: <tt>nil</tt>)</em>
+      
+      
+        &mdash;
+        <div class='inline'>
+<p>The key password.</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+<p class="tag_title">Returns:</p>
+<ul class="return">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt><span class='object_link'><a href="" title="Virgil::SDK::HighLevel::VirgilKey (class)">VirgilKey</a></span></tt>)</span>
+      
+      
+      
+    </li>
+  
+</ul>
+<p class="tag_title">Raises:</p>
+<ul class="raise">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt>KeyEntryAlreadyExistsException</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'>
+<p>if key storage already has item with such name</p>
+</div>
+      
+    </li>
+  
+    <li>
+      
+      
+        <span class='type'>(<tt>ArgumentError</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'>
+<p>key_name is not valid if key_name is nil</p>
+</div>
+      
+    </li>
+  
+    <li>
+      
+      
+        <span class='type'>(<tt>KeyStorageException</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'>
+<p>if destination folder doesn&#39;t exist or you don&#39;t have permission to
+write there</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+  <p class="tag_title">See Also:</p>
+  <ul class="see">
+    
+      <li><span class='object_link'><a href="VirgilKeyManager.html#generate-instance_method" title="Virgil::SDK::HighLevel::VirgilKeyManager#generate (method)">How to generate key</a></span></li>
+    
+  </ul>
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+217
+218
+219
+220
+221
+222
+223
+224
+225
+226</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/virgil/sdk/high_level/virgil_key.rb', line 217</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_save'>save</span><span class='lparen'>(</span><span class='id identifier rubyid_key_name'>key_name</span><span class='comma'>,</span> <span class='id identifier rubyid_key_password'>key_password</span><span class='op'>=</span><span class='kw'>nil</span><span class='rparen'>)</span>
+
+  <span class='id identifier rubyid_raise'>raise</span> <span class='const'>ArgumentError</span><span class='period'>.</span><span class='id identifier rubyid_new'>new</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>key_name is not valid</span><span class='tstring_end'>&quot;</span></span><span class='rparen'>)</span> <span class='kw'>if</span> <span class='id identifier rubyid_key_name'>key_name</span><span class='period'>.</span><span class='id identifier rubyid_nil?'>nil?</span>
+
+  <span class='id identifier rubyid_exported_private_key'>exported_private_key</span> <span class='op'>=</span> <span class='id identifier rubyid_context'>context</span><span class='period'>.</span><span class='id identifier rubyid_crypto'>crypto</span><span class='period'>.</span><span class='id identifier rubyid_export_private_key'>export_private_key</span><span class='lparen'>(</span><span class='id identifier rubyid_private_key'>private_key</span><span class='comma'>,</span> <span class='id identifier rubyid_key_password'>key_password</span><span class='rparen'>)</span>
+  <span class='id identifier rubyid_storage_item'>storage_item</span> <span class='op'>=</span> <span class='const'><span class='object_link'><a href="../Cryptography.html" title="Virgil::SDK::Cryptography (module)">Cryptography</a></span></span><span class='op'>::</span><span class='const'><span class='object_link'><a href="../Cryptography/Keys.html" title="Virgil::SDK::Cryptography::Keys (module)">Keys</a></span></span><span class='op'>::</span><span class='const'><span class='object_link'><a href="../Cryptography/Keys/StorageItem.html" title="Virgil::SDK::Cryptography::Keys::StorageItem (class)">StorageItem</a></span></span><span class='period'>.</span><span class='id identifier rubyid_new'>new</span><span class='lparen'>(</span><span class='id identifier rubyid_key_name'>key_name</span><span class='comma'>,</span> <span class='id identifier rubyid_exported_private_key'>exported_private_key</span><span class='rparen'>)</span>
+  <span class='id identifier rubyid_context'>context</span><span class='period'>.</span><span class='id identifier rubyid_key_storage'>key_storage</span><span class='period'>.</span><span class='id identifier rubyid_store'>store</span><span class='lparen'>(</span><span class='id identifier rubyid_storage_item'>storage_item</span><span class='rparen'>)</span>
+  <span class='kw'>self</span>
+
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="sign-instance_method">
+  
+    #<strong>sign</strong>(buffer)  &#x21d2; <tt><span class='object_link'><a href="VirgilBuffer.html" title="Virgil::SDK::HighLevel::VirgilBuffer (class)">VirgilBuffer</a></span></tt> 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    
+<p>Generates a digital signature for specified data using current Virgil key.</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+  <div class="examples">
+    <p class="tag_title">Examples:</p>
+    
+      
+      <pre class="example code"><code><span class='id identifier rubyid_virgil'>virgil</span> <span class='op'>=</span> <span class='const'><span class='object_link'><a href="VirgilApi.html" title="Virgil::SDK::HighLevel::VirgilApi (class)">VirgilApi</a></span></span><span class='period'>.</span><span class='id identifier rubyid_new'><span class='object_link'><a href="VirgilApi.html#initialize-instance_method" title="Virgil::SDK::HighLevel::VirgilApi#initialize (method)">new</a></span></span>
+<span class='comment'># load Alice&#39;s Key from protected storage
+</span><span class='id identifier rubyid_alice_key'>alice_key</span> <span class='op'>=</span> <span class='id identifier rubyid_virgil'>virgil</span><span class='period'>.</span><span class='id identifier rubyid_keys'>keys</span><span class='period'>.</span><span class='id identifier rubyid_load'>load</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>[KEY_NAME]</span><span class='tstring_end'>&quot;</span></span><span class='comma'>,</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>[KEY_PASSWORD]</span><span class='tstring_end'>&quot;</span></span><span class='rparen'>)</span>
+
+<span class='id identifier rubyid_message'>message</span> <span class='op'>=</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>Hi Bob, hope you are doing well.</span><span class='tstring_end'>&quot;</span></span>
+
+<span class='comment'># generate signature of message using alice&#39;s key pair
+</span><span class='id identifier rubyid_signature'>signature</span> <span class='op'>=</span> <span class='id identifier rubyid_alice_key'>alice_key</span><span class='period'>.</span><span class='id identifier rubyid_sign'>sign</span><span class='lparen'>(</span><span class='id identifier rubyid_message'>message</span><span class='rparen'>)</span></code></pre>
+    
+  </div>
+<p class="tag_title">Parameters:</p>
+<ul class="param">
+  
+    <li>
+      
+        <span class='name'>buffer</span>
+      
+      
+        <span class='type'>(<tt><span class='object_link'><a href="VirgilBuffer.html" title="Virgil::SDK::HighLevel::VirgilBuffer (class)">VirgilBuffer</a></span></tt>, <tt>String</tt>, <tt>Crypto::Bytes</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'>
+<p>The data for which the digital signature will be generated. buffer can be
+VirgilBuffer, utf8-encoded String or Array of bytes</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+<p class="tag_title">Returns:</p>
+<ul class="return">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt><span class='object_link'><a href="VirgilBuffer.html" title="Virgil::SDK::HighLevel::VirgilBuffer (class)">VirgilBuffer</a></span></tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'>
+<p>A new buffer that containing the result from performing the action.</p>
+</div>
+      
+    </li>
+  
+</ul>
+<p class="tag_title">Raises:</p>
+<ul class="raise">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt>ArgumentError</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'>
+<p>if buffer doesn&#39;t have type VirgilBuffer, String or Array of bytes</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+  <p class="tag_title">See Also:</p>
+  <ul class="see">
+    
+      <li><span class='object_link'><a href="VirgilKeyManager.html#load-instance_method" title="Virgil::SDK::HighLevel::VirgilKeyManager#load (method)">Load the VirgilKey from current storage by specified key name.</a></span></li>
+    
+      <li><span class='object_link'><a href="VirgilCard.html#verify-instance_method" title="Virgil::SDK::HighLevel::VirgilCard#verify (method)">Verifies the specified buffer and signature with current VirgilCard recipient</a></span></li>
+    
+  </ul>
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+107
+108
+109
+110
+111
+112
+113
+114
+115
+116
+117
+118
+119
+120</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/virgil/sdk/high_level/virgil_key.rb', line 107</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_sign'>sign</span><span class='lparen'>(</span><span class='id identifier rubyid_buffer'>buffer</span><span class='rparen'>)</span>
+  <span class='id identifier rubyid_buffer_to_sign'>buffer_to_sign</span> <span class='op'>=</span> <span class='kw'>case</span> <span class='id identifier rubyid_buffer'>buffer</span><span class='period'>.</span><span class='id identifier rubyid_class'>class</span><span class='period'>.</span><span class='id identifier rubyid_name'>name</span><span class='period'>.</span><span class='id identifier rubyid_split'>split</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>::</span><span class='tstring_end'>&quot;</span></span><span class='rparen'>)</span><span class='period'>.</span><span class='id identifier rubyid_last'>last</span>
+                     <span class='kw'>when</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>VirgilBuffer</span><span class='tstring_end'>&#39;</span></span>
+                       <span class='id identifier rubyid_buffer'>buffer</span>
+                     <span class='kw'>when</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>String</span><span class='tstring_end'>&#39;</span></span>
+                       <span class='const'><span class='object_link'><a href="VirgilBuffer.html" title="Virgil::SDK::HighLevel::VirgilBuffer (class)">VirgilBuffer</a></span></span><span class='period'>.</span><span class='id identifier rubyid_from_string'><span class='object_link'><a href="VirgilBuffer.html#from_string-class_method" title="Virgil::SDK::HighLevel::VirgilBuffer.from_string (method)">from_string</a></span></span><span class='lparen'>(</span><span class='id identifier rubyid_buffer'>buffer</span><span class='rparen'>)</span>
+                     <span class='kw'>when</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>Array</span><span class='tstring_end'>&#39;</span></span>
+                       <span class='const'><span class='object_link'><a href="VirgilBuffer.html" title="Virgil::SDK::HighLevel::VirgilBuffer (class)">VirgilBuffer</a></span></span><span class='period'>.</span><span class='id identifier rubyid_from_bytes'><span class='object_link'><a href="VirgilBuffer.html#from_bytes-class_method" title="Virgil::SDK::HighLevel::VirgilBuffer.from_bytes (method)">from_bytes</a></span></span><span class='lparen'>(</span><span class='id identifier rubyid_buffer'>buffer</span><span class='rparen'>)</span>
+                     <span class='kw'>else</span>
+                       <span class='id identifier rubyid_raise'>raise</span> <span class='const'>ArgumentError</span><span class='period'>.</span><span class='id identifier rubyid_new'>new</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>Buffer has unsupported type</span><span class='tstring_end'>&quot;</span></span><span class='rparen'>)</span>
+                   <span class='kw'>end</span>
+
+  <span class='const'><span class='object_link'><a href="VirgilBuffer.html" title="Virgil::SDK::HighLevel::VirgilBuffer (class)">VirgilBuffer</a></span></span><span class='period'>.</span><span class='id identifier rubyid_new'><span class='object_link'><a href="VirgilBuffer.html#initialize-instance_method" title="Virgil::SDK::HighLevel::VirgilBuffer#initialize (method)">new</a></span></span><span class='lparen'>(</span><span class='id identifier rubyid_context'>context</span><span class='period'>.</span><span class='id identifier rubyid_crypto'>crypto</span><span class='period'>.</span><span class='id identifier rubyid_sign'>sign</span><span class='lparen'>(</span><span class='id identifier rubyid_buffer_to_sign'>buffer_to_sign</span><span class='period'>.</span><span class='id identifier rubyid_bytes'>bytes</span><span class='comma'>,</span> <span class='id identifier rubyid_private_key'>private_key</span><span class='rparen'>)</span><span class='period'>.</span><span class='id identifier rubyid_to_s'>to_s</span><span class='period'>.</span><span class='id identifier rubyid_bytes'>bytes</span><span class='rparen'>)</span>
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+      <div class="method_details ">
+  <h3 class="signature " id="sign_then_encrypt-instance_method">
+  
+    #<strong>sign_then_encrypt</strong>(buffer, recipients)  &#x21d2; <tt><span class='object_link'><a href="VirgilBuffer.html" title="Virgil::SDK::HighLevel::VirgilBuffer (class)">VirgilBuffer</a></span></tt> 
+  
+
+  
+
+  
+</h3><div class="docstring">
+  <div class="discussion">
+    
+<p>Encrypts and signs the data.</p>
+
+
+  </div>
+</div>
+<div class="tags">
+  
+  <div class="examples">
+    <p class="tag_title">Examples:</p>
+    
+      
+        <p class="example_title"><div class='inline'>
+<p>Alice signs the message and encrypt it for Bob</p>
+</div></p>
+      
+      <pre class="example code"><code><span class='id identifier rubyid_virgil'>virgil</span> <span class='op'>=</span> <span class='const'><span class='object_link'><a href="VirgilApi.html" title="Virgil::SDK::HighLevel::VirgilApi (class)">VirgilApi</a></span></span><span class='period'>.</span><span class='id identifier rubyid_new'><span class='object_link'><a href="VirgilApi.html#initialize-instance_method" title="Virgil::SDK::HighLevel::VirgilApi#initialize (method)">new</a></span></span><span class='lparen'>(</span><span class='label'>access_token:</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>[YOUR_ACCESS_TOKEN_HERE]</span><span class='tstring_end'>&quot;</span></span><span class='rparen'>)</span>
+<span class='comment'># load a Virgil Key from device storage
+</span><span class='id identifier rubyid_alice_key'>alice_key</span> <span class='op'>=</span> <span class='id identifier rubyid_virgil'>virgil</span><span class='period'>.</span><span class='id identifier rubyid_keys'>keys</span><span class='period'>.</span><span class='id identifier rubyid_load'>load</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>[KEY_NAME]</span><span class='tstring_end'>&quot;</span></span><span class='comma'>,</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>[OPTIONAL_KEY_PASSWORD]</span><span class='tstring_end'>&quot;</span></span><span class='rparen'>)</span>
+
+<span class='comment'># search for Virgil Cards
+</span><span class='id identifier rubyid_bob_cards'>bob_cards</span> <span class='op'>=</span> <span class='id identifier rubyid_await'>await</span> <span class='id identifier rubyid_virgil'>virgil</span><span class='period'>.</span><span class='id identifier rubyid_cards'>cards</span><span class='period'>.</span><span class='id identifier rubyid_find'>find</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>bob</span><span class='tstring_end'>&quot;</span></span><span class='rparen'>)</span>
+
+<span class='comment'># prepare the message
+</span><span class='id identifier rubyid_message'>message</span> <span class='op'>=</span> <span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>Hey Bob, how&#39;s it going?</span><span class='tstring_end'>&quot;</span></span>
+
+<span class='comment'># sign then encrypt the message
+</span><span class='id identifier rubyid_ciphertext'>ciphertext</span> <span class='op'>=</span> <span class='id identifier rubyid_alice_key'>alice_key</span><span class='period'>.</span><span class='id identifier rubyid_sign_then_encrypt'>sign_then_encrypt</span><span class='lparen'>(</span><span class='id identifier rubyid_message'>message</span><span class='comma'>,</span> <span class='id identifier rubyid_bob_cards'>bob_cards</span><span class='rparen'>)</span><span class='period'>.</span><span class='id identifier rubyid_to_base64'>to_base64</span></code></pre>
+    
+  </div>
+<p class="tag_title">Parameters:</p>
+<ul class="param">
+  
+    <li>
+      
+        <span class='name'>buffer</span>
+      
+      
+        <span class='type'>(<tt><span class='object_link'><a href="VirgilBuffer.html" title="Virgil::SDK::HighLevel::VirgilBuffer (class)">VirgilBuffer</a></span></tt>, <tt>String</tt>, <tt>Crypto::Bytes</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'>
+<p>The data wrapped by VirgilBuffer to be encrypted and signed buffer can be
+VirgilBuffer, utf8-encoded String or Array of bytes</p>
+</div>
+      
+    </li>
+  
+    <li>
+      
+        <span class='name'>recipients</span>
+      
+      
+        <span class='type'>(<tt>Array&lt;<span class='object_link'><a href="VirgilCard.html" title="Virgil::SDK::HighLevel::VirgilCard (class)">VirgilCard</a></span>&gt;</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'>
+<p>The list of VirgilCard recipients.</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+<p class="tag_title">Returns:</p>
+<ul class="return">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt><span class='object_link'><a href="VirgilBuffer.html" title="Virgil::SDK::HighLevel::VirgilBuffer (class)">VirgilBuffer</a></span></tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'>
+<p>A new buffer that containing the encrypted and signed data</p>
+</div>
+      
+    </li>
+  
+</ul>
+<p class="tag_title">Raises:</p>
+<ul class="raise">
+  
+    <li>
+      
+      
+        <span class='type'>(<tt>ArgumentError</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'>
+<p>if buffer doesn&#39;t have type VirgilBuffer, String or Array of bytes</p>
+</div>
+      
+    </li>
+  
+    <li>
+      
+      
+        <span class='type'>(<tt>ArgumentError</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'>
+<p>if recipients doesn&#39;t have type Array or empty</p>
+</div>
+      
+    </li>
+  
+</ul>
+
+  <p class="tag_title">See Also:</p>
+  <ul class="see">
+    
+      <li><span class='object_link'><a href="VirgilKeyManager.html#load-instance_method" title="Virgil::SDK::HighLevel::VirgilKeyManager#load (method)">Load key from the key storage</a></span></li>
+    
+      <li><span class='object_link'><a href="VirgilCardManager.html#find-instance_method" title="Virgil::SDK::HighLevel::VirgilCardManager#find (method)">Find card</a></span></li>
+    
+  </ul>
+
+</div><table class="source_code">
+  <tr>
+    <td>
+      <pre class="lines">
+
+
+145
+146
+147
+148
+149
+150
+151
+152
+153
+154
+155
+156
+157
+158
+159
+160
+161
+162</pre>
+    </td>
+    <td>
+      <pre class="code"><span class="info file"># File 'lib/virgil/sdk/high_level/virgil_key.rb', line 145</span>
+
+<span class='kw'>def</span> <span class='id identifier rubyid_sign_then_encrypt'>sign_then_encrypt</span><span class='lparen'>(</span><span class='id identifier rubyid_buffer'>buffer</span><span class='comma'>,</span> <span class='id identifier rubyid_recipients'>recipients</span><span class='rparen'>)</span>
+
+  <span class='id identifier rubyid_raise'>raise</span> <span class='const'>ArgumentError</span><span class='period'>.</span><span class='id identifier rubyid_new'>new</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>recipients is not valid</span><span class='tstring_end'>&quot;</span></span><span class='rparen'>)</span> <span class='kw'>if</span> <span class='lparen'>(</span><span class='op'>!</span><span class='id identifier rubyid_recipients'>recipients</span><span class='period'>.</span><span class='id identifier rubyid_is_a?'>is_a?</span><span class='lparen'>(</span><span class='const'>Array</span><span class='rparen'>)</span> <span class='op'>||</span> <span class='id identifier rubyid_recipients'>recipients</span><span class='period'>.</span><span class='id identifier rubyid_empty?'>empty?</span><span class='rparen'>)</span>
+  <span class='id identifier rubyid_buffer_to_sign'>buffer_to_sign</span> <span class='op'>=</span> <span class='kw'>case</span> <span class='id identifier rubyid_buffer'>buffer</span><span class='period'>.</span><span class='id identifier rubyid_class'>class</span><span class='period'>.</span><span class='id identifier rubyid_name'>name</span><span class='period'>.</span><span class='id identifier rubyid_split'>split</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>::</span><span class='tstring_end'>&quot;</span></span><span class='rparen'>)</span><span class='period'>.</span><span class='id identifier rubyid_last'>last</span>
+                     <span class='kw'>when</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>VirgilBuffer</span><span class='tstring_end'>&#39;</span></span>
+                       <span class='id identifier rubyid_buffer'>buffer</span>
+                     <span class='kw'>when</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>String</span><span class='tstring_end'>&#39;</span></span>
+                       <span class='const'><span class='object_link'><a href="VirgilBuffer.html" title="Virgil::SDK::HighLevel::VirgilBuffer (class)">VirgilBuffer</a></span></span><span class='period'>.</span><span class='id identifier rubyid_from_string'><span class='object_link'><a href="VirgilBuffer.html#from_string-class_method" title="Virgil::SDK::HighLevel::VirgilBuffer.from_string (method)">from_string</a></span></span><span class='lparen'>(</span><span class='id identifier rubyid_buffer'>buffer</span><span class='rparen'>)</span>
+                     <span class='kw'>when</span> <span class='tstring'><span class='tstring_beg'>&#39;</span><span class='tstring_content'>Array</span><span class='tstring_end'>&#39;</span></span>
+                       <span class='const'><span class='object_link'><a href="VirgilBuffer.html" title="Virgil::SDK::HighLevel::VirgilBuffer (class)">VirgilBuffer</a></span></span><span class='period'>.</span><span class='id identifier rubyid_from_bytes'><span class='object_link'><a href="VirgilBuffer.html#from_bytes-class_method" title="Virgil::SDK::HighLevel::VirgilBuffer.from_bytes (method)">from_bytes</a></span></span><span class='lparen'>(</span><span class='id identifier rubyid_buffer'>buffer</span><span class='rparen'>)</span>
+                     <span class='kw'>else</span>
+                       <span class='id identifier rubyid_raise'>raise</span> <span class='const'>ArgumentError</span><span class='period'>.</span><span class='id identifier rubyid_new'>new</span><span class='lparen'>(</span><span class='tstring'><span class='tstring_beg'>&quot;</span><span class='tstring_content'>Buffer has unsupported type</span><span class='tstring_end'>&quot;</span></span><span class='rparen'>)</span>
+                   <span class='kw'>end</span>
+  <span class='id identifier rubyid_public_keys'>public_keys</span> <span class='op'>=</span> <span class='id identifier rubyid_recipients'>recipients</span><span class='period'>.</span><span class='id identifier rubyid_map'>map</span><span class='lparen'>(</span><span class='op'>&amp;</span><span class='symbol'>:public_key</span><span class='rparen'>)</span>
+  <span class='id identifier rubyid_bytes'>bytes</span> <span class='op'>=</span> <span class='id identifier rubyid_context'>context</span><span class='period'>.</span><span class='id identifier rubyid_crypto'>crypto</span><span class='period'>.</span><span class='id identifier rubyid_sign_then_encrypt'>sign_then_encrypt</span><span class='lparen'>(</span><span class='id identifier rubyid_buffer_to_sign'>buffer_to_sign</span><span class='period'>.</span><span class='id identifier rubyid_bytes'>bytes</span><span class='comma'>,</span> <span class='id identifier rubyid_private_key'>private_key</span><span class='comma'>,</span> <span class='op'>*</span><span class='id identifier rubyid_public_keys'>public_keys</span><span class='rparen'>)</span><span class='period'>.</span><span class='id identifier rubyid_to_s'>to_s</span><span class='period'>.</span><span class='id identifier rubyid_bytes'>bytes</span>
+  <span class='const'><span class='object_link'><a href="VirgilBuffer.html" title="Virgil::SDK::HighLevel::VirgilBuffer (class)">VirgilBuffer</a></span></span><span class='period'>.</span><span class='id identifier rubyid_new'><span class='object_link'><a href="VirgilBuffer.html#initialize-instance_method" title="Virgil::SDK::HighLevel::VirgilBuffer#initialize (method)">new</a></span></span><span class='lparen'>(</span><span class='id identifier rubyid_bytes'>bytes</span><span class='rparen'>)</span>
+
+<span class='kw'>end</span></pre>
+    </td>
+  </tr>
+</table>
+</div>
+    
+  </div>
+
+</div>
+
+      <div id="footer">
+  Generated on Tue May 21 04:42:02 2019 by
+  <a href="http://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
+  0.9.19 (ruby-2.4.1).
+</div>
+
+    </div>
+  </body>
+</html>
