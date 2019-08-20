@@ -177,7 +177,7 @@ module Virgil
         thread_a.join
         thread_b.join
 
-       assert_equal(token_from_a, token_from_b)
+       assert_equal(token_from_a.to_s, token_from_b.to_s)
       end
 
       def test_JwtVerifier_Should_VerifyImportedJwt

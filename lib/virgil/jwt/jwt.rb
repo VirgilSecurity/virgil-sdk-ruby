@@ -32,6 +32,8 @@
 # IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
 # POSSIBILITY OF SUCH DAMAGE.
 
+require "base64url"
+
 module Virgil
   module Jwt
     # Implements [AccessToken] in terms of Virgil JWT.
@@ -80,7 +82,7 @@ module Virgil
         begin
           parts = jwt_str.split('.')
           raise ArgumentError unless parts.size == 3
-          signature_data = Bytes.new(Base64.urlsafe_decode64(parts[2]).bytes)
+          signature_data = Bytes.new(Base64URL.decode(parts[2]).bytes)
           new(header_content: parse_header_content(parts[0]),
               body_content: parse_body_content(parts[1]),
               signature_data: signature_data)
@@ -107,25 +109,25 @@ module Virgil
       attr_reader :string_representation
 
       def self.parse_body_content(str)
-        body_json =  Base64.urlsafe_decode64(str)
+        body_json =  Base64URL.decode(str)
         JwtBodyContent.restore_from_json(body_json)
       end
 
       def self.parse_header_content(str)
-        header_json = Base64.urlsafe_decode64(str)
+        header_json = Base64URL.decode(str)
         JwtHeaderContent.restore_from_json(header_json)
       end
 
       def header_base64
-        Base64.urlsafe_encode64(@header_content.to_json, padding: false)
+        Base64URL.encode(@header_content.to_json)
       end
 
       def body_base64
-        Base64.urlsafe_encode64(@body_content.to_json, padding: false)
+        Base64URL.encode(@body_content.to_json)
       end
 
       def signature_base64
-        Base64.urlsafe_encode64(@signature_data.to_s, padding: false)
+        Base64URL.encode(@signature_data.to_s)
       end
     end
   end
