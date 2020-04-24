@@ -11,10 +11,13 @@
 The Virgil SDK allows developers to get up and running with Virgil API quickly and add full end-to-end security to their existing digital solutions to become HIPAA and GDPR compliant and more.
 
 ## SDK Features
-- communicate with [Virgil Cards Service][_cards_service]
-- manage users' Public Keys
-- store private keys in secure local storage
-- use Virgil [Crypto library][_virgil_crypto]
+- Communicate with Virgil Cards Service
+- Manage users' public keys
+- Encrypt, sign, decrypt and verify data
+- Store private keys in secure local storage
+- Use Virgil Crypto Library
+- Use your own crypto library
+
 
 ## Installation
 
@@ -121,46 +124,22 @@ original_message = bob_key.decrypt_then_verify(ciphertext, alice_card).to_s
 ```
 
 ## Docs
-Virgil Security has a powerful set of APIs, and the documentation below can get you started today.
 
-In order to use the Virgil SDK with your application, you will need to first configure your application. By default, the SDK will attempt to look for Virgil-specific settings in your application but you can change it during SDK configuration.
-
-* [Configure the SDK][_configure_sdk] documentation
-  * [Setup authentication][_setup_authentication] to make API calls to Virgil Services
-  * [Setup Card Manager][_card_manager] to manage user's Public Keys
-  * [Setup Card Verifier][_card_verifier] to verify signatures inside of user's Card
-  * [Setup Key storage][_key_storage] to store Private Keys
-* [More usage examples][_more_examples]
-  * [Create & publish a Card][_create_card] that has a Public Key on Virgil Cards Service
-  * [Search user's Card by user's identity][_search_card]
-  * [Get user's Card by its ID][_get_card]
-  * [Use Card for crypto operations][_use_card]
-* [Reference API][_reference_api]
+Virgil Security has a powerful set of APIs, and the [Developer Documentation](https://developer.virgilsecurity.com/) can get you started today.
 
 ## License
 
-This library is released under the [3-clause BSD License](LICENSE.md).
+This library is released under the [3-clause BSD License](LICENSE).
 
 ## Support
 
-Our developer support team is here to help you.
+Our developer support team is here to help you. Find out more information on our [Help Center](https://help.virgilsecurity.com/).
 
 You can find us on [Twitter](https://twitter.com/VirgilSecurity) or send us email support@VirgilSecurity.com.
 
-Also, get extra help from our support team on [Slack](https://join.slack.com/t/VirgilSecurity/shared_invite/enQtMjg4MDE4ODM3ODA4LTc2OWQwOTQ3YjNhNTQ0ZjJiZDc2NjkzYjYxNTI0YzhmNTY2ZDliMGJjYWQ5YmZiOGU5ZWEzNmJiMWZhYWVmYTM).
+Also, get extra help from our support team on [Slack](https://virgilsecurity.com/join-community).
 
 
 [_virgil_crypto]: https://github.com/VirgilSecurity/virgil-crypto
-[_cards_service]: https://developer.virgilsecurity.com/docs/api-reference/card-service/v4
-[_use_card]: https://developer.virgilsecurity.com/docs/ruby/how-to/public-key-management/v4/use-card-for-crypto-operation
-[_get_card]: https://developer.virgilsecurity.com/docs/ruby/how-to/public-key-management/v4/get-card
-[_search_card]: https://developer.virgilsecurity.com/docs/ruby/how-to/public-key-management/v4/search-card
-[_create_card]: https://developer.virgilsecurity.com/docs/ruby/how-to/public-key-management/v4/create-card
-[_key_storage]: https://developer.virgilsecurity.com/docs/ruby/how-to/setup/v4/setup-key-storage
-[_card_verifier]: https://developer.virgilsecurity.com/docs/ruby/how-to/setup/v4/setup-card-verifier
-[_card_manager]: https://developer.virgilsecurity.com/docs/ruby/how-to/setup/v4/setup-card-manager
-[_setup_authentication]: https://developer.virgilsecurity.com/docs/ruby/how-to/setup/v4/setup-authentication
-[_services_reference_api]: https://developer.virgilsecurity.com/docs/api-reference
-[_configure_sdk]: https://developer.virgilsecurity.com/docs/how-to#sdk-configuration
-[_more_examples]: https://developer.virgilsecurity.com/docs/how-to#public-key-management
-[_reference_api]: https://developer.virgilsecurity.com/docs/api-reference
+
+
