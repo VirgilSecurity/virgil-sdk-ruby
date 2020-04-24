@@ -174,6 +174,7 @@ TThe Virgil JWT is provided as a [gem](https://rubygems.org/) named [*virgil-jwt
  ```
  gem install virgil-crypto
  gem install virgil-jwt
+ gem install base64
  ```
  
  or add the following line to your Gemfile:
