@@ -2,10 +2,11 @@
 [![Gem](https://img.shields.io/gem/v/virgil-jwt.svg)](https://rubygems.org/gems/virgil-jwt)
 [![GitHub license](https://img.shields.io/badge/license-BSD%203--Clause-blue.svg)](https://github.com/VirgilSecurity/virgil/blob/master/LICENSE)
 
-### [Introduction](#introduction) | [Library purposes](#library-purposes) | [Usage examples](#usage-examples) | [Installation](#installation) | [Docs](#docs) | [License](#license) | [Contacts](#support)
+### [Introduction](#introduction) | [Library purposes](#library-purposes) | [SDK Installation](#sdk-installation) | [Docs](#docs) | [License](#license) | [Contacts](#support)
 
 ## Introduction
 Virgil JSON Web Token ("JWT") allows you to make call to Virgil Services without having to know how they're constructed.
+
 ## Library purposes
 * Authentication using tokens that are based on the [JSON Web Token standard](https://jwt.io) but with some Virgil modification.
 
@@ -67,12 +68,12 @@ include Virgil::Crypto
 include Virgil::Jwt
 
 # API_KEY (you got this Key at Virgil Dashboard)
-api_key_base64 = "MIGhMF0GCSqGSIb3DQEFDTBQMC8GCSqGSIb3DQEFDDAiBBC7Sg/DbNzhJ/uakTvafUMoAgIUtzAKBggqhkiG9w0CCjAdBglghkgBZQMEASoEEDunQ1yhWZoKaLaDFgjpxRwEQAFdbC8e6103lJrUhY9ahyUA8+4rTJKZCmdTlCDPvoWH/5N5kxbOvTtbxtxevI421z3gRbjAtoWkfWraSLD6gj0="
+api_key_base64 = "MC4CAQAwBQYDK2VwBCIEID8cTZz/sz2/iQ7mOndqwVpVazM8cUmjF49pPBqlqX3l"
 private_key_data = Bytes.from_string(api_key_base64, VirgilStringEncoding::BASE64)
 
 # Crypto library imports a private key into a necessary format
 crypto = VirgilCrypto.new
-api_key = crypto.import_private_key(private_key_data, app_key_password)
+api_key = crypto.import_private_key(private_key_data, "")
 
 #  initialize accessTokenSigner that signs users JWTs
 access_token_signer = VirgilAccessTokenSigner.new
@@ -100,6 +101,7 @@ alice_jwt = jwt_generator.generate_token(identity)
 # you can provide users with JWT at registration or authorization steps
 # Send a JWT to client-side
 jwt_string = alice_jwt.to_s
+puts(jwt_string)
 ```
 
 ### Manage a JWT
@@ -165,7 +167,7 @@ eyJraWQiOiI3MGI0NDdlMzIxZjNhMGZkIiwidHlwIjoiSldUIiwiYWxnIjoiVkVEUzUxMiIsImN0eSI6
 It is important to understand that the purpose of using JWT is NOT to hide or obscure data in any way. The reason why JWT is used is to prove that the sent data was actually created by an authentic source.
 You can try creating your own JWT through your browser at [jwt.io](https://jwt.io).
 
-## Installation
+## SDK Installation
 
 TThe Virgil JWT is provided as a [gem](https://rubygems.org/) named [*virgil-jwt*](https://rubygems.org/gems/virgil-jwt) and available for Ruby 2.1 and newer. The package is distributed via *bundler* package manager.
  
@@ -190,7 +192,6 @@ bundle
 ```
 ## Docs
 - [Crypto Core Library](https://github.com/VirgilSecurity/virgil-crypto)
-- [More usage examples](https://developer.virgilsecurity.com/docs/how-to#cryptography)
 
 ## License
 
