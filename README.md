@@ -2,7 +2,7 @@
 [![Gem](https://img.shields.io/gem/v/virgil-jwt.svg)](https://rubygems.org/gems/virgil-jwt)
 [![GitHub license](https://img.shields.io/badge/license-BSD%203--Clause-blue.svg)](https://github.com/VirgilSecurity/virgil/blob/master/LICENSE)
 
-### [Introduction](#introduction) | [Library purposes](#library-purposes) | [SDK Installation](#sdk-installation) | [Docs](#docs) | [License](#license) | [Contacts](#support)
+### [Introduction](#introduction) | [Library purposes](#library-purposes) | [Usage examples](#usage-examples) | [SDK Installation](#sdk-installation) | [Docs](#docs) | [License](#license) | [Contacts](#support)
 
 ## Introduction
 Virgil JSON Web Token ("JWT") allows you to make call to Virgil Services without having to know how they're constructed.
@@ -176,7 +176,7 @@ TThe Virgil JWT is provided as a [gem](https://rubygems.org/) named [*virgil-jwt
  ```
  gem install virgil-crypto
  gem install virgil-jwt
- gem install base64
+ gem install base64url
  ```
  
  or add the following line to your Gemfile:
