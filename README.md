@@ -2,13 +2,38 @@
 [![Gem](https://img.shields.io/gem/v/virgil-jwt.svg)](https://rubygems.org/gems/virgil-jwt)
 [![GitHub license](https://img.shields.io/badge/license-BSD%203--Clause-blue.svg)](https://github.com/VirgilSecurity/virgil/blob/master/LICENSE)
 
-### [Introduction](#introduction) | [Library purposes](#library-purposes) | [Usage examples](#usage-examples) | [SDK Installation](#sdk-installation) | [Docs](#docs) | [Support](#support)
+[Introduction](#introduction) | [Library purposes](#library-purposes) | [Installation](#sdk-installation) | [Usage examples](#usage-examples) | [Docs](#docs) | [Support](#support)
 
 ## Introduction
 Virgil JSON Web Token ("JWT") allows you to make call to Virgil Services without having to know how they're constructed.
 
 ## Library purposes
 * Authentication using tokens that are based on the [JSON Web Token standard](https://jwt.io) but with some Virgil modification.
+
+
+## Installation
+
+The Virgil JWT is provided as a [gem](https://rubygems.org/) named [*virgil-jwt*](https://rubygems.org/gems/virgil-jwt) and available for Ruby 2.1 and newer. The package is distributed via *bundler* package manager.
+ 
+ To install the package use the command below:
+ 
+ ```
+ gem install virgil-crypto
+ gem install virgil-jwt
+ gem install base64url
+ ```
+ 
+ or add the following line to your Gemfile:
+ 
+ ```
+ gem 'virgil-crypto', '~> 3.6.2'
+ gem 'virgil-jwt'
+ ```
+and then run
+
+```
+bundle
+```
 
 ## Usage examples
 
@@ -167,29 +192,6 @@ eyJraWQiOiI3MGI0NDdlMzIxZjNhMGZkIiwidHlwIjoiSldUIiwiYWxnIjoiVkVEUzUxMiIsImN0eSI6
 It is important to understand that the purpose of using JWT is NOT to hide or obscure data in any way. The reason why JWT is used is to prove that the sent data was actually created by an authentic source.
 You can try creating your own JWT through your browser at [jwt.io](https://jwt.io).
 
-## SDK Installation
-
-TThe Virgil JWT is provided as a [gem](https://rubygems.org/) named [*virgil-jwt*](https://rubygems.org/gems/virgil-jwt) and available for Ruby 2.1 and newer. The package is distributed via *bundler* package manager.
- 
- To install the package use the command below:
- 
- ```
- gem install virgil-crypto
- gem install virgil-jwt
- gem install base64url
- ```
- 
- or add the following line to your Gemfile:
- 
- ```
- gem 'virgil-crypto', '~> 3.6.2'
- gem 'virgil-jwt'
- ```
-and then run
-
-```
-bundle
-```
 ## Docs
 - [Crypto Core Library](https://github.com/VirgilSecurity/virgil-crypto)
 
